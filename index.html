@@ -26,119 +26,97 @@
         
         body { 
           background-color: var(--color-bg); 
-          background-image: linear-gradient(to right, rgba(230, 223, 211, 0.3) 1px, transparent 1px);
-          background-size: 80px 100%; 
           color: var(--color-text-primary); 
           font-family: var(--font-body); 
           overflow-x: hidden; 
           -webkit-font-smoothing: antialiased; 
-          position: relative;
         }
         
+        /* Gren Efekti (Texture) */
         body::before {
           content: ''; 
           position: fixed; 
           top: 0; left: 0; width: 100%; height: 100%;
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
           pointer-events: none; 
-          z-index: 1;
+          z-index: 10;
         }
         
         .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); position: relative; z-index: 2; }
         
         /* Navbar */
-        .nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: var(--space-md) 0; backdrop-filter: blur(20px); background: rgba(247, 244, 235, 0.85); border-bottom: 1px solid var(--color-border); transition: all 0.3s ease; }
+        .nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: var(--space-md) 0; backdrop-filter: blur(20px); background: rgba(247, 244, 235, 0.85); border-bottom: 1px solid var(--color-border); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: var(--font-display); font-size: 26px; font-weight: 600; color: var(--color-primary); text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s ease; }
-        .logo:hover { color: var(--color-accent); }
+        .logo { font-family: var(--font-display); font-size: 26px; font-weight: 600; color: var(--color-primary); text-decoration: none; letter-spacing: 0.05em; }
         .nav-links { display: flex; gap: var(--space-lg); align-items: center; }
-        .nav-links a { color: var(--color-text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: all 0.3s ease; position: relative; }
+        .nav-links a { color: var(--color-text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s ease; position: relative; }
         .nav-links a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0; background-color: var(--color-primary); transition: width 0.3s ease; }
         .nav-links a:hover { color: var(--color-primary); }
         .nav-links a:hover::after { width: 100%; }
         .cart-trigger { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 10px 20px; font-family: var(--font-body); cursor: pointer; font-weight: 600; font-size: 13px; transition: all 0.4s var(--ease-out-expo); }
-        .cart-trigger:hover { background: var(--color-primary); color: #ffffff; transform: scale(1.03); }
+        .cart-trigger:hover { background: var(--color-primary); color: #ffffff; }
         
-        /* Hero Alanı */
-        .hero { height: 95vh; display: flex; align-items: center; background: radial-gradient(circle at 75% 45%, rgba(191, 161, 95, 0.2) 0%, transparent 60%); padding-top: 80px; position: relative; }
-        .hero-wrapper { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: var(--space-xl); }
-        .hero-text { max-width: 580px; }
-        .hero h1 { font-family: var(--font-display); font-size: clamp(2.8rem, 5.5vw + 1rem, 4.8rem); font-weight: 400; color: var(--color-accent); margin-bottom: var(--space-md); line-height: 1.1; }
-        .hero p { font-size: 18px; color: var(--color-text-secondary); margin-bottom: var(--space-xl); line-height: 1.6; font-weight: 300; }
-        
-        /* REALİSTİK LOVABLE STİLİ MUM TASARIMI */
-        .hero-candle-art { position: relative; width: 340px; height: 460px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; }
-        
-        /* Gerçekçi Ortam Işığı (Glow) */
-        .candle-glow { position: absolute; top: -5%; width: 280px; height: 280px; background: radial-gradient(circle, rgba(255,160,0,0.2) 0%, rgba(212,143,56,0.05) 45%, rgba(0,0,0,0) 70%); filter: blur(25px); animation: ambientGlow 4s ease-in-out infinite alternate; pointer-events: none; }
-        
-        /* Organik Dalgalanan Alev */
-        .candle-flame { position: absolute; top: 20%; width: 18px; height: 50px; background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.9) 10%, #fff176 30%, #ff9800 60%, #e65100 90%, #3e2723 100%); border-radius: 50% 50% 35% 35% / 70% 70% 30% 30%; filter: drop-shadow(0 0 12px rgba(255,152,0,0.6)); animation: realFlame 0.2s infinite alternate ease-in-out; transform-origin: bottom center; z-index: 5; }
-        
-        /* Gerçekçi İnce Fitil */
-        .candle-wick { width: 2px; height: 18px; background: linear-gradient(to top, #000000, #424242); margin-bottom: -1px; z-index: 4; border-radius: 1px; transform: rotate(-2deg); }
-        
-        /* Cam Bardak Efekti (Füme Lüks Cam) */
-        .candle-body { 
-          width: 200px; height: 250px; 
-          background: linear-gradient(135deg, rgba(74, 65, 53, 0.9) 0%, rgba(42, 37, 30, 0.95) 100%); 
-          border-radius: 8px 8px 16px 16px; 
-          box-shadow: 
-            0 30px 60px rgba(0,0,0,0.25), 
-            inset 0 20px 20px rgba(255,255,255,0.1),
-            inset -15px 0 25px rgba(0,0,0,0.4),
-            inset 15px 0 25px rgba(255,255,255,0.05); 
-          display: flex; align-items: center; justify-content: center; position: relative; 
-          border: 1px solid rgba(255,255,255,0.08);
-          backdrop-filter: blur(2px);
+        /* GERÇEKÇİ GERİ PLAN (HERO) ALANI */
+        .hero { 
+          height: 100vh; 
+          display: flex; 
+          align-items: center; 
+          position: relative; 
+          background-color: #1a1715; /* Görsel yüklenene kadar koyu estetik fon */
+          overflow: hidden;
         }
         
-        /* Erimiş Soya Mumunun Sıcak Sıvı Katmanı (Bardağın İçi) */
-        .candle-body::before { 
-          content: ''; position: absolute; top: 0; left: 4px; right: 4px; height: 16px; 
-          background: linear-gradient(to bottom, #d48f38, #5a452a); 
-          border-radius: 50% / 100% 100% 0 0; 
-          box-shadow: inset 0 2px 5px rgba(255,255,255,0.3);
-          opacity: 0.85;
-          z-index: 3;
+        /* Sinematik Mum Arka Plan Görseli */
+        .hero-bg-image {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          /* Buraya Unsplash'ten lüks, loş ışıklı ve çok kaliteli bir mum fotoğrafı bağladım */
+          background-image: url('https://images.unsplash.com/photo-1603006905003-be475563bc59?q=80&w=1920&auto=format&fit=crop');
+          background-size: cover;
+          background-position: center;
+          z-index: 1;
+          transform: scale(1.05);
+          animation: subtleZoom 20s infinite alternate ease-in-out;
         }
         
-        /* Premium Dokulu Kumaş/Kağıt Etiket */
-        .candle-label { 
-          width: 120px; height: 140px; 
-          border: 1px solid rgba(191, 161, 95, 0.4); 
-          background: #fdfbf7; 
-          padding: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; 
-          box-shadow: 0 10px 25px rgba(0,0,0,0.15), inset 0 0 10px rgba(0,0,0,0.02);
-          position: relative;
-          z-index: 4;
+        /* Yazıların Okunması İçin Premium Karartma Overlay'i */
+        .hero-overlay {
+          position: absolute;
+          top: 0; left: 0; width: 100%; height: 100%;
+          background: linear-gradient(to right, rgba(20, 18, 16, 0.85) 0%, rgba(20, 18, 16, 0.4) 60%, rgba(20, 18, 16, 0.7) 100%);
+          z-index: 1;
         }
-        .candle-label::after {
-          content: ''; position: absolute; top: 3px; left: 3px; right: 3px; bottom: 3px;
-          border: 1px solid rgba(191, 161, 95, 0.15); pointer-events: none;
-        }
-        .label-brand { font-family: var(--font-body); font-size: 8px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-text-secondary); margin-bottom: 10px; font-weight: 500; }
-        .label-title { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--color-accent); line-height: 1.2; border-bottom: 1px solid var(--color-border); padding-bottom: 8px; margin-bottom: 8px; width: 100%; letter-spacing: 0.02em; }
-        .label-sub { font-family: var(--font-display); font-style: italic; font-size: 11px; color: var(--color-primary); letter-spacing: 0.05em; }
         
-        /* Gerçekçi Mum Altı Gölgesi */
-        .candle-shadow { position: absolute; bottom: 10px; width: 180px; height: 15px; background: rgba(0,0,0,0.25); filter: blur(8px); border-radius: 50%; z-index: 1; }
-        
-        /* Lovable Tarzı Mikro Akıcı Animasyonlar */
-        @keyframes realFlame {
-            0% { transform: scale(1) rotate(-1.5deg) skewX(-1deg); filter: drop-shadow(0 0 10px rgba(255,152,0,0.5)); }
-            50% { transform: scale(1.04, 0.96) rotate(1deg) skewX(0.5deg); filter: drop-shadow(0 0 14px rgba(255,110,0,0.7)); }
-            100% { transform: scale(0.96, 1.05) rotate(-0.5deg) skewX(-0.5deg); filter: drop-shadow(0 0 11px rgba(255,152,0,0.5)); }
+        /* TikTok Tarzı Loş Ortam Işıltısı */
+        .hero-glow {
+          position: absolute;
+          bottom: 20%;
+          right: 10%;
+          width: 40vw;
+          height: 40vw;
+          background: radial-gradient(circle, rgba(212, 143, 56, 0.15) 0%, transparent 70%);
+          filter: blur(50px);
+          pointer-events: none;
+          z-index: 2;
         }
-        @keyframes ambientGlow {
-            0% { opacity: 0.85; transform: scale(0.98); }
-            100% { opacity: 1; transform: scale(1.03); }
+        
+        .hero-wrapper { width: 100%; position: relative; z-index: 3; }
+        .hero-text { max-width: 650px; color: #f7f4eb; }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw + 1rem, 4.5rem); font-weight: 400; color: #ffffff; margin-bottom: var(--space-md); line-height: 1.15; }
+        .hero p { font-size: 18px; color: #dfdad0; margin-bottom: var(--space-xl); line-height: 1.6; font-weight: 300; }
+        
+        @keyframes subtleZoom {
+          0% { transform: scale(1); }
+          100% { transform: scale(1.06); }
         }
         
         .btn-primary { display: inline-flex; padding: 16px 36px; background: var(--color-primary); color: #ffffff; text-decoration: none; font-weight: 600; letter-spacing: 0.08em; font-size: 13px; text-transform: uppercase; transition: all 0.4s var(--ease-out-expo); border: none; cursor: pointer; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(191, 161, 95, 0.2); background: var(--color-accent); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(191, 161, 95, 0.3); background: #ffffff; color: var(--color-accent); }
         
-        /* Ortak Bölüm Başlığı */
+        /* Bölüm Başlıkları */
         .section-header { text-align: center; margin-bottom: var(--space-xl); }
         .section-subtitle { color: var(--color-primary); text-transform: uppercase; font-size: 12px; letter-spacing: 0.2em; margin-bottom: 8px; display: block; font-weight: 600; }
         .section-title { font-family: var(--font-display); font-size: 40px; font-weight: 400; letter-spacing: 0.03em; color: var(--color-accent); }
@@ -149,43 +127,40 @@
         /* Katalog */
         .section-block { padding: 100px 0; border-bottom: 1px solid var(--color-border); position: relative; z-index: 2; }
         .grid { display: grid; gap: var(--space-xl); grid-template-columns: repeat(3, 1fr); }
-        .card { background: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-md); transition: all 0.4s var(--ease-out-expo); display: flex; flex-direction: column; position: relative; }
+        .card { background: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-md); transition: all 0.4s var(--ease-out-expo); display: flex; flex-direction: column; }
         .card:hover { transform: translateY(-6px); border-color: var(--color-primary); box-shadow: 0 20px 40px rgba(58,54,48,0.06); }
-        .product-img-box { width: 100%; height: 280px; background: #f0eae1; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-md); color: var(--color-primary); font-family: var(--font-display); font-style: italic; font-size: 22px; border: 1px solid rgba(191, 161, 95, 0.1); transition: background 0.3s ease; }
-        .card:hover { background: #fffdfa; }
+        .product-img-box { width: 100%; height: 280px; background: #f0eae1; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-md); color: var(--color-primary); font-family: var(--font-display); font-style: italic; font-size: 22px; border: 1px solid rgba(191, 161, 95, 0.1); }
         .product-title { font-family: var(--font-display); font-size: 24px; font-weight: 400; margin-bottom: 8px; color: var(--color-accent); }
         .product-desc { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--space-md); flex-grow: 1; }
         .product-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-md); border-top: 1px solid rgba(58,54,48,0.08); }
         .product-price { font-weight: 600; color: var(--color-primary); font-size: 18px; }
         .btn-add-cart { background: transparent; border: 1px solid var(--color-border); color: var(--color-text-primary); padding: 10px 20px; font-size: 13px; cursor: pointer; transition: all 0.3s ease; }
-        .btn-add-cart:hover { background: var(--text-color); color: var(--color-surface); border-color: var(--color-text-primary); }
+        .btn-add-cart:hover { background: var(--color-text-primary); color: var(--color-surface); border-color: var(--color-text-primary); }
         
         /* Hakkımızda */
         .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
         .about-content p { font-size: 17px; color: var(--color-text-secondary); line-height: 1.8; font-weight: 300; margin-bottom: var(--space-lg); }
         .about-content em { font-family: var(--font-display); font-size: 22px; color: var(--color-primary); display: block; margin-top: var(--space-md); }
         
-        /* Sahte Yorumlar */
+        /* Yorumlar */
         .reviews-grid { display: grid; gap: var(--space-lg); grid-template-columns: repeat(3, 1fr); }
-        .review-card { background: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-lg); border-radius: 2px; transition: all 0.4s var(--ease-out-expo); }
-        .review-card:hover { transform: translateY(-4px); border-color: var(--color-primary); box-shadow: 0 10px 25px rgba(5a,54,48,0.04); }
+        .review-card { background: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-lg); transition: all 0.4s var(--ease-out-expo); }
         .stars { color: var(--color-primary); font-size: 16px; margin-bottom: 12px; letter-spacing: 2px; }
         .review-text { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; font-style: italic; margin-bottom: var(--space-md); }
         .review-user { display: flex; align-items: center; gap: 10px; }
         .user-avatar { width: 36px; height: 36px; background: #f0eae1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--color-primary); font-weight: 600; border: 1px solid var(--color-primary); }
         .user-name { font-size: 14px; font-weight: 500; color: var(--color-accent); }
         
-        /* İletişim & Konum (Footer) */
+        /* Footer & İletişim */
         .footer { background: #ede8dc; border-top: 1px solid var(--color-border); padding: 80px 0 30px 0; color: var(--color-text-secondary); position: relative; z-index: 2; }
         .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1.3fr; gap: var(--space-xl); margin-bottom: 50px; }
         .footer-col h4 { font-family: var(--font-display); font-size: 22px; color: var(--color-accent); margin-bottom: var(--space-lg); font-weight: 400; }
         .footer-col p { font-size: 14px; line-height: 1.7; margin-bottom: 12px; }
-        .map-box { width: 100%; height: 180px; background: var(--color-surface); border: 1px solid var(--color-border); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; transition: border-color 0.3s; }
-        .map-box:hover { border-color: var(--color-primary); }
-        .map-placeholder { text-align: center; font-size: 14px; color: var(--color-primary); padding: var(--space-md); line-height: 1.6; }
+        .map-box { width: 100%; height: 180px; background: var(--color-surface); border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; }
+        .map-placeholder { text-align: center; font-size: 14px; color: var(--primary-color); padding: var(--space-md); line-height: 1.6; }
         .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--color-border); font-size: 12px; letter-spacing: 0.05em; }
         
-        /* Sepet Paneli */
+        /* Sepet */
         .cart-sidebar { position: fixed; top: 0; right: -400px; width: 400px; height: 100%; background: var(--color-surface); border-left: 1px solid var(--color-border); z-index: 200; padding: var(--space-xl); display: flex; flex-direction: column; transition: right 0.5s var(--ease-out-expo); box-shadow: -15px 0 40px rgba(0,0,0,0.05); }
         .cart-sidebar.open { right: 0; }
         .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xl); border-bottom: 1px solid var(--color-border); padding-bottom: var(--space-md); }
@@ -198,24 +173,24 @@
         .btn-remove { background: transparent; border: none; color: #ff5252; cursor: pointer; font-size: 13px; }
         .cart-footer { border-top: 1px solid var(--color-border); padding-top: var(--space-xl); }
         .cart-total { display: flex; justify-content: space-between; font-size: 19px; font-weight: 600; margin-bottom: var(--space-md); color: var(--color-accent); }
-        .btn-whatsapp { width: 100%; padding: 16px; background: #25D366; color: white; border: none; font-weight: 600; font-size: 15px; cursor: pointer; transition: background 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .btn-whatsapp:hover { background: #1ebd54; }
+        .btn-whatsapp { width: 100%; padding: 16px; background: #25D366; color: white; border: none; font-weight: 600; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
         
-        /* Giriş Efektleri */
+        /* Animasyonlar */
         .animate-up { opacity: 0; transform: translateY(30px); animation: fadeInUp 1.2s var(--ease-out-expo) forwards; }
         .stagger-1 { animation-delay: 0.15s; }
         .stagger-2 { animation-delay: 0.3s; }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
         
+        /* MOBİL RESPONSIVE AYARLARI (Tamamen Kusursuzlaştırıldı) */
         @media (max-width: 992px) { 
             .grid, .reviews-grid, .footer-grid { grid-template-columns: 1fr; } 
             .cart-sidebar { width: 100%; right: -100%; } 
-            .hero { height: auto; padding: 140px 0 60px 0; background: var(--color-bg); } 
-            .hero-wrapper { flex-direction: column; text-align: center; gap: var(--space-xl); }
-            .hero-candle-art { width: 100%; height: auto; max-width: 240px; margin: 0 auto; }
-            .candle-body { width: 160px; height: 200px; }
-            .candle-label { width: 100px; height: 110px; }
-            body { background-size: 40px 100%; } 
+            .hero { height: 100vh; } 
+            .hero-overlay {
+              background: linear-gradient(to top, rgba(20, 18, 16, 0.95) 30%, rgba(20, 18, 16, 0.6) 100%);
+            }
+            .hero-text { text-align: center; padding: 0 var(--space-md); }
+            .btn-primary { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -235,28 +210,17 @@
         </div>
     </nav>
 
-    <!-- Hero Alanı -->
+    <!-- Gerçekçi ve Sinematik Arka Planlı Hero Alanı -->
     <section class="hero">
+        <div class="hero-bg-image"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-glow"></div>
+        
         <div class="container hero-wrapper">
             <div class="hero-text">
                 <h1 class="animate-up">Işığın En Zarif<br>Haliyle Tanışın.</h1>
                 <p class="animate-up stagger-1">Yüksek yoğunluklu esanslar ve %100 doğal soya mumu ile el işçiliğiyle hazırlanan niş tasarımlar odanızın aurasını değiştirecek.</p>
                 <a href="#katalog" class="btn-primary animate-up stagger-2">Koleksiyonu Keşfet</a>
-            </div>
-            
-            <!-- Sağ Taraftaki Lovable Stili Gerçekçi Mum -->
-            <div class="hero-candle-art animate-up stagger-2">
-                <div class="candle-glow"></div>
-                <div class="candle-flame"></div>
-                <div class="candle-wick"></div>
-                <div class="candle-body">
-                    <div class="candle-label">
-                        <span class="label-brand">Studio Craft</span>
-                        <h2 class="label-title">Nimet Luxe</h2>
-                        <span class="label-sub">Soya Balmumu</span>
-                    </div>
-                </div>
-                <div class="candle-shadow"></div>
             </div>
         </div>
     </section>
@@ -417,4 +381,4 @@
         });
     </script>
 </body>
-</html>
+</html>                
