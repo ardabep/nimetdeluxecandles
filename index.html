@@ -9,13 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-          --color-bg: #0f0e0c; 
-          --color-surface: #171512; 
-          --color-primary: #dfba73;
-          --color-accent: #f4e6cc; 
+          --color-bg: #1a1916; 
+          --color-surface: #24221e; 
+          --color-primary: #e5c17d;
+          --color-accent: #f9f1e3; 
           --color-text-primary: #ffffff; 
-          --color-text-secondary: #b5b0a5;
-          --color-border: #2c2822; 
+          --color-text-secondary: #cdc7bd;
+          --color-border: #38352f; 
           --font-display: 'Cormorant Garamond', serif; 
           --font-body: 'Plus Jakarta Sans', sans-serif;
           --space-md: 16px; --space-lg: 24px; --space-xl: 40px;
@@ -27,76 +27,83 @@
         
         .grain-overlay::after {
           content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
           pointer-events: none; z-index: 9999;
         }
         
         .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); }
         
         /* Navbar */
-        .nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: var(--space-md) 0; backdrop-filter: blur(20px); background: rgba(15, 14, 12, 0.85); border-bottom: 1px solid var(--color-border); }
+        .nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: var(--space-md) 0; backdrop-filter: blur(20px); background: rgba(26, 25, 22, 0.85); border-bottom: 1px solid var(--color-border); transition: all 0.3s ease; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: var(--font-display); font-size: 26px; font-weight: 600; color: var(--color-primary); text-decoration: none; letter-spacing: 0.05em; }
+        .logo { font-family: var(--font-display); font-size: 26px; font-weight: 600; color: var(--color-primary); text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s ease; }
+        .logo:hover { color: var(--color-accent); }
         .nav-links { display: flex; gap: var(--space-lg); align-items: center; }
-        .nav-links a { color: var(--color-text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s; }
+        .nav-links a { color: var(--color-text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: all 0.3s ease; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0; background-color: var(--color-primary); transition: width 0.3s ease; }
         .nav-links a:hover { color: var(--color-primary); }
-        .cart-trigger { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 10px 20px; font-family: var(--font-body); cursor: pointer; font-weight: 600; font-size: 13px; transition: all 0.3s ease; }
-        .cart-trigger:hover { background: var(--color-primary); color: var(--color-bg); }
+        .nav-links a:hover::after { width: 100%; }
+        .cart-trigger { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 10px 20px; font-family: var(--font-body); cursor: pointer; font-weight: 600; font-size: 13px; transition: all 0.4s var(--ease-out-expo); }
+        .cart-trigger:hover { background: var(--color-primary); color: #1a1916; transform: scale(1.03); }
         
         /* Hero */
-        .hero { height: 85vh; display: flex; align-items: center; background: radial-gradient(circle at 80% 30%, rgba(223, 186, 115, 0.12) 0%, transparent 60%), var(--color-bg); padding-top: 80px; position: relative; }
-        .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 150px; background: linear-gradient(to top, var(--color-bg), transparent); }
+        .hero { height: 85vh; display: flex; align-items: center; background: radial-gradient(circle at 80% 30%, rgba(229, 193, 125, 0.15) 0%, transparent 60%), var(--color-bg); padding-top: 80px; position: relative; }
         .hero h1 { font-family: var(--font-display); font-size: clamp(2.8rem, 6vw + 1rem, 5rem); font-weight: 400; color: var(--color-accent); margin-bottom: var(--space-md); line-height: 1.1; }
         .hero p { font-size: 19px; color: var(--color-text-secondary); margin-bottom: var(--space-xl); line-height: 1.6; max-width: 600px; font-weight: 300; }
         
-        .btn-primary { display: inline-flex; padding: 16px 36px; background: var(--color-primary); color: var(--color-bg); text-decoration: none; font-weight: 600; letter-spacing: 0.08em; font-size: 13px; text-transform: uppercase; transition: all 0.4s var(--ease-out-expo); border: none; cursor: pointer; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(223, 186, 115, 0.2); background: var(--color-accent); }
+        .btn-primary { display: inline-flex; padding: 16px 36px; background: var(--color-primary); color: #1a1916; text-decoration: none; font-weight: 600; letter-spacing: 0.08em; font-size: 13px; text-transform: uppercase; transition: all 0.4s var(--ease-out-expo); border: none; cursor: pointer; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(229, 193, 125, 0.25); background: var(--color-accent); }
         
         /* Ortak Bölüm Başlığı */
         .section-header { text-align: center; margin-bottom: var(--space-xl); }
         .section-subtitle { color: var(--color-primary); text-transform: uppercase; font-size: 12px; letter-spacing: 0.2em; margin-bottom: 8px; display: block; font-weight: 600; }
         .section-title { font-family: var(--font-display); font-size: 40px; font-weight: 400; letter-spacing: 0.03em; color: var(--color-accent); }
         
+        /* Canlı Kaydırma Animasyonu Düzeni */
+        .scroll-animate { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .scroll-animate.active { opacity: 1; transform: translateY(0); }
+        
         /* Katalog */
         .section-block { padding: 100px 0; border-bottom: 1px solid var(--color-border); }
         .grid { display: grid; gap: var(--space-xl); grid-template-columns: repeat(3, 1fr); }
         .card { background: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-md); transition: all 0.4s var(--ease-out-expo); display: flex; flex-direction: column; position: relative; }
-        .card:hover { transform: translateY(-6px); border-color: var(--color-primary); box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
-        .product-img-box { width: 100%; height: 280px; background: #221f1a; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-md); color: var(--color-primary); font-family: var(--font-display); font-style: italic; font-size: 22px; border: 1px solid rgba(223, 186, 115, 0.1); }
+        .card:hover { transform: translateY(-6px); border-color: var(--color-primary); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .product-img-box { width: 100%; height: 280px; background: #2f2c27; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-md); color: var(--color-primary); font-family: var(--font-display); font-style: italic; font-size: 22px; border: 1px solid rgba(229, 193, 125, 0.1); transition: background 0.3s ease; }
+        .card:hover { background: #2a2824; }
         .product-title { font-family: var(--font-display); font-size: 24px; font-weight: 400; margin-bottom: 8px; color: var(--color-accent); }
         .product-desc { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--space-md); flex-grow: 1; }
         .product-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-md); border-top: 1px solid rgba(255,255,255,0.05); }
         .product-price { font-weight: 600; color: var(--color-primary); font-size: 18px; }
+        .btn-add-cart { background: transparent; border: 1px solid var(--color-border); color: var(--color-text-primary); padding: 10px 20px; font-size: 13px; cursor: pointer; transition: all 0.3s ease; }
+        .btn-add-cart:hover { background: var(--color-text-primary); color: var(--color-bg); border-color: var(--color-text-primary); }
         
         /* Hakkımızda */
         .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
         .about-content p { font-size: 17px; color: var(--color-text-secondary); line-height: 1.8; font-weight: 300; margin-bottom: var(--space-lg); }
         .about-content em { font-family: var(--font-display); font-size: 22px; color: var(--color-primary); display: block; margin-top: var(--space-md); }
         
-        /* Sahte Yorumlar (Testimonials) */
+        /* Sahte Yorumlar */
         .reviews-grid { display: grid; gap: var(--space-lg); grid-template-columns: repeat(3, 1fr); }
-        .review-card { background: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-lg); border-radius: 2px; }
+        .review-card { background: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-lg); border-radius: 2px; transition: all 0.4s var(--ease-out-expo); }
+        .review-card:hover { transform: translateY(-4px); border-color: var(--color-primary); }
         .stars { color: var(--color-primary); font-size: 16px; margin-bottom: 12px; letter-spacing: 2px; }
         .review-text { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; font-style: italic; margin-bottom: var(--space-md); }
         .review-user { display: flex; align-items: center; gap: 10px; }
         .user-avatar { width: 36px; height: 36px; background: var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--color-primary); font-weight: 600; border: 1px solid var(--color-primary); }
         .user-name { font-size: 14px; font-weight: 500; color: var(--color-accent); }
         
-        /* Bilgi, İletişim & Konum (Footer) */
-        .footer { background: #0a0908; border-top: 1px solid var(--color-border); padding: 80px 0 30px 0; color: var(--color-text-secondary); }
-        .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1.5fr; gap: var(--space-xl); margin-bottom: 50px; }
+        /* İletişim & Konum (Footer) */
+        .footer { background: #131210; border-top: 1px solid var(--color-border); padding: 80px 0 30px 0; color: var(--color-text-secondary); }
+        .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1.3fr; gap: var(--space-xl); margin-bottom: 50px; }
         .footer-col h4 { font-family: var(--font-display); font-size: 22px; color: var(--color-accent); margin-bottom: var(--space-lg); font-weight: 400; }
         .footer-col p { font-size: 14px; line-height: 1.7; margin-bottom: 12px; }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 10px; font-size: 14px; }
-        .footer-links a { color: var(--color-text-secondary); text-decoration: none; transition: color 0.3s; }
-        .footer-links a:hover { color: var(--color-primary); }
-        .map-box { width: 100%; height: 180px; background: var(--color-surface); border: 1px solid var(--color-border); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-        .map-placeholder { text-align: center; font-size: 13px; color: var(--color-primary); padding: var(--space-md); }
+        .map-box { width: 100%; height: 180px; background: var(--color-surface); border: 1px solid var(--color-border); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; transition: border-color 0.3s; }
+        .map-box:hover { border-color: var(--color-primary); }
+        .map-placeholder { text-align: center; font-size: 14px; color: var(--color-primary); padding: var(--space-md); line-height: 1.6; }
         .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--color-border); font-size: 12px; letter-spacing: 0.05em; }
         
         /* Sepet Paneli */
-        .cart-sidebar { position: fixed; top: 0; right: -400px; width: 400px; height: 100%; background: var(--color-surface); border-left: 1px solid var(--color-border); z-index: 200; padding: var(--space-xl); display: flex; flex-direction: column; transition: right 0.4s var(--ease-out-expo); box-shadow: -15px 0 40px rgba(0,0,0,0.7); }
+        .cart-sidebar { position: fixed; top: 0; right: -400px; width: 400px; height: 100%; background: var(--color-surface); border-left: 1px solid var(--color-border); z-index: 200; padding: var(--space-xl); display: flex; flex-direction: column; transition: right 0.5s var(--ease-out-expo); box-shadow: -15px 0 40px rgba(0,0,0,0.5); }
         .cart-sidebar.open { right: 0; }
         .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xl); border-bottom: 1px solid var(--color-border); padding-bottom: var(--space-md); }
         .cart-header h3 { font-family: var(--font-display); font-size: 26px; color: var(--color-accent); }
@@ -111,7 +118,7 @@
         .btn-whatsapp { width: 100%; padding: 16px; background: #25D366; color: white; border: none; font-weight: 600; font-size: 15px; cursor: pointer; transition: background 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .btn-whatsapp:hover { background: #1ebd54; }
         
-        /* Animasyonlar */
+        /* Giriş Efektleri */
         .animate-up { opacity: 0; transform: translateY(30px); animation: fadeInUp 1.2s var(--ease-out-expo) forwards; }
         .stagger-1 { animation-delay: 0.15s; }
         .stagger-2 { animation-delay: 0.3s; }
@@ -122,6 +129,7 @@
 </head>
 <body class="grain-overlay">
 
+    <!-- Navigasyon Menüsü -->
     <nav class="nav">
         <div class="container nav-container">
             <a href="#" class="logo">Nimet Luxe Candles</a>
@@ -135,6 +143,7 @@
         </div>
     </nav>
 
+    <!-- Hero Alanı -->
     <section class="hero">
         <div class="container">
             <h1 class="animate-up">Işığın En Zarif<br>Haliyle Tanışın.</h1>
@@ -143,7 +152,8 @@
         </div>
     </section>
 
-    <section id="katalog" class="section-block container">
+    <!-- Ürün Kataloğu -->
+    <section id="katalog" class="section-block container scroll-animate">
         <div class="section-header">
             <span class="section-subtitle">Özenle Tasarlandı</span>
             <h2 class="section-title">Özel Mum Koleksiyonu</h2>
@@ -151,21 +161,23 @@
         <div class="grid" id="product-list"></div>
     </section>
 
-    <section id="hakkimizda" class="section-block" style="background: #0c0b09;">
+    <!-- Hakkımızda Bölümü -->
+    <section id="hakkimizda" class="section-block scroll-animate" style="background: #201e1a;">
         <div class="container">
             <div class="section-header">
                 <span class="section-subtitle">Biz Kimiz?</span>
                 <h2 class="section-title">Nimet Luxe Hikayesi</h2>
             </div>
             <div class="about-content">
-                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlatmakla kalmayıp ruhu ve anıları da beslediğine inanıyoruz. Her bir mumumuz, en seçkin esansiyel yağlar ve sürdürülebilir doğal soya balmumu kullanılarak atölyemizde tamamen el işçiliğiyle dökülmektedir.</p>
+                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlamatmakla kalmayıp ruhu ve anıları da beslediğine inanıyoruz. Her bir mumumuz, en seçkin esansiyel yağlar ve sürdürülebilir doğal soya balmumu kullanılarak atölyemizde tamamen el işçiliğiyle dökülmektedir.</p>
                 <p>Modern ve lüks cam tasarımlarımızla evinizin dekorasyonuna estetik bir dokunuş katarken, yandığı andan itibaren etrafa yayılan dengeli notalarla yaşam alanlarınızda benzersiz bir huzur ve konfor vahası yaratmayı amaçlıyoruz.</p>
                 <em>"Her mum, keşfedilmeyi bekleyen bir hikaye yakar."</em>
             </div>
         </div>
     </section>
 
-    <section id="yorumlar" class="section-block container">
+    <!-- Müşteri Yorumları Bölümü -->
+    <section id="yorumlar" class="section-block container scroll-animate">
         <div class="section-header">
             <span class="section-subtitle">Deneyimleyenler</span>
             <h2 class="section-title">Müşteri Geri Bildirimleri</h2>
@@ -198,7 +210,8 @@
         </div>
     </section>
 
-    <footer id="iletisim" class="footer">
+    <!-- Bilgi, İletişim & Konum Alanı (Footer) -->
+    <footer id="iletisim" class="footer scroll-animate">
         <div class="container footer-grid">
             <div class="footer-col">
                 <h4>Nimet Luxe Candles</h4>
@@ -206,23 +219,17 @@
                 <p style="margin-top: 15px; color: var(--color-primary);"><strong>Çalışma Saatleri:</strong><br>Hafta İçi & Hafta Sonu: 09:00 - 22:00</p>
             </div>
             <div class="footer-col">
-                <h4>Kurumsal Bilgi</h4>
-                <ul class="footer-links">
-                    <li><a href="#hakkimizda">Hakkımızda</a></li>
-                    <li><a href="#katalog">Koleksiyonumuz</a></li>
-                    <li><a href="#">Sıkça Sorulan Sorular</a></li>
-                    <li><a href="#">Kargo ve İade Şartları</a></li>
-                </ul>
-                <p style="margin-top: 20px; font-size: 13px;">📞 +90 (555) 555 55 55<br>✉️ info@nimetluxecandles.com</p>
+                <h4>Kurumsal İletişim</h4>
+                <p>📞 +90 (555) 555 55 55</p>
+                <p>✉️ info@nimetluxecandles.com</p>
             </div>
             <div class="footer-col">
                 <h4>Mağaza Konumu</h4>
                 <div class="map-box">
                     <div class="map-placeholder">
                         <strong>Nimet Luxe Candles Atölyesi</strong><br>
-                        Gevher Nesibe Mahallesi, İstasyon Caddesi No:42<br>
-                        Kocasinan / Kayseri<br>
-                        <span style="font-size: 11px; opacity: 0.7; display:block; margin-top:8px;">(Harita Gösterimi Geçici Olarak Pasiftir)</span>
+                        Kayseri / Türkiye<br>
+                        <span style="font-size: 11px; opacity: 0.7; display:block; margin-top:8px;">(Harita Gösterimi Yakında Aktif Olacaktır)</span>
                     </div>
                 </div>
             </div>
@@ -232,6 +239,7 @@
         </div>
     </footer>
 
+    <!-- Sepet Paneli -->
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header"><h3>Sepetiniz</h3><button class="close-cart" onclick="toggleCart()">✕</button></div>
         <div class="cart-items" id="cart-items-container"><p style="text-align:center; opacity:0.6; padding:20px;">Sepetiniz boş.</p></div>
@@ -241,6 +249,7 @@
         </div>
     </div>
 
+    <!-- JavaScript Kodları -->
     <script>
         const urunler = [
           { id: 1, ad: "Nimet Luxe Siyah Amber", aciklama: "Odanızı anında saracak yoğun amber ve odunsu esanslar. Özel lüks cam tasarım.", fiyat: 350 },
@@ -277,14 +286,27 @@
         
         function sendWhatsAppOrder() {
           if (sepet.length === 0) { alert("Lütfen önce sepetinize ürün ekleyin."); return; }
-          const tel = "905555555555"; // Kendi numaranı buraya yazabilirsin
+          const tel = "905555555555";
           let m = "Merhaba Nimet Luxe Candles! Web sitenizden sipariş vermek istiyorum.\n\n🛒 *Sipariş Detayları:*\n";
           sepet.forEach(i => { m += `- ${i.adet}x ${i.ad} (${i.fiyat * i.adet} TL)\n`; });
           m += `\n💰 *Toplam Tutar:* ${sepet.reduce((t, i) => t + (i.fiyat * i.adet), 0)} TL\n\nSiparişimi onaylamak ve kargo bilgilerimi iletmek istiyorum.`;
           window.open("https://api.whatsapp.com/send?phone=" + tel + "&text=" + encodeURIComponent(m), '_blank');
         }
-        
-        document.addEventListener("DOMContentLoaded", urunleriListele);
+
+        // Canlı Kaydırma Geçişleri İçin JavaScript
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            urunleriListele();
+            const elements = document.querySelectorAll('.scroll-animate');
+            elements.forEach((el) => observer.observe(el));
+        });
     </script>
 </body>
 </html>
