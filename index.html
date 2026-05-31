@@ -1,3 +1,10 @@
+WhatsApp numaranı yeni verdiğin numarayla güncelledim. Artık müşterilerin "Siparişi WhatsApp ile Tamamla" butonuna bastığında doğrudan bu numaraya yönlendirilecekler.
+
+Yukarıda konuştuğumuz gibi kopyala-yapıştır yükünü azaltmak için bu yeni kodu doğrudan GitHub’da dosyanın içindeki **kalem (düzenle)** simgesine tıklayıp, eskiyi silip yerine yapıştırarak tek tıkla güncelleyebilirsin.
+
+### Güncel Kodların Tamamı:
+
+```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -169,7 +176,7 @@
                 <h2 class="section-title">Nimet Luxe Hikayesi</h2>
             </div>
             <div class="about-content">
-                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlamatmakla kalmayıp ruhu ve anıları da beslediğine inanıyoruz. Her bir mumumuz, en seçkin esansiyel yağlar ve sürdürülebilir doğal soya balmumu kullanılarak atölyemizde tamamen el işçiliğiyle dökülmektedir.</p>
+                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlatmakla kalmayıp ruhu ve anıları da beslediğine inanıyoruz. Her bir mumumuz, en seçkin esansiyel yağlar ve sürdürülebilir doğal soya balmumu kullanılarak atölyemizde tamamen el işçiliğiyle dökülmektedir.</p>
                 <p>Modern ve lüks cam tasarımlarımızla evinizin dekorasyonuna estetik bir dokunuş katarken, yandığı andan itibaren etrafa yayılan dengeli notalarla yaşam alanlarınızda benzersiz bir huzur ve konfor vahası yaratmayı amaçlıyoruz.</p>
                 <em>"Her mum, keşfedilmeyi bekleyen bir hikaye yakar."</em>
             </div>
@@ -220,7 +227,7 @@
             </div>
             <div class="footer-col">
                 <h4>Kurumsal İletişim</h4>
-                <p>📞 +90 (555) 555 55 55</p>
+                <p>📞 +90 (552) 292 66 38</p>
                 <p>✉️ info@nimetluxecandles.com</p>
             </div>
             <div class="footer-col">
@@ -286,7 +293,7 @@
         
         function sendWhatsAppOrder() {
           if (sepet.length === 0) { alert("Lütfen önce sepetinize ürün ekleyin."); return; }
-          const tel = "905555555555";
+          const tel = "905522926638";
           let m = "Merhaba Nimet Luxe Candles! Web sitenizden sipariş vermek istiyorum.\n\n🛒 *Sipariş Detayları:*\n";
           sepet.forEach(i => { m += `- ${i.adet}x ${i.ad} (${i.fiyat * i.adet} TL)\n`; });
           m += `\n💰 *Toplam Tutar:* ${sepet.reduce((t, i) => t + (i.fiyat * i.adet), 0)} TL\n\nSiparişimi onaylamak ve kargo bilgilerimi iletmek istiyorum.`;
@@ -310,3 +317,5 @@
     </script>
 </body>
 </html>
+
+```
