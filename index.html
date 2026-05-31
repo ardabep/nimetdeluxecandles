@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nimet Luxe Candles | Her Mum Bir Hikaye Yakar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+          --color-bg: #0a0a0a; --color-surface: #141414; --color-primary: #c8a96e;
+          --color-accent: #e8d5b0; --color-text-primary: #ffffff; --color-text-secondary: #a0a0a0;
+          --color-border: #262626; --font-display: 'Cormorant Garamond', serif; --font-body: 'Plus Jakarta Sans', sans-serif;
+          --space-md: 16px; --space-lg: 24px; --space-xl: 32px; --radius-md: 4px;
+          --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        body { background-color: var(--color-bg); color: var(--color-text-primary); font-family: var(--font-body); overflow-x: hidden; }
+        .grain-overlay::after {
+          content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+          pointer-events: none; z-index: 9999;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); }
+        .nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: var(--space-md) 0; backdrop-filter: blur(12px); background: rgba(10, 10, 10, 0.75); border-bottom: 1px solid var(--color-border); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--color-primary); text-decoration: none; letter-spacing: 0.05em; }
+        .cart-trigger { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 8px 16px; font-family: var(--font-body); cursor: pointer; font-weight: 600; transition: all 0.3s ease; }
+        .cart-trigger:hover { background: var(--color-primary); color: var(--color-bg); }
+        .hero { height: 75vh; display: flex; align-items: center; background: radial-gradient(ellipse at 20% 40%, rgba(200, 169, 110, 0.08) 0%, transparent 50%), var(--color-bg); padding-top: 80px; }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(2.3rem, 5vw + 1rem, 4.2rem); font-weight: 400; color: var(--color-accent); margin-bottom: var(--space-md); }
+        .hero p { font-size: 18px; color: var(--color-text-secondary); margin-bottom: var(--space-xl); line-height: 1.6; }
+        .btn-primary { display: inline-flex; padding: 14px 32px; background: var(--color-primary); color: var(--color-bg); text-decoration: none; font-weight: 600; letter-spacing: 0.05em; font-size: 13px; text-transform: uppercase; transition: all 0.4s var(--ease-out-expo); border: none; cursor: pointer; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(200, 169, 110, 0.15); }
+        #katalog { padding: 80px 0; }
+        .section-title { font-family: var(--font-display); font-size: 36px; font-weight: 400; text-align: center; margin-bottom: 50px; letter-spacing: 0.05em; }
+        .grid { display: grid; gap: var(--space-xl); grid-template-columns: repeat(3, 1fr); }
+        .card { background: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-md); transition: all 0.4s var(--ease-out-expo); display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-6px); border-color: var(--color-primary); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
+        .product-img-box { width: 100%; height: 260px; background: #1c1c1c; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-md); color: var(--color-text-secondary); font-family: var(--font-display); font-style: italic; font-size: 20px; }
+        .product-title { font-family: var(--font-display); font-size: 22px; font-weight: 400; margin-bottom: 8px; }
+        .product-desc { font-size: 14px; color: var(--color-text-secondary); line-height: 1.5; margin-bottom: var(--space-md); flex-grow: 1; }
+        .product-footer { display: flex; justify-content: space-between; align-items: center; }
+        .product-price { font-weight: 600; color: var(--color-primary); font-size: 17px; }
+        .btn-add-cart { background: transparent; border: 1px solid var(--color-border); color: var(--color-text-primary); padding: 8px 16px; font-size: 13px; cursor: pointer; transition: all 0.3s ease; }
+        .btn-add-cart:hover { background: var(--color-text-primary); color: var(--color-bg); border-color: var(--color-text-primary); }
+        .cart-sidebar { position: fixed; top: 0; right: -400px; width: 400px; height: 100%; background: var(--color-surface); border-left: 1px solid var(--color-border); z-index: 200; padding: var(--space-xl); display: flex; flex-direction: column; transition: right 0.4s var(--ease-out-expo); box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
+        .cart-sidebar.open { right: 0; }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xl); border-bottom: 1px solid var(--color-border); padding-bottom: var(--space-md); }
+        .cart-header h3 { font-family: var(--font-display); font-size: 24px; }
+        .close-cart { background: transparent; border: none; color: var(--color-text-primary); font-size: 20px; cursor: pointer; }
+        .cart-items { flex-grow: 1; overflow-y: auto; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: var(--space-md) 0; border-bottom: 1px solid var(--color-border); }
+        .cart-item-info h4 { font-family: var(--font-display); font-size: 18px; }
+        .cart-item-info span { font-size: 13px; color: var(--color-text-secondary); }
+        .btn-remove { background: transparent; border: none; color: #ff4a4a; cursor: pointer; font-size: 13px; }
+        .cart-footer { border-top: 1px solid var(--color-border); padding-top: var(--space-xl); }
+        .cart-total { display: flex; justify-content: space-between; font-size: 18px; font-weight: 600; margin-bottom: var(--space-md); }
+        .btn-whatsapp { width: 100%; padding: 16px; background: #25D366; color: white; border: none; font-weight: 600; font-size: 15px; cursor: pointer; transition: background 0.3s ease; }
+        .btn-whatsapp:hover { background: #20ba5a; }
+        .animate-up { opacity: 0; transform: translateY(30px); animation: fadeInUp 1s var(--ease-out-expo) forwards; }
+        .stagger-1 { animation-delay: 0.15s; }
+        .stagger-2 { animation-delay: 0.3s; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } .cart-sidebar { width: 100%; right: -100%; } .hero { height: auto; padding: 100px 0 40px 0; } }
+    </style>
+</head>
+<body class="grain-overlay">
+    <nav class="nav">
+        <div class="container nav-container">
+            <a href="#" class="logo">Nimet Luxe Candles</a>
+            <button class="cart-trigger" onclick="toggleCart()">Sepet (<span id="cart-count">0</span>)</button>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="container">
+            <h1 class="animate-up">Her mum bir hikaye yakar.</h1>
+            <p class="animate-up stagger-1">Özenle seçilmiş esanslar ve el işçiliğiyle üretilen premium lüks mum koleksiyonu.</p>
+            <a href="#katalog" class="btn-primary animate-up stagger-2">Koleksiyonu Keşfet</a>
+        </div>
+    </section>
+    <section id="katalog" class="container">
+        <h2 class="section-title">Özel Koleksiyon</h2>
+        <div class="grid" id="product-list"></div>
+    </section>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header"><h3>Sepetiniz</h3><button class="close-cart" onclick="toggleCart()">✕</button></div>
+        <div class="cart-items" id="cart-items-container"><p style="text-align:center; opacity:0.6; padding:20px;">Sepetiniz boş.</p></div>
+        <div class="cart-footer">
+            <div class="cart-total"><span>Toplam Tutar:</span><span id="cart-total-amount">0 TL</span></div>
+            <button class="btn-whatsapp" onclick="sendWhatsAppOrder()">Siparişi WhatsApp ile Tamamla</button>
+        </div>
+    </div>
+    <script>
+        const urunler = [
+          { id: 1, ad: "Nimet Luxe Siyah Amber", aciklama: "Odanızı anında saracak yoğun amber ve odunsu esanslar. Özel cam tasarım.", fiyat: 350 },
+          { id: 2, ad: "Oryantal Vanilya & Sandal Ağacı", aciklama: "Tatlı vanilya notaları ile sandal ağacının büyüleyici, sakinleştirici birleşimi.", fiyat: 380 },
+          { id: 3, ad: "Egzotik Lavanta Bahçesi", aciklama: "Stresi azaltan, tamamen organik lavanta yağları ile harmanlanmış el yapımı mum.", fiyat: 320 }
+        ];
+        let sepet = [];
+        function urunleriListele() {
+          const lb = document.getElementById('product-list'); if(!lb) return;
+          lb.innerHTML = urunler.map(u => `<div class="card"><div class="product-img-box">Nimet Luxe</div><h3 class="product-title">${u.ad}</h3><p class="product-desc">${u.aciklama}</p><div class="product-footer"><span class="product-price">${u.fiyat} TL</span><button class="btn-add-cart" onclick="sepeteEkle(${u.id})">Sepete Ekle</button></div></div>`).join('');
+        }
+        function toggleCart() { const s = document.getElementById('cartSidebar'); if(s) s.classList.toggle('open'); }
+        function sepeteEkle(id) {
+          const u = urunler.find(x => x.id === id); if (!u) return;
+          const su = sepet.find(x => x.id === id);
+          if (su) { su.adet += 1; } else { sepet.push({ ...u, adet: 1 }); }
+          sepetiGuncelle();
+          const s = document.getElementById('cartSidebar'); if(s) s.classList.add('open');
+        }
+        function sepettenCikar(id) { sepet = sepet.filter(x => x.id !== id); sepetiGuncelle(); }
+        function sepetiGuncelle() {
+          const kc = document.getElementById('cart-items-container'), sc = document.getElementById('cart-count'), ta = document.getElementById('cart-total-amount');
+          if (!kc || !sc || !ta) return;
+          sc.innerText = sepet.reduce((t, i) => t + i.adet, 0);
+          if (sepet.length === 0) { kc.innerHTML = '<p style="text-align:center; opacity:0.6; padding:20px;">Sepetiniz boş.</p>'; ta.innerText = '0 TL'; return; }
+          kc.innerHTML = sepet.map(i => `<div class="cart-item"><div class="cart-item-info"><h4>${i.ad}</h4><span>${i.adet} adet x ${i.fiyat} TL</span></div><button class="btn-remove" onclick="sepettenCikar(${i.id})">Kaldır</button></div>`).join('');
+          ta.innerText = sepet.reduce((t, i) => t + (i.fiyat * i.adet), 0) + ' TL';
+        }
+        function sendWhatsAppOrder() {
+          if (sepet.length === 0) { alert("Lütfen önce sepetinize ürün ekleyin."); return; }
+          const tel = "905555555555";
+          let m = "Merhaba Nimet Luxe Candles! Web sitenizden sipariş vermek istiyorum.\n\n🛒 *Sipariş Detayları:*\n";
+          sepet.forEach(i => { m += `- ${i.adet}x ${i.ad} (${i.fiyat * i.adet} TL)\n`; });
+          m += `\n💰 *Toplam Tutar:* ${sepet.reduce((t, i) => t + (i.fiyat * i.adet), 0)} TL\n\nSiparişimi onaylamak ve kargo bilgilerimi iletmek istiyorum.`;
+          window.open("https://api.whatsapp.com/send?phone=" + tel + "&text=" + encodeURIComponent(m), '_blank');
+        }
+        document.addEventListener("DOMContentLoaded", urunleriListele);
+    </script>
+</body>
+</html>
