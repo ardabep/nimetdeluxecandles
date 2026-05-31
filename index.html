@@ -59,37 +59,80 @@
         .cart-trigger { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 10px 20px; font-family: var(--font-body); cursor: pointer; font-weight: 600; font-size: 13px; transition: all 0.4s var(--ease-out-expo); }
         .cart-trigger:hover { background: var(--color-primary); color: #ffffff; transform: scale(1.03); }
         
-        /* Hero Alanı & Sağ Tarafa Eklenen Mum Tasarımı */
-        .hero { height: 90vh; display: flex; align-items: center; background: radial-gradient(circle at 75% 40%, rgba(191, 161, 95, 0.15) 0%, transparent 55%); padding-top: 80px; position: relative; }
-        .hero-wrapper { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-        .hero-text { max-width: 600px; }
+        /* Hero Alanı */
+        .hero { height: 95vh; display: flex; align-items: center; background: radial-gradient(circle at 75% 45%, rgba(191, 161, 95, 0.2) 0%, transparent 60%); padding-top: 80px; position: relative; }
+        .hero-wrapper { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: var(--space-xl); }
+        .hero-text { max-width: 580px; }
         .hero h1 { font-family: var(--font-display); font-size: clamp(2.8rem, 5.5vw + 1rem, 4.8rem); font-weight: 400; color: var(--color-accent); margin-bottom: var(--space-md); line-height: 1.1; }
         .hero p { font-size: 18px; color: var(--color-text-secondary); margin-bottom: var(--space-xl); line-height: 1.6; font-weight: 300; }
         
-        /* Gelişmiş Arka Plan Mum İllüstrasyonu */
-        .hero-candle-art { position: relative; width: 320px; height: 420px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 20px; opacity: 0.95; }
+        /* REALİSTİK LOVABLE STİLİ MUM TASARIMI */
+        .hero-candle-art { position: relative; width: 340px; height: 460px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; }
         
-        /* Mum Alevi ve Işıltısı */
-        .candle-glow { position: absolute; top: 10%; width: 120px; height: 120px; background: radial-gradient(circle, rgba(255,193,7,0.25) 0%, rgba(191,161,95,0) 70%); filter: blur(10px); animation: flicker 3s ease-in-out infinite alternate; }
-        .candle-flame { position: absolute; top: 22%; width: 20px; height: 45px; background: linear-gradient(to bottom, #ff5722 0%, #ffc107 60%, #bfa15f 100%); border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%; box-shadow: 0 0 20px rgba(255,193,7,0.5); animation: flicker 0.15s ease-in-out infinite alternate; transform-origin: bottom center; }
-        .candle-wick { width: 3px; height: 15px; background: #3a3630; margin-bottom: 0px; z-index: 2; border-radius: 2px 2px 0 0; }
+        /* Gerçekçi Ortam Işığı (Glow) */
+        .candle-glow { position: absolute; top: -5%; width: 280px; height: 280px; background: radial-gradient(circle, rgba(255,160,0,0.2) 0%, rgba(212,143,56,0.05) 45%, rgba(0,0,0,0) 70%); filter: blur(25px); animation: ambientGlow 4s ease-in-out infinite alternate; pointer-events: none; }
         
-        /* Mum Silindiri ve Lüks Etiket */
-        .candle-body { width: 180px; height: 230px; background: linear-gradient(135deg, #fefcf7 0%, #ede6d8 100%); border-radius: 6px; box-shadow: 0 25px 50px rgba(58,54,48,0.08), inset -10px 0 20px rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; position: relative; border: 1px solid rgba(191, 161, 95, 0.2); }
-        .candle-body::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 12px; background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent); border-radius: 6px 6px 0 0; }
-        .candle-label { width: 110px; height: 140px; border: 1px solid var(--color-primary); background: #fefcf7; padding: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
-        .label-brand { font-family: var(--font-body); font-size: 8px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-secondary); margin-bottom: 8px; }
-        .label-title { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--color-accent); line-height: 1.2; border-bottom: 1px solid var(--color-border); padding-bottom: 6px; margin-bottom: 6px; width: 100%; }
-        .label-sub { font-family: var(--font-display); font-style: italic; font-size: 10px; color: var(--color-primary); }
+        /* Organik Dalgalanan Alev */
+        .candle-flame { position: absolute; top: 20%; width: 18px; height: 50px; background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.9) 10%, #fff176 30%, #ff9800 60%, #e65100 90%, #3e2723 100%); border-radius: 50% 50% 35% 35% / 70% 70% 30% 30%; filter: drop-shadow(0 0 12px rgba(255,152,0,0.6)); animation: realFlame 0.2s infinite alternate ease-in-out; transform-origin: bottom center; z-index: 5; }
         
-        /* Alev Titreme Animasyonu */
-        @keyframes flicker {
-            0% { transform: scale(1) rotate(-1deg); opacity: 0.95; }
-            20% { transform: scale(1.03, 0.98) rotate(1deg); opacity: 1; }
-            40% { transform: scale(0.98, 1.04) rotate(-0.5deg); opacity: 0.9; }
-            60% { transform: scale(1.02, 0.97) rotate(1.5deg); opacity: 1; }
-            80% { transform: scale(0.97, 1.02) rotate(-1deg); opacity: 0.95; }
-            100% { transform: scale(1.01, 1.01) rotate(0deg); opacity: 1; }
+        /* Gerçekçi İnce Fitil */
+        .candle-wick { width: 2px; height: 18px; background: linear-gradient(to top, #000000, #424242); margin-bottom: -1px; z-index: 4; border-radius: 1px; transform: rotate(-2deg); }
+        
+        /* Cam Bardak Efekti (Füme Lüks Cam) */
+        .candle-body { 
+          width: 200px; height: 250px; 
+          background: linear-gradient(135deg, rgba(74, 65, 53, 0.9) 0%, rgba(42, 37, 30, 0.95) 100%); 
+          border-radius: 8px 8px 16px 16px; 
+          box-shadow: 
+            0 30px 60px rgba(0,0,0,0.25), 
+            inset 0 20px 20px rgba(255,255,255,0.1),
+            inset -15px 0 25px rgba(0,0,0,0.4),
+            inset 15px 0 25px rgba(255,255,255,0.05); 
+          display: flex; align-items: center; justify-content: center; position: relative; 
+          border: 1px solid rgba(255,255,255,0.08);
+          backdrop-filter: blur(2px);
+        }
+        
+        /* Erimiş Soya Mumunun Sıcak Sıvı Katmanı (Bardağın İçi) */
+        .candle-body::before { 
+          content: ''; position: absolute; top: 0; left: 4px; right: 4px; height: 16px; 
+          background: linear-gradient(to bottom, #d48f38, #5a452a); 
+          border-radius: 50% / 100% 100% 0 0; 
+          box-shadow: inset 0 2px 5px rgba(255,255,255,0.3);
+          opacity: 0.85;
+          z-index: 3;
+        }
+        
+        /* Premium Dokulu Kumaş/Kağıt Etiket */
+        .candle-label { 
+          width: 120px; height: 140px; 
+          border: 1px solid rgba(191, 161, 95, 0.4); 
+          background: #fdfbf7; 
+          padding: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; 
+          box-shadow: 0 10px 25px rgba(0,0,0,0.15), inset 0 0 10px rgba(0,0,0,0.02);
+          position: relative;
+          z-index: 4;
+        }
+        .candle-label::after {
+          content: ''; position: absolute; top: 3px; left: 3px; right: 3px; bottom: 3px;
+          border: 1px solid rgba(191, 161, 95, 0.15); pointer-events: none;
+        }
+        .label-brand { font-family: var(--font-body); font-size: 8px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-text-secondary); margin-bottom: 10px; font-weight: 500; }
+        .label-title { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--color-accent); line-height: 1.2; border-bottom: 1px solid var(--color-border); padding-bottom: 8px; margin-bottom: 8px; width: 100%; letter-spacing: 0.02em; }
+        .label-sub { font-family: var(--font-display); font-style: italic; font-size: 11px; color: var(--color-primary); letter-spacing: 0.05em; }
+        
+        /* Gerçekçi Mum Altı Gölgesi */
+        .candle-shadow { position: absolute; bottom: 10px; width: 180px; height: 15px; background: rgba(0,0,0,0.25); filter: blur(8px); border-radius: 50%; z-index: 1; }
+        
+        /* Lovable Tarzı Mikro Akıcı Animasyonlar */
+        @keyframes realFlame {
+            0% { transform: scale(1) rotate(-1.5deg) skewX(-1deg); filter: drop-shadow(0 0 10px rgba(255,152,0,0.5)); }
+            50% { transform: scale(1.04, 0.96) rotate(1deg) skewX(0.5deg); filter: drop-shadow(0 0 14px rgba(255,110,0,0.7)); }
+            100% { transform: scale(0.96, 1.05) rotate(-0.5deg) skewX(-0.5deg); filter: drop-shadow(0 0 11px rgba(255,152,0,0.5)); }
+        }
+        @keyframes ambientGlow {
+            0% { opacity: 0.85; transform: scale(0.98); }
+            100% { opacity: 1; transform: scale(1.03); }
         }
         
         .btn-primary { display: inline-flex; padding: 16px 36px; background: var(--color-primary); color: #ffffff; text-decoration: none; font-weight: 600; letter-spacing: 0.08em; font-size: 13px; text-transform: uppercase; transition: all 0.4s var(--ease-out-expo); border: none; cursor: pointer; }
@@ -115,7 +158,7 @@
         .product-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-md); border-top: 1px solid rgba(58,54,48,0.08); }
         .product-price { font-weight: 600; color: var(--color-primary); font-size: 18px; }
         .btn-add-cart { background: transparent; border: 1px solid var(--color-border); color: var(--color-text-primary); padding: 10px 20px; font-size: 13px; cursor: pointer; transition: all 0.3s ease; }
-        .btn-add-cart:hover { background: var(--color-text-primary); color: var(--color-surface); border-color: var(--color-text-primary); }
+        .btn-add-cart:hover { background: var(--text-color); color: var(--color-surface); border-color: var(--color-text-primary); }
         
         /* Hakkımızda */
         .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
@@ -170,9 +213,8 @@
             .hero { height: auto; padding: 140px 0 60px 0; background: var(--color-bg); } 
             .hero-wrapper { flex-direction: column; text-align: center; gap: var(--space-xl); }
             .hero-candle-art { width: 100%; height: auto; max-width: 240px; margin: 0 auto; }
-            .candle-body { width: 140px; height: 180px; }
-            .candle-label { width: 90px; height: 110px; }
-            .candle-flame { top: 32%; } .candle-glow { top: 20%; }
+            .candle-body { width: 160px; height: 200px; }
+            .candle-label { width: 100px; height: 110px; }
             body { background-size: 40px 100%; } 
         }
     </style>
@@ -193,7 +235,7 @@
         </div>
     </nav>
 
-    <!-- Hero Alanı (Giriş ve Mum Tasarımı) -->
+    <!-- Hero Alanı -->
     <section class="hero">
         <div class="container hero-wrapper">
             <div class="hero-text">
@@ -202,18 +244,19 @@
                 <a href="#katalog" class="btn-primary animate-up stagger-2">Koleksiyonu Keşfet</a>
             </div>
             
-            <!-- Sağ Taraftaki Canlı Mum İllüstrasyonu -->
+            <!-- Sağ Taraftaki Lovable Stili Gerçekçi Mum -->
             <div class="hero-candle-art animate-up stagger-2">
                 <div class="candle-glow"></div>
                 <div class="candle-flame"></div>
                 <div class="candle-wick"></div>
                 <div class="candle-body">
                     <div class="candle-label">
-                        <span class="label-brand">Handmade</span>
+                        <span class="label-brand">Studio Craft</span>
                         <h2 class="label-title">Nimet Luxe</h2>
-                        <span class="label-sub">Soya Candles</span>
+                        <span class="label-sub">Soya Balmumu</span>
                     </div>
                 </div>
+                <div class="candle-shadow"></div>
             </div>
         </div>
     </section>
@@ -235,7 +278,7 @@
                 <h2 class="section-title">Nimet Luxe Hikayesi</h2>
             </div>
             <div class="about-content">
-                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlamakla kalmayıp ruhu ve anıları da beslediğine inanıyoruz. Her bir mumumuz, en seçkin esansiyel yağlar ve sürdürülebilir doğal soya balmumu kullanılarak atölyemizde tamamen el işçiliğiyle dökülmektedir.</p>
+                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlatmakla kalmayıp ruhu ve anıları da beslediğine inanıyoruz. Her bir mumumuz, en seçkin esansiyel yağlar ve sürdürülebilir doğal soya balmumu kullanılarak atölyemizde tamamen el işçiliğiyle dökülmektedir.</p>
                 <p>Modern ve lüks cam tasarımlarımızla evinizin dekorasyonuna estetik bir dokunuş katarken, yandığı andan itibaren etrafa yayılan dengeli notalarla yaşam alanlarınızda benzersiz bir huzur ve konfor vahası yaratmayı amaçlıyoruz.</p>
                 <em>"Her mum, keşfedilmeyi bekleyen bir hikaye yakar."</em>
             </div>
