@@ -220,9 +220,9 @@
         .qty-btn:hover { background: rgba(212, 175, 55, 0.1); color: var(--color-primary); }
         .qty-val { width: 30px; text-align: center; font-size: 13px; font-weight: 600; color: var(--color-accent); }
         
-        /* LÜKS HEDİYE SEÇENEKLERİ ALANI (UI CSS) */
+        /* SADELEŞTİRİLMİŞ PREMİUM HEDİYE ALANI */
         .gift-section {
-            margin: var(--space-md) 0;
+            margin: var(--space-lg) 0;
             padding: var(--space-md);
             background: rgba(212, 175, 55, 0.03);
             border: 1px dashed rgba(212, 175, 55, 0.2);
@@ -242,30 +242,6 @@
             width: 16px;
             height: 16px;
             cursor: pointer;
-        }
-        .gift-note-area {
-            display: none;
-            margin-top: 12px;
-        }
-        .gift-note-area.visible {
-            display: block;
-        }
-        .gift-note-area textarea {
-            width: 100%;
-            height: 60px;
-            background: #151311;
-            border: 1px solid var(--color-border);
-            border-radius: 4px;
-            color: var(--color-text-primary);
-            font-family: var(--font-body);
-            font-size: 12px;
-            padding: 8px;
-            resize: none;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-        .gift-note-area textarea:focus {
-            border-color: var(--color-primary);
         }
         
         .cart-footer { border-top: 1px solid var(--color-border); padding-top: var(--space-md); }
@@ -402,7 +378,7 @@
                 <h2 class="section-title">Nimet Luxe Hikayesi</h2>
             </div>
             <div class="about-content">
-                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlatmakla kalmayıp ruhu ve anıları da beslediğine inanıyoruz. Her bir mumumuz, en seçkin esansiyel yağlar... tamamen el işçiliğiyle dökülmektedir.</p>
+                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlatmakla kalmayıp ruhu... tamamen el işçiliğiyle dökülmektedir.</p>
                 <em>"Her mum, keşfedilmeyi bekleyen bir hikaye yakar."</em>
             </div>
         </div>
@@ -466,15 +442,12 @@
         <!-- Ürünler -->
         <div class="cart-items" id="cart-items-container"></div>
         
-        <!-- HEDİYE SEÇENEKLERİ ALANI -->
+        <!-- SADECE HEDİYE SEÇENEĞİ KUTUSU -->
         <div class="gift-section">
             <label class="gift-checkbox-wrapper">
-                <input type="checkbox" id="giftCheck" onchange="toggleGiftNote()">
-                🎁 Siparişimi Premium Hediye Paketi Yap
+                <input type="checkbox" id="giftCheck">
+                🎁 Siparişimi Premium Hediye Paketi Yap (+Hediye Kutusu)
             </label>
-            <div class="gift-note-area" id="giftNoteWrapper">
-                <textarea id="giftNoteText" placeholder="Mum kutusuna eklenecek zarif hediye notunuzu buraya yazın..."></textarea>
-            </div>
         </div>
         
         <!-- Alt Toplam ve WhatsApp -->
@@ -493,11 +466,9 @@
         ];
         let sepet = [];
 
-        // APPLE PAY CHIME SES MOTORU
         function playApplePayChime() {
             try {
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                
                 const osc1 = audioCtx.createOscillator();
                 const gain1 = audioCtx.createGain();
                 osc1.type = 'sine';
@@ -557,20 +528,6 @@
             if (su.adet <= 0) { sepet = sepet.filter(x => x.id !== id); }
             sepetiGuncelle();
         }
-
-        // HEDİYE NOTU ALANINI AÇMA KAPATMA FONKSİYONU
-        function toggleGiftNote() {
-            const check = document.getElementById('giftCheck');
-            const wrapper = document.getElementById('giftNoteWrapper');
-            if(check && wrapper) {
-                if(check.checked) {
-                    wrapper.classList.add('visible');
-                } else {
-                    wrapper.classList.remove('visible');
-                    document.getElementById('giftNoteText').value = ""; // Kapanırsa temizle
-                }
-            }
-        }
         
         function sepetiGuncelle() {
           const kc = document.getElementById('cart-items-container'), ta = document.getElementById('cart-total-amount');
@@ -598,7 +555,7 @@
           ta.innerText = sepet.reduce((t, i) => t + (i.fiyat * i.adet), 0) + ' TL';
         }
         
-        // YENİLENEN SİPARİŞİ WHATSAPP'A GÖNDERME MOTORU
+        // SADECE HEDİYE BİLGİSİNİ TAŞIYAN WP SİPARİŞ SİSTEMİ
         function sendWhatsAppOrder() {
           if (sepet.length === 0) { alert("Lütfen önce sepetinize ürün ekleyin."); return; }
           const tel = "905522926638";
@@ -606,15 +563,9 @@
           let m = "Merhaba Nimet Luxe Candles! Web sitenizden sipariş vermek istiyorum.\n\n🛒 *Sipariş Detayları:*\n";
           sepet.forEach(i => { m += `- ${i.adet}x ${i.ad} (${i.fiyat * i.adet} TL)\n`; });
           
-          // Hediye paketi ve notu verilerini mesaja ekleme
           const giftCheck = document.getElementById('giftCheck');
-          const giftNote = document.getElementById('giftNoteText').value.trim();
-          
           if (giftCheck && giftCheck.checked) {
-              m += `\n🎁 *Hediye Durumu:* Premium Hediye Paketi İstiyorum.`;
-              if (giftNote !== "") {
-                  m += `\n✉️ *Hediye Notu:* "${giftNote}"`;
-              }
+              m += `\n🎁 *Hediye Paketleme:* Evet, Premium Hediye Paketi İstiyorum.`;
           }
           
           m += `\n\n💰 *Toplam Tutar:* ${sepet.reduce((t, i) => t + (i.fiyat * i.adet), 0)} TL\n\nSiparişimi onaylamak ve kargo bilgilerimi iletmek istiyorum.`;
