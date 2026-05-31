@@ -30,7 +30,7 @@
           font-family: var(--font-body); 
           overflow-x: hidden; 
           -webkit-font-smoothing: antialiased; 
-          padding-bottom: 0; /* Mobil bar için altta pay bırakılacak */
+          padding-top: 70px; /* Sabitlenen menünün içeriği kapatmaması için */
         }
         
         body::before {
@@ -44,20 +44,31 @@
         
         .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); position: relative; z-index: 2; }
         
-        /* Navbar */
-        .nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: var(--space-md) 0; backdrop-filter: blur(20px); background: rgba(21, 19, 17, 0.85); border-bottom: 1px solid var(--color-border); }
+        /* HER YERDE SABİT VE KUSURSUZ NAVİGASYON MENÜSÜ */
+        .nav { 
+          position: fixed; 
+          top: 0; 
+          width: 100%; 
+          z-index: 100; 
+          padding: var(--space-md) 0; 
+          backdrop-filter: blur(20px); 
+          background: rgba(21, 19, 17, 0.9); 
+          border-bottom: 1px solid var(--color-border); 
+        }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--color-primary); text-decoration: none; letter-spacing: 0.05em; }
+        .logo { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-primary); text-decoration: none; letter-spacing: 0.05em; }
+        
+        /* Linklerin yapısı ve yerleşimi */
         .nav-links { display: flex; gap: var(--space-lg); align-items: center; }
-        .nav-links a { color: var(--color-text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s ease; position: relative; }
+        .nav-links a { color: var(--color-text-secondary); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.3s ease; position: relative; }
         .nav-links a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0; background-color: var(--color-primary); transition: width 0.3s ease; }
         .nav-links a:hover { color: var(--color-primary); }
         .nav-links a:hover::after { width: 100%; }
         
-        .nav .cart-trigger { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 10px 20px; font-family: var(--font-body); cursor: pointer; font-weight: 600; font-size: 13px; transition: all 0.4s var(--ease-out-expo); }
+        .nav .cart-trigger { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 8px 16px; font-family: var(--font-body); cursor: pointer; font-weight: 600; font-size: 12px; transition: all 0.4s var(--ease-out-expo); }
         .nav .cart-trigger:hover { background: var(--color-primary); color: var(--color-bg); }
         
-        /* SABİT MOBİL ALT BAR (Sadece Telefonda Görünür) */
+        /* SABİT MOBİL ALT BAR (Sadece Telefonlarda Sepete Hızlı Erişim Sağlar) */
         .mobile-bottom-bar {
             position: fixed;
             bottom: 20px;
@@ -70,7 +81,7 @@
             border: 1px solid var(--color-primary);
             border-radius: 40px;
             padding: 12px 24px;
-            display: none; /* Masaüstünde gizli */
+            display: none; 
             justify-content: space-between;
             align-items: center;
             z-index: 150;
@@ -93,7 +104,7 @@
         }
         
         /* Hero Alanı */
-        .hero { height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+        .hero { height: calc(100vh - 70px); display: flex; align-items: center; position: relative; overflow: hidden; }
         .hero-bg-image {
           position: absolute; top: 0; left: 0; width: 100%; height: 100%;
           background-image: url('https://images.unsplash.com/photo-1603006905003-be475563bc59?q=80&w=1920&auto=format&fit=crop');
@@ -112,24 +123,24 @@
         }
         .hero-wrapper { width: 100%; position: relative; z-index: 3; }
         .hero-text { max-width: 650px; }
-        .hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw + 1rem, 4.5rem); font-weight: 400; color: var(--color-accent); margin-bottom: var(--space-md); line-height: 1.15; }
-        .hero p { font-size: 16px; color: var(--color-text-secondary); margin-bottom: var(--space-xl); line-height: 1.6; font-weight: 300; }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw + 1rem, 4rem); font-weight: 400; color: var(--color-accent); margin-bottom: var(--space-md); line-height: 1.15; }
+        .hero p { font-size: 15px; color: var(--color-text-secondary); margin-bottom: var(--space-xl); line-height: 1.6; font-weight: 300; }
         
         @keyframes subtleZoom { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
         
-        .btn-primary { display: inline-flex; padding: 14px 32px; background: var(--color-primary); color: var(--color-bg); text-decoration: none; font-weight: 600; letter-spacing: 0.08em; font-size: 13px; text-transform: uppercase; transition: all 0.4s var(--ease-out-expo); border: none; cursor: pointer; }
+        .btn-primary { display: inline-flex; padding: 14px 32px; background: var(--color-primary); color: var(--color-bg); text-decoration: none; font-weight: 600; letter-spacing: 0.08em; font-size: 12px; text-transform: uppercase; transition: all 0.4s var(--ease-out-expo); border: none; cursor: pointer; }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2); background: var(--color-accent); color: var(--color-bg); }
         
         /* Bölüm Başlıkları */
         .section-header { text-align: center; margin-bottom: var(--space-xl); }
         .section-subtitle { color: var(--color-primary); text-transform: uppercase; font-size: 11px; letter-spacing: 0.2em; margin-bottom: 8px; display: block; font-weight: 600; }
-        .section-title { font-family: var(--font-display); font-size: 36px; font-weight: 400; letter-spacing: 0.03em; color: var(--color-accent); }
+        .section-title { font-family: var(--font-display); font-size: 32px; font-weight: 400; letter-spacing: 0.03em; color: var(--color-accent); }
         
         .scroll-animate { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
         .scroll-animate.active { opacity: 1; transform: translateY(0); }
         
         /* Katalog */
-        .section-block { padding: 100px 0; border-bottom: 1px solid var(--color-border); position: relative; z-index: 2; }
+        .section-block { padding: 80px 0; border-bottom: 1px solid var(--color-border); position: relative; z-index: 2; }
         .grid { display: grid; gap: var(--space-xl); grid-template-columns: repeat(3, 1fr); }
         
         .card { 
@@ -182,7 +193,7 @@
         .map-placeholder { text-align: center; font-size: 13px; color: var(--color-primary); padding: var(--space-md); line-height: 1.6; }
         .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--color-border); font-size: 11px; }
         
-        /* SEPET PANELİ (Mobilde Taşmayı Önleyecek Şekilde Kusursuzlaştırıldı) */
+        /* Sepet Paneli */
         .cart-sidebar { 
             position: fixed; 
             top: 0; right: -400px; 
@@ -208,10 +219,10 @@
         .cart-total { display: flex; justify-content: space-between; font-size: 18px; font-weight: 600; margin-bottom: var(--space-md); color: var(--color-accent); }
         .btn-whatsapp { width: 100%; padding: 14px; background: #25D366; color: white; border: none; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 4px; }
         
-        /* MİNİMALİST SEPET BİLDİRİM KUTUSU (TOAST) */
+        /* Sepet Bildirim Kutusu (Toast) */
         .toast-notification {
             position: fixed;
-            bottom: 90px; /* Mobil barın hemen üstünde çıkacak */
+            bottom: 90px; 
             left: 50%;
             transform: translate(-50%, 30px);
             background: #23201d;
@@ -231,27 +242,35 @@
             gap: 8px;
             white-space: nowrap;
         }
-        .toast-notification.show {
-            opacity: 1;
-            transform: translate(-50%, 0);
-        }
+        .toast-notification.show { opacity: 1; transform: translate(-50%, 0); }
 
-        /* Giriş Animasyonları */
         .animate-up { opacity: 0; transform: translateY(20px); animation: fadeInUp 1.2s var(--ease-out-expo) forwards; }
         .stagger-1 { animation-delay: 0.15s; }
         .stagger-2 { animation-delay: 0.3s; }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
         
-        /* MOBİL VE TABLET ERANLAR İÇİN TAM UYUM AYARLARI */
+        /* MOBİL VE TABLET ERANLAR İÇİN TAM YENİLENEN EK KODLAR */
         @media (max-width: 992px) { 
-            body { padding-bottom: 90px; } /* Alt barın arkada kalmaması için alan */
+            body { padding-bottom: 90px; padding-top: 60px; } 
             .grid, .reviews-grid, .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); } 
             
-            /* Mobil Menü Gizleme - Alt Bar Devreye Giriyor */
-            .nav-links { display: none; } 
+            /* MOBİL ÜST MENÜ: Kibar, sıkıştırmayan, harika lüks bir düzen */
+            .nav { padding: 10px 0; }
+            .nav-container { flex-direction: column; gap: 8px; }
+            .logo { font-size: 19px; }
+            .nav-links { 
+                display: flex; 
+                gap: 14px; 
+                width: 100%; 
+                justify-content: center; 
+                border-top: 1px solid rgba(212, 175, 55, 0.08);
+                padding-top: 6px;
+            }
+            .nav-links a { font-size: 11px; letter-spacing: 0.02em; opacity: 0.9; }
+            .nav .cart-trigger { display: none; } /* Mobilde alttaki bar devralıyor sepeti */
+            
             .mobile-bottom-bar { display: flex; } 
             
-            /* Sepet Panelinin Mobilde Taşmasını Önleyen Ayar */
             .cart-sidebar { 
                 width: calc(100% - 30px); 
                 height: calc(100% - 40px); 
@@ -263,17 +282,17 @@
             } 
             .cart-sidebar.open { right: 15px; }
             
-            .hero { height: 100vh; } 
+            .hero { height: calc(100vh - 100px); } 
             .hero-text { text-align: center; padding: 0 var(--space-md); }
-            .hero h1 { font-size: 32px; }
-            .section-title { font-size: 28px; }
+            .hero h1 { font-size: 28px; }
+            .section-title { font-size: 24px; }
             .btn-primary { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Masaüstü Üst Menü -->
+    <!-- Üst Menü (Artık Mobilde de Var ve Sabit!) -->
     <nav class="nav">
         <div class="container nav-container">
             <a href="#" class="logo">Nimet Luxe Candles</a>
@@ -287,7 +306,7 @@
         </div>
     </nav>
 
-    <!-- MOBİL SABİT ALT BAR (Yalnızca telefonda görünür, sepet erişim sorununu çözer) -->
+    <!-- Mobil Sabit Alt Çubuk -->
     <div class="mobile-bottom-bar">
         <a href="#" class="mobile-bar-brand">Nimet Luxe</a>
         <button class="mobile-cart-btn" onclick="toggleCart()">
@@ -295,12 +314,12 @@
         </button>
     </div>
 
-    <!-- Sepet Bildirim Kutusu (Toast) -->
+    <!-- Sepet Bildirim Kutusu -->
     <div class="toast-notification" id="cartToast">
         <span>🌟</span> <span id="toastMessage">Ürün sepete eklendi!</span>
     </div>
 
-    <!-- Hero Alanı -->
+    <!-- Hero Bölümü -->
     <section class="hero">
         <div class="hero-bg-image"></div>
         <div class="hero-overlay"></div>
@@ -332,7 +351,7 @@
                 <h2 class="section-title">Nimet Luxe Hikayesi</h2>
             </div>
             <div class="about-content">
-                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlatmakla kalmayıp ruhu ve anıları da beslediğine inanıyoruz. Her bir mumumuz, en seçkin esansiyel yağlar... (devamı)</p>
+                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlatmakla kalmayıp ruhu ve anıları da beslediğine inanıyoruz. Her bir mumumuz, en seçkin esansiyel yağlar ve sürdürülebilir doğal soya balmumu kullanılarak atölyemizde tamamen el işçiliğiyle dökülmektedir.</p>
                 <em>"Her mum, keşfedilmeyi bekleyen bir hikaye yakar."</em>
             </div>
         </div>
@@ -345,20 +364,19 @@
             <h2 class="section-title">Müşteri Geri Bildirimleri</h2>
         </div>
         <div class="reviews-grid">
-            <!-- Yorum Kartları -->
             <div class="review-card">
                 <div class="stars">★★★★★</div>
-                <p class="review-text">"Siyah Amber mumunu aldım ve tek kelimeyle bayıldım. Odayı kaplayan kokusu o kadar yoğun ve kaliteli ki..."</p>
+                <p class="review-text">"Siyah Amber mumunu aldım ve tek kelimeyle bayıldım. Odayı kaplayan kokusu o kadar yoğun..."</p>
                 <div class="review-user"><div class="user-avatar">SA</div><div class="user-name">Selin Alkan</div></div>
             </div>
             <div class="review-card">
                 <div class="stars">★★★★★</div>
-                <p class="review-text">"Vanilya & Sandal Ağacı mumu evimin vazgeçilmezi oldu. Akşamları kitap okurken yakıyorum, inanılmaz dinlendirici..."</p>
+                <p class="review-text">"Vanilya & Sandal Ağacı mumu evimin vazgeçilmezi oldu. Akşamları kitap okurken..."</p>
                 <div class="review-user"><div class="user-avatar">MK</div><div class="user-name">Murat Kozcu</div></div>
             </div>
             <div class="review-card">
                 <div class="stars">★★★★★</div>
-                <p class="review-text">"Hediye olarak arkadaşıma Lavanta Bahçesi modelini almıştım, kokusuna hayran kaldık. Hemen kendime de sipariş verdim..."</p>
+                <p class="review-text">"Hediye olarak arkadaşıma Lavanta Bahçesi modelini almıştım, kokusuna hayran kaldık..."</p>
                 <div class="review-user"><div class="user-avatar">BY</div><div class="user-name">Buse Yılmaz</div></div>
             </div>
         </div>
@@ -390,7 +408,7 @@
         </div>
     </footer>
 
-    <!-- Sepet Paneli -->
+    <!-- Sepet -->
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header"><h3>Sepetiniz</h3><button class="close-cart" onclick="toggleCart()">✕</button></div>
         <div class="cart-items" id="cart-items-container"><p style="text-align:center; opacity:0.6; padding:20px;">Sepetiniz boş.</p></div>
@@ -408,6 +426,28 @@
           { id: 3, ad: "Egzotik Lavanta Bahçesi", aciklama: "Stresi azaltan, tamamen organik lavanta yağları ile harmanlanmış el yapımı mum.", fiyat: 320 }
         ];
         let sepet = [];
+
+        // PREMIUM YUMUŞAK BİP SESİ MOTORU (Dışarıdan dosya yüklemeden, tarayıcının kendi frekansıyla üretilir - Asla bozulmaz)
+        function playPremiumBeep() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                
+                oscillator.type = 'sine'; // Pürüzsüz sinüs dalgası
+                oscillator.frequency.setValueAtTime(587.33, audioCtx.currentTime); // Lüks D5 Notası
+                
+                // Sesi kulak tırmalamayacak şekilde yumuşakça kapatma (Fade-out)
+                gainNode.gain.setValueAtTime(0.08, audioCtx.currentTime); 
+                gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.15);
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                oscillator.start();
+                oscillator.stop(audioCtx.currentTime + 0.15);
+            } catch(e) { console.log("Ses çalınamadı:", e); }
+        }
         
         function urunleriListele() {
           const lb = document.getElementById('product-list'); if(!lb) return;
@@ -430,7 +470,9 @@
           const u = urunler.find(x => x.id === id); if (!u) return;
           const su = sepet.find(x => x.id === id);
           if (su) { su.adet += 1; } else { sepet.push({ ...u, adet: 1 }); }
+          
           sepetiGuncelle();
+          playPremiumBeep(); // Harika bip sesi tetiklenir
           showToast(`${u.ad} sepete eklendi! ✨`);
         }
         
