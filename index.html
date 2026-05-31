@@ -1,10 +1,3 @@
-WhatsApp numaranı yeni verdiğin numarayla güncelledim. Artık müşterilerin "Siparişi WhatsApp ile Tamamla" butonuna bastığında doğrudan bu numaraya yönlendirilecekler.
-
-Yukarıda konuştuğumuz gibi kopyala-yapıştır yükünü azaltmak için bu yeni kodu doğrudan GitHub’da dosyanın içindeki **kalem (düzenle)** simgesine tıklayıp, eskiyi silip yerine yapıştırarak tek tıkla güncelleyebilirsin.
-
-### Güncel Kodların Tamamı:
-
-```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -16,13 +9,13 @@ Yukarıda konuştuğumuz gibi kopyala-yapıştır yükünü azaltmak için bu ye
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-          --color-bg: #1a1916; 
-          --color-surface: #24221e; 
-          --color-primary: #e5c17d;
-          --color-accent: #f9f1e3; 
-          --color-text-primary: #ffffff; 
-          --color-text-secondary: #cdc7bd;
-          --color-border: #38352f; 
+          --color-bg: #fbf9f6; 
+          --color-surface: #ffffff; 
+          --color-primary: #bfa15f;
+          --color-accent: #2c2a27; 
+          --color-text-primary: #33312e; 
+          --color-text-secondary: #6e6a64;
+          --color-border: #e8e4dc; 
           --font-display: 'Cormorant Garamond', serif; 
           --font-body: 'Plus Jakarta Sans', sans-serif;
           --space-md: 16px; --space-lg: 24px; --space-xl: 40px;
@@ -34,14 +27,14 @@ Yukarıda konuştuğumuz gibi kopyala-yapıştır yükünü azaltmak için bu ye
         
         .grain-overlay::after {
           content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
           pointer-events: none; z-index: 9999;
         }
         
         .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); }
         
         /* Navbar */
-        .nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: var(--space-md) 0; backdrop-filter: blur(20px); background: rgba(26, 25, 22, 0.85); border-bottom: 1px solid var(--color-border); transition: all 0.3s ease; }
+        .nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: var(--space-md) 0; backdrop-filter: blur(20px); background: rgba(251, 249, 246, 0.85); border-bottom: 1px solid var(--color-border); transition: all 0.3s ease; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-family: var(--font-display); font-size: 26px; font-weight: 600; color: var(--color-primary); text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s ease; }
         .logo:hover { color: var(--color-accent); }
@@ -51,15 +44,15 @@ Yukarıda konuştuğumuz gibi kopyala-yapıştır yükünü azaltmak için bu ye
         .nav-links a:hover { color: var(--color-primary); }
         .nav-links a:hover::after { width: 100%; }
         .cart-trigger { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 10px 20px; font-family: var(--font-body); cursor: pointer; font-weight: 600; font-size: 13px; transition: all 0.4s var(--ease-out-expo); }
-        .cart-trigger:hover { background: var(--color-primary); color: #1a1916; transform: scale(1.03); }
+        .cart-trigger:hover { background: var(--color-primary); color: #ffffff; transform: scale(1.03); }
         
         /* Hero */
-        .hero { height: 85vh; display: flex; align-items: center; background: radial-gradient(circle at 80% 30%, rgba(229, 193, 125, 0.15) 0%, transparent 60%), var(--color-bg); padding-top: 80px; position: relative; }
+        .hero { height: 85vh; display: flex; align-items: center; background: radial-gradient(circle at 80% 30%, rgba(191, 161, 95, 0.08) 0%, transparent 60%), var(--color-bg); padding-top: 80px; position: relative; }
         .hero h1 { font-family: var(--font-display); font-size: clamp(2.8rem, 6vw + 1rem, 5rem); font-weight: 400; color: var(--color-accent); margin-bottom: var(--space-md); line-height: 1.1; }
         .hero p { font-size: 19px; color: var(--color-text-secondary); margin-bottom: var(--space-xl); line-height: 1.6; max-width: 600px; font-weight: 300; }
         
-        .btn-primary { display: inline-flex; padding: 16px 36px; background: var(--color-primary); color: #1a1916; text-decoration: none; font-weight: 600; letter-spacing: 0.08em; font-size: 13px; text-transform: uppercase; transition: all 0.4s var(--ease-out-expo); border: none; cursor: pointer; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(229, 193, 125, 0.25); background: var(--color-accent); }
+        .btn-primary { display: inline-flex; padding: 16px 36px; background: var(--color-primary); color: #ffffff; text-decoration: none; font-weight: 600; letter-spacing: 0.08em; font-size: 13px; text-transform: uppercase; transition: all 0.4s var(--ease-out-expo); border: none; cursor: pointer; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(191, 161, 95, 0.2); background: var(--color-accent); }
         
         /* Ortak Bölüm Başlığı */
         .section-header { text-align: center; margin-bottom: var(--space-xl); }
@@ -74,15 +67,15 @@ Yukarıda konuştuğumuz gibi kopyala-yapıştır yükünü azaltmak için bu ye
         .section-block { padding: 100px 0; border-bottom: 1px solid var(--color-border); }
         .grid { display: grid; gap: var(--space-xl); grid-template-columns: repeat(3, 1fr); }
         .card { background: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-md); transition: all 0.4s var(--ease-out-expo); display: flex; flex-direction: column; position: relative; }
-        .card:hover { transform: translateY(-6px); border-color: var(--color-primary); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-        .product-img-box { width: 100%; height: 280px; background: #2f2c27; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-md); color: var(--color-primary); font-family: var(--font-display); font-style: italic; font-size: 22px; border: 1px solid rgba(229, 193, 125, 0.1); transition: background 0.3s ease; }
-        .card:hover { background: #2a2824; }
+        .card:hover { transform: translateY(-6px); border-color: var(--color-primary); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .product-img-box { width: 100%; height: 280px; background: #f5f2eb; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-md); color: var(--color-primary); font-family: var(--font-display); font-style: italic; font-size: 22px; border: 1px solid rgba(191, 161, 95, 0.1); transition: background 0.3s ease; }
+        .card:hover { background: #fdfcf9; }
         .product-title { font-family: var(--font-display); font-size: 24px; font-weight: 400; margin-bottom: 8px; color: var(--color-accent); }
         .product-desc { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--space-md); flex-grow: 1; }
-        .product-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-md); border-top: 1px solid rgba(255,255,255,0.05); }
+        .product-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-md); border-top: 1px solid rgba(0,0,0,0.05); }
         .product-price { font-weight: 600; color: var(--color-primary); font-size: 18px; }
         .btn-add-cart { background: transparent; border: 1px solid var(--color-border); color: var(--color-text-primary); padding: 10px 20px; font-size: 13px; cursor: pointer; transition: all 0.3s ease; }
-        .btn-add-cart:hover { background: var(--color-text-primary); color: var(--color-bg); border-color: var(--color-text-primary); }
+        .btn-add-cart:hover { background: var(--color-text-primary); color: var(--color-surface); border-color: var(--color-text-primary); }
         
         /* Hakkımızda */
         .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
@@ -92,15 +85,15 @@ Yukarıda konuştuğumuz gibi kopyala-yapıştır yükünü azaltmak için bu ye
         /* Sahte Yorumlar */
         .reviews-grid { display: grid; gap: var(--space-lg); grid-template-columns: repeat(3, 1fr); }
         .review-card { background: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-lg); border-radius: 2px; transition: all 0.4s var(--ease-out-expo); }
-        .review-card:hover { transform: translateY(-4px); border-color: var(--color-primary); }
+        .review-card:hover { transform: translateY(-4px); border-color: var(--color-primary); box-shadow: 0 10px 25px rgba(0,0,0,0.03); }
         .stars { color: var(--color-primary); font-size: 16px; margin-bottom: 12px; letter-spacing: 2px; }
         .review-text { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; font-style: italic; margin-bottom: var(--space-md); }
         .review-user { display: flex; align-items: center; gap: 10px; }
-        .user-avatar { width: 36px; height: 36px; background: var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--color-primary); font-weight: 600; border: 1px solid var(--color-primary); }
+        .user-avatar { width: 36px; height: 36px; background: #f5f2eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--color-primary); font-weight: 600; border: 1px solid var(--color-primary); }
         .user-name { font-size: 14px; font-weight: 500; color: var(--color-accent); }
         
         /* İletişim & Konum (Footer) */
-        .footer { background: #131210; border-top: 1px solid var(--color-border); padding: 80px 0 30px 0; color: var(--color-text-secondary); }
+        .footer { background: #f5f2eb; border-top: 1px solid var(--color-border); padding: 80px 0 30px 0; color: var(--color-text-secondary); }
         .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1.3fr; gap: var(--space-xl); margin-bottom: 50px; }
         .footer-col h4 { font-family: var(--font-display); font-size: 22px; color: var(--color-accent); margin-bottom: var(--space-lg); font-weight: 400; }
         .footer-col p { font-size: 14px; line-height: 1.7; margin-bottom: 12px; }
@@ -110,7 +103,7 @@ Yukarıda konuştuğumuz gibi kopyala-yapıştır yükünü azaltmak için bu ye
         .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--color-border); font-size: 12px; letter-spacing: 0.05em; }
         
         /* Sepet Paneli */
-        .cart-sidebar { position: fixed; top: 0; right: -400px; width: 400px; height: 100%; background: var(--color-surface); border-left: 1px solid var(--color-border); z-index: 200; padding: var(--space-xl); display: flex; flex-direction: column; transition: right 0.5s var(--ease-out-expo); box-shadow: -15px 0 40px rgba(0,0,0,0.5); }
+        .cart-sidebar { position: fixed; top: 0; right: -400px; width: 400px; height: 100%; background: var(--color-surface); border-left: 1px solid var(--color-border); z-index: 200; padding: var(--space-xl); display: flex; flex-direction: column; transition: right 0.5s var(--ease-out-expo); box-shadow: -15px 0 40px rgba(0,0,0,0.05); }
         .cart-sidebar.open { right: 0; }
         .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xl); border-bottom: 1px solid var(--color-border); padding-bottom: var(--space-md); }
         .cart-header h3 { font-family: var(--font-display); font-size: 26px; color: var(--color-accent); }
@@ -169,7 +162,7 @@ Yukarıda konuştuğumuz gibi kopyala-yapıştır yükünü azaltmak için bu ye
     </section>
 
     <!-- Hakkımızda Bölümü -->
-    <section id="hakkimizda" class="section-block scroll-animate" style="background: #201e1a;">
+    <section id="hakkimizda" class="section-block scroll-animate" style="background: #fdfbf7;">
         <div class="container">
             <div class="section-header">
                 <span class="section-subtitle">Biz Kimiz?</span>
@@ -317,5 +310,3 @@ Yukarıda konuştuğumuz gibi kopyala-yapıştır yükünü azaltmak için bu ye
     </script>
 </body>
 </html>
-
-```
