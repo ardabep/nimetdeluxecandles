@@ -211,7 +211,6 @@
         .close-cart { background: transparent; border: none; color: var(--color-accent); font-size: 24px; cursor: pointer; padding: 5px; }
         .cart-items { flex-grow: 1; overflow-y: auto; }
         
-        /* YENİLENEN ADET AYARLAMA ALANI (UI) */
         .cart-item { display: flex; justify-content: space-between; align-items: center; padding: var(--space-md) 0; border-bottom: 1px solid var(--color-border); }
         .cart-item-info h4 { font-family: var(--font-display); font-size: 17px; color: var(--color-accent); margin-bottom: 4px; }
         .cart-item-info span { font-size: 13px; color: var(--color-primary); font-weight: 500; }
@@ -221,7 +220,55 @@
         .qty-btn:hover { background: rgba(212, 175, 55, 0.1); color: var(--color-primary); }
         .qty-val { width: 30px; text-align: center; font-size: 13px; font-weight: 600; color: var(--color-accent); }
         
-        .cart-footer { border-top: 1px solid var(--color-border); padding-top: var(--space-xl); }
+        /* LÜKS HEDİYE SEÇENEKLERİ ALANI (UI CSS) */
+        .gift-section {
+            margin: var(--space-md) 0;
+            padding: var(--space-md);
+            background: rgba(212, 175, 55, 0.03);
+            border: 1px dashed rgba(212, 175, 55, 0.2);
+            border-radius: 6px;
+        }
+        .gift-checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            color: var(--color-accent);
+            font-weight: 500;
+        }
+        .gift-checkbox-wrapper input {
+            accent-color: var(--color-primary);
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+        .gift-note-area {
+            display: none;
+            margin-top: 12px;
+        }
+        .gift-note-area.visible {
+            display: block;
+        }
+        .gift-note-area textarea {
+            width: 100%;
+            height: 60px;
+            background: #151311;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            color: var(--color-text-primary);
+            font-family: var(--font-body);
+            font-size: 12px;
+            padding: 8px;
+            resize: none;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .gift-note-area textarea:focus {
+            border-color: var(--color-primary);
+        }
+        
+        .cart-footer { border-top: 1px solid var(--color-border); padding-top: var(--space-md); }
         .cart-total { display: flex; justify-content: space-between; font-size: 18px; font-weight: 600; margin-bottom: var(--space-md); color: var(--color-accent); }
         .btn-whatsapp { width: 100%; padding: 14px; background: #25D366; color: white; border: none; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 4px; }
         
@@ -355,7 +402,7 @@
                 <h2 class="section-title">Nimet Luxe Hikayesi</h2>
             </div>
             <div class="about-content">
-                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlatmakla kalmayıp ruhu ve anıları da beslediğine inanıyoruz. Her bir mumumuz, en seçkin esansiyel yağlar ve sürdürülebilir doğal soya balmumu kullanılarak atölyemizde tamamen el işçiliğiyle dökülmektedir.</p>
+                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlatmakla kalmayıp ruhu ve anıları da beslediğine inanıyoruz. Her bir mumumuz, en seçkin esansiyel yağlar... tamamen el işçiliğiyle dökülmektedir.</p>
                 <em>"Her mum, keşfedilmeyi bekleyen bir hikaye yakar."</em>
             </div>
         </div>
@@ -415,7 +462,22 @@
     <!-- Sepet Paneli -->
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header"><h3>Sepetiniz</h3><button class="close-cart" onclick="toggleCart()">✕</button></div>
+        
+        <!-- Ürünler -->
         <div class="cart-items" id="cart-items-container"></div>
+        
+        <!-- HEDİYE SEÇENEKLERİ ALANI -->
+        <div class="gift-section">
+            <label class="gift-checkbox-wrapper">
+                <input type="checkbox" id="giftCheck" onchange="toggleGiftNote()">
+                🎁 Siparişimi Premium Hediye Paketi Yap
+            </label>
+            <div class="gift-note-area" id="giftNoteWrapper">
+                <textarea id="giftNoteText" placeholder="Mum kutusuna eklenecek zarif hediye notunuzu buraya yazın..."></textarea>
+            </div>
+        </div>
+        
+        <!-- Alt Toplam ve WhatsApp -->
         <div class="cart-footer">
             <div class="cart-total"><span>Toplam Tutar:</span><span id="cart-total-amount">0 TL</span></div>
             <button class="btn-whatsapp" onclick="sendWhatsAppOrder()">Siparişi WhatsApp ile Tamamla</button>
@@ -431,26 +493,24 @@
         ];
         let sepet = [];
 
-        // APPLE PAY TARZI FERAH VE CHIME (ÇINLAMA) SESİ MOTORU
+        // APPLE PAY CHIME SES MOTORU
         function playApplePayChime() {
             try {
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 
-                // İlk Ana Nota (Ferah ve net bir başlangıç)
                 const osc1 = audioCtx.createOscillator();
                 const gain1 = audioCtx.createGain();
                 osc1.type = 'sine';
-                osc1.frequency.setValueAtTime(880, audioCtx.currentTime); // A5 Notası (Yüksek ve Berrak)
+                osc1.frequency.setValueAtTime(880, audioCtx.currentTime);
                 gain1.gain.setValueAtTime(0.12, audioCtx.currentTime);
                 gain1.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.25);
                 osc1.connect(gain1);
                 gain1.connect(audioCtx.destination);
                 
-                // İkinci Armonik Çınlama (Apple Pay'in o lüks kuyruklu sesini veren kısım)
                 const osc2 = audioCtx.createOscillator();
                 const gain2 = audioCtx.createGain();
                 osc2.type = 'sine';
-                osc2.frequency.setValueAtTime(1318.51, audioCtx.currentTime + 0.04); // E6 Notası (Çınlama efekti, milisaniyeler sonra girer)
+                osc2.frequency.setValueAtTime(1318.51, audioCtx.currentTime + 0.04);
                 gain2.gain.setValueAtTime(0.08, audioCtx.currentTime + 0.04);
                 gain2.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.4);
                 osc2.connect(gain2);
@@ -458,10 +518,9 @@
                 
                 osc1.start();
                 osc1.stop(audioCtx.currentTime + 0.25);
-                
                 osc2.start(audioCtx.currentTime + 0.04);
                 osc2.stop(audioCtx.currentTime + 0.4);
-            } catch(e) { console.log("Ses motoru başlatılamadı:", e); }
+            } catch(e) { console.log("Ses motoru hatası:", e); }
         }
         
         function urunleriListele() {
@@ -487,20 +546,30 @@
           if (su) { su.adet += 1; } else { sepet.push({ ...u, adet: 1 }); }
           
           sepetiGuncelle();
-          playApplePayChime(); // Yenilenen kristal netliğindeki ses
+          playApplePayChime();
           showToast(`${u.ad} sepete eklendi! ✨`);
         }
 
-        // ADET DEĞİŞTİRME FONKSİYONU (+ ve - için)
         function adetDegistir(id, miktar) {
             const su = sepet.find(x => x.id === id);
             if (!su) return;
-            
             su.adet += miktar;
-            if (su.adet <= 0) {
-                sepet = sepet.filter(x => x.id !== id); // Adet 0 olursa listeden sil
-            }
+            if (su.adet <= 0) { sepet = sepet.filter(x => x.id !== id); }
             sepetiGuncelle();
+        }
+
+        // HEDİYE NOTU ALANINI AÇMA KAPATMA FONKSİYONU
+        function toggleGiftNote() {
+            const check = document.getElementById('giftCheck');
+            const wrapper = document.getElementById('giftNoteWrapper');
+            if(check && wrapper) {
+                if(check.checked) {
+                    wrapper.classList.add('visible');
+                } else {
+                    wrapper.classList.remove('visible');
+                    document.getElementById('giftNoteText').value = ""; // Kapanırsa temizle
+                }
+            }
         }
         
         function sepetiGuncelle() {
@@ -512,7 +581,6 @@
           if (!kc || !ta) return;
           if (sepet.length === 0) { kc.innerHTML = '<p style="text-align:center; opacity:0.6; padding:20px;">Sepetiniz boş.</p>'; ta.innerText = '0 TL'; return; }
           
-          // Adet yönetim butonları eklendi
           kc.innerHTML = sepet.map(i => `
             <div class="cart-item">
                 <div class="cart-item-info">
@@ -530,12 +598,26 @@
           ta.innerText = sepet.reduce((t, i) => t + (i.fiyat * i.adet), 0) + ' TL';
         }
         
+        // YENİLENEN SİPARİŞİ WHATSAPP'A GÖNDERME MOTORU
         function sendWhatsAppOrder() {
           if (sepet.length === 0) { alert("Lütfen önce sepetinize ürün ekleyin."); return; }
           const tel = "905522926638";
+          
           let m = "Merhaba Nimet Luxe Candles! Web sitenizden sipariş vermek istiyorum.\n\n🛒 *Sipariş Detayları:*\n";
           sepet.forEach(i => { m += `- ${i.adet}x ${i.ad} (${i.fiyat * i.adet} TL)\n`; });
-          m += `\n💰 *Toplam Tutar:* ${sepet.reduce((t, i) => t + (i.fiyat * i.adet), 0)} TL\n\nSiparişimi onaylamak ve kargo bilgilerimi iletmek istiyorum.`;
+          
+          // Hediye paketi ve notu verilerini mesaja ekleme
+          const giftCheck = document.getElementById('giftCheck');
+          const giftNote = document.getElementById('giftNoteText').value.trim();
+          
+          if (giftCheck && giftCheck.checked) {
+              m += `\n🎁 *Hediye Durumu:* Premium Hediye Paketi İstiyorum.`;
+              if (giftNote !== "") {
+                  m += `\n✉️ *Hediye Notu:* "${giftNote}"`;
+              }
+          }
+          
+          m += `\n\n💰 *Toplam Tutar:* ${sepet.reduce((t, i) => t + (i.fiyat * i.adet), 0)} TL\n\nSiparişimi onaylamak ve kargo bilgilerimi iletmek istiyorum.`;
           window.open("https://api.whatsapp.com/send?phone=" + tel + "&text=" + encodeURIComponent(m), '_blank');
         }
 
