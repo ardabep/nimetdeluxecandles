@@ -30,7 +30,7 @@
           font-family: var(--font-body); 
           overflow-x: hidden; 
           -webkit-font-smoothing: antialiased; 
-          padding-top: 70px; /* Sabitlenen menünün içeriği kapatmaması için */
+          padding-top: 70px;
         }
         
         body::before {
@@ -44,7 +44,7 @@
         
         .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); position: relative; z-index: 2; }
         
-        /* HER YERDE SABİT VE KUSURSUZ NAVİGASYON MENÜSÜ */
+        /* NAVİGASYON MENÜSÜ */
         .nav { 
           position: fixed; 
           top: 0; 
@@ -58,7 +58,6 @@
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-primary); text-decoration: none; letter-spacing: 0.05em; }
         
-        /* Linklerin yapısı ve yerleşimi */
         .nav-links { display: flex; gap: var(--space-lg); align-items: center; }
         .nav-links a { color: var(--color-text-secondary); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.3s ease; position: relative; }
         .nav-links a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0; background-color: var(--color-primary); transition: width 0.3s ease; }
@@ -68,7 +67,7 @@
         .nav .cart-trigger { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 8px 16px; font-family: var(--font-body); cursor: pointer; font-weight: 600; font-size: 12px; transition: all 0.4s var(--ease-out-expo); }
         .nav .cart-trigger:hover { background: var(--color-primary); color: var(--color-bg); }
         
-        /* SABİT MOBİL ALT BAR (Sadece Telefonlarda Sepete Hızlı Erişim Sağlar) */
+        /* MOBİL ALT BAR */
         .mobile-bottom-bar {
             position: fixed;
             bottom: 20px;
@@ -211,10 +210,17 @@
         .cart-header h3 { font-family: var(--font-display); font-size: 24px; color: var(--color-accent); }
         .close-cart { background: transparent; border: none; color: var(--color-accent); font-size: 24px; cursor: pointer; padding: 5px; }
         .cart-items { flex-grow: 1; overflow-y: auto; }
+        
+        /* YENİLENEN ADET AYARLAMA ALANI (UI) */
         .cart-item { display: flex; justify-content: space-between; align-items: center; padding: var(--space-md) 0; border-bottom: 1px solid var(--color-border); }
-        .cart-item-info h4 { font-family: var(--font-display); font-size: 17px; color: var(--color-accent); }
-        .cart-item-info span { font-size: 12px; color: var(--color-text-secondary); }
-        .btn-remove { background: transparent; border: none; color: #ff5252; cursor: pointer; font-size: 12px; }
+        .cart-item-info h4 { font-family: var(--font-display); font-size: 17px; color: var(--color-accent); margin-bottom: 4px; }
+        .cart-item-info span { font-size: 13px; color: var(--color-primary); font-weight: 500; }
+        
+        .quantity-control { display: flex; align-items: center; background: #151311; border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 4px; overflow: hidden; }
+        .qty-btn { background: transparent; border: none; color: var(--color-accent); width: 28px; height: 28px; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+        .qty-btn:hover { background: rgba(212, 175, 55, 0.1); color: var(--color-primary); }
+        .qty-val { width: 30px; text-align: center; font-size: 13px; font-weight: 600; color: var(--color-accent); }
+        
         .cart-footer { border-top: 1px solid var(--color-border); padding-top: var(--space-xl); }
         .cart-total { display: flex; justify-content: space-between; font-size: 18px; font-weight: 600; margin-bottom: var(--space-md); color: var(--color-accent); }
         .btn-whatsapp { width: 100%; padding: 14px; background: #25D366; color: white; border: none; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 4px; }
@@ -249,12 +255,10 @@
         .stagger-2 { animation-delay: 0.3s; }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
         
-        /* MOBİL VE TABLET ERANLAR İÇİN TAM YENİLENEN EK KODLAR */
         @media (max-width: 992px) { 
             body { padding-bottom: 90px; padding-top: 60px; } 
             .grid, .reviews-grid, .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); } 
             
-            /* MOBİL ÜST MENÜ: Kibar, sıkıştırmayan, harika lüks bir düzen */
             .nav { padding: 10px 0; }
             .nav-container { flex-direction: column; gap: 8px; }
             .logo { font-size: 19px; }
@@ -267,7 +271,7 @@
                 padding-top: 6px;
             }
             .nav-links a { font-size: 11px; letter-spacing: 0.02em; opacity: 0.9; }
-            .nav .cart-trigger { display: none; } /* Mobilde alttaki bar devralıyor sepeti */
+            .nav .cart-trigger { display: none; }
             
             .mobile-bottom-bar { display: flex; } 
             
@@ -292,7 +296,7 @@
 </head>
 <body>
 
-    <!-- Üst Menü (Artık Mobilde de Var ve Sabit!) -->
+    <!-- Üst Menü -->
     <nav class="nav">
         <div class="container nav-container">
             <a href="#" class="logo">Nimet Luxe Candles</a>
@@ -316,7 +320,7 @@
 
     <!-- Sepet Bildirim Kutusu -->
     <div class="toast-notification" id="cartToast">
-        <span>🌟</span> <span id="toastMessage">Ürün sepete eklendi!</span>
+        <span>✨</span> <span id="toastMessage">Ürün sepete eklendi!</span>
     </div>
 
     <!-- Hero Bölümü -->
@@ -408,10 +412,10 @@
         </div>
     </footer>
 
-    <!-- Sepet -->
+    <!-- Sepet Paneli -->
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header"><h3>Sepetiniz</h3><button class="close-cart" onclick="toggleCart()">✕</button></div>
-        <div class="cart-items" id="cart-items-container"><p style="text-align:center; opacity:0.6; padding:20px;">Sepetiniz boş.</p></div>
+        <div class="cart-items" id="cart-items-container"></div>
         <div class="cart-footer">
             <div class="cart-total"><span>Toplam Tutar:</span><span id="cart-total-amount">0 TL</span></div>
             <button class="btn-whatsapp" onclick="sendWhatsAppOrder()">Siparişi WhatsApp ile Tamamla</button>
@@ -427,26 +431,37 @@
         ];
         let sepet = [];
 
-        // PREMIUM YUMUŞAK BİP SESİ MOTORU (Dışarıdan dosya yüklemeden, tarayıcının kendi frekansıyla üretilir - Asla bozulmaz)
-        function playPremiumBeep() {
+        // APPLE PAY TARZI FERAH VE CHIME (ÇINLAMA) SESİ MOTORU
+        function playApplePayChime() {
             try {
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                const oscillator = audioCtx.createOscillator();
-                const gainNode = audioCtx.createGain();
                 
-                oscillator.type = 'sine'; // Pürüzsüz sinüs dalgası
-                oscillator.frequency.setValueAtTime(587.33, audioCtx.currentTime); // Lüks D5 Notası
+                // İlk Ana Nota (Ferah ve net bir başlangıç)
+                const osc1 = audioCtx.createOscillator();
+                const gain1 = audioCtx.createGain();
+                osc1.type = 'sine';
+                osc1.frequency.setValueAtTime(880, audioCtx.currentTime); // A5 Notası (Yüksek ve Berrak)
+                gain1.gain.setValueAtTime(0.12, audioCtx.currentTime);
+                gain1.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.25);
+                osc1.connect(gain1);
+                gain1.connect(audioCtx.destination);
                 
-                // Sesi kulak tırmalamayacak şekilde yumuşakça kapatma (Fade-out)
-                gainNode.gain.setValueAtTime(0.08, audioCtx.currentTime); 
-                gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.15);
+                // İkinci Armonik Çınlama (Apple Pay'in o lüks kuyruklu sesini veren kısım)
+                const osc2 = audioCtx.createOscillator();
+                const gain2 = audioCtx.createGain();
+                osc2.type = 'sine';
+                osc2.frequency.setValueAtTime(1318.51, audioCtx.currentTime + 0.04); // E6 Notası (Çınlama efekti, milisaniyeler sonra girer)
+                gain2.gain.setValueAtTime(0.08, audioCtx.currentTime + 0.04);
+                gain2.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.4);
+                osc2.connect(gain2);
+                gain2.connect(audioCtx.destination);
                 
-                oscillator.connect(gainNode);
-                gainNode.connect(audioCtx.destination);
+                osc1.start();
+                osc1.stop(audioCtx.currentTime + 0.25);
                 
-                oscillator.start();
-                oscillator.stop(audioCtx.currentTime + 0.15);
-            } catch(e) { console.log("Ses çalınamadı:", e); }
+                osc2.start(audioCtx.currentTime + 0.04);
+                osc2.stop(audioCtx.currentTime + 0.4);
+            } catch(e) { console.log("Ses motoru başlatılamadı:", e); }
         }
         
         function urunleriListele() {
@@ -472,11 +487,21 @@
           if (su) { su.adet += 1; } else { sepet.push({ ...u, adet: 1 }); }
           
           sepetiGuncelle();
-          playPremiumBeep(); // Harika bip sesi tetiklenir
+          playApplePayChime(); // Yenilenen kristal netliğindeki ses
           showToast(`${u.ad} sepete eklendi! ✨`);
         }
-        
-        function sepettenCikar(id) { sepet = sepet.filter(x => x.id !== id); sepetiGuncelle(); }
+
+        // ADET DEĞİŞTİRME FONKSİYONU (+ ve - için)
+        function adetDegistir(id, miktar) {
+            const su = sepet.find(x => x.id === id);
+            if (!su) return;
+            
+            su.adet += miktar;
+            if (su.adet <= 0) {
+                sepet = sepet.filter(x => x.id !== id); // Adet 0 olursa listeden sil
+            }
+            sepetiGuncelle();
+        }
         
         function sepetiGuncelle() {
           const kc = document.getElementById('cart-items-container'), ta = document.getElementById('cart-total-amount');
@@ -486,7 +511,22 @@
           
           if (!kc || !ta) return;
           if (sepet.length === 0) { kc.innerHTML = '<p style="text-align:center; opacity:0.6; padding:20px;">Sepetiniz boş.</p>'; ta.innerText = '0 TL'; return; }
-          kc.innerHTML = sepet.map(i => `<div class="cart-item"><div class="cart-item-info"><h4>${i.ad}</h4><span>${i.adet} adet x ${i.fiyat} TL</span></div><button class="btn-remove" onclick="sepettenCikar(${i.id})">Kaldır</button></div>`).join('');
+          
+          // Adet yönetim butonları eklendi
+          kc.innerHTML = sepet.map(i => `
+            <div class="cart-item">
+                <div class="cart-item-info">
+                    <h4>${i.ad}</h4>
+                    <span>${i.fiyat * i.adet} TL</span>
+                </div>
+                <div class="quantity-control">
+                    <button class="qty-btn" onclick="adetDegistir(${i.id}, -1)">-</button>
+                    <div class="qty-val">${i.adet}</div>
+                    <button class="qty-btn" onclick="adetDegistir(${i.id}, 1)">+</button>
+                </div>
+            </div>
+          `).join('');
+          
           ta.innerText = sepet.reduce((t, i) => t + (i.fiyat * i.adet), 0) + ' TL';
         }
         
@@ -505,6 +545,7 @@
 
         document.addEventListener("DOMContentLoaded", () => {
             urunleriListele();
+            sepetiGuncelle();
             const elements = document.querySelectorAll('.scroll-animate');
             elements.forEach((el) => observer.observe(el));
         });
