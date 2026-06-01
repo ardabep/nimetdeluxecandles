@@ -134,7 +134,7 @@
             display: grid; 
             gap: var(--space-xl); 
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
@@ -561,10 +561,18 @@
             aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarınıza taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül ve tomurcuk figürleriyle bezenmiş mum buketi, egzotik ve taze mango niş esansıyla zenginleştirilmiştir. Yandığı andan itibaren ortama tatlı, canlandırıcı ve davetkar bir enerji yayarak premium bir ambiyans oluşturur.", 
             fiyat: 2000,
             gorsel: "mango.png" 
+          },
+          { 
+            id: 3, 
+            ad: "Yasemin Kokulu Mum Buketi", 
+            kategori: "premium",
+            aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor. Sevimli figürler, zarif güller ve narin bahar çiçeklerinin arasına el işçiliğiyle serpiştirilen cipsolar, muma büyüleyici bir derinlik kazandırıyor. Niş yasemin esansının o yatıştırıcı ve lüks kokusu, ruhunuzu dinlendirirken odanızın enerjisini saray bahçelerine dönüştürecek.", 
+            fiyat: 2000,
+            gorsel: "yasemin.png" 
           }
           /* İleride normal ürün eklemek istersen bu şablonu kullanabilirsin:
           ,{
-            id: 3,
+            id: 4,
             ad: "Klasik Silindir Mum",
             kategori: "normal",
             aciklama: "Uzun ömürlü kullanım sunan minimalist tasarımlı soya mumu.",
@@ -613,11 +621,9 @@
           
           if(!premiumList || !sliderInner || !normalList) return;
           
-          // Filtreleme işlemleri
           const premiumUrunler = urunler.filter(u => u.kategori === 'premium');
           const normalUrunler = urunler.filter(u => u.kategori === 'normal');
 
-          // Eğer normal ürün yoksa o bölümü gizle
           if(normalUrunler.length === 0) {
               if(normalSection) normalSection.style.display = 'none';
           } else {
