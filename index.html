@@ -9,9 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-          --color-bg: #1a1816;           /* Tam istediğin o mat lüks füme/antrasit tonu */
-          --color-surface: #211e1c;      /* Kartlar için derinlik katan asil ton */
-          --color-primary: #d4af37;      /* Detaylar için mat altın varak */
+          --color-bg: #1a1816;           
+          --color-surface: #211e1c;      
+          --color-primary: #d4af37;      
           --color-accent: #fcfbfa;       
           --color-text-primary: #f5f2ed;  
           --color-text-secondary: #aaa39a;
@@ -19,10 +19,16 @@
           --font-display: 'Cormorant Garamond', serif; 
           --font-body: 'Plus Jakarta Sans', sans-serif;
           --space-md: 16px; --space-lg: 24px; --space-xl: 40px;
+          
+          /* Lüks ve pürüzsüz geçişler için özel sinematik ivme eğrisi */
           --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+          --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
-        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        /* Sayfa içi link kaydırmalarını yumuşattık */
+        html { scroll-behavior: smooth; }
         
         body { 
           background-color: var(--color-bg); 
@@ -45,25 +51,26 @@
           backdrop-filter: blur(25px); 
           background: rgba(26, 24, 22, 0.9); 
           border-bottom: 1px solid rgba(212, 175, 55, 0.08); 
+          transition: var(--transition-smooth);
         }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--color-primary); text-decoration: none; letter-spacing: 0.08em; }
         
         .nav-links { display: flex; gap: var(--space-lg); align-items: center; }
-        .nav-links a { color: var(--color-text-secondary); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.3s ease; position: relative; letter-spacing: 0.03em; }
-        .nav-links a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0; background-color: var(--color-primary); transition: width 0.3s ease; }
+        .nav-links a { color: var(--color-text-secondary); text-decoration: none; font-size: 13px; font-weight: 500; transition: var(--transition-smooth); position: relative; letter-spacing: 0.03em; }
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0; background-color: var(--color-primary); transition: var(--transition-smooth); }
         .nav-links a:hover { color: var(--color-accent); }
         .nav-links a:hover::after { width: 100%; }
         
-        .nav .cart-trigger { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 10px 20px; font-family: var(--font-body); cursor: pointer; font-weight: 600; font-size: 12px; transition: all 0.4s var(--ease-out-expo); letter-spacing: 0.05em; }
-        .nav .cart-trigger:hover { background: var(--color-primary); color: var(--color-bg); }
+        .nav .cart-trigger { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 10px 20px; font-family: var(--font-body); cursor: pointer; font-weight: 600; font-size: 12px; transition: var(--transition-smooth); letter-spacing: 0.05em; }
+        .nav .cart-trigger:hover { background: var(--color-primary); color: var(--color-bg); transform: scale(1.03); }
         
         /* Mobil Alt Bar */
         .mobile-bottom-bar {
             position: fixed;
             bottom: 20px;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) translateY(100px);
             width: calc(100% - 40px);
             max-width: 400px;
             background: rgba(33, 30, 28, 0.95);
@@ -76,22 +83,15 @@
             align-items: center;
             z-index: 150;
             box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            animation: slideUpBar 1s var(--ease-out-expo) forwards 0.5s;
         }
+        @keyframes slideUpBar { to { transform: translateX(-50%) translateY(0); } }
         .mobile-bar-brand { font-family: var(--font-display); font-size: 18px; color: var(--color-accent); text-decoration: none; font-weight: 600; letter-spacing: 0.05em; }
         .mobile-cart-btn {
-            background: var(--color-primary);
-            color: var(--color-bg);
-            border: none;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-family: var(--font-body);
-            font-weight: 600;
-            font-size: 13px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            background: var(--color-primary); color: var(--color-bg); border: none; padding: 8px 20px; border-radius: 20px;
+            font-family: var(--font-body); font-weight: 600; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: var(--transition-smooth);
         }
+        .mobile-cart-btn:active { transform: scale(0.95); }
         
         /* Hero Alanı */
         .hero { height: calc(100vh - 70px); display: flex; align-items: center; position: relative; overflow: hidden; }
@@ -99,11 +99,11 @@
           position: absolute; top: 0; left: 0; width: 100%; height: 100%;
           background-image: url('https://images.unsplash.com/photo-1603006905003-be475563bc59?q=80&w=1920&auto=format&fit=crop');
           background-size: cover; background-position: center; z-index: 1;
-          transform: scale(1.02); animation: subtleZoom 20s infinite alternate ease-in-out;
+          transform: scale(1.05); animation: luxuryZoom 25s infinite alternate ease-in-out;
         }
         .hero-overlay {
           position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-          background: linear-gradient(to bottom, rgba(26, 24, 22, 0.5) 0%, rgba(26, 24, 22, 0.7) 60%, var(--color-bg) 100%);
+          background: linear-gradient(to bottom, rgba(26, 24, 22, 0.4) 0%, rgba(26, 24, 22, 0.65) 60%, var(--color-bg) 100%);
           z-index: 1;
         }
         .hero-wrapper { width: 100%; position: relative; z-index: 3; }
@@ -111,34 +111,39 @@
         .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem); font-weight: 400; color: var(--color-accent); margin-bottom: var(--space-md); line-height: 1.15; letter-spacing: -0.01em; }
         .hero p { font-size: 16px; color: var(--color-text-secondary); margin-bottom: var(--space-xl); line-height: 1.7; font-weight: 300; }
         
-        @keyframes subtleZoom { 0% { transform: scale(1); } 100% { transform: scale(1.03); } }
+        @keyframes luxuryZoom { 0% { transform: scale(1.02) rotate(0deg); } 100% { transform: scale(1.08) rotate(0.5deg); } }
         
-        .btn-primary { display: inline-flex; padding: 16px 36px; background: var(--color-primary); color: var(--color-bg); text-decoration: none; font-weight: 600; letter-spacing: 0.1em; font-size: 12px; text-transform: uppercase; transition: all 0.4s var(--ease-out-expo); border: none; cursor: pointer; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2); background: var(--color-accent); color: var(--color-bg); }
+        .btn-primary { display: inline-flex; padding: 16px 36px; background: var(--color-primary); color: var(--color-bg); text-decoration: none; font-weight: 600; letter-spacing: 0.1em; font-size: 12px; text-transform: uppercase; transition: var(--transition-smooth); border: none; cursor: pointer; }
+        .btn-primary:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.25); background: var(--color-accent); color: var(--color-bg); }
         
         .section-header { text-align: center; margin-bottom: 50px; }
         .section-subtitle { color: var(--color-primary); text-transform: uppercase; font-size: 11px; letter-spacing: 0.25em; margin-bottom: 10px; display: block; font-weight: 600; }
         .section-title { font-family: var(--font-display); font-size: 36px; font-weight: 400; letter-spacing: 0.03em; color: var(--color-accent); }
         
-        .scroll-animate { opacity: 0; transform: translateY(20px); transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo); }
-        .scroll-animate.active { opacity: 1; transform: translateY(0); }
+        /* Akıcı Scroll Elementleri */
+        .scroll-animate { 
+            opacity: 0; 
+            transform: translateY(40px) scale(0.98); 
+            transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo); 
+        }
+        .scroll-animate.active { opacity: 1; transform: translateY(0) scale(1); }
         
         .section-block { padding: 90px 0; border-bottom: 1px solid rgba(212, 175, 55, 0.05); position: relative; z-index: 2; }
         .grid { display: grid; gap: var(--space-xl); grid-template-columns: repeat(3, 1fr); }
         
-        /* Kart Tasarımları - Premium Mat Antrasit */
+        /* Kart Tasarımları ve Yumuşak Hover Reaksiyonu */
         .card { 
           background: var(--color-surface); 
           border: 1px solid rgba(212, 175, 55, 0.04); 
           padding: var(--space-md); 
-          transition: all 0.5s var(--ease-out-expo); 
+          transition: var(--transition-smooth); 
           display: flex; flex-direction: column; 
           position: relative;
         }
         .card:hover { 
-          transform: translateY(-8px); 
-          border-color: rgba(212, 175, 55, 0.22); 
-          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5); 
+          transform: translateY(-12px) scale(1.01); 
+          border-color: rgba(212, 175, 55, 0.3); 
+          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6); 
         }
         
         .product-img-box { 
@@ -149,16 +154,19 @@
           color: rgba(212, 175, 55, 0.35); 
           font-family: var(--font-display); font-style: italic; font-size: 22px; 
           letter-spacing: 0.05em;
-          border: 1px solid rgba(212, 175, 55, 0.02); 
+          border: 1px solid rgba(212, 175, 55, 0.02);
+          transition: var(--transition-smooth);
+          overflow: hidden;
         }
+        .card:hover .product-img-box { color: var(--color-primary); background: #141311; transform: scale(0.99); }
         
         .product-title { font-family: var(--font-display); font-size: 24px; font-weight: 400; margin-bottom: 8px; color: var(--color-accent); letter-spacing: 0.02em; }
         .product-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--space-md); flex-grow: 1; font-weight: 300; }
         .product-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-md); border-top: 1px solid rgba(212, 175, 55, 0.08); }
         .product-price { font-weight: 600; color: var(--color-primary); font-size: 18px; font-family: var(--font-body); }
         
-        .btn-add-cart { background: transparent; border: 1px solid rgba(212, 175, 55, 0.25); color: var(--color-primary); padding: 10px 22px; font-size: 12px; cursor: pointer; transition: all 0.3s ease; font-weight: 600; letter-spacing: 0.05em; }
-        .btn-add-cart:hover { background: var(--color-primary); color: var(--color-bg); }
+        .btn-add-cart { background: transparent; border: 1px solid rgba(212, 175, 55, 0.25); color: var(--color-primary); padding: 10px 22px; font-size: 12px; cursor: pointer; transition: var(--transition-smooth); font-weight: 600; letter-spacing: 0.05em; }
+        .btn-add-cart:hover { background: var(--color-primary); color: var(--color-bg); transform: scale(1.05); }
         
         /* Hakkımızda Bölümü */
         .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
@@ -167,7 +175,8 @@
         
         /* Müşteri Yorumları */
         .reviews-grid { display: grid; gap: var(--space-lg); grid-template-columns: repeat(3, 1fr); }
-        .review-card { background: var(--color-surface); border: 1px solid rgba(212, 175, 55, 0.02); padding: var(--space-lg); }
+        .review-card { background: var(--color-surface); border: 1px solid rgba(212, 175, 55, 0.02); padding: var(--space-lg); transition: var(--transition-smooth); }
+        .review-card:hover { transform: translateY(-5px); border-color: rgba(212, 175, 55, 0.1); }
         .stars { color: var(--color-primary); font-size: 13px; margin-bottom: 14px; letter-spacing: 3px; }
         .review-text { font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; font-style: italic; margin-bottom: var(--space-md); font-weight: 300; }
         .review-user { display: flex; align-items: center; gap: 12px; }
@@ -183,27 +192,27 @@
         .map-placeholder { text-align: center; font-size: 13px; color: var(--color-primary); padding: var(--space-md); line-height: 1.6; font-family: var(--font-display); }
         .footer-bottom { text-align: center; padding-top: 35px; border-top: 1px solid rgba(212, 175, 55, 0.04); font-size: 12px; letter-spacing: 0.02em; opacity: 0.6; }
         
-        /* Sepet Alanı */
+        /* Sepet Alanı Perde Efekti */
         .cart-sidebar { 
             position: fixed; 
-            top: 0; right: -400px; 
-            width: 400px; height: 100%; 
+            top: 0; right: -440px; 
+            width: 420px; height: 100%; 
             background: #1e1c1a; 
             border-left: 1px solid rgba(212, 175, 55, 0.12); 
             z-index: 200; 
             padding: var(--space-xl); 
             display: flex; flex-direction: column; 
-            transition: right 0.5s var(--ease-out-expo); 
-            box-shadow: -20px 0 50px rgba(0,0,0,0.6); 
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), right 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: -20px 0 50px rgba(0,0,0,0.7); 
         }
         .cart-sidebar.open { right: 0; }
         .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xl); border-bottom: 1px solid rgba(212, 175, 55, 0.08); padding-bottom: var(--space-md); }
         .cart-header h3 { font-family: var(--font-display); font-size: 26px; color: var(--color-accent); font-weight: 400; }
-        .close-cart { background: transparent; border: none; color: var(--color-accent); font-size: 24px; cursor: pointer; padding: 5px; transition: color 0.2s; }
+        .close-cart { background: transparent; border: none; color: var(--color-accent); font-size: 24px; cursor: pointer; padding: 5px; transition: color 0.3s; }
         .close-cart:hover { color: var(--color-primary); }
         .cart-items { flex-grow: 1; overflow-y: auto; }
         
-        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: var(--space-md) 0; border-bottom: 1px solid rgba(212, 175, 55, 0.04); }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: var(--space-md) 0; border-bottom: 1px solid rgba(212, 175, 55, 0.04); transition: var(--transition-smooth); }
         .cart-item-info h4 { font-family: var(--font-display); font-size: 18px; color: var(--color-accent); margin-bottom: 4px; font-weight: 400; }
         .cart-item-info span { font-size: 14px; color: var(--color-primary); font-weight: 500; }
         
@@ -219,32 +228,20 @@
             border: 1px dashed rgba(212, 175, 55, 0.15);
             border-radius: 4px;
         }
-        .gift-checkbox-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            font-size: 13px;
-            color: var(--color-accent);
-        }
-        .gift-checkbox-wrapper input {
-            accent-color: var(--color-primary);
-            width: 16px;
-            height: 16px;
-            cursor: pointer;
-        }
+        .gift-checkbox-wrapper { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 13px; color: var(--color-accent); }
+        .gift-checkbox-wrapper input { accent-color: var(--color-primary); width: 16px; height: 16px; cursor: pointer; }
         
         .cart-footer { border-top: 1px solid rgba(212, 175, 55, 0.08); padding-top: var(--space-md); }
         .cart-total { display: flex; justify-content: space-between; font-size: 19px; font-weight: 600; margin-bottom: var(--space-md); color: var(--color-accent); font-family: var(--font-display); }
-        .btn-whatsapp { width: 100%; padding: 15px; background: #25D366; color: white; border: none; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 4px; letter-spacing: 0.02em; transition: opacity 0.3s; }
-        .btn-whatsapp:hover { opacity: 0.9; }
+        .btn-whatsapp { width: 100%; padding: 15px; background: #25D366; color: white; border: none; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 4px; letter-spacing: 0.02em; transition: opacity 0.3s, transform 0.2s; }
+        .btn-whatsapp:active { transform: scale(0.98); }
         
-        /* Bildirim Pop-up */
+        /* Akıcı Toast Bildirimi */
         .toast-notification {
             position: fixed;
             bottom: 90px; 
             left: 50%;
-            transform: translate(-50%, 30px);
+            transform: translate(-50%, 40px);
             background: var(--color-surface);
             border: 1px solid var(--color-primary);
             color: var(--color-accent);
@@ -255,7 +252,7 @@
             z-index: 300;
             opacity: 0;
             pointer-events: none;
-            transition: transform 0.4s var(--ease-out-expo), opacity 0.4s ease;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
             box-shadow: 0 15px 35px rgba(0,0,0,0.4);
             display: flex;
             align-items: center;
@@ -263,10 +260,11 @@
         }
         .toast-notification.show { opacity: 1; transform: translate(-50%, 0); }
 
-        .animate-up { opacity: 0; transform: translateY(20px); animation: fadeInUp 1.2s var(--ease-out-expo) forwards; }
-        .stagger-1 { animation-delay: 0.15s; }
-        .stagger-2 { animation-delay: 0.3s; }
-        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        /* Giriş (Hero) Animasyonları */
+        .animate-up { opacity: 0; transform: translateY(30px); animation: luxuryFadeInUp 1.4s var(--ease-out-expo) forwards; }
+        .stagger-1 { animation-delay: 0.2s; }
+        .stagger-2 { animation-delay: 0.4s; }
+        @keyframes luxuryFadeInUp { to { opacity: 1; transform: translateY(0); } }
         
         /* Mobil Optimizasyon */
         @media (max-width: 992px) { 
@@ -277,12 +275,8 @@
             .nav-container { flex-direction: column; gap: 8px; }
             .logo { font-size: 21px; }
             .nav-links { 
-                display: flex; 
-                gap: 16px; 
-                width: 100%; 
-                justify-content: center; 
-                border-top: 1px solid rgba(212, 175, 55, 0.06);
-                padding-top: 8px;
+                display: flex; gap: 16px; width: 100%; justify-content: center; 
+                border-top: 1px solid rgba(212, 175, 55, 0.06); padding-top: 8px;
             }
             .nav-links a { font-size: 12px; }
             .nav .cart-trigger { display: none; }
@@ -290,12 +284,8 @@
             .mobile-bottom-bar { display: flex; } 
             
             .cart-sidebar { 
-                width: calc(100% - 30px); 
-                height: calc(100% - 40px); 
-                top: 20px; 
-                right: -100%; 
-                border-radius: 12px;
-                padding: var(--space-lg);
+                width: calc(100% - 30px); height: calc(100% - 40px); 
+                top: 20px; right: -110%; border-radius: 12px; padding: var(--space-lg);
             } 
             .cart-sidebar.open { right: 15px; }
             
@@ -361,7 +351,7 @@
                 <h2 class="section-title">Nimet Luxe Hikayesi</h2>
             </div>
             <div class="about-content">
-                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlatmakla kalmayıp ruhu ve ortamın enerjisini de beslediğine inanıyoruz. Tamamen organik ve sürdürülebilir soya ham maddesi kullanarak, sağlığa zararlı maddeler içermeyen, uzun ömürlü ve yoğun esanslı mumlar üретиyoruz. Atölyemizde dökülen her bir mum, detaylara gösterilen özenin ve el emeğinin eşsiz birer yansımasıdır.</p>
+                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlatmakla kalmayıp ruhu ve ortamın enerjisini de beslediğine inanıyoruz. Tamamen organik ve sürdürülebilir soya ham maddesi kullanarak, sağlığa zararlı maddeler içermeyen, uzun ömürlü ve yoğun esanslı mumlar üretiyoruz. Atölyemizde dökülen her bir mum, detaylara gösterilen özenin ve el emeğinin eşsiz birer yansımasıdır.</p>
                 <em>"Her mum, keşfedilmeyi bekleyen bir hikaye yakar."</em>
             </div>
         </div>
@@ -554,9 +544,14 @@
           window.open("https://api.whatsapp.com/send?phone=" + tel + "&text=" + encodeURIComponent(m), '_blank');
         }
 
+        /* Akıcı görünme tetikleyicisi */
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-        }, { threshold: 0.1 });
+            entries.forEach((entry) => { 
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active'); 
+                }
+            });
+        }, { threshold: 0.05 }); /* Daha erken tetiklenmesi için eşiği hafifçe düşürdük */
 
         document.addEventListener("DOMContentLoaded", () => {
             urunleriListele();
