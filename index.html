@@ -9,13 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-          --color-bg: #23201d;           /* Tam istediğin o lüks, pürüzsüz vizon-antrasit tonu */
-          --color-surface: #2b2825;      /* Kartlar için sıcak ve zengin bir ton */
+          --color-bg: #1a1816;           /* Tam istediğin o mat lüks füme/antrasit tonu */
+          --color-surface: #211e1c;      /* Kartlar için derinlik katan asil ton */
           --color-primary: #d4af37;      /* Detaylar için mat altın varak */
           --color-accent: #fcfbfa;       
           --color-text-primary: #f5f2ed;  
-          --color-text-secondary: #b0a9a0;
-          --color-border: rgba(212, 175, 55, 0.15); 
+          --color-text-secondary: #aaa39a;
+          --color-border: rgba(212, 175, 55, 0.12); 
           --font-display: 'Cormorant Garamond', serif; 
           --font-body: 'Plus Jakarta Sans', sans-serif;
           --space-md: 16px; --space-lg: 24px; --space-xl: 40px;
@@ -43,8 +43,8 @@
           z-index: 100; 
           padding: var(--space-md) 0; 
           backdrop-filter: blur(25px); 
-          background: rgba(35, 32, 29, 0.9); 
-          border-bottom: 1px solid rgba(212, 175, 55, 0.1); 
+          background: rgba(26, 24, 22, 0.9); 
+          border-bottom: 1px solid rgba(212, 175, 55, 0.08); 
         }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--color-primary); text-decoration: none; letter-spacing: 0.08em; }
@@ -66,16 +66,16 @@
             transform: translateX(-50%);
             width: calc(100% - 40px);
             max-width: 400px;
-            background: rgba(43, 40, 37, 0.95);
+            background: rgba(33, 30, 28, 0.95);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(212, 175, 55, 0.25);
+            border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 40px;
             padding: 14px 28px;
             display: none; 
             justify-content: space-between;
             align-items: center;
             z-index: 150;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
         }
         .mobile-bar-brand { font-family: var(--font-display); font-size: 18px; color: var(--color-accent); text-decoration: none; font-weight: 600; letter-spacing: 0.05em; }
         .mobile-cart-btn {
@@ -103,7 +103,7 @@
         }
         .hero-overlay {
           position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-          background: linear-gradient(to bottom, rgba(35, 32, 29, 0.4) 0%, rgba(35, 32, 29, 0.6) 60%, var(--color-bg) 100%);
+          background: linear-gradient(to bottom, rgba(26, 24, 22, 0.5) 0%, rgba(26, 24, 22, 0.7) 60%, var(--color-bg) 100%);
           z-index: 1;
         }
         .hero-wrapper { width: 100%; position: relative; z-index: 3; }
@@ -126,10 +126,10 @@
         .section-block { padding: 90px 0; border-bottom: 1px solid rgba(212, 175, 55, 0.05); position: relative; z-index: 2; }
         .grid { display: grid; gap: var(--space-xl); grid-template-columns: repeat(3, 1fr); }
         
-        /* Kart Tasarımları - Premium Vizon Çizgisi */
+        /* Kart Tasarımları - Premium Mat Antrasit */
         .card { 
           background: var(--color-surface); 
-          border: 1px solid rgba(212, 175, 55, 0.05); 
+          border: 1px solid rgba(212, 175, 55, 0.04); 
           padding: var(--space-md); 
           transition: all 0.5s var(--ease-out-expo); 
           display: flex; flex-direction: column; 
@@ -137,19 +137,19 @@
         }
         .card:hover { 
           transform: translateY(-8px); 
-          border-color: rgba(212, 175, 55, 0.25); 
-          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4); 
+          border-color: rgba(212, 175, 55, 0.22); 
+          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5); 
         }
         
         .product-img-box { 
           width: 100%; height: 280px; 
-          background: #1e1b19; 
+          background: #191715; 
           display: flex; align-items: center; justify-content: center; 
           margin-bottom: var(--space-md); 
           color: rgba(212, 175, 55, 0.35); 
           font-family: var(--font-display); font-style: italic; font-size: 22px; 
           letter-spacing: 0.05em;
-          border: 1px solid rgba(212, 175, 55, 0.03); 
+          border: 1px solid rgba(212, 175, 55, 0.02); 
         }
         
         .product-title { font-family: var(--font-display); font-size: 24px; font-weight: 400; margin-bottom: 8px; color: var(--color-accent); letter-spacing: 0.02em; }
@@ -157,7 +157,7 @@
         .product-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-md); border-top: 1px solid rgba(212, 175, 55, 0.08); }
         .product-price { font-weight: 600; color: var(--color-primary); font-size: 18px; font-family: var(--font-body); }
         
-        .btn-add-cart { background: transparent; border: 1px solid rgba(212, 175, 55, 0.3); color: var(--color-primary); padding: 10px 22px; font-size: 12px; cursor: pointer; transition: all 0.3s ease; font-weight: 600; letter-spacing: 0.05em; }
+        .btn-add-cart { background: transparent; border: 1px solid rgba(212, 175, 55, 0.25); color: var(--color-primary); padding: 10px 22px; font-size: 12px; cursor: pointer; transition: all 0.3s ease; font-weight: 600; letter-spacing: 0.05em; }
         .btn-add-cart:hover { background: var(--color-primary); color: var(--color-bg); }
         
         /* Hakkımızda Bölümü */
@@ -167,56 +167,56 @@
         
         /* Müşteri Yorumları */
         .reviews-grid { display: grid; gap: var(--space-lg); grid-template-columns: repeat(3, 1fr); }
-        .review-card { background: var(--color-surface); border: 1px solid rgba(212, 175, 55, 0.03); padding: var(--space-lg); }
+        .review-card { background: var(--color-surface); border: 1px solid rgba(212, 175, 55, 0.02); padding: var(--space-lg); }
         .stars { color: var(--color-primary); font-size: 13px; margin-bottom: 14px; letter-spacing: 3px; }
         .review-text { font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; font-style: italic; margin-bottom: var(--space-md); font-weight: 300; }
         .review-user { display: flex; align-items: center; gap: 12px; }
-        .user-avatar { width: 36px; height: 36px; background: #1e1b19; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--color-primary); font-weight: 600; border: 1px solid rgba(212, 175, 55, 0.15); }
+        .user-avatar { width: 36px; height: 36px; background: #191715; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--color-primary); font-weight: 600; border: 1px solid rgba(212, 175, 55, 0.12); }
         .user-name { font-size: 14px; font-weight: 500; color: var(--color-accent); }
         
         /* Footer */
-        .footer { background: #191715; border-top: 1px solid rgba(212, 175, 55, 0.08); padding: 70px 0 35px 0; color: var(--color-text-secondary); position: relative; z-index: 2; }
+        .footer { background: #141311; border-top: 1px solid rgba(212, 175, 55, 0.06); padding: 70px 0 35px 0; color: var(--color-text-secondary); position: relative; z-index: 2; }
         .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1.3fr; gap: var(--space-xl); margin-bottom: 40px; }
         .footer-col h4 { font-family: var(--font-display); font-size: 22px; color: var(--color-accent); margin-bottom: var(--space-lg); font-weight: 400; letter-spacing: 0.03em; }
         .footer-col p { font-size: 14px; line-height: 1.7; margin-bottom: 12px; font-weight: 300; }
-        .map-box { width: 100%; height: 160px; background: var(--color-surface); border: 1px solid rgba(212, 175, 55, 0.1); display: flex; align-items: center; justify-content: center; }
+        .map-box { width: 100%; height: 160px; background: var(--color-surface); border: 1px solid rgba(212, 175, 55, 0.08); display: flex; align-items: center; justify-content: center; }
         .map-placeholder { text-align: center; font-size: 13px; color: var(--color-primary); padding: var(--space-md); line-height: 1.6; font-family: var(--font-display); }
-        .footer-bottom { text-align: center; padding-top: 35px; border-top: 1px solid rgba(212, 175, 55, 0.05); font-size: 12px; letter-spacing: 0.02em; opacity: 0.7; }
+        .footer-bottom { text-align: center; padding-top: 35px; border-top: 1px solid rgba(212, 175, 55, 0.04); font-size: 12px; letter-spacing: 0.02em; opacity: 0.6; }
         
         /* Sepet Alanı */
         .cart-sidebar { 
             position: fixed; 
             top: 0; right: -400px; 
             width: 400px; height: 100%; 
-            background: #23201d; 
-            border-left: 1px solid rgba(212, 175, 55, 0.15); 
+            background: #1e1c1a; 
+            border-left: 1px solid rgba(212, 175, 55, 0.12); 
             z-index: 200; 
             padding: var(--space-xl); 
             display: flex; flex-direction: column; 
             transition: right 0.5s var(--ease-out-expo); 
-            box-shadow: -20px 0 50px rgba(0,0,0,0.5); 
+            box-shadow: -20px 0 50px rgba(0,0,0,0.6); 
         }
         .cart-sidebar.open { right: 0; }
-        .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xl); border-bottom: 1px solid rgba(212, 175, 55, 0.1); padding-bottom: var(--space-md); }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xl); border-bottom: 1px solid rgba(212, 175, 55, 0.08); padding-bottom: var(--space-md); }
         .cart-header h3 { font-family: var(--font-display); font-size: 26px; color: var(--color-accent); font-weight: 400; }
         .close-cart { background: transparent; border: none; color: var(--color-accent); font-size: 24px; cursor: pointer; padding: 5px; transition: color 0.2s; }
         .close-cart:hover { color: var(--color-primary); }
         .cart-items { flex-grow: 1; overflow-y: auto; }
         
-        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: var(--space-md) 0; border-bottom: 1px solid rgba(212, 175, 55, 0.05); }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: var(--space-md) 0; border-bottom: 1px solid rgba(212, 175, 55, 0.04); }
         .cart-item-info h4 { font-family: var(--font-display); font-size: 18px; color: var(--color-accent); margin-bottom: 4px; font-weight: 400; }
         .cart-item-info span { font-size: 14px; color: var(--color-primary); font-weight: 500; }
         
-        .quantity-control { display: flex; align-items: center; background: #191715; border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 4px; overflow: hidden; }
+        .quantity-control { display: flex; align-items: center; background: #141311; border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 4px; overflow: hidden; }
         .qty-btn { background: transparent; border: none; color: var(--color-accent); width: 30px; height: 30px; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-        .qty-btn:hover { background: rgba(212, 175, 55, 0.1); color: var(--color-primary); }
+        .qty-btn:hover { background: rgba(212, 175, 55, 0.08); color: var(--color-primary); }
         .qty-val { width: 32px; text-align: center; font-size: 13px; font-weight: 600; color: var(--color-accent); }
         
         .gift-section {
             margin: var(--space-lg) 0;
             padding: var(--space-md);
-            background: rgba(212, 175, 55, 0.02);
-            border: 1px dashed rgba(212, 175, 55, 0.2);
+            background: rgba(212, 175, 55, 0.01);
+            border: 1px dashed rgba(212, 175, 55, 0.15);
             border-radius: 4px;
         }
         .gift-checkbox-wrapper {
@@ -234,7 +234,7 @@
             cursor: pointer;
         }
         
-        .cart-footer { border-top: 1px solid rgba(212, 175, 55, 0.1); padding-top: var(--space-md); }
+        .cart-footer { border-top: 1px solid rgba(212, 175, 55, 0.08); padding-top: var(--space-md); }
         .cart-total { display: flex; justify-content: space-between; font-size: 19px; font-weight: 600; margin-bottom: var(--space-md); color: var(--color-accent); font-family: var(--font-display); }
         .btn-whatsapp { width: 100%; padding: 15px; background: #25D366; color: white; border: none; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 4px; letter-spacing: 0.02em; transition: opacity 0.3s; }
         .btn-whatsapp:hover { opacity: 0.9; }
@@ -256,7 +256,7 @@
             opacity: 0;
             pointer-events: none;
             transition: transform 0.4s var(--ease-out-expo), opacity 0.4s ease;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -281,7 +281,7 @@
                 gap: 16px; 
                 width: 100%; 
                 justify-content: center; 
-                border-top: 1px solid rgba(212, 175, 55, 0.08);
+                border-top: 1px solid rgba(212, 175, 55, 0.06);
                 padding-top: 8px;
             }
             .nav-links a { font-size: 12px; }
@@ -354,14 +354,14 @@
         <div class="grid" id="product-list"></div>
     </section>
 
-    <section id="hakkimizda" class="section-block scroll-animate" style="background: rgba(43, 40, 37, 0.3);">
+    <section id="hakkimizda" class="section-block scroll-animate" style="background: rgba(33, 30, 28, 0.3);">
         <div class="container">
             <div class="section-header">
                 <span class="section-subtitle">Biz Kimiz?</span>
                 <h2 class="section-title">Nimet Luxe Hikayesi</h2>
             </div>
             <div class="about-content">
-                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlatmakla kalmayıp ruhu ve ortamın enerjisini de beslediğine inanıyoruz. Tamamen organik ve sürdürülebilir soya ham maddesi kullanarak, sağlığa zararlı maddeler içermeyen, uzun ömürlü ve yoğun esanslı mumlar üretiyoruz. Atölyemizde dökülen her bir mum, detaylara gösterilen özenin ve el emeğinin eşsiz birer yansımasıdır.</p>
+                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlatmakla kalmayıp ruhu ve ortamın enerjisini de beslediğine inanıyoruz. Tamamen organik ve sürdürülebilir soya ham maddesi kullanarak, sağlığa zararlı maddeler içermeyen, uzun ömürlü ve yoğun esanslı mumlar üретиyoruz. Atölyemizde dökülen her bir mum, detaylara gösterilen özenin ve el emeğinin eşsiz birer yansımasıdır.</p>
                 <em>"Her mum, keşfedilmeyi bekleyen bir hikaye yakar."</em>
             </div>
         </div>
