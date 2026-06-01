@@ -118,17 +118,23 @@
         .section-subtitle { color: var(--color-primary); text-transform: uppercase; font-size: 11px; letter-spacing: 0.25em; margin-bottom: 10px; display: block; font-weight: 600; }
         .section-title { font-family: var(--font-display); font-size: 36px; font-weight: 400; letter-spacing: 0.03em; color: var(--color-accent); }
         
-        /* ÇOK DAHA BELİRGİN SCROLL ANİMASYONU */
+        /* Belirgin Scroll Animasyonu */
         .scroll-animate { 
             opacity: 0; 
-            transform: translateY(80px) scale(0.93); /* Mesafe ve küçüklük oranını artırdık */
+            transform: translateY(80px) scale(0.93); 
             transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 1.4s cubic-bezier(0.16, 1, 0.3, 1); 
             will-change: transform, opacity;
         }
         .scroll-animate.active { opacity: 1; transform: translateY(0) scale(1); }
         
         .section-block { padding: 90px 0; border-bottom: 1px solid rgba(212, 175, 55, 0.05); position: relative; z-index: 2; }
-        .grid { display: grid; gap: var(--space-xl); grid-template-columns: repeat(3, 1fr); }
+        
+        /* Tek ürünümüz olduğu için ortalı ve şık durması amacıyla max-width ekledik */
+        .grid { 
+            display: grid; 
+            gap: var(--space-xl); 
+            grid-template-columns: repeat(3, 1fr);
+        }
         
         /* Kart Tasarımları */
         .card { 
@@ -146,18 +152,23 @@
         }
         
         .product-img-box { 
-          width: 100%; height: 280px; 
+          width: 100%; height: 380px; /* Görselin zarafetini göstermek için yüksekliği artırdık */
           background: #191715; 
-          display: flex; align-items: center; justify-content: center; 
           margin-bottom: var(--space-md); 
-          color: rgba(212, 175, 55, 0.35); 
-          font-family: var(--font-display); font-style: italic; font-size: 22px; 
-          letter-spacing: 0.05em;
           border: 1px solid rgba(212, 175, 55, 0.02);
           transition: var(--transition-smooth);
           overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
-        .card:hover .product-img-box { color: var(--color-primary); background: #141311; transform: scale(0.99); }
+        .product-img-box img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover; /* Resmi kırpmadan mükemmel sığdırır */
+          transition: var(--transition-smooth);
+        }
+        .card:hover .product-img-box img { transform: scale(1.04); }
         
         .product-title { font-family: var(--font-display); font-size: 24px; font-weight: 400; margin-bottom: 8px; color: var(--color-accent); letter-spacing: 0.02em; }
         .product-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--space-md); flex-grow: 1; font-weight: 300; }
@@ -293,6 +304,16 @@
             .hero h1 { font-size: 32px; }
             .section-title { font-size: 26px; }
             .btn-primary { width: 100%; justify-content: center; }
+            .product-img-box { height: 320px; }
+        }
+
+        /* Eğer tek ürün varsa grid düzenini daha dengeli göstermek için ek stil */
+        @media (min-width: 993px) {
+            .single-product-layout {
+                grid-template-columns: 1fr !important;
+                max-width: 480px;
+                margin: 0 auto;
+            }
         }
     </style>
 </head>
@@ -340,7 +361,8 @@
             <span class="section-subtitle">Özenle Tasarlandı</span>
             <h2 class="section-title">Özel Mum Koleksiyonu</h2>
         </div>
-        <div class="grid" id="product-list"></div>
+        <!-- Tek ürün şık dursun diye CSS sınıfı ekledik -->
+        <div class="grid single-product-layout" id="product-list"></div>
     </section>
 
     <section id="hakkimizda" class="section-block scroll-animate" style="background: rgba(33, 30, 28, 0.3);">
@@ -423,10 +445,15 @@
     </div>
 
     <script>
+        // Sahte 3 ürün kaldırıldı, yerine gönderilen görsele sahip gerçek tek ürün entegre edildi.
         const urunler = [
-          { id: 1, ad: "Nimet Luxe Siyah Amber", aciklama: "Odanızı anında saracak yoğun gizemli amber ve odunsu esanslar. Özel lüks antrasit cam tasarım.", fiyat: 350 },
-          { id: 2, ad: "Oryantal Vanilya & Sandal Ağacı", aciklama: "Tatlı gurme vanilya notaları ile sandal ağacının büyüleyici, sakinleştirici meditasyon enerjisi.", fiyat: 380 },
-          { id: 3, ad: "Egzotik Lavanta Bahçesi", aciklama: "Günün stresini tamamen azaltan, saf organik lavanta yağları ile harmanlanmış dinlendirici mum.", fiyat: 320 }
+          { 
+            id: 1, 
+            ad: "Bubble Kokulu Mum Buketi", 
+            aciklama: "Özel tasarım el işçiliği mor tonlarında bubble çiçek buketi formu. Hem eşsiz bir dekorasyon öğesi hem de ortama lüks niş kokular yayan muazzam bir sanat eseri.", 
+            fiyat: 2000,
+            gorsel: "bubble bbuket.png" 
+          }
         ];
         let sepet = [];
 
@@ -460,7 +487,19 @@
         
         function urunleriListele() {
           const lb = document.getElementById('product-list'); if(!lb) return;
-          lb.innerHTML = urunler.map(u => `<div class="card"><div class="product-img-box">Nimet Luxe</div><h3 class="product-title">${u.ad}</h3><p class="product-desc">${u.aciklama}</p><div class="product-footer"><span class="product-price">${u.fiyat} TL</span><button class="btn-add-cart" onclick="sepeteEkle(${u.id})">Sepete Ekle</button></div></div>`).join('');
+          lb.innerHTML = urunler.map(u => `
+            <div class="card">
+                <div class="product-img-box">
+                    <img src="${u.gorsel}" alt="${u.ad}">
+                </div>
+                <h3 class="product-title">${u.ad}</h3>
+                <p class="product-desc">${u.aciklama}</p>
+                <div class="product-footer">
+                    <span class="product-price">${u.fiyat} TL</span>
+                    <button class="btn-add-cart" onclick="sepeteEkle(${u.id})">Sepete Ekle</button>
+                </div>
+            </div>
+          `).join('');
         }
         
         function toggleCart() { const s = document.getElementById('cartSidebar'); if(s) s.classList.toggle('open'); }
@@ -543,7 +582,6 @@
           window.open("https://api.whatsapp.com/send?phone=" + tel + "&text=" + encodeURIComponent(m), '_blank');
         }
 
-        /* Akıcı görünme tetikleyicisi */
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => { 
                 if (entry.isIntersecting) {
