@@ -9,13 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-          --color-bg: #211e1b;           
-          --color-surface: #2b2724;      
-          --color-primary: #d4af37;      
-          --color-accent: #f7f4eb;       
-          --color-text-primary: #f0eae1;  
-          --color-text-secondary: #b5aea4;
-          --color-border: rgba(212, 175, 55, 0.2); 
+          --color-bg: #141210;           /* Derin gece siyahı, asil ve pürüzsüz */
+          --color-surface: #1c1917;      /* Kartlar için lüks kömür tonu */
+          --color-primary: #d4af37;      /* Saf altın varak rengi */
+          --color-accent: #fcfbfa;       /* Premium fildişi beyazı */
+          --color-text-primary: #f3efe9;  
+          --color-text-secondary: #a19a91;
+          --color-border: rgba(212, 175, 55, 0.15); 
           --font-display: 'Cormorant Garamond', serif; 
           --font-body: 'Plus Jakarta Sans', sans-serif;
           --space-md: 16px; --space-lg: 24px; --space-xl: 40px;
@@ -33,32 +33,32 @@
           padding-top: 70px;
         }
         
-        /* Pikselleşmeye sebep olan o eski gren/gürültü efekti tamamen kaldırıldı */
-        
         .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); position: relative; z-index: 2; }
         
+        /* Navigasyon - Gece Şıklığı */
         .nav { 
           position: fixed; 
           top: 0; 
           width: 100%; 
           z-index: 100; 
           padding: var(--space-md) 0; 
-          backdrop-filter: blur(20px); 
-          background: rgba(33, 30, 27, 0.9); 
-          border-bottom: 1px solid var(--color-border); 
+          backdrop-filter: blur(25px); 
+          background: rgba(20, 18, 16, 0.85); 
+          border-bottom: 1px solid rgba(212, 175, 55, 0.1); 
         }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-primary); text-decoration: none; letter-spacing: 0.05em; }
+        .logo { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--color-primary); text-decoration: none; letter-spacing: 0.08em; }
         
         .nav-links { display: flex; gap: var(--space-lg); align-items: center; }
-        .nav-links a { color: var(--color-text-secondary); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.3s ease; position: relative; }
+        .nav-links a { color: var(--color-text-secondary); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.3s ease; position: relative; letter-spacing: 0.03em; }
         .nav-links a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0; background-color: var(--color-primary); transition: width 0.3s ease; }
-        .nav-links a:hover { color: var(--color-primary); }
+        .nav-links a:hover { color: var(--color-accent); }
         .nav-links a:hover::after { width: 100%; }
         
-        .nav .cart-trigger { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 8px 16px; font-family: var(--font-body); cursor: pointer; font-weight: 600; font-size: 12px; transition: all 0.4s var(--ease-out-expo); }
-        .nav .cart-trigger:hover { background: var(--color-primary); color: var(--color-bg); }
+        .nav .cart-trigger { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 10px 20px; font-family: var(--font-body); cursor: pointer; font-weight: 600; font-size: 12px; transition: all 0.4s var(--ease-out-expo); letter-spacing: 0.05em; }
+        .nav .cart-trigger:hover { background: var(--color-primary); color: var(--color-bg); box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
         
+        /* Mobil Alt Bar */
         .mobile-bottom-bar {
             position: fixed;
             bottom: 20px;
@@ -66,23 +66,23 @@
             transform: translateX(-50%);
             width: calc(100% - 40px);
             max-width: 400px;
-            background: rgba(43, 39, 36, 0.95);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--color-primary);
+            background: rgba(28, 25, 23, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
             border-radius: 40px;
-            padding: 12px 24px;
+            padding: 14px 28px;
             display: none; 
             justify-content: space-between;
             align-items: center;
             z-index: 150;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
         }
-        .mobile-bar-brand { font-family: var(--font-display); font-size: 16px; color: var(--color-accent); text-decoration: none; font-weight: 600; }
+        .mobile-bar-brand { font-family: var(--font-display); font-size: 18px; color: var(--color-accent); text-decoration: none; font-weight: 600; letter-spacing: 0.05em; }
         .mobile-cart-btn {
             background: var(--color-primary);
             color: var(--color-bg);
             border: none;
-            padding: 8px 18px;
+            padding: 8px 20px;
             border-radius: 20px;
             font-family: var(--font-body);
             font-weight: 600;
@@ -93,123 +93,137 @@
             gap: 6px;
         }
         
+        /* Hero Alanı Arka Planı ve Yumuşak Parıltı */
         .hero { height: calc(100vh - 70px); display: flex; align-items: center; position: relative; overflow: hidden; }
         .hero-bg-image {
           position: absolute; top: 0; left: 0; width: 100%; height: 100%;
           background-image: url('https://images.unsplash.com/photo-1603006905003-be475563bc59?q=80&w=1920&auto=format&fit=crop');
           background-size: cover; background-position: center; z-index: 1;
-          transform: scale(1.05); animation: subtleZoom 20s infinite alternate ease-in-out;
+          transform: scale(1.02); animation: subtleZoom 20s infinite alternate ease-in-out;
         }
         .hero-overlay {
           position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-          background: linear-gradient(to bottom, rgba(33, 30, 27, 0.6) 0%, rgba(33, 30, 27, 0.5) 50%, var(--color-bg) 100%);
+          background: linear-gradient(to bottom, rgba(20, 18, 16, 0.5) 0%, rgba(20, 18, 16, 0.7) 60%, var(--color-bg) 100%);
           z-index: 1;
         }
         .hero-glow {
-          position: absolute; bottom: 10%; right: 10%; width: 50vw; height: 50vw;
-          background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-          filter: blur(60px); pointer-events: none; z-index: 2;
+          position: absolute; bottom: -10%; left: 50%; transform: translateX(-50%); width: 70vw; height: 40vw;
+          background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+          filter: blur(80px); pointer-events: none; z-index: 2;
         }
         .hero-wrapper { width: 100%; position: relative; z-index: 3; }
         .hero-text { max-width: 650px; }
-        .hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw + 1rem, 4rem); font-weight: 400; color: var(--color-accent); margin-bottom: var(--space-md); line-height: 1.15; }
-        .hero p { font-size: 15px; color: var(--color-text-secondary); margin-bottom: var(--space-xl); line-height: 1.6; font-weight: 300; }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem); font-weight: 400; color: var(--color-accent); margin-bottom: var(--space-md); line-height: 1.15; letter-spacing: -0.02em; }
+        .hero p { font-size: 16px; color: var(--color-text-secondary); margin-bottom: var(--space-xl); line-height: 1.7; font-weight: 300; }
         
-        @keyframes subtleZoom { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
+        @keyframes subtleZoom { 0% { transform: scale(1); } 100% { transform: scale(1.03); } }
         
-        .btn-primary { display: inline-flex; padding: 14px 32px; background: var(--color-primary); color: var(--color-bg); text-decoration: none; font-weight: 600; letter-spacing: 0.08em; font-size: 12px; text-transform: uppercase; transition: all 0.4s var(--ease-out-expo); border: none; cursor: pointer; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3); background: var(--color-accent); color: var(--color-bg); }
+        .btn-primary { display: inline-flex; padding: 16px 36px; background: var(--color-primary); color: var(--color-bg); text-decoration: none; font-weight: 600; letter-spacing: 0.1em; font-size: 12px; text-transform: uppercase; transition: all 0.4s var(--ease-out-expo); border: none; cursor: pointer; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(212, 175, 55, 0.25); background: var(--color-accent); color: var(--color-bg); }
         
-        .section-header { text-align: center; margin-bottom: var(--space-xl); }
-        .section-subtitle { color: var(--color-primary); text-transform: uppercase; font-size: 11px; letter-spacing: 0.2em; margin-bottom: 8px; display: block; font-weight: 600; }
-        .section-title { font-family: var(--font-display); font-size: 32px; font-weight: 400; letter-spacing: 0.03em; color: var(--color-accent); }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-subtitle { color: var(--color-primary); text-transform: uppercase; font-size: 11px; letter-spacing: 0.25em; margin-bottom: 10px; display: block; font-weight: 600; }
+        .section-title { font-family: var(--font-display); font-size: 36px; font-weight: 400; letter-spacing: 0.03em; color: var(--color-accent); }
         
-        .scroll-animate { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .scroll-animate { opacity: 0; transform: translateY(20px); transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo); }
         .scroll-animate.active { opacity: 1; transform: translateY(0); }
         
-        .section-block { padding: 80px 0; border-bottom: 1px solid var(--color-border); position: relative; z-index: 2; }
+        .section-block { padding: 90px 0; border-bottom: 1px solid rgba(212, 175, 55, 0.05); position: relative; z-index: 2; }
         .grid { display: grid; gap: var(--space-xl); grid-template-columns: repeat(3, 1fr); }
         
+        /* Kart Tasarımları - Niş ve Pahalı Çizgi */
         .card { 
           background: var(--color-surface); 
-          border: 1px solid rgba(212, 175, 55, 0.1); 
+          border: 1px solid rgba(212, 175, 55, 0.05); 
           padding: var(--space-md); 
-          transition: all 0.4s var(--ease-out-expo); 
+          transition: all 0.5s var(--ease-out-expo); 
           display: flex; flex-direction: column; 
+          position: relative;
         }
-        .card:hover { transform: translateY(-6px); border-color: var(--color-primary); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); }
+        .card:hover { 
+          transform: translateY(-8px); 
+          border-color: rgba(212, 175, 55, 0.3); 
+          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 20px rgba(212, 175, 55, 0.03); 
+        }
         
         .product-img-box { 
-          width: 100%; height: 260px; 
-          background: #36312e; 
+          width: 100%; height: 280px; 
+          background: #110f0e; 
           display: flex; align-items: center; justify-content: center; 
           margin-bottom: var(--space-md); 
-          color: var(--color-text-secondary); 
-          font-family: var(--font-display); font-style: italic; font-size: 20px; 
-          border: 1px solid rgba(212, 175, 55, 0.08); 
+          color: rgba(212, 175, 55, 0.4); 
+          font-family: var(--font-display); font-style: italic; font-size: 22px; 
+          letter-spacing: 0.05em;
+          border: 1px solid rgba(212, 175, 55, 0.03); 
         }
         
-        .product-title { font-family: var(--font-display); font-size: 22px; font-weight: 400; margin-bottom: 8px; color: var(--color-accent); }
-        .product-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--space-md); flex-grow: 1; }
-        .product-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-md); border-top: 1px solid rgba(255,255,255,0.05); }
-        .product-price { font-weight: 600; color: var(--color-primary); font-size: 17px; }
+        .product-title { font-family: var(--font-display); font-size: 24px; font-weight: 400; margin-bottom: 8px; color: var(--color-accent); letter-spacing: 0.02em; }
+        .product-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--space-md); flex-grow: 1; font-weight: 300; }
+        .product-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-md); border-top: 1px solid rgba(212, 175, 55, 0.08); }
+        .product-price { font-weight: 600; color: var(--color-primary); font-size: 18px; font-family: var(--font-body); }
         
-        .btn-add-cart { background: transparent; border: 1px solid var(--color-border); color: var(--color-primary); padding: 10px 18px; font-size: 12px; cursor: pointer; transition: all 0.3s ease; font-weight: 600; }
+        .btn-add-cart { background: transparent; border: 1px solid rgba(212, 175, 55, 0.3); color: var(--color-primary); padding: 10px 22px; font-size: 12px; cursor: pointer; transition: all 0.3s ease; font-weight: 600; letter-spacing: 0.05em; }
         .btn-add-cart:hover { background: var(--color-primary); color: var(--color-bg); }
         
+        /* Hakkımızda Bölümü */
         .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
-        .about-content p { font-size: 15px; color: var(--color-text-secondary); line-height: 1.8; font-weight: 300; margin-bottom: var(--space-lg); }
-        .about-content em { font-family: var(--font-display); font-size: 20px; color: var(--color-primary); display: block; margin-top: var(--space-md); }
+        .about-content p { font-size: 16px; color: var(--color-text-secondary); line-height: 1.9; font-weight: 300; margin-bottom: var(--space-lg); }
+        .about-content em { font-family: var(--font-display); font-size: 22px; color: var(--color-primary); display: block; margin-top: var(--space-md); font-style: italic; }
         
+        /* Müşteri Yorumları */
         .reviews-grid { display: grid; gap: var(--space-lg); grid-template-columns: repeat(3, 1fr); }
-        .review-card { background: var(--color-surface); border: 1px solid rgba(212, 175, 55, 0.08); padding: var(--space-lg); }
-        .stars { color: var(--color-primary); font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
-        .review-text { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; font-style: italic; margin-bottom: var(--space-md); }
-        .review-user { display: flex; align-items: center; gap: 10px; }
-        .user-avatar { width: 34px; height: 34px; background: #36312e; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--color-primary); font-weight: 600; border: 1px solid var(--color-border); }
-        .user-name { font-size: 13px; font-weight: 500; color: var(--color-accent); }
+        .review-card { background: var(--color-surface); border: 1px solid rgba(212, 175, 55, 0.03); padding: var(--space-lg); transition: border 0.4s; }
+        .review-card:hover { border-color: rgba(212, 175, 55, 0.15); }
+        .stars { color: var(--color-primary); font-size: 13px; margin-bottom: 14px; letter-spacing: 3px; }
+        .review-text { font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; font-style: italic; margin-bottom: var(--space-md); font-weight: 300; }
+        .review-user { display: flex; align-items: center; gap: 12px; }
+        .user-avatar { width: 36px; height: 36px; background: #110f0e; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--color-primary); font-weight: 600; border: 1px solid rgba(212, 175, 55, 0.15); }
+        .user-name { font-size: 14px; font-weight: 500; color: var(--color-accent); }
         
-        .footer { background: #1a1816; border-top: 1px solid var(--color-border); padding: 60px 0 30px 0; color: var(--color-text-secondary); position: relative; z-index: 2; }
+        /* Footer */
+        .footer { background: #0b0a09; border-top: 1px solid rgba(212, 175, 55, 0.08); padding: 70px 0 35px 0; color: var(--color-text-secondary); position: relative; z-index: 2; }
         .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1.3fr; gap: var(--space-xl); margin-bottom: 40px; }
-        .footer-col h4 { font-family: var(--font-display); font-size: 20px; color: var(--color-accent); margin-bottom: var(--space-lg); font-weight: 400; }
-        .footer-col p { font-size: 13px; line-height: 1.7; margin-bottom: 12px; }
-        .map-box { width: 100%; height: 160px; background: var(--color-surface); border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; }
-        .map-placeholder { text-align: center; font-size: 13px; color: var(--color-primary); padding: var(--space-md); line-height: 1.6; }
-        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--color-border); font-size: 11px; }
+        .footer-col h4 { font-family: var(--font-display); font-size: 22px; color: var(--color-accent); margin-bottom: var(--space-lg); font-weight: 400; letter-spacing: 0.03em; }
+        .footer-col p { font-size: 14px; line-height: 1.7; margin-bottom: 12px; font-weight: 300; }
+        .map-box { width: 100%; height: 160px; background: var(--color-surface); border: 1px solid rgba(212, 175, 55, 0.1); display: flex; align-items: center; justify-content: center; }
+        .map-placeholder { text-align: center; font-size: 13px; color: var(--color-primary); padding: var(--space-md); line-height: 1.6; font-family: var(--font-display); }
+        .footer-bottom { text-align: center; padding-top: 35px; border-top: 1px solid rgba(212, 175, 55, 0.05); font-size: 12px; letter-spacing: 0.02em; opacity: 0.7; }
         
+        /* Sepet Alanı */
         .cart-sidebar { 
             position: fixed; 
             top: 0; right: -400px; 
             width: 400px; height: 100%; 
-            background: var(--color-surface); 
-            border-left: 1px solid var(--color-border); 
+            background: #171513; 
+            border-left: 1px solid rgba(212, 175, 55, 0.15); 
             z-index: 200; 
             padding: var(--space-xl); 
             display: flex; flex-direction: column; 
             transition: right 0.5s var(--ease-out-expo); 
-            box-shadow: -15px 0 40px rgba(0,0,0,0.6); 
+            box-shadow: -20px 0 50px rgba(0,0,0,0.8); 
         }
         .cart-sidebar.open { right: 0; }
-        .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xl); border-bottom: 1px solid var(--color-border); padding-bottom: var(--space-md); }
-        .cart-header h3 { font-family: var(--font-display); font-size: 24px; color: var(--color-accent); }
-        .close-cart { background: transparent; border: none; color: var(--color-accent); font-size: 24px; cursor: pointer; padding: 5px; }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xl); border-bottom: 1px solid rgba(212, 175, 55, 0.1); padding-bottom: var(--space-md); }
+        .cart-header h3 { font-family: var(--font-display); font-size: 26px; color: var(--color-accent); font-weight: 400; }
+        .close-cart { background: transparent; border: none; color: var(--color-accent); font-size: 24px; cursor: pointer; padding: 5px; transition: color 0.2s; }
+        .close-cart:hover { color: var(--color-primary); }
         .cart-items { flex-grow: 1; overflow-y: auto; }
         
-        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: var(--space-md) 0; border-bottom: 1px solid var(--color-border); }
-        .cart-item-info h4 { font-family: var(--font-display); font-size: 17px; color: var(--color-accent); margin-bottom: 4px; }
-        .cart-item-info span { font-size: 13px; color: var(--color-primary); font-weight: 500; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: var(--space-md) 0; border-bottom: 1px solid rgba(212, 175, 55, 0.05); }
+        .cart-item-info h4 { font-family: var(--font-display); font-size: 18px; color: var(--color-accent); margin-bottom: 4px; font-weight: 400; }
+        .cart-item-info span { font-size: 14px; color: var(--color-primary); font-weight: 500; }
         
-        .quantity-control { display: flex; align-items: center; background: #211e1b; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 4px; overflow: hidden; }
-        .qty-btn { background: transparent; border: none; color: var(--color-accent); width: 28px; height: 28px; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+        .quantity-control { display: flex; align-items: center; background: #0f0e0d; border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 4px; overflow: hidden; }
+        .qty-btn { background: transparent; border: none; color: var(--color-accent); width: 30px; height: 30px; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
         .qty-btn:hover { background: rgba(212, 175, 55, 0.1); color: var(--color-primary); }
-        .qty-val { width: 30px; text-align: center; font-size: 13px; font-weight: 600; color: var(--color-accent); }
+        .qty-val { width: 32px; text-align: center; font-size: 13px; font-weight: 600; color: var(--color-accent); }
         
         .gift-section {
             margin: var(--space-lg) 0;
             padding: var(--space-md);
-            background: rgba(212, 175, 55, 0.04);
-            border: 1px dashed rgba(212, 175, 55, 0.25);
-            border-radius: 6px;
+            background: rgba(212, 175, 55, 0.02);
+            border: 1px dashed rgba(212, 175, 55, 0.2);
+            border-radius: 4px;
         }
         .gift-checkbox-wrapper {
             display: flex;
@@ -218,7 +232,6 @@
             cursor: pointer;
             font-size: 13px;
             color: var(--color-accent);
-            font-weight: 500;
         }
         .gift-checkbox-wrapper input {
             accent-color: var(--color-primary);
@@ -227,10 +240,12 @@
             cursor: pointer;
         }
         
-        .cart-footer { border-top: 1px solid var(--color-border); padding-top: var(--space-md); }
-        .cart-total { display: flex; justify-content: space-between; font-size: 18px; font-weight: 600; margin-bottom: var(--space-md); color: var(--color-accent); }
-        .btn-whatsapp { width: 100%; padding: 14px; background: #25D366; color: white; border: none; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 4px; }
+        .cart-footer { border-top: 1px solid rgba(212, 175, 55, 0.1); padding-top: var(--space-md); }
+        .cart-total { display: flex; justify-content: space-between; font-size: 19px; font-weight: 600; margin-bottom: var(--space-md); color: var(--color-accent); font-family: var(--font-display); }
+        .btn-whatsapp { width: 100%; padding: 15px; background: #25D366; color: white; border: none; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 4px; letter-spacing: 0.02em; transition: opacity 0.3s; }
+        .btn-whatsapp:hover { opacity: 0.9; }
         
+        /* Bildirim Pop-up */
         .toast-notification {
             position: fixed;
             bottom: 90px; 
@@ -239,7 +254,7 @@
             background: var(--color-surface);
             border: 1px solid var(--color-primary);
             color: var(--color-accent);
-            padding: 12px 24px;
+            padding: 14px 28px;
             border-radius: 30px;
             font-size: 13px;
             font-weight: 500;
@@ -247,11 +262,10 @@
             opacity: 0;
             pointer-events: none;
             transition: transform 0.4s var(--ease-out-expo), opacity 0.4s ease;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
             display: flex;
             align-items: center;
             gap: 8px;
-            white-space: nowrap;
         }
         .toast-notification.show { opacity: 1; transform: translate(-50%, 0); }
 
@@ -260,22 +274,23 @@
         .stagger-2 { animation-delay: 0.3s; }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
         
+        /* Mobil Optimizasyon */
         @media (max-width: 992px) { 
             body { padding-bottom: 90px; padding-top: 60px; } 
             .grid, .reviews-grid, .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); } 
             
-            .nav { padding: 10px 0; }
+            .nav { padding: 12px 0; }
             .nav-container { flex-direction: column; gap: 8px; }
-            .logo { font-size: 19px; }
+            .logo { font-size: 21px; }
             .nav-links { 
                 display: flex; 
-                gap: 14px; 
+                gap: 16px; 
                 width: 100%; 
                 justify-content: center; 
-                border-top: 1px solid rgba(212, 175, 55, 0.1);
-                padding-top: 6px;
+                border-top: 1px solid rgba(212, 175, 55, 0.08);
+                padding-top: 8px;
             }
-            .nav-links a { font-size: 11px; letter-spacing: 0.02em; opacity: 0.9; }
+            .nav-links a { font-size: 12px; }
             .nav .cart-trigger { display: none; }
             
             .mobile-bottom-bar { display: flex; } 
@@ -285,16 +300,15 @@
                 height: calc(100% - 40px); 
                 top: 20px; 
                 right: -100%; 
-                border-radius: 16px;
-                border: 1px solid var(--color-border);
+                border-radius: 12px;
                 padding: var(--space-lg);
             } 
             .cart-sidebar.open { right: 15px; }
             
-            .hero { height: calc(100vh - 100px); } 
+            .hero { height: calc(100vh - 110px); } 
             .hero-text { text-align: center; padding: 0 var(--space-md); }
-            .hero h1 { font-size: 28px; }
-            .section-title { font-size: 24px; }
+            .hero h1 { font-size: 32px; }
+            .section-title { font-size: 26px; }
             .btn-primary { width: 100%; justify-content: center; }
         }
     </style>
@@ -333,7 +347,7 @@
         <div class="container hero-wrapper">
             <div class="hero-text">
                 <h1 class="animate-up">Işığın En Zarif<br>Haliyle Tanışın.</h1>
-                <p class="animate-up stagger-1">Yüksek yoğunluklu niş esanslar ve %100 doğal soya mumu ile tamamen el işçiliğiyle hazırlanan koleksiyonumuz, yaşam alanlarınızın aurasını baştan audio değiştirecek.</p>
+                <p class="animate-up stagger-1">Yüksek yoğunluklu niş esanslar ve %100 doğal soya mumu ile tamamen el işçiliğiyle hazırlanan koleksiyonumuz, yaşam alanlarınızın aurasını baştan aşağı değiştirecek.</p>
                 <a href="#katalog" class="btn-primary animate-up stagger-2">Koleksiyonu Keşfet</a>
             </div>
         </div>
@@ -347,7 +361,7 @@
         <div class="grid" id="product-list"></div>
     </section>
 
-    <section id="hakkimizda" class="section-block scroll-animate" style="background: rgba(43, 39, 36, 0.4);">
+    <section id="hakkimizda" class="section-block scroll-animate" style="background: rgba(28, 25, 23, 0.4);">
         <div class="container">
             <div class="section-header">
                 <span class="section-subtitle">Biz Kimiz?</span>
@@ -504,7 +518,7 @@
           counts.forEach(el => el.innerText = sepet.reduce((t, i) => t + i.adet, 0));
           
           if (!kc || !ta) return;
-          if (sepet.length === 0) { kc.innerHTML = '<p style="text-align:center; opacity:0.6; padding:20px;">Sepetiniz boş.</p>'; ta.innerText = '0 TL'; return; }
+          if (sepet.length === 0) { kc.innerHTML = '<p style="text-align:center; opacity:0.5; padding:30px; font-size:14px; font-weight:300;">Sepetiniz şu an boş.</p>'; ta.innerText = '0 TL'; return; }
           
           kc.innerHTML = sepet.map(i => `
             <div class="cart-item">
