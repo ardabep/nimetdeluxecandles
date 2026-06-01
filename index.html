@@ -143,7 +143,7 @@
           transition: var(--transition-smooth); 
           display: flex; flex-direction: column; 
           position: relative;
-          cursor: pointer; /* Tıklanabilir hissi için */
+          cursor: pointer;
         }
         .card:hover { 
           transform: translateY(-12px) scale(1.01); 
@@ -178,7 +178,7 @@
         .btn-add-cart { background: transparent; border: 1px solid rgba(212, 175, 55, 0.25); color: var(--color-primary); padding: 10px 22px; font-size: 12px; cursor: pointer; transition: var(--transition-smooth); font-weight: 600; letter-spacing: 0.05em; }
         .btn-add-cart:hover { background: var(--color-primary); color: var(--color-bg); transform: scale(1.05); }
         
-        /* ── YENİ: TEKER TEKER GEZİLEBİLECEK KOLEKSİYON ALANI (SLIDER) ── */
+        /* Teker Teker Gezilecek Koleksiyon Slider Düzeni */
         .slider-section { background: #141311; padding: 90px 0; border-bottom: 1px solid rgba(212, 175, 55, 0.05); }
         .slider-wrapper { position: relative; max-width: 600px; margin: 0 auto; overflow: hidden; padding: 20px 0; }
         .slider-container { display: flex; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); width: 100%; }
@@ -194,7 +194,7 @@
         .slider-prev { left: -60px; }
         .slider-next { right: -60px; }
         
-        /* ── YENİ: ÜRÜN DETAY MODALI (DETAYLI GÖRÜNÜM) ── */
+        /* Ürün Detay Penceresi (Modal) */
         .product-modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(26, 24, 22, 0.95); backdrop-filter: blur(15px);
@@ -399,7 +399,6 @@
         <span>✨</span> <span id="toastMessage">Ürün sepete eklendi!</span>
     </div>
 
-    <!-- ÜRÜN DETAY MODALI (Tıklanınca Açılan Yer) -->
     <div class="product-modal" id="productModal" onclick="closeModalOnOuterClick(event)">
         <div class="modal-content">
             <button class="modal-close" onclick="closeProductModal()">✕</button>
@@ -412,9 +411,9 @@
                 <p class="modal-desc" id="modalDesc"></p>
                 
                 <div class="modal-features">
-                    <div class="modal-feature-item"><span>✦</span> %100 Doğal Organik Soya Ham Maddesi</div>
-                    <div class="modal-feature-item"><span>✦</span> El İşçiliği Özel Çiçek ve Bubble Formu</div>
-                    <div class="modal-feature-item"><span>✦</span> Premium Niş Esanslar İle Kalıcı Koku Aurası</div>
+                    <div class="modal-feature-item"><span>✦</span> %100 Doğal Soya Ham Maddesi</div>
+                    <div class="modal-feature-item"><span>✦</span> El İşçiliği Mor Detaylı Özel Çiçek & Bubble Buketi Formu</div>
+                    <div class="modal-feature-item"><span>✦</span> Alanı Kaplayan Premium Tatlı, Rahatlatıcı Niş Esanslı Bubble Kokusu</div>
                 </div>
 
                 <div class="modal-footer">
@@ -438,7 +437,6 @@
         </div>
     </section>
 
-    <!-- ANA KATALOG (Aynı Haliyle Korundu - Tıklanınca Ürüne Girer) -->
     <section id="katalog" class="section-block container scroll-animate">
         <div class="section-header">
             <span class="section-subtitle">Premium Seçki</span>
@@ -447,7 +445,6 @@
         <div class="grid single-product-layout" id="product-list"></div>
     </section>
 
-    <!-- TEKER TEKER GEZİLEBİLECEK KOLEKSİYON ALANI (SLIDER) -->
     <section id="kesif" class="slider-section scroll-animate">
         <div class="container" style="position: relative;">
             <div class="section-header">
@@ -458,9 +455,7 @@
             <div class="slider-wrapper">
                 <button class="slider-nav-btn slider-prev" onclick="moveSlide(-1)">‹</button>
                 <button class="slider-nav-btn slider-next" onclick="moveSlide(1)">›</button>
-                <div class="slider-container" id="slider-inner-container">
-                    <!-- JavaScript burayı dolduracak -->
-                </div>
+                <div class="slider-container" id="slider-inner-container"></div>
             </div>
         </div>
     </section>
@@ -486,7 +481,7 @@
         <div class="reviews-grid">
             <div class="review-card">
                 <div class="stars">★★★★★</div>
-                <p class="review-text">"Buket modelini canlı gördüğümde inanamadım, resmen bir sanat eseri! Odaya yaydığı o tatlı, hafif ve büyüleyici koku harika."</p>
+                <p class="review-text">"Buket modelini canlı gördüğümde inanamadım, resmen bir sanat eseri! Odaya yaydığı o tatlı, hafif ve büyüleyici bubble kokusu harika."</p>
                 <div class="review-user"><div class="user-avatar">SA</div><div class="user-name">Selin Alkan</div></div>
             </div>
             <div class="review-card">
@@ -545,14 +540,14 @@
     </div>
 
     <script>
-        // Lüks ve detaylı yeni bubble kokulu ürün açıklaması eklendi
+        // GitHub'daki dosya adınız 'bubblebuket.png' buraya tam uyumlu şekilde entegre edildi.
         const urunler = [
           { 
             id: 1, 
             ad: "Bubble Kokulu Mum Buketi", 
-            aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve pudra tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım, alanınıza sadece estetik bir ihtişam katmakla kalmaz; ortamın aurasını sakinleştirici, lüks ve tatlı esintiler içeren büyüleyici bubble notalarıyla yeniler. Her bir detayı sanatsal bir dokunuş barındıran bu eşsiz mum buketi, yaşam alanlarınız için en prestijli imza dekoru olmaya aday.", 
+            aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve lila tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım, alanınıza sadece estetik bir ihtişam katmakla kalmaz; ortamın aurasını sakinleştirici, lüks ve tatlı esintiler içeren büyüleyici bubble notalarıyla yeniler. Her bir detayı sanatsal bir dokunuş barındıran bu eşsiz mum buketi, yaşam alanlarınız için en prestijli imza dekoru olmaya aday.", 
             fiyat: 2000,
-            gorsel: "bubble bbuket.png" 
+            gorsel: "bubblebuket.png" 
           }
         ];
         let sepet = [];
@@ -591,7 +586,7 @@
           const sliderInner = document.getElementById('slider-inner-container');
           if(!lb || !sliderInner) return;
           
-          // Ana Menü/Katalog Alanı Listelemesi (Ürünün üstüne tıklayınca detay modali açılır)
+          // Ana Liste Kontrolü
           lb.innerHTML = urunler.map(u => `
             <div class="card" onclick="openProductModal(${u.id})">
                 <div class="product-img-box">
@@ -606,7 +601,7 @@
             </div>
           `).join('');
 
-          // Teker Teker Gezilebilecek Koleksiyon Alanı (Slider) Listelemesi
+          // Teker Teker Gezilen Slider Alanı
           sliderInner.innerHTML = urunler.map(u => `
             <div class="slide-item">
                 <div class="card" style="cursor:default;">
@@ -623,7 +618,6 @@
           `).join('');
         }
 
-        /* MODAL KONTROLLERİ (Ürün Detay Sayfası) */
         function openProductModal(id) {
             const u = urunler.find(x => x.id === id);
             if(!u) return;
@@ -647,7 +641,6 @@
             if(e.target.id === 'productModal') closeProductModal();
         }
 
-        /* SLIDER KONTROLLERİ (Teker Teker Gezme) */
         function moveSlide(direction) {
             const container = document.getElementById('slider-inner-container');
             const totalSlides = urunler.length;
