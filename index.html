@@ -129,7 +129,6 @@
         
         .section-block { padding: 90px 0; border-bottom: 1px solid rgba(212, 175, 55, 0.05); position: relative; z-index: 2; }
         
-        /* Tek ürünümüz olduğu için ortalı ve şık durması amacıyla max-width ekledik */
         .grid { 
             display: grid; 
             gap: var(--space-xl); 
@@ -144,6 +143,7 @@
           transition: var(--transition-smooth); 
           display: flex; flex-direction: column; 
           position: relative;
+          cursor: pointer; /* Tıklanabilir hissi için */
         }
         .card:hover { 
           transform: translateY(-12px) scale(1.01); 
@@ -152,7 +152,7 @@
         }
         
         .product-img-box { 
-          width: 100%; height: 380px; /* Görselin zarafetini göstermek için yüksekliği artırdık */
+          width: 100%; height: 380px; 
           background: #191715; 
           margin-bottom: var(--space-md); 
           border: 1px solid rgba(212, 175, 55, 0.02);
@@ -165,18 +165,67 @@
         .product-img-box img {
           width: 100%;
           height: 100%;
-          object-fit: cover; /* Resmi kırpmadan mükemmel sığdırır */
+          object-fit: cover; 
           transition: var(--transition-smooth);
         }
         .card:hover .product-img-box img { transform: scale(1.04); }
         
         .product-title { font-family: var(--font-display); font-size: 24px; font-weight: 400; margin-bottom: 8px; color: var(--color-accent); letter-spacing: 0.02em; }
-        .product-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--space-md); flex-grow: 1; font-weight: 300; }
+        .product-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--space-md); flex-grow: 1; font-weight: 300; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
         .product-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-md); border-top: 1px solid rgba(212, 175, 55, 0.08); }
         .product-price { font-weight: 600; color: var(--color-primary); font-size: 18px; font-family: var(--font-body); }
         
         .btn-add-cart { background: transparent; border: 1px solid rgba(212, 175, 55, 0.25); color: var(--color-primary); padding: 10px 22px; font-size: 12px; cursor: pointer; transition: var(--transition-smooth); font-weight: 600; letter-spacing: 0.05em; }
         .btn-add-cart:hover { background: var(--color-primary); color: var(--color-bg); transform: scale(1.05); }
+        
+        /* ── YENİ: TEKER TEKER GEZİLEBİLECEK KOLEKSİYON ALANI (SLIDER) ── */
+        .slider-section { background: #141311; padding: 90px 0; border-bottom: 1px solid rgba(212, 175, 55, 0.05); }
+        .slider-wrapper { position: relative; max-width: 600px; margin: 0 auto; overflow: hidden; padding: 20px 0; }
+        .slider-container { display: flex; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); width: 100%; }
+        .slide-item { min-width: 100%; box-sizing: border-box; padding: 0 10px; }
+        .slider-nav-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(33, 30, 28, 0.8); border: 1px solid var(--color-primary);
+            color: var(--color-primary); width: 44px; height: 44px; border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            font-size: 18px; z-index: 10; transition: var(--transition-smooth);
+        }
+        .slider-nav-btn:hover { background: var(--color-primary); color: var(--color-bg); }
+        .slider-prev { left: -60px; }
+        .slider-next { right: -60px; }
+        
+        /* ── YENİ: ÜRÜN DETAY MODALI (DETAYLI GÖRÜNÜM) ── */
+        .product-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(26, 24, 22, 0.95); backdrop-filter: blur(15px);
+            z-index: 300; display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.5s var(--ease-out-expo);
+        }
+        .product-modal.open { opacity: 1; pointer-events: auto; }
+        .modal-content {
+            background: var(--color-surface); border: 1px solid rgba(212, 175, 55, 0.15);
+            max-width: 900px; width: calc(100% - 40px); display: grid; grid-template-columns: 1fr 1fr;
+            position: relative; transform: translateY(40px) scale(0.95); transition: transform 0.5s var(--ease-out-expo);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.8);
+        }
+        .product-modal.open .modal-content { transform: translateY(0) scale(1); }
+        .modal-close {
+            position: absolute; top: 20px; right: 20px; background: transparent;
+            border: none; color: var(--color-accent); font-size: 24px; cursor: pointer; z-index: 10;
+            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; background: rgba(0,0,0,0.3); transition: var(--transition-smooth);
+        }
+        .modal-close:hover { color: var(--color-primary); transform: rotate(90deg); }
+        .modal-img-box { width: 100%; height: 100%; min-height: 500px; background: #141311; overflow: hidden; }
+        .modal-img-box img { width: 100%; height: 100%; object-fit: cover; }
+        .modal-info-box { padding: var(--space-xl); display: flex; flex-direction: column; justify-content: center; }
+        .modal-tag { color: var(--color-primary); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 12px; font-weight: 600; }
+        .modal-title { font-family: var(--font-display); font-size: 32px; color: var(--color-accent); margin-bottom: 15px; font-weight: 400; }
+        .modal-desc { font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; font-weight: 300; margin-bottom: var(--space-lg); }
+        .modal-features { margin-bottom: var(--space-lg); border-top: 1px solid rgba(212, 175, 55, 0.08); padding-top: var(--space-md); }
+        .modal-feature-item { font-size: 13px; color: var(--color-text-primary); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+        .modal-feature-item span { color: var(--color-primary); }
+        .modal-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(212, 175, 55, 0.08); padding-top: var(--space-md); }
         
         /* Hakkımızda Bölümü */
         .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
@@ -270,7 +319,7 @@
         }
         .toast-notification.show { opacity: 1; transform: translate(-50%, 0); }
 
-        /* Giriş (Hero) Animasyonları */
+        /* Giriş Animasyonları */
         .animate-up { opacity: 0; transform: translateY(30px); animation: luxuryFadeInUp 1.4s var(--ease-out-expo) forwards; }
         .stagger-1 { animation-delay: 0.2s; }
         .stagger-2 { animation-delay: 0.4s; }
@@ -305,13 +354,19 @@
             .section-title { font-size: 26px; }
             .btn-primary { width: 100%; justify-content: center; }
             .product-img-box { height: 320px; }
+
+            .modal-content { grid-template-columns: 1fr; max-height: 90vh; overflow-y: auto; }
+            .modal-img-box { min-height: 250px; height: 250px; }
+            .modal-info-box { padding: var(--space-lg); }
+            
+            .slider-prev { left: 10px; }
+            .slider-next { right: 10px; }
         }
 
-        /* Eğer tek ürün varsa grid düzenini daha dengeli göstermek için ek stil */
         @media (min-width: 993px) {
             .single-product-layout {
                 grid-template-columns: 1fr !important;
-                max-width: 480px;
+                max-width: 440px;
                 margin: 0 auto;
             }
         }
@@ -324,6 +379,7 @@
             <a href="#" class="logo">Nimet Luxe Candles</a>
             <div class="nav-links">
                 <a href="#katalog">Koleksiyon</a>
+                <a href="#kesif">Koleksiyonu Keşfet</a>
                 <a href="#hakkimizda">Hikayemiz</a>
                 <a href="#yorumlar">Yorumlar</a>
                 <a href="#iletisim">İletişim</a>
@@ -343,6 +399,32 @@
         <span>✨</span> <span id="toastMessage">Ürün sepete eklendi!</span>
     </div>
 
+    <!-- ÜRÜN DETAY MODALI (Tıklanınca Açılan Yer) -->
+    <div class="product-modal" id="productModal" onclick="closeModalOnOuterClick(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeProductModal()">✕</button>
+            <div class="modal-img-box">
+                <img id="modalImg" src="" alt="">
+            </div>
+            <div class="modal-info-box">
+                <span class="modal-tag">Sınırlı Özel Seri</span>
+                <h3 class="modal-title" id="modalTitle"></h3>
+                <p class="modal-desc" id="modalDesc"></p>
+                
+                <div class="modal-features">
+                    <div class="modal-feature-item"><span>✦</span> %100 Doğal Organik Soya Ham Maddesi</div>
+                    <div class="modal-feature-item"><span>✦</span> El İşçiliği Özel Çiçek ve Bubble Formu</div>
+                    <div class="modal-feature-item"><span>✦</span> Premium Niş Esanslar İle Kalıcı Koku Aurası</div>
+                </div>
+
+                <div class="modal-footer">
+                    <span class="product-price" id="modalPrice" style="font-size: 24px;"></span>
+                    <button class="btn-primary" id="modalAddCartBtn" style="padding: 12px 28px; font-size: 11px;">Sepete Ekle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <section class="hero">
         <div class="hero-bg-image"></div>
         <div class="hero-overlay"></div>
@@ -356,13 +438,31 @@
         </div>
     </section>
 
+    <!-- ANA KATALOG (Aynı Haliyle Korundu - Tıklanınca Ürüne Girer) -->
     <section id="katalog" class="section-block container scroll-animate">
         <div class="section-header">
-            <span class="section-subtitle">Özenle Tasarlandı</span>
+            <span class="section-subtitle">Premium Seçki</span>
             <h2 class="section-title">Özel Mum Koleksiyonu</h2>
         </div>
-        <!-- Tek ürün şık dursun diye CSS sınıfı ekledik -->
         <div class="grid single-product-layout" id="product-list"></div>
+    </section>
+
+    <!-- TEKER TEKER GEZİLEBİLECEK KOLEKSİYON ALANI (SLIDER) -->
+    <section id="kesif" class="slider-section scroll-animate">
+        <div class="container" style="position: relative;">
+            <div class="section-header">
+                <span class="section-subtitle">Sanatsal Keşif</span>
+                <h2 class="section-title">Koleksiyonu Tek Tek Gezin</h2>
+            </div>
+            
+            <div class="slider-wrapper">
+                <button class="slider-nav-btn slider-prev" onclick="moveSlide(-1)">‹</button>
+                <button class="slider-nav-btn slider-next" onclick="moveSlide(1)">›</button>
+                <div class="slider-container" id="slider-inner-container">
+                    <!-- JavaScript burayı dolduracak -->
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="hakkimizda" class="section-block scroll-animate" style="background: rgba(33, 30, 28, 0.3);">
@@ -386,17 +486,17 @@
         <div class="reviews-grid">
             <div class="review-card">
                 <div class="stars">★★★★★</div>
-                <p class="review-text">"Siyah Amber mumunu aldım ve tek kelimeyle bayıldım. Odayı kaplayan kokusu o kadar kalıcı ki, kapağını açtığımda bile mis gibi kokuyor."</p>
+                <p class="review-text">"Buket modelini canlı gördüğümde inanamadım, resmen bir sanat eseri! Odaya yaydığı o tatlı, hafif ve büyüleyici koku harika."</p>
                 <div class="review-user"><div class="user-avatar">SA</div><div class="user-name">Selin Alkan</div></div>
             </div>
             <div class="review-card">
                 <div class="stars">★★★★★</div>
-                <p class="review-text">"Vanilya & Sandal Ağacı mumu evimin vazgeçilmezi oldu. Akşamları dinlenirken yakıyorum, verdiği huzur ve lüks hissiyatı inanılmaz."</p>
+                <p class="review-text">"Hediye paketiyle sipariş verdim, paketlemesi ve işçiliği inanılmaz lükstü. Kokusu yakmadan bile tüm salonu sardı."</p>
                 <div class="review-user"><div class="user-avatar">MK</div><div class="user-name">Murat Kozcu</div></div>
             </div>
             <div class="review-card">
                 <div class="stars">★★★★★</div>
-                <p class="review-text">"Arkadaşıma hediye olarak Lavanta modelini almıştım. Paketlemesi o kadar zarifti ki açmaya kıyamadık. Kesinlikle harika bir el işçiliği."</p>
+                <p class="review-text">"Kayseri'deki atölyeden aldığım en kusursuz el emeği. Hem bubble detayları hem de çiçek formları o kadar nizami ki, yakmaya kıyamıyorum."</p>
                 <div class="review-user"><div class="user-avatar">BY</div><div class="user-name">Buse Yılmaz</div></div>
             </div>
         </div>
@@ -445,17 +545,18 @@
     </div>
 
     <script>
-        // Sahte 3 ürün kaldırıldı, yerine gönderilen görsele sahip gerçek tek ürün entegre edildi.
+        // Lüks ve detaylı yeni bubble kokulu ürün açıklaması eklendi
         const urunler = [
           { 
             id: 1, 
             ad: "Bubble Kokulu Mum Buketi", 
-            aciklama: "Özel tasarım el işçiliği mor tonlarında bubble çiçek buketi formu. Hem eşsiz bir dekorasyon öğesi hem de ortama lüks niş kokular yayan muazzam bir sanat eseri.", 
+            aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve pudra tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım, alanınıza sadece estetik bir ihtişam katmakla kalmaz; ortamın aurasını sakinleştirici, lüks ve tatlı esintiler içeren büyüleyici bubble notalarıyla yeniler. Her bir detayı sanatsal bir dokunuş barındıran bu eşsiz mum buketi, yaşam alanlarınız için en prestijli imza dekoru olmaya aday.", 
             fiyat: 2000,
             gorsel: "bubble bbuket.png" 
           }
         ];
         let sepet = [];
+        let currentSlideIndex = 0;
 
         function playApplePayChime() {
             try {
@@ -486,20 +587,76 @@
         }
         
         function urunleriListele() {
-          const lb = document.getElementById('product-list'); if(!lb) return;
+          const lb = document.getElementById('product-list'); 
+          const sliderInner = document.getElementById('slider-inner-container');
+          if(!lb || !sliderInner) return;
+          
+          // Ana Menü/Katalog Alanı Listelemesi (Ürünün üstüne tıklayınca detay modali açılır)
           lb.innerHTML = urunler.map(u => `
-            <div class="card">
+            <div class="card" onclick="openProductModal(${u.id})">
                 <div class="product-img-box">
                     <img src="${u.gorsel}" alt="${u.ad}">
                 </div>
                 <h3 class="product-title">${u.ad}</h3>
                 <p class="product-desc">${u.aciklama}</p>
-                <div class="product-footer">
+                <div class="product-footer" onclick="event.stopPropagation();">
                     <span class="product-price">${u.fiyat} TL</span>
                     <button class="btn-add-cart" onclick="sepeteEkle(${u.id})">Sepete Ekle</button>
                 </div>
             </div>
           `).join('');
+
+          // Teker Teker Gezilebilecek Koleksiyon Alanı (Slider) Listelemesi
+          sliderInner.innerHTML = urunler.map(u => `
+            <div class="slide-item">
+                <div class="card" style="cursor:default;">
+                    <div class="product-img-box" style="height:340px; cursor:pointer;" onclick="openProductModal(${u.id})">
+                        <img src="${u.gorsel}" alt="${u.ad}">
+                    </div>
+                    <h3 class="product-title" style="text-align:center;">${u.ad}</h3>
+                    <div class="product-footer">
+                        <span class="product-price">${u.fiyat} TL</span>
+                        <button class="btn-add-cart" onclick="sepeteEkle(${u.id})">Sepete Ekle</button>
+                    </div>
+                </div>
+            </div>
+          `).join('');
+        }
+
+        /* MODAL KONTROLLERİ (Ürün Detay Sayfası) */
+        function openProductModal(id) {
+            const u = urunler.find(x => x.id === id);
+            if(!u) return;
+            document.getElementById('modalTitle').innerText = u.ad;
+            document.getElementById('modalDesc').innerText = u.aciklama;
+            document.getElementById('modalPrice').innerText = u.fiyat + " TL";
+            document.getElementById('modalImg').src = u.gorsel;
+            document.getElementById('modalImg').alt = u.ad;
+            document.getElementById('modalAddCartBtn').onclick = () => {
+                sepeteEkle(u.id);
+                closeProductModal();
+            };
+            document.getElementById('productModal').classList.add('open');
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').classList.remove('open');
+        }
+
+        function closeModalOnOuterClick(e) {
+            if(e.target.id === 'productModal') closeProductModal();
+        }
+
+        /* SLIDER KONTROLLERİ (Teker Teker Gezme) */
+        function moveSlide(direction) {
+            const container = document.getElementById('slider-inner-container');
+            const totalSlides = urunler.length;
+            currentSlideIndex += direction;
+            
+            if (currentSlideIndex >= totalSlides) currentSlideIndex = 0;
+            if (currentSlideIndex < 0) currentSlideIndex = totalSlides - 1;
+            
+            container.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
         }
         
         function toggleCart() { const s = document.getElementById('cartSidebar'); if(s) s.classList.toggle('open'); }
