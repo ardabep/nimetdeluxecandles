@@ -129,10 +129,13 @@
         
         .section-block { padding: 90px 0; border-bottom: 1px solid rgba(212, 175, 55, 0.05); position: relative; z-index: 2; }
         
+        /* Grid Ayarı: Ürün sayısına göre otomatik esner */
         .grid { 
             display: grid; 
             gap: var(--space-xl); 
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            max-width: 1000px;
+            margin: 0 auto;
         }
         
         /* Kart Tasarımları */
@@ -144,6 +147,7 @@
           display: flex; flex-direction: column; 
           position: relative;
           cursor: pointer;
+          height: 100%;
         }
         .card:hover { 
           transform: translateY(-12px) scale(1.01); 
@@ -172,7 +176,7 @@
         
         .product-title { font-family: var(--font-display); font-size: 24px; font-weight: 400; margin-bottom: 8px; color: var(--color-accent); letter-spacing: 0.02em; }
         .product-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--space-md); flex-grow: 1; font-weight: 300; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-        .product-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-md); border-top: 1px solid rgba(212, 175, 55, 0.08); }
+        .product-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-md); border-top: 1px solid rgba(212, 175, 55, 0.08); margin-top: auto; }
         .product-price { font-weight: 600; color: var(--color-primary); font-size: 18px; font-family: var(--font-body); }
         
         .btn-add-cart { background: transparent; border: 1px solid rgba(212, 175, 55, 0.25); color: var(--color-primary); padding: 10px 22px; font-size: 12px; cursor: pointer; transition: var(--transition-smooth); font-weight: 600; letter-spacing: 0.05em; }
@@ -180,7 +184,7 @@
         
         /* Teker Teker Gezilecek Koleksiyon Slider Düzeni */
         .slider-section { background: #141311; padding: 90px 0; border-bottom: 1px solid rgba(212, 175, 55, 0.05); }
-        .slider-wrapper { position: relative; max-width: 600px; margin: 0 auto; overflow: hidden; padding: 20px 0; }
+        .slider-wrapper { position: relative; max-width: 450px; margin: 0 auto; overflow: hidden; padding: 20px 0; }
         .slider-container { display: flex; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); width: 100%; }
         .slide-item { min-width: 100%; box-sizing: border-box; padding: 0 10px; }
         .slider-nav-btn {
@@ -362,14 +366,6 @@
             .slider-prev { left: 10px; }
             .slider-next { right: 10px; }
         }
-
-        @media (min-width: 993px) {
-            .single-product-layout {
-                grid-template-columns: 1fr !important;
-                max-width: 440px;
-                margin: 0 auto;
-            }
-        }
     </style>
 </head>
 <body>
@@ -378,8 +374,8 @@
         <div class="container nav-container">
             <a href="#" class="logo">Nimet Luxe Candles</a>
             <div class="nav-links">
-                <a href="#katalog">Koleksiyon</a>
-                <a href="#kesif">Koleksiyonu Keşfet</a>
+                <a href="#katalog">Premium Seçki</a>
+                <a href="#normal-urunler-sec">Koleksiyon</a>
                 <a href="#hakkimizda">Hikayemiz</a>
                 <a href="#yorumlar">Yorumlar</a>
                 <a href="#iletisim">İletişim</a>
@@ -406,14 +402,14 @@
                 <img id="modalImg" src="" alt="">
             </div>
             <div class="modal-info-box">
-                <span class="modal-tag">Sınırlı Özel Seri</span>
+                <span class="modal-tag" id="modalTag">Sınırlı Özel Seri</span>
                 <h3 class="modal-title" id="modalTitle"></h3>
                 <p class="modal-desc" id="modalDesc"></p>
                 
                 <div class="modal-features">
                     <div class="modal-feature-item"><span>✦</span> %100 Doğal Soya Ham Maddesi</div>
-                    <div class="modal-feature-item"><span>✦</span> El İşçiliği Mor Detaylı Özel Çiçek & Bubble Buketi Formu</div>
-                    <div class="modal-feature-item"><span>✦</span> Alanı Kaplayan Premium Tatlı, Rahatlatıcı Niş Esanslı Bubble Kokusu</div>
+                    <div class="modal-feature-item"><span>✦</span> El İşçiliği İle Tasarlanmış Sanatsal Detaylar</div>
+                    <div class="modal-feature-item"><span>✦</span> Yaşam Alanını Hızla Kaplayan Yoğun Niş Esans Kalitesi</div>
                 </div>
 
                 <div class="modal-footer">
@@ -439,10 +435,18 @@
 
     <section id="katalog" class="section-block container scroll-animate">
         <div class="section-header">
-            <span class="section-subtitle">Premium Seçki</span>
-            <h2 class="section-title">Özel Mum Koleksiyonu</h2>
+            <span class="section-subtitle">Sınırlı Özel Seri</span>
+            <h2 class="section-title">Premium Seçki</h2>
         </div>
-        <div class="grid single-product-layout" id="product-list"></div>
+        <div class="grid" id="premium-product-list"></div>
+    </section>
+
+    <section id="normal-urunler-sec" class="section-block container scroll-animate" style="background: rgba(33, 30, 28, 0.15);">
+        <div class="section-header">
+            <span class="section-subtitle">Günlük Lüks</span>
+            <h2 class="section-title">Tüm Koleksiyon</h2>
+        </div>
+        <div class="grid" id="normal-product-list"></div>
     </section>
 
     <section id="kesif" class="slider-section scroll-animate">
@@ -540,16 +544,36 @@
     </div>
 
     <script>
-        // GitHub'daki dosya adınız 'bubblebuket.png' buraya tam uyumlu şekilde entegre edildi.
+        // ÜRÜN VERİ TABANI - Buradan istediğin kadar ürün ekleyip çıkartabilirsin.
         const urunler = [
           { 
             id: 1, 
             ad: "Bubble Kokulu Mum Buketi", 
-            aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve lila tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım, alanınıza sadece estetik bir ihtişam katmakla kalmaz; ortamın aurasını sakinleştirici, lüks ve tatlı esintiler içeren büyüleyici bubble notalarıyla yeniler. Her bir detayı sanatsal bir dokunuş barındıran bu eşsiz mum buketi, yaşam alanlarınız için en prestijli imza dekoru olmaya aday.", 
+            kategori: "premium",
+            aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve lila tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım, alanınıza sadece estetik bir ihtişam katmakla kalmaz; ortamın aurasını sakinleştirici, lüks ve tatlı esintiler içeren büyüleyici bubble notalarıyla yeniler.", 
             fiyat: 2000,
             gorsel: "bubblebuket.png" 
+          },
+          { 
+            id: 2, 
+            ad: "Mango Kokulu Mum Buketi", 
+            kategori: "premium",
+            aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarınıza taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül ve tomurcuk figürleriyle bezenmiş mum buketi, egzotik ve taze mango niş esansıyla zenginleştirilmiştir. Yandığı andan itibaren ortama tatlı, canlandırıcı ve davetkar bir enerji yayarak premium bir ambiyans oluşturur.", 
+            fiyat: 2000,
+            gorsel: "mango.png" 
           }
+          /* İleride normal ürün eklemek istersen bu şablonu kullanabilirsin:
+          ,{
+            id: 3,
+            ad: "Klasik Silindir Mum",
+            kategori: "normal",
+            aciklama: "Uzun ömürlü kullanım sunan minimalist tasarımlı soya mumu.",
+            fiyat: 450,
+            gorsel: "silindir.png"
+          }
+          */
         ];
+        
         let sepet = [];
         let currentSlideIndex = 0;
 
@@ -582,12 +606,26 @@
         }
         
         function urunleriListele() {
-          const lb = document.getElementById('product-list'); 
+          const premiumList = document.getElementById('premium-product-list'); 
+          const normalList = document.getElementById('normal-product-list'); 
           const sliderInner = document.getElementById('slider-inner-container');
-          if(!lb || !sliderInner) return;
+          const normalSection = document.getElementById('normal-urunler-sec');
           
-          // Ana Liste Kontrolü
-          lb.innerHTML = urunler.map(u => `
+          if(!premiumList || !sliderInner || !normalList) return;
+          
+          // Filtreleme işlemleri
+          const premiumUrunler = urunler.filter(u => u.kategori === 'premium');
+          const normalUrunler = urunler.filter(u => u.kategori === 'normal');
+
+          // Eğer normal ürün yoksa o bölümü gizle
+          if(normalUrunler.length === 0) {
+              if(normalSection) normalSection.style.display = 'none';
+          } else {
+              if(normalSection) normalSection.style.display = 'block';
+          }
+          
+          // 1. Premium Listeyi Bas
+          premiumList.innerHTML = premiumUrunler.map(u => `
             <div class="card" onclick="openProductModal(${u.id})">
                 <div class="product-img-box">
                     <img src="${u.gorsel}" alt="${u.ad}">
@@ -601,7 +639,22 @@
             </div>
           `).join('');
 
-          // Teker Teker Gezilen Slider Alanı
+          // 2. Normal Listeyi Bas
+          normalList.innerHTML = normalUrunler.map(u => `
+            <div class="card" onclick="openProductModal(${u.id})">
+                <div class="product-img-box" style="height: 280px;">
+                    <img src="${u.gorsel}" alt="${u.ad}">
+                </div>
+                <h3 class="product-title">${u.ad}</h3>
+                <p class="product-desc">${u.aciklama}</p>
+                <div class="product-footer" onclick="event.stopPropagation();">
+                    <span class="product-price">${u.fiyat} TL</span>
+                    <button class="btn-add-cart" onclick="sepeteEkle(${u.id})">Sepete Ekle</button>
+                </div>
+            </div>
+          `).join('');
+
+          // 3. Slider Alanı
           sliderInner.innerHTML = urunler.map(u => `
             <div class="slide-item">
                 <div class="card" style="cursor:default;">
@@ -626,6 +679,16 @@
             document.getElementById('modalPrice').innerText = u.fiyat + " TL";
             document.getElementById('modalImg').src = u.gorsel;
             document.getElementById('modalImg').alt = u.ad;
+            
+            const tag = document.getElementById('modalTag');
+            if(u.kategori === 'premium') {
+                tag.innerText = "Sınırlı Özel Premium Seri";
+                tag.style.color = "var(--color-primary)";
+            } else {
+                tag.innerText = "Nimet Luxe Klasik Koleksiyon";
+                tag.style.color = "var(--color-text-secondary)";
+            }
+
             document.getElementById('modalAddCartBtn').onclick = () => {
                 sepeteEkle(u.id);
                 closeProductModal();
