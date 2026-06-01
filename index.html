@@ -9,12 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-          --color-bg: #141210;           /* Derin gece siyahı, asil ve pürüzsüz */
-          --color-surface: #1c1917;      /* Kartlar için lüks kömür tonu */
-          --color-primary: #d4af37;      /* Saf altın varak rengi */
-          --color-accent: #fcfbfa;       /* Premium fildişi beyazı */
-          --color-text-primary: #f3efe9;  
-          --color-text-secondary: #a19a91;
+          --color-bg: #23201d;           /* Tam istediğin o lüks, pürüzsüz vizon-antrasit tonu */
+          --color-surface: #2b2825;      /* Kartlar için sıcak ve zengin bir ton */
+          --color-primary: #d4af37;      /* Detaylar için mat altın varak */
+          --color-accent: #fcfbfa;       
+          --color-text-primary: #f5f2ed;  
+          --color-text-secondary: #b0a9a0;
           --color-border: rgba(212, 175, 55, 0.15); 
           --font-display: 'Cormorant Garamond', serif; 
           --font-body: 'Plus Jakarta Sans', sans-serif;
@@ -35,7 +35,7 @@
         
         .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); position: relative; z-index: 2; }
         
-        /* Navigasyon - Gece Şıklığı */
+        /* Navigasyon */
         .nav { 
           position: fixed; 
           top: 0; 
@@ -43,7 +43,7 @@
           z-index: 100; 
           padding: var(--space-md) 0; 
           backdrop-filter: blur(25px); 
-          background: rgba(20, 18, 16, 0.85); 
+          background: rgba(35, 32, 29, 0.9); 
           border-bottom: 1px solid rgba(212, 175, 55, 0.1); 
         }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
@@ -56,7 +56,7 @@
         .nav-links a:hover::after { width: 100%; }
         
         .nav .cart-trigger { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 10px 20px; font-family: var(--font-body); cursor: pointer; font-weight: 600; font-size: 12px; transition: all 0.4s var(--ease-out-expo); letter-spacing: 0.05em; }
-        .nav .cart-trigger:hover { background: var(--color-primary); color: var(--color-bg); box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
+        .nav .cart-trigger:hover { background: var(--color-primary); color: var(--color-bg); }
         
         /* Mobil Alt Bar */
         .mobile-bottom-bar {
@@ -66,7 +66,7 @@
             transform: translateX(-50%);
             width: calc(100% - 40px);
             max-width: 400px;
-            background: rgba(28, 25, 23, 0.95);
+            background: rgba(43, 40, 37, 0.95);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(212, 175, 55, 0.25);
             border-radius: 40px;
@@ -75,7 +75,7 @@
             justify-content: space-between;
             align-items: center;
             z-index: 150;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
         }
         .mobile-bar-brand { font-family: var(--font-display); font-size: 18px; color: var(--color-accent); text-decoration: none; font-weight: 600; letter-spacing: 0.05em; }
         .mobile-cart-btn {
@@ -93,7 +93,7 @@
             gap: 6px;
         }
         
-        /* Hero Alanı Arka Planı ve Yumuşak Parıltı */
+        /* Hero Alanı */
         .hero { height: calc(100vh - 70px); display: flex; align-items: center; position: relative; overflow: hidden; }
         .hero-bg-image {
           position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -103,23 +103,18 @@
         }
         .hero-overlay {
           position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-          background: linear-gradient(to bottom, rgba(20, 18, 16, 0.5) 0%, rgba(20, 18, 16, 0.7) 60%, var(--color-bg) 100%);
+          background: linear-gradient(to bottom, rgba(35, 32, 29, 0.4) 0%, rgba(35, 32, 29, 0.6) 60%, var(--color-bg) 100%);
           z-index: 1;
-        }
-        .hero-glow {
-          position: absolute; bottom: -10%; left: 50%; transform: translateX(-50%); width: 70vw; height: 40vw;
-          background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
-          filter: blur(80px); pointer-events: none; z-index: 2;
         }
         .hero-wrapper { width: 100%; position: relative; z-index: 3; }
         .hero-text { max-width: 650px; }
-        .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem); font-weight: 400; color: var(--color-accent); margin-bottom: var(--space-md); line-height: 1.15; letter-spacing: -0.02em; }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem); font-weight: 400; color: var(--color-accent); margin-bottom: var(--space-md); line-height: 1.15; letter-spacing: -0.01em; }
         .hero p { font-size: 16px; color: var(--color-text-secondary); margin-bottom: var(--space-xl); line-height: 1.7; font-weight: 300; }
         
         @keyframes subtleZoom { 0% { transform: scale(1); } 100% { transform: scale(1.03); } }
         
         .btn-primary { display: inline-flex; padding: 16px 36px; background: var(--color-primary); color: var(--color-bg); text-decoration: none; font-weight: 600; letter-spacing: 0.1em; font-size: 12px; text-transform: uppercase; transition: all 0.4s var(--ease-out-expo); border: none; cursor: pointer; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(212, 175, 55, 0.25); background: var(--color-accent); color: var(--color-bg); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2); background: var(--color-accent); color: var(--color-bg); }
         
         .section-header { text-align: center; margin-bottom: 50px; }
         .section-subtitle { color: var(--color-primary); text-transform: uppercase; font-size: 11px; letter-spacing: 0.25em; margin-bottom: 10px; display: block; font-weight: 600; }
@@ -131,7 +126,7 @@
         .section-block { padding: 90px 0; border-bottom: 1px solid rgba(212, 175, 55, 0.05); position: relative; z-index: 2; }
         .grid { display: grid; gap: var(--space-xl); grid-template-columns: repeat(3, 1fr); }
         
-        /* Kart Tasarımları - Niş ve Pahalı Çizgi */
+        /* Kart Tasarımları - Premium Vizon Çizgisi */
         .card { 
           background: var(--color-surface); 
           border: 1px solid rgba(212, 175, 55, 0.05); 
@@ -142,16 +137,16 @@
         }
         .card:hover { 
           transform: translateY(-8px); 
-          border-color: rgba(212, 175, 55, 0.3); 
-          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 20px rgba(212, 175, 55, 0.03); 
+          border-color: rgba(212, 175, 55, 0.25); 
+          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4); 
         }
         
         .product-img-box { 
           width: 100%; height: 280px; 
-          background: #110f0e; 
+          background: #1e1b19; 
           display: flex; align-items: center; justify-content: center; 
           margin-bottom: var(--space-md); 
-          color: rgba(212, 175, 55, 0.4); 
+          color: rgba(212, 175, 55, 0.35); 
           font-family: var(--font-display); font-style: italic; font-size: 22px; 
           letter-spacing: 0.05em;
           border: 1px solid rgba(212, 175, 55, 0.03); 
@@ -172,16 +167,15 @@
         
         /* Müşteri Yorumları */
         .reviews-grid { display: grid; gap: var(--space-lg); grid-template-columns: repeat(3, 1fr); }
-        .review-card { background: var(--color-surface); border: 1px solid rgba(212, 175, 55, 0.03); padding: var(--space-lg); transition: border 0.4s; }
-        .review-card:hover { border-color: rgba(212, 175, 55, 0.15); }
+        .review-card { background: var(--color-surface); border: 1px solid rgba(212, 175, 55, 0.03); padding: var(--space-lg); }
         .stars { color: var(--color-primary); font-size: 13px; margin-bottom: 14px; letter-spacing: 3px; }
         .review-text { font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; font-style: italic; margin-bottom: var(--space-md); font-weight: 300; }
         .review-user { display: flex; align-items: center; gap: 12px; }
-        .user-avatar { width: 36px; height: 36px; background: #110f0e; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--color-primary); font-weight: 600; border: 1px solid rgba(212, 175, 55, 0.15); }
+        .user-avatar { width: 36px; height: 36px; background: #1e1b19; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--color-primary); font-weight: 600; border: 1px solid rgba(212, 175, 55, 0.15); }
         .user-name { font-size: 14px; font-weight: 500; color: var(--color-accent); }
         
         /* Footer */
-        .footer { background: #0b0a09; border-top: 1px solid rgba(212, 175, 55, 0.08); padding: 70px 0 35px 0; color: var(--color-text-secondary); position: relative; z-index: 2; }
+        .footer { background: #191715; border-top: 1px solid rgba(212, 175, 55, 0.08); padding: 70px 0 35px 0; color: var(--color-text-secondary); position: relative; z-index: 2; }
         .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1.3fr; gap: var(--space-xl); margin-bottom: 40px; }
         .footer-col h4 { font-family: var(--font-display); font-size: 22px; color: var(--color-accent); margin-bottom: var(--space-lg); font-weight: 400; letter-spacing: 0.03em; }
         .footer-col p { font-size: 14px; line-height: 1.7; margin-bottom: 12px; font-weight: 300; }
@@ -194,13 +188,13 @@
             position: fixed; 
             top: 0; right: -400px; 
             width: 400px; height: 100%; 
-            background: #171513; 
+            background: #23201d; 
             border-left: 1px solid rgba(212, 175, 55, 0.15); 
             z-index: 200; 
             padding: var(--space-xl); 
             display: flex; flex-direction: column; 
             transition: right 0.5s var(--ease-out-expo); 
-            box-shadow: -20px 0 50px rgba(0,0,0,0.8); 
+            box-shadow: -20px 0 50px rgba(0,0,0,0.5); 
         }
         .cart-sidebar.open { right: 0; }
         .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xl); border-bottom: 1px solid rgba(212, 175, 55, 0.1); padding-bottom: var(--space-md); }
@@ -213,7 +207,7 @@
         .cart-item-info h4 { font-family: var(--font-display); font-size: 18px; color: var(--color-accent); margin-bottom: 4px; font-weight: 400; }
         .cart-item-info span { font-size: 14px; color: var(--color-primary); font-weight: 500; }
         
-        .quantity-control { display: flex; align-items: center; background: #0f0e0d; border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 4px; overflow: hidden; }
+        .quantity-control { display: flex; align-items: center; background: #191715; border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 4px; overflow: hidden; }
         .qty-btn { background: transparent; border: none; color: var(--color-accent); width: 30px; height: 30px; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
         .qty-btn:hover { background: rgba(212, 175, 55, 0.1); color: var(--color-primary); }
         .qty-val { width: 32px; text-align: center; font-size: 13px; font-weight: 600; color: var(--color-accent); }
@@ -262,7 +256,7 @@
             opacity: 0;
             pointer-events: none;
             transition: transform 0.4s var(--ease-out-expo), opacity 0.4s ease;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -342,7 +336,6 @@
     <section class="hero">
         <div class="hero-bg-image"></div>
         <div class="hero-overlay"></div>
-        <div class="hero-glow"></div>
         
         <div class="container hero-wrapper">
             <div class="hero-text">
@@ -361,7 +354,7 @@
         <div class="grid" id="product-list"></div>
     </section>
 
-    <section id="hakkimizda" class="section-block scroll-animate" style="background: rgba(28, 25, 23, 0.4);">
+    <section id="hakkimizda" class="section-block scroll-animate" style="background: rgba(43, 40, 37, 0.3);">
         <div class="container">
             <div class="section-header">
                 <span class="section-subtitle">Biz Kimiz?</span>
