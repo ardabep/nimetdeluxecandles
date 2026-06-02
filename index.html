@@ -37,7 +37,7 @@
           padding-top: 70px;
         }
         
-        .container { max-width: 1200px; margin: 0 :auto; padding: 0 var(--space-lg); position: relative; z-index: 2; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); position: relative; z-index: 2; }
         
         /* Navigasyon */
         .nav { 
@@ -129,11 +129,13 @@
         
         .section-block { padding: 90px 0; border-bottom: 1px solid rgba(212, 175, 55, 0.05); position: relative; z-index: 2; }
         
-        /* Grid Ayarı */
+        /* Grid Ayarı ve Ortalama Çözümü */
         .grid { 
             display: grid; 
             gap: var(--space-xl); 
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            justify-content: center;
+            justify-items: center;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -148,6 +150,8 @@
           position: relative;
           cursor: pointer;
           height: 100%;
+          width: 100%;
+          max-width: 360px;
         }
         .card:hover { 
           transform: translateY(-12px) scale(1.01); 
@@ -402,7 +406,6 @@
         <span>✨</span> <span id="toastMessage">Ürün sepete eklendi!</span>
     </div>
 
-    <!-- TÜM KOLEKSİYON PENCERESİ (MODAL) -->
     <div class="collection-modal" id="collectionModal">
         <button class="collection-close" onclick="closeCollectionModal()">✕ Kapat</button>
         <div class="collection-content-wrapper">
@@ -414,7 +417,6 @@
         </div>
     </div>
 
-    <!-- ÜRÜN DETAY MODALI -->
     <div class="product-modal" id="productModal" onclick="closeModalOnOuterClick(event)">
         <div class="modal-content">
             <button class="modal-close" onclick="closeProductModal()">✕</button>
@@ -453,7 +455,6 @@
         </div>
     </section>
 
-    <!-- PREMIUM SEÇKİ (SADECE EN ÖZEL 3 BÜYÜK MODEL) -->
     <section id="premium-secki" class="section-block container scroll-animate">
         <div class="section-header">
             <span class="section-subtitle">Ayrıcalıklı Sanat Eserleri</span>
@@ -507,7 +508,7 @@
         <div class="container footer-grid">
             <div class="footer-col">
                 <h4>Nimet Luxe Candles</h4>
-                <p>Yaşam alanlarınıza zarafet ve lüks bir hava katan, el yapımı niş kokulu soya mumları.</p>
+                <p>Yaşam alanlarınıza zarafet og lüks bir hava katan, el yapımı niş kokulu soya mumları.</p>
             </div>
             <div class="footer-col">
                 <h4>Kurumsal İletişim</h4>
@@ -551,7 +552,7 @@
             id: 1, 
             ad: "Bubble Kokulu Mum Buketi", 
             kategori: "premium",
-            aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve lila tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım, alanınıza sadece estetik bir ihtişam katmakla kalmaz; ortamın aurasını sakinleştirici, lüks og tatlı esintiler içeren büyüleyici bubble notalarıyla yeniler.", 
+            aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve lila tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım, alanınıza sadece estetik bir ihtişam katmakla kalmaz; ortamın aurasını sakinleştirici, lüks ve tatlı esintiler içeren büyüleyici bubble notalarıyla yeniler.", 
             fiyat: 2000,
             gorsel: "bubblebuket.png" 
           },
@@ -559,7 +560,7 @@
             id: 2, 
             ad: "Mango Kokulu Mum Buketi", 
             kategori: "premium",
-            aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarına taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül tomurcuk figürleriyle bezenmiş mum buketimiz, egzotik ve taze mango niş esansıyla zenginleştirilmiştir. Yandığı andan itibaren ortama tatlı, canlandırıcı ve davetkar bir enerji yayarak premium bir ambiyans oluşturur.", 
+            aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarına taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül tomurcuk figürleriyle bezenmiş mum buketimiz, egzotik og taze mango niş esansıyla zenginleştirilmiştir. Yandığı andan itibaren ortama tatlı, canlandırıcı ve davetkar bir enerji yayarak premium bir ambiyans oluşturur.", 
             fiyat: 2000,
             gorsel: "mango.png" 
           },
@@ -593,7 +594,7 @@
             kategori: "normal",
             aciklama: "Aşkın ve tutkunun rengiyle bezenmiş, elde taşınabilir formda tasarlanan bu mini sanat eseri; el işçiliğiyle şekillendirilen kusursuz kırmızı güller, iştah açıcı mini çilek figürü ve romantik soft pembe kalp detayıyla hazırlanmıştır. Zarif kırmızı ve altın rengi tüllerle aranje edilen bu özel kokulu el buketimiz, hem kendinizi şımartmak hem de sevdiklerinize lüks bir jest yapmak için mükemmel bir alternatiftir.",
             fiyat: 500,
-            gorsel: "mini_2.png"
+            gorsel: "mini.png"
           }
         ];
         
