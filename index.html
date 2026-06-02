@@ -37,7 +37,7 @@
           padding-top: 70px;
         }
         
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); position: relative; z-index: 2; }
+        .container { max-width: 1200px; margin: 0 :auto; padding: 0 var(--space-lg); position: relative; z-index: 2; }
         
         /* Navigasyon */
         .nav { 
@@ -402,6 +402,7 @@
         <span>✨</span> <span id="toastMessage">Ürün sepete eklendi!</span>
     </div>
 
+    <!-- TÜM KOLEKSİYON PENCERESİ (MODAL) -->
     <div class="collection-modal" id="collectionModal">
         <button class="collection-close" onclick="closeCollectionModal()">✕ Kapat</button>
         <div class="collection-content-wrapper">
@@ -413,6 +414,7 @@
         </div>
     </div>
 
+    <!-- ÜRÜN DETAY MODALI -->
     <div class="product-modal" id="productModal" onclick="closeModalOnOuterClick(event)">
         <div class="modal-content">
             <button class="modal-close" onclick="closeProductModal()">✕</button>
@@ -451,6 +453,7 @@
         </div>
     </section>
 
+    <!-- PREMIUM SEÇKİ (SADECE EN ÖZEL 3 BÜYÜK MODEL) -->
     <section id="premium-secki" class="section-block container scroll-animate">
         <div class="section-header">
             <span class="section-subtitle">Ayrıcalıklı Sanat Eserleri</span>
@@ -548,7 +551,7 @@
             id: 1, 
             ad: "Bubble Kokulu Mum Buketi", 
             kategori: "premium",
-            aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve lila tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım, alanınıza sadece estetik bir ihtişam katmakla kalmaz; ortamın aurasını sakinleştirici, lüks ve tatlı esintiler içeren büyüleyici bubble notalarıyla yeniler.", 
+            aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve lila tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım, alanınıza sadece estetik bir ihtişam katmakla kalmaz; ortamın aurasını sakinleştirici, lüks og tatlı esintiler içeren büyüleyici bubble notalarıyla yeniler.", 
             fiyat: 2000,
             gorsel: "bubblebuket.png" 
           },
@@ -582,7 +585,15 @@
             kategori: "normal", 
             aciklama: "Kataloğumuzda yer alan el yapımı mini bisiklet aranjmanları, lüks kurdeleli dairesel kutu tasarımları veya gümüş detaylı özel konseptlerden dilediğinizi zevkinize göre seçebilirsiniz. Bu serideki tüm tasarımlar yoğun emekle üretilip 800 TL sabit fiyat avantajına sahiptir. Siparişinizi tamamladıktan sonra WhatsApp üzerinden görseldeki dilediğiniz spesifik modeli (Bisikletli model, pembe silindir kutulu model vb.) belirtmeniz yeterlidir.",
             fiyat: 800,
-            gorsel: "ss.png"
+            gorsel: "ss_2.png"
+          },
+          {
+            id: 6,
+            ad: "Çilek & Kırmızı Gül El Buketi",
+            kategori: "normal",
+            aciklama: "Aşkın ve tutkunun rengiyle bezenmiş, elde taşınabilir formda tasarlanan bu mini sanat eseri; el işçiliğiyle şekillendirilen kusursuz kırmızı güller, iştah açıcı mini çilek figürü ve romantik soft pembe kalp detayıyla hazırlanmıştır. Zarif kırmızı ve altın rengi tüllerle aranje edilen bu özel kokulu el buketimiz, hem kendinizi şımartmak hem de sevdiklerinize lüks bir jest yapmak için mükemmel bir alternatiftir.",
+            fiyat: 500,
+            gorsel: "mini_2.png"
           }
         ];
         
@@ -622,7 +633,6 @@
           
           if(!premiumList || !allCollectionGrid) return;
           
-          // Vitrin Alanına Sadece 'premium' kategorisindeki 3 ürün gelecek (Bubble, Mango, Karışık)
           const premiumUrunler = urunler.filter(u => u.kategori === 'premium');
           premiumList.innerHTML = premiumUrunler.map(u => `
             <div class="card" onclick="openProductModal(${u.id})">
@@ -638,7 +648,6 @@
             </div>
           `).join('');
 
-          // Tüm Koleksiyon (Katalog) Alanında Tüm Ürünler Listelenecek
           allCollectionGrid.innerHTML = urunler.map(u => `
             <div class="card" onclick="openProductModal(${u.id})">
                 <div class="product-img-box">
