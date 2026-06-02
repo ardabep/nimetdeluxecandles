@@ -474,7 +474,7 @@
                 <h2 class="section-title">Nimet Luxe Hikayesi</h2>
             </div>
             <div class="about-content">
-                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlatmakla kalmayıp ruhu ve ortamın enerjisini de beslediğine inanıyoruz. Tamamen organik ve sürdürülebilir soya ham maddesi kullanarak, sağlığa zararlı maddeler içermeyen, uzun ömürlü ve yoğun esanslı mumlar üretiyoruz. Atölyemizde dökülen her bir mum, detaylara gösterilen özenin ve el emeğinin eşsiz birer yansımasıdır.</p>
+                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlatmakla kalmayıp ruhu ve ortamın enerisrini de beslediğine inanıyoruz. Tamamen organik ve sürdürülebilir soya ham maddesi kullanarak, sağlığa zararlı maddeler içermeyen, uzun ömürlü ve yoğun esanslı mumlar üretiyoruz. Atölyemizde dökülen her bir mum, detaylara gösterilen özenin ve el emeğinin eşsiz birer yansımasıdır.</p>
                 <em>"Her mum, keşfedilmeyi bekleyen bir hikaye yakar."</em>
             </div>
         </div>
@@ -547,7 +547,7 @@
     </div>
 
     <script>
-        // ÜRÜN VERİ TABANI - Karışık koku eklendi, Yasemin katalog kategorisine çekildi
+        // ÜRÜN VERİ TABANI - Karışık koku görseli "karısık.png" olarak güncellendi
         const urunler = [
           { 
             id: 1, 
@@ -571,12 +571,12 @@
             kategori: "premium",
             aciklama: "Göz alıcı bir pembe kutuda lüksü ve görsel bir şöleni buluşturan bu özel tasarım, el emeğinin zirvesini temsil ediyor. İçerisinde kusursuzca işlenmiş incili kalpler, sevimli mini ayıcık figürü, narin gül goncaları, papatyalar ve capcanlı turuncu laleler barındıran bu muazzam aranjman, kurutulmuş cipsolarla tamamlanmıştır. Nimet Luxe atölyesinin en seçkin niş esanslarının özel kombinasyonuyla harmanlanan bu harika karışık koku, yaşam alanınızın lüks kimliğini tamamlar.", 
             fiyat: 2300,
-            gorsel: "edited-image.jpg" 
+            gorsel: "karısık.png" 
           },
           { 
             id: 4, 
             ad: "Yasemin Kokulu Mum Buketi", 
-            kategori: "katalog", // Sadece genel koleksiyonda listelenecek
+            kategori: "katalog", 
             aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor. Sevimli figürler, zarif güller ve narin bahar çiçeklerinin arasına el işçiliğiyle serpiştirilen cipsolar, muma büyüleyici bir derinlik kazandırıyor. Niş yasemin esansının o yatıştırıcı ve lüks kokusu, ruhunuzu dinlendirirken odanızın enerjisini saray bahçelerine dönüştürecek.", 
             fiyat: 2000,
             gorsel: "yasemin.png"
@@ -621,7 +621,6 @@
           
           const premiumUrunler = urunler.filter(u => u.kategori === 'premium');
 
-          // 1. Ana Sayfadaki Premium Vitrinini Bas
           premiumList.innerHTML = premiumUrunler.map(u => `
             <div class="card" onclick="openProductModal(${u.id})">
                 <div class="product-img-box">
@@ -636,7 +635,6 @@
             </div>
           `).join('');
 
-          // 2. Özel Koleksiyon Modalının İçine İstisnasız TÜM Ürünleri Bas
           allCollectionGrid.innerHTML = urunler.map(u => `
             <div class="card" onclick="openProductModal(${u.id})">
                 <div class="product-img-box">
@@ -652,7 +650,6 @@
           `).join('');
         }
 
-        // Adanmış Koleksiyon Modalı Fonksiyonları
         function openCollectionModal() {
             document.getElementById('collectionModal').classList.add('open');
             document.body.style.overflow = 'hidden';
