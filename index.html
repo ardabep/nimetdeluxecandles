@@ -97,7 +97,7 @@
           position: absolute; top: 0; left: 0; width: 100%; height: 100%;
           background-image: url('https://images.unsplash.com/photo-1603006905003-be475563bc59?q=80&w=1920&auto=format&fit=crop');
           background-size: cover; background-position: center; z-index: 1;
-          transform: scale(1.05); animation: luxuryZoom 25s infinite alternate ease-in-out;
+          transform: scale(1.02); animation: luxuryZoom 25s infinite alternate ease-in-out;
         }
         .hero-overlay {
           position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -182,7 +182,7 @@
         .btn-add-cart { background: transparent; border: 1px solid rgba(212, 175, 55, 0.25); color: var(--color-primary); padding: 10px 22px; font-size: 12px; cursor: pointer; transition: var(--transition-smooth); font-weight: 600; letter-spacing: 0.05em; }
         .btn-add-cart:hover { background: var(--color-primary); color: var(--color-bg); transform: scale(1.05); }
         
-        /* ADANMIŞ KOLEKSİYON ALANI */
+        /* TÜM KOLEKSİYON ALANI (MODAL) */
         .collection-modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(26, 24, 22, 0.98); backdrop-filter: blur(20px);
@@ -381,8 +381,8 @@
         <div class="container nav-container">
             <a href="#" class="logo">Nimet Luxe Candles</a>
             <div class="nav-links">
-                <a href="#katalog">Premium Seçki</a>
-                <a onclick="openCollectionModal()">Koleksiyon</a>
+                <a href="#premium-secki">Premium Seçki</a>
+                <a onclick="openCollectionModal()">Tüm Koleksiyon (Katalog)</a>
                 <a href="#hakkimizda">Hikayemiz</a>
                 <a href="#yorumlar">Yorumlar</a>
                 <a href="#iletisim">İletişim</a>
@@ -402,19 +402,17 @@
         <span>✨</span> <span id="toastMessage">Ürün sepete eklendi!</span>
     </div>
 
-    <!-- ADANMIŞ KOLEKSİYON PENCERESİ (MODAL) -->
     <div class="collection-modal" id="collectionModal">
         <button class="collection-close" onclick="closeCollectionModal()">✕ Kapat</button>
         <div class="collection-content-wrapper">
             <div class="section-header">
                 <span class="section-subtitle">Nimet Luxe Tasarımları</span>
-                <h2 class="section-title">Tüm Koleksiyonumuz</h2>
+                <h2 class="section-title">Tüm Ürün Kataloğumuz</h2>
             </div>
             <div class="grid" id="all-collection-grid"></div>
         </div>
     </div>
 
-    <!-- ÜRÜN DETAY MODALI -->
     <div class="product-modal" id="productModal" onclick="closeModalOnOuterClick(event)">
         <div class="modal-content">
             <button class="modal-close" onclick="closeProductModal()">✕</button>
@@ -448,21 +446,20 @@
             <div class="hero-text">
                 <h1 class="animate-up">Işığın En Zarif<br>Haliyle Tanışın.</h1>
                 <p class="animate-up stagger-1">Yüksek yoğunluklu niş esanslar ve %100 doğal soya mumu ile tamamen el işçiliğiyle hazırlanan koleksiyonumuz, yaşam alanlarınızın aurasını baştan aşağı değiştirecek.</p>
-                <a onclick="openCollectionModal()" class="btn-primary animate-up stagger-2" style="cursor: pointer;">Koleksiyonu Keşfet</a>
+                <a onclick="openCollectionModal()" class="btn-primary animate-up stagger-2" style="cursor: pointer;">Tüm Kataloğu Keşfet</a>
             </div>
         </div>
     </section>
 
-    <!-- PREMIUM SEÇKİ (VİTRİN) -->
-    <section id="katalog" class="section-block container scroll-animate">
+    <section id="premium-secki" class="section-block container scroll-animate">
         <div class="section-header">
-            <span class="section-subtitle">Sınırlı Özel Seri</span>
+            <span class="section-subtitle">Ayrıcalıklı Sanat Eserleri</span>
             <h2 class="section-title">Premium Seçki</h2>
         </div>
         <div class="grid" id="premium-product-list"></div>
         
         <div style="text-align: center; margin-top: 50px;">
-            <button class="btn-primary" onclick="openCollectionModal()">Tüm Koleksiyonu Gör (Tüm Ürünler)</button>
+            <button class="btn-primary" onclick="openCollectionModal()">Tüm Ürün Kataloğunu Gör</button>
         </div>
     </section>
 
@@ -473,7 +470,7 @@
                 <h2 class="section-title">Nimet Luxe Hikayesi</h2>
             </div>
             <div class="about-content">
-                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlatmakla kalmayıp ruhu ve ortamın enerisrini de beslediğine inanıyoruz. Tamamen organik ve sürdürülebilir soya ham maddesi kullanarak, sağlığa zararlı maddeler içermeyen, uzun ömürlü ve yoğun esanslı mumlar üretiyoruz. Atölyemizde dökülen her bir mum, detaylara gösterilen özenin ve el emeğinin eşsiz birer yansımasıdır.</p>
+                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlatmakla kalmayıp ruhu ve ortamın enerjisini de beslediğine inanıyoruz. Tamamen organik ve sürdürülebilir soya ham maddesi kullanarak, sağlığa zararlı maddeler içermeyen, uzun ömürlü ve yoğun esanslı mumlar üretiyoruz. Atölyemizde dökülen her bir mum, detaylara gösterilen özenin ve el emeğinin eşsiz birer yansımasıdır.</p>
                 <em>"Her mum, keşfedilmeyi bekleyen bir hikaye yakar."</em>
             </div>
         </div>
@@ -507,7 +504,7 @@
         <div class="container footer-grid">
             <div class="footer-col">
                 <h4>Nimet Luxe Candles</h4>
-                <p>Yaşam alanlarınıza zarafet og lüks bir hava katan, el yapımı niş kokulu soya mumları.</p>
+                <p>Yaşam alanlarınıza zarafet ve lüks bir hava katan, el yapımı niş kokulu soya mumları.</p>
             </div>
             <div class="footer-col">
                 <h4>Kurumsal İletişim</h4>
@@ -559,7 +556,7 @@
             id: 2, 
             ad: "Mango Kokulu Mum Buketi", 
             kategori: "premium",
-            aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarına taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül tomurcuk figürleriyle bezenmiş mum buketi, egzotik ve taze mango niş esansıyla zenginleştirilmiştir. Yandığı andan itibaren ortama tatlı, canlandırıcı ve davetkar bir enerji yayarak premium bir ambiyans oluşturur.", 
+            aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarına taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül tomurcuk figürleriyle bezenmiş mum buketimiz, egzotik ve taze mango niş esansıyla zenginleştirilmiştir. Yandığı andan itibaren ortama tatlı, canlandırıcı ve davetkar bir enerji yayarak premium bir ambiyans oluşturur.", 
             fiyat: 2000,
             gorsel: "mango.png" 
           },
@@ -574,19 +571,18 @@
           { 
             id: 4, 
             ad: "Yasemin Kokulu Mum Buketi", 
-            kategori: "premium", 
-            aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor. Sevimli figürler, zarif güller ve narin bahar çiçeklerinin arasına el işçiliğiyle serpiştirilen cipsolar, muma büyüleyici bir derinlik kazandırıyor. Niş yasemin esansının o yatıştırıcı ve lüks kokusu, ruhunuzu dinlendirirken odanızın enerisrini saray bahçelerine dönüştürecek.", 
+            kategori: "normal", 
+            aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor. Sevimli figürler, zarif güller ve narin bahar çiçeklerinin arasına el işçiliğiyle serpiştirilen cipsolar, muma büyüleyici bir derinlik kazandırıyor. Niş yasemin esansının o yatıştırıcı ve lüks kokusu, ruhunuzu dinlendirirken odanızın enerjisini saray bahçelerine dönüştürecek.", 
             fiyat: 2000,
             gorsel: "yasemin.png"
           },
-          // GÖRSEL ADI TAMAMEN DOĞRU ŞEKİLDE mini.png OLARAK DEĞİŞTİRİLDİ
           {
             id: 5,
             ad: "Seçilebilir Mini Premium Model (İstediğiniz Tasarım)",
-            kategori: "premium", 
-            aciklama: "Kataloğumuzda yer alan mini bisiklet aranjmanları, lüks kurdeleli kutu tasarımları veya gümüş kalpli özel konseptlerden dilediğinizi seçebilirsiniz. Bu serideki tüm tasarımlar el emeği ile üretilip 500 TL sabit fiyat avantajına sahiptir. Siparişinizi sepetinize ekledikten sonra WhatsApp üzerinden dilediğiniz spesifik modeli belirtmeniz yeterlidir.",
-            fiyat: 500,
-            gorsel: "mini.png"
+            kategori: "normal", 
+            aciklama: "Kataloğumuzda yer alan el yapımı mini bisiklet aranjmanları, lüks kurdeleli dairesel kutu tasarımları veya gümüş detaylı özel konseptlerden dilediğinizi zevkinize göre seçebilirsiniz. Bu serideki tüm tasarımlar yoğun emekle üretilip 800 TL sabit fiyat avantajına sahiptir. Siparişinizi tamamladıktan sonra WhatsApp üzerinden görseldeki dilediğiniz spesifik modeli (Bisikletli model, pembe silindir kutulu model vb.) belirtmeniz yeterlidir.",
+            fiyat: 800,
+            gorsel: "ss.png"
           }
         ];
         
@@ -626,8 +622,8 @@
           
           if(!premiumList || !allCollectionGrid) return;
           
+          // Vitrin Alanına Sadece 'premium' kategorisindeki 3 ürün gelecek (Bubble, Mango, Karışık)
           const premiumUrunler = urunler.filter(u => u.kategori === 'premium');
-
           premiumList.innerHTML = premiumUrunler.map(u => `
             <div class="card" onclick="openProductModal(${u.id})">
                 <div class="product-img-box">
@@ -642,6 +638,7 @@
             </div>
           `).join('');
 
+          // Tüm Koleksiyon (Katalog) Alanında Tüm Ürünler Listelenecek
           allCollectionGrid.innerHTML = urunler.map(u => `
             <div class="card" onclick="openProductModal(${u.id})">
                 <div class="product-img-box">
@@ -677,12 +674,10 @@
             document.getElementById('modalImg').alt = u.ad;
             
             const tag = document.getElementById('modalTag');
-            if(u.id === 5) {
-                tag.innerText = "Özel Model Seçimi - 500 TL Sabit Fiyat";
-                tag.style.color = "var(--color-primary)";
-            } else {
+            if(u.kategori === 'premium') {
                 tag.innerText = "Sınırlı Özel Premium Seri";
-                tag.style.color = "var(--color-primary)";
+            } else {
+                tag.innerText = "Nimet Luxe Sanat Koleksiyonu";
             }
 
             document.getElementById('modalAddCartBtn').onclick = () => {
