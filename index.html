@@ -402,7 +402,6 @@
         <span>✨</span> <span id="toastMessage">Ürün sepete eklendi!</span>
     </div>
 
-    <!-- ADANMIŞ KOLEKSİYON PENCERESİ (MODAL) -->
     <div class="collection-modal" id="collectionModal">
         <button class="collection-close" onclick="closeCollectionModal()">✕ Kapat</button>
         <div class="collection-content-wrapper">
@@ -410,12 +409,10 @@
                 <span class="section-subtitle">Nimet Luxe Tasarımları</span>
                 <h2 class="section-title">Tüm Koleksiyonumuz</h2>
             </div>
-            <!-- Tüm ürünler burada listelenecek -->
             <div class="grid" id="all-collection-grid"></div>
         </div>
     </div>
 
-    <!-- ÜRÜN DETAY MODALI -->
     <div class="product-modal" id="productModal" onclick="closeModalOnOuterClick(event)">
         <div class="modal-content">
             <button class="modal-close" onclick="closeProductModal()">✕</button>
@@ -454,7 +451,6 @@
         </div>
     </section>
 
-    <!-- PREMIUM SEÇKİ (VİTRİN) -->
     <section id="katalog" class="section-block container scroll-animate">
         <div class="section-header">
             <span class="section-subtitle">Sınırlı Özel Seri</span>
@@ -547,7 +543,7 @@
     </div>
 
     <script>
-        // ÜRÜN VERİ TABANI - Karışık koku görseli "karısık.png" olarak güncellendi
+        // ÜRÜN VERİ TABANI - Tüm ürünler ve 500 TL'lik tekli özel modeller eklendi
         const urunler = [
           { 
             id: 1, 
@@ -561,7 +557,7 @@
             id: 2, 
             ad: "Mango Kokulu Mum Buketi", 
             kategori: "premium",
-            aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarınıza taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül tomurcuk figürleriyle bezenmiş mum buketi, egzotik ve taze mango niş esansıyla zenginleştirilmiştir. Yandığı andan itibaren ortama tatlı, canlandırıcı ve davetkar bir enerji yayarak premium bir ambiyans oluşturur.", 
+            aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarına taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül tomurcuk figürleriyle bezenmiş mum buketi, egzotik ve taze mango niş esansıyla zenginleştirilmiştir. Yandığı andan itibaren ortama tatlı, canlandırıcı ve davetkar bir enerji yayarak premium bir ambiyans oluşturur.", 
             fiyat: 2000,
             gorsel: "mango.png" 
           },
@@ -576,10 +572,59 @@
           { 
             id: 4, 
             ad: "Yasemin Kokulu Mum Buketi", 
-            kategori: "katalog", 
-            aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor. Sevimli figürler, zarif güller ve narin bahar çiçeklerinin arasına el işçiliğiyle serpiştirilen cipsolar, muma büyüleyici bir derinlik kazandırıyor. Niş yasemin esansının o yatıştırıcı ve lüks kokusu, ruhunuzu dinlendirirken odanızın enerjisini saray bahçelerine dönüştürecek.", 
+            kategori: "premium", 
+            aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor. Sevimli figürler, zarif güller ve narin bahar çiçeklerinin arasına el işçiliğiyle serpiştirilen cipsolar, muma büyüleyici bir derinlik kazandırıyor. Niş yasemin esansının o yatıştırıcı ve lüks kokusu, ruhunuzu dinlendirirken odanızın enerisrini saray bahçelerine dönüştürecek.", 
             fiyat: 2000,
             gorsel: "yasemin.png"
+          },
+          // 500 TL DEĞERİNDEKİ SEÇİLEBİLİR TEKLİ ÖZEL TASARIMLAR (ss.png görselinden)
+          {
+            id: 5,
+            ad: "Mini Hediye Kutulu Gül Buketi (Pembe)",
+            kategori: "katalog",
+            aciklama: "Özel pembe dairesel hediye kutusunda sunulan, tomurcuk güller ve soft süslemelerle bezeli minimalist şık tasarım mum.",
+            fiyat: 500,
+            gorsel: "ss.png"
+          },
+          {
+            id: 6,
+            ad: "Premium Kurdeleli Mini Silindir Mum Buketi",
+            kategori: "katalog",
+            aciklama: "Zarif saten pembe kurdeleyle sarmalanmış silindir kutuda, lüks gül goncaları ve cipsolar barındıran büyüleyici el yapımı mum tasarımı.",
+            fiyat: 500,
+            gorsel: "ss.png"
+          },
+          {
+            id: 7,
+            ad: "Gümüş İnci Kalpli Beyaz Ayıcıklı Mum Buketi",
+            kategori: "katalog",
+            aciklama: "Işıltılı gümüş detaylı kalpler, narin cipsolar ve sevimli beyaz ayıcık figürünün bir arada sunulduğu, tül detaylı şık aranjman mum.",
+            fiyat: 500,
+            gorsel: "ss.png"
+          },
+          {
+            id: 8,
+            ad: "Mavi Bisiklet Aranjmanlı Mum Buketi",
+            kategori: "katalog",
+            aciklama: "Dekoratif minyatür mavi bisiklet sepeti içerisine el işçiliğiyle yerleştirilmiş, pembe ve krem tonlarında premium esanslı mum.",
+            fiyat: 500,
+            gorsel: "ss.png"
+          },
+          {
+            id: 9,
+            ad: "Beyaz Bisiklet Aranjmanlı Kırmızı Aşk Buketi",
+            kategori: "katalog",
+            aciklama: "Tutkunun rengi kırmızı ve masum beyaz goncaların, şık beyaz dekoratif bisiklet sepetinde buluştuğu harika bir niş esanslı mum tasarımı.",
+            fiyat: 500,
+            gorsel: "ss.png"
+          },
+          {
+            id: 10,
+            ad: "Siyah Sekizgen Kutuda Kadife Kırmızı Gül Mumu",
+            kategori: "katalog",
+            aciklama: "Premium siyah sekizgen lüks kutu içerisinde, büyük boy detaylı kırmızı gül figürleri ve altın parıltılı cipsolar barındıran dramatik, asil tasarım.",
+            fiyat: 500,
+            gorsel: "ss.png"
           }
         ];
         
@@ -674,8 +719,8 @@
                 tag.innerText = "Sınırlı Özel Premium Seri";
                 tag.style.color = "var(--color-primary)";
             } else {
-                tag.innerText = "Nimet Luxe Özel Koleksiyon";
-                tag.style.color = "var(--color-text-secondary)";
+                tag.innerText = "Özel Gün Koleksiyonu - İstediğiniz Model 500 TL";
+                tag.style.color = "var(--color-primary)";
             }
 
             document.getElementById('modalAddCartBtn').onclick = () => {
