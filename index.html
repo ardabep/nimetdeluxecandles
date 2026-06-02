@@ -402,6 +402,7 @@
         <span>✨</span> <span id="toastMessage">Ürün sepete eklendi!</span>
     </div>
 
+    <!-- ADANMIŞ KOLEKSİYON PENCERESİ (MODAL) -->
     <div class="collection-modal" id="collectionModal">
         <button class="collection-close" onclick="closeCollectionModal()">✕ Kapat</button>
         <div class="collection-content-wrapper">
@@ -413,6 +414,7 @@
         </div>
     </div>
 
+    <!-- ÜRÜN DETAY MODALI -->
     <div class="product-modal" id="productModal" onclick="closeModalOnOuterClick(event)">
         <div class="modal-content">
             <button class="modal-close" onclick="closeProductModal()">✕</button>
@@ -451,6 +453,7 @@
         </div>
     </section>
 
+    <!-- PREMIUM SEÇKİ (VİTRİN) -->
     <section id="katalog" class="section-block container scroll-animate">
         <div class="section-header">
             <span class="section-subtitle">Sınırlı Özel Seri</span>
@@ -543,7 +546,7 @@
     </div>
 
     <script>
-        // ÜRÜN VERİ TABANI - Tüm ürünler ve 500 TL'lik tekli özel modeller eklendi
+        // ÜRÜN VERİ TABANI - ss.png görseli tek bir seçilebilir ürün olarak sadeleştirildi
         const urunler = [
           { 
             id: 1, 
@@ -573,56 +576,16 @@
             id: 4, 
             ad: "Yasemin Kokulu Mum Buketi", 
             kategori: "premium", 
-            aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor. Sevimli figürler, zarif güller ve narin bahar çiçeklerinin arasına el işçiliğiyle serpiştirilen cipsolar, muma büyüleyici bir derinlik kazandırıyor. Niş yasemin esansının o yatıştırıcı ve lüks kokusu, ruhunuzu dinlendirirken odanızın enerisrini saray bahçelerine dönüştürecek.", 
+            aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor. Sevimli figürler, zarif güller union narin bahar çiçeklerinin arasına el işçiliğiyle serpiştirilen cipsolar, muma büyüleyici bir derinlik kazandırıyor. Niş yasemin esansının o yatıştırıcı ve lüks kokusu, ruhunuzu dinlendirirken odanızın enerisrini saray bahçelerine dönüştürecek.", 
             fiyat: 2000,
             gorsel: "yasemin.png"
           },
-          // 500 TL DEĞERİNDEKİ SEÇİLEBİLİR TEKLİ ÖZEL TASARIMLAR (ss.png görselinden)
+          // 500 TL DEĞERİNDEKİ TEK ÜRÜN OLARAK EKLENEN ÖZEL MODEL
           {
             id: 5,
-            ad: "Mini Hediye Kutulu Gül Buketi (Pembe)",
+            ad: "İstediğiniz Model (Özel Tasarım Mum)",
             kategori: "katalog",
-            aciklama: "Özel pembe dairesel hediye kutusunda sunulan, tomurcuk güller ve soft süslemelerle bezeli minimalist şık tasarım mum.",
-            fiyat: 500,
-            gorsel: "ss.png"
-          },
-          {
-            id: 6,
-            ad: "Premium Kurdeleli Mini Silindir Mum Buketi",
-            kategori: "katalog",
-            aciklama: "Zarif saten pembe kurdeleyle sarmalanmış silindir kutuda, lüks gül goncaları ve cipsolar barındıran büyüleyici el yapımı mum tasarımı.",
-            fiyat: 500,
-            gorsel: "ss.png"
-          },
-          {
-            id: 7,
-            ad: "Gümüş İnci Kalpli Beyaz Ayıcıklı Mum Buketi",
-            kategori: "katalog",
-            aciklama: "Işıltılı gümüş detaylı kalpler, narin cipsolar ve sevimli beyaz ayıcık figürünün bir arada sunulduğu, tül detaylı şık aranjman mum.",
-            fiyat: 500,
-            gorsel: "ss.png"
-          },
-          {
-            id: 8,
-            ad: "Mavi Bisiklet Aranjmanlı Mum Buketi",
-            kategori: "katalog",
-            aciklama: "Dekoratif minyatür mavi bisiklet sepeti içerisine el işçiliğiyle yerleştirilmiş, pembe ve krem tonlarında premium esanslı mum.",
-            fiyat: 500,
-            gorsel: "ss.png"
-          },
-          {
-            id: 9,
-            ad: "Beyaz Bisiklet Aranjmanlı Kırmızı Aşk Buketi",
-            kategori: "katalog",
-            aciklama: "Tutkunun rengi kırmızı ve masum beyaz goncaların, şık beyaz dekoratif bisiklet sepetinde buluştuğu harika bir niş esanslı mum tasarımı.",
-            fiyat: 500,
-            gorsel: "ss.png"
-          },
-          {
-            id: 10,
-            ad: "Siyah Sekizgen Kutuda Kadife Kırmızı Gül Mumu",
-            kategori: "katalog",
-            aciklama: "Premium siyah sekizgen lüks kutu içerisinde, büyük boy detaylı kırmızı gül figürleri ve altın parıltılı cipsolar barındıran dramatik, asil tasarım.",
+            aciklama: "Görselde yer alan birbirinden zarif, el emeği mini bisiklet aranjmanları, lüks kutulu güller, kurdeleli mum buketleri veya gümüş kalpli tasarımlardan dilediğinizi seçebilirsiniz. Siparişinizi tamamladığınızda WhatsApp üzerinden istediğiniz modeli belirtmeniz yeterlidir.",
             fiyat: 500,
             gorsel: "ss.png"
           }
@@ -719,7 +682,7 @@
                 tag.innerText = "Sınırlı Özel Premium Seri";
                 tag.style.color = "var(--color-primary)";
             } else {
-                tag.innerText = "Özel Gün Koleksiyonu - İstediğiniz Model 500 TL";
+                tag.innerText = "Özel Koleksiyon - İstediğiniz Model 500 TL";
                 tag.style.color = "var(--color-primary)";
             }
 
