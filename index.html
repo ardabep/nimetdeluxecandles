@@ -182,7 +182,7 @@
         .btn-add-cart { background: transparent; border: 1px solid rgba(212, 175, 55, 0.25); color: var(--color-primary); padding: 10px 22px; font-size: 12px; cursor: pointer; transition: var(--transition-smooth); font-weight: 600; letter-spacing: 0.05em; }
         .btn-add-cart:hover { background: var(--color-primary); color: var(--color-bg); transform: scale(1.05); }
         
-        /* ADANMIŞ KOLEKSİYON ALANI (Katalog Modalı) */
+        /* ADANMIŞ KOLEKSİYON ALANI */
         .collection-modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(26, 24, 22, 0.98); backdrop-filter: blur(20px);
@@ -402,7 +402,6 @@
         <span>✨</span> <span id="toastMessage">Ürün sepete eklendi!</span>
     </div>
 
-    <!-- ADANMIŞ KOLEKSİYON PENCERESİ (MODAL) -->
     <div class="collection-modal" id="collectionModal">
         <button class="collection-close" onclick="closeCollectionModal()">✕ Kapat</button>
         <div class="collection-content-wrapper">
@@ -414,7 +413,6 @@
         </div>
     </div>
 
-    <!-- ÜRÜN DETAY MODALI -->
     <div class="product-modal" id="productModal" onclick="closeModalOnOuterClick(event)">
         <div class="modal-content">
             <button class="modal-close" onclick="closeProductModal()">✕</button>
@@ -453,7 +451,6 @@
         </div>
     </section>
 
-    <!-- PREMIUM SEÇKİ (VİTRİN) -->
     <section id="katalog" class="section-block container scroll-animate">
         <div class="section-header">
             <span class="section-subtitle">Sınırlı Özel Seri</span>
@@ -546,7 +543,7 @@
     </div>
 
     <script>
-        // ÜRÜN VERİ TABANI - ss.png görseli tek bir seçilebilir ürün olarak sadeleştirildi
+        // ÜRÜN VERİ TABANI - İstediğin 500 TL model ismi ve açıklamasıyla güncellendi
         const urunler = [
           { 
             id: 1, 
@@ -576,16 +573,16 @@
             id: 4, 
             ad: "Yasemin Kokulu Mum Buketi", 
             kategori: "premium", 
-            aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor. Sevimli figürler, zarif güller union narin bahar çiçeklerinin arasına el işçiliğiyle serpiştirilen cipsolar, muma büyüleyici bir derinlik kazandırıyor. Niş yasemin esansının o yatıştırıcı ve lüks kokusu, ruhunuzu dinlendirirken odanızın enerisrini saray bahçelerine dönüştürecek.", 
+            aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor. Sevimli figürler, zarif güller ve narin bahar çiçeklerinin arasına el işçiliğiyle serpiştirilen cipsolar, muma büyüleyici bir derinlik kazandırıyor. Niş yasemin esansının o yatıştırıcı ve lüks kokusu, ruhunuzu dinlendirirken odanızın enerjisini saray bahçelerine dönüştürecek.", 
             fiyat: 2000,
             gorsel: "yasemin.png"
           },
-          // 500 TL DEĞERİNDEKİ TEK ÜRÜN OLARAK EKLENEN ÖZEL MODEL
+          // 500 TL SABİT FİYATLI VE ÖZEL İSİMLİ SEÇENEK
           {
             id: 5,
-            ad: "İstediğiniz Model (Özel Tasarım Mum)",
-            kategori: "katalog",
-            aciklama: "Görselde yer alan birbirinden zarif, el emeği mini bisiklet aranjmanları, lüks kutulu güller, kurdeleli mum buketleri veya gümüş kalpli tasarımlardan dilediğinizi seçebilirsiniz. Siparişinizi tamamladığınızda WhatsApp üzerinden istediğiniz modeli belirtmeniz yeterlidir.",
+            ad: "Seçilebilir Mini Premium Model (İstediğiniz Tasarım)",
+            kategori: "premium", // Vitrinde görünmesi için premium yapıldı
+            aciklama: "Kataloğumuzda yer alan mini bisiklet aranjmanları, lüks kurdeleli kutu tasarımları veya gümüş kalpli özel konseptlerden dilediğinizi seçebilirsiniz. Bu serideki tüm tasarımlar el emeği ile üretilip 500 TL sabit fiyat avantajına sahiptir. Siparişinizi sepetinize ekledikten sonra WhatsApp üzerinden dilediğiniz spesifik modeli belirtmeniz yeterlidir.",
             fiyat: 500,
             gorsel: "ss.png"
           }
@@ -678,11 +675,11 @@
             document.getElementById('modalImg').alt = u.ad;
             
             const tag = document.getElementById('modalTag');
-            if(u.kategori === 'premium') {
-                tag.innerText = "Sınırlı Özel Premium Seri";
+            if(u.id === 5) {
+                tag.innerText = "Özel Model Seçimi - 500 TL Sabit Fiyat";
                 tag.style.color = "var(--color-primary)";
             } else {
-                tag.innerText = "Özel Koleksiyon - İstediğiniz Model 500 TL";
+                tag.innerText = "Sınırlı Özel Premium Seri";
                 tag.style.color = "var(--color-primary)";
             }
 
