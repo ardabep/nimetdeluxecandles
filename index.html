@@ -42,7 +42,7 @@
         
         .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); position: relative; z-index: 2; }
         
-        /* Yenilenen Navigasyon Üst Şeridi */
+        /* Navigasyon Üst Şeridi */
         .nav { 
           position: fixed; top: 0; width: 100%; z-index: 100; padding: var(--space-md) 0; 
           backdrop-filter: blur(25px); background: rgba(24, 22, 21, 0.85); 
@@ -50,7 +50,6 @@
         }
         .nav-container { display: flex; justify-content: space-between; align-items: center; position: relative; height: 40px; }
         
-        /* Sol Üst Menü Butonu (Reels Havasını Kıran Çözüm) */
         .menu-trigger {
             background: transparent; border: 1px solid rgba(191, 161, 95, 0.4); color: var(--color-primary);
             padding: 8px 16px; font-family: var(--font-body); font-weight: 500; font-size: 12px;
@@ -67,7 +66,7 @@
         .nav .cart-trigger { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 10px 20px; font-family: var(--font-body); cursor: pointer; font-weight: 600; font-size: 12px; transition: var(--transition-smooth); letter-spacing: 0.05em; }
         .nav .cart-trigger:hover { background: var(--color-primary); color: #181615; transform: scale(1.03); }
         
-        /* AÇILIR GİZLİ PREMIUM MENÜ PANELİ (SIDEBAR MENU) */
+        /* AÇILIR GİZLİ PREMIUM MENÜ PANELİ */
         .sidebar-menu {
             position: fixed; top: 0; left: -320px; width: 300px; height: 100%;
             background: rgba(24, 22, 21, 0.98); backdrop-filter: blur(30px);
@@ -111,30 +110,34 @@
             font-family: var(--font-body); font-weight: 600; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: var(--transition-smooth);
         }
         
-        /* Hero Alanı ve Yenilenen "Nefes Alan" Arka Plan Ayarı */
+        /* KESKİN GEÇİŞİ YOK EDEN YENİLENMİŞ HERO VE GRADIENT MASK AYARLARI */
         .hero { height: calc(100vh - 70px); display: flex; align-items: center; position: relative; overflow: hidden; background: var(--color-bg); }
         
         .hero-bg-image {
           position: absolute; top: 0; left: 0; width: 100%; height: 100%;
           background-image: url('https://images.unsplash.com/photo-1603006905003-be475563bc59?q=80&w=1920&auto=format&fit=crop');
           background-size: cover; background-position: center; z-index: 1;
-          /* Sert geçişi yumuşatan sinematik breathing (soluma) animasyonu */
           animation: luxuryBreathe 14s infinite ease-in-out;
-          opacity: 0.4; /* Renklere yedirmek ve karanlık lüks hissi korumak için ideal opaklık */
+          opacity: 0.45; 
         }
         
-        /* Fotoğrafın kenarlarını ve altını eriten gradyan maske katmanı */
+        /* image_e3ab80.jpg görselindeki yatay sert çizgiyi yok eden çok aşamalı yumuşatma katmanı */
         .hero-overlay {
           position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-          background: linear-gradient(to bottom, rgba(24, 22, 21, 0.4) 0%, rgba(24, 22, 21, 0.7) 50%, var(--color-bg) 100%);
+          background: linear-gradient(to bottom, 
+            rgba(24, 22, 21, 0.3) 0%, 
+            rgba(24, 22, 21, 0.5) 40%, 
+            rgba(24, 22, 21, 0.8) 70%, 
+            rgba(24, 22, 21, 0.95) 88%,
+            var(--color-bg) 100%
+          );
           z-index: 2;
         }
         
-        /* Fotoğrafın arka plandaki renklere yavaşça eriyip kaybolmasını sağlayan döngü */
         @keyframes luxuryBreathe { 
-            0% { transform: scale(1.02); opacity: 0.35; } 
-            50% { transform: scale(1.06); opacity: 0.55; } 
-            100% { transform: scale(1.02); opacity: 0.35; } 
+            0% { transform: scale(1.01); opacity: 0.35; } 
+            50% { transform: scale(1.05); opacity: 0.55; } 
+            100% { transform: scale(1.01); opacity: 0.35; } 
         }
         
         .hero-wrapper { width: 100%; position: relative; z-index: 3; }
@@ -155,7 +158,7 @@
         
         .section-block { padding: 90px 0; border-bottom: 1px solid rgba(191, 161, 95, 0.08); position: relative; z-index: 2; }
         
-        /* Grid Düzeni (Ana Ekran - Üçlü) */
+        /* Grid Düzeni */
         .grid { display: grid; gap: var(--space-xl); grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); justify-content: center; justify-items: center; max-width: 1200px; margin: 0 auto; }
         
         /* Kart Tasarımları */
@@ -349,37 +352,19 @@
             
             .grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); } 
             
-            /* KATALOG İÇİN SAĞLI SOLLU İKİLİ (2'Lİ) MOBİL DÜZEN */
+            /* KATALOG MOBİL DÜZEN */
             .katalog-2li-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
                 gap: 12px !important;
                 padding: 0 4px !important;
             }
-            .katalog-2li-grid .card {
-                padding: 10px !important;
-                max-width: 100% !important;
-            }
-            .katalog-2li-grid .product-img-box {
-                height: 160px !important;
-                margin-bottom: 8px !important;
-            }
-            .katalog-2li-grid .product-title {
-                font-size: 16px !important;
-                line-height: 1.2;
-                margin-bottom: 4px;
-            }
+            .katalog-2li-grid .card { padding: 10px !important; max-width: 100% !important; }
+            .katalog-2li-grid .product-img-box { height: 160px !important; margin-bottom: 8px !important; }
+            .katalog-2li-grid .product-title { font-size: 16px !important; line-height: 1.2; margin-bottom: 4px; }
             .katalog-2li-grid .product-desc { display: none; }
-            .katalog-2li-grid .product-footer {
-                padding-top: 6px !important;
-                flex-direction: column;
-                align-items: flex-start !important;
-                gap: 8px;
-            }
+            .katalog-2li-grid .product-footer { padding-top: 6px !important; flex-direction: column; align-items: flex-start !important; gap: 8px; }
             .katalog-2li-grid .product-price { font-size: 14px !important; }
-            .katalog-2li-grid .btn-add-cart {
-                width: 100%; padding: 6px var(--space-md) !important;
-                font-size: 11px !important; text-align: center;
-            }
+            .katalog-2li-grid .btn-add-cart { width: 100%; padding: 6px var(--space-md) !important; font-size: 11px !important; text-align: center; }
 
             .nav { padding: 10px 0; }
             .nav-container { height: 40px; }
@@ -395,9 +380,9 @@
             .hero { height: 60vh; } 
             .hero-bg-image { animation: luxuryBreatheMobile 14s infinite ease-in-out; }
             @keyframes luxuryBreatheMobile { 
-                0% { transform: scale(1.02); opacity: 0.3; } 
-                50% { transform: scale(1.08); opacity: 0.45; } 
-                100% { transform: scale(1.02); opacity: 0.3; } 
+                0% { transform: scale(1.01); opacity: 0.3; } 
+                50% { transform: scale(1.07); opacity: 0.45; } 
+                100% { transform: scale(1.01); opacity: 0.3; } 
             }
             
             .hero-text { text-align: center; padding: 0 var(--space-md); }
@@ -429,16 +414,13 @@
     <!-- ÜST NAVİGASYON -->
     <nav class="nav">
         <div class="container nav-container">
-            <!-- Sol Üst Hamburger Menü Butonu -->
             <button class="menu-trigger" onclick="toggleSidebarMenu()">☰ MENÜ</button>
-            
             <a href="#" class="logo">Nimet Luxe Candles</a>
-            
             <button class="cart-trigger" onclick="toggleCart()">Sepet (<span class="cart-count-val">0</span>)</button>
         </div>
     </nav>
 
-    <!-- YENİ AÇILIR YAN MENÜ PANELSİ -->
+    <!-- AÇILIR YAN MENÜ PANELİ -->
     <div class="sidebar-menu" id="sidebarMenu">
         <button class="sidebar-menu-close" onclick="toggleSidebarMenu()">✕</button>
         <div class="sidebar-links">
@@ -446,7 +428,6 @@
             <a href="#hakkimizda" onclick="toggleSidebarMenu()">Hikayemiz</a>
             <a href="#yorumlar" onclick="toggleSidebarMenu()">Yorumlar</a>
             <a href="#iletisim" onclick="toggleSidebarMenu()">İletişim</a>
-            <!-- Katalog Tuşu En Belirgin Şekilde Menüye Yerleşti -->
             <a onclick="handleSidebarCatalog()" class="sidebar-catalog-btn">✦ TÜM KATALOG</a>
         </div>
     </div>
@@ -463,7 +444,7 @@
         <span>✨</span> <span id="toastMessage">Ürün sepete eklendi!</span>
     </div>
 
-    <!-- TAM EKRAN KATALOG PENCERESİ (MODAL) -->
+    <!-- TAM EKRAN KATALOG PENCERESİ -->
     <div class="collection-modal" id="collectionModal">
         <button class="collection-close" onclick="closeCollectionModal()">✕ Kapat</button>
         <div class="collection-content-wrapper">
@@ -529,7 +510,7 @@
         </div>
     </section>
 
-    <!-- PREMIUM SEÇKİ (ANA SAYFA) -->
+    <!-- PREMIUM SEÇKİ -->
     <section id="premium-secki" class="section-block container scroll-animate">
         <div class="section-header">
             <span class="section-subtitle">Ayrıcalıklı Sanat Eserleri</span>
@@ -626,122 +607,18 @@
     </div>
 
     <script>
-        // ÜRÜN VERİTABANI
         const urunler = [
-          { 
-            id: 1, 
-            ad: "Bubble Kokulu Mum Buketi", 
-            kategori: "premium",
-            aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve lila tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım.", 
-            fiyat: 2000,
-            gorsel: "bubblebuket.png",
-            gorselListesi: ["bubblebuket.png"],
-            video: null 
-          },
-          { 
-            id: 2, 
-            ad: "Mango Kokulu Mum Buketi", 
-            kategori: "premium",
-            aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarına taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül tomurcuk figürleriyle bezenmiş mum buketimiz, egzotik ve taze mango esansıyla zenginleştirilmiştir.", 
-            fiyat: 2000,
-            gorsel: "mango.png",
-            gorselListesi: [
-                "mango.png", 
-                "WhatsApp Image 2026-06-01 at 21.05.31 (1).jpeg", 
-                "WhatsApp Image 2026-06-01 at 21.05.31 (2).jpeg"
-            ],
-            video: null 
-          },
-          { 
-            id: 3, 
-            ad: "Karışık Koku Özel Mum Buketi", 
-            kategori: "premium",
-            aciklama: "Göz alıcı bir pembe kutuda lüksü ve görsel bir şöleni buluşturan bu özel tasarım, el emeğinin zirvesini temsil ediyor. İçerisinde kusursuzca işlenmiş incili kalpler, sevimli mini ayıcık figürü, narin gül goncaları, papatyalar ve capcanlı turuncu laleler barındırır.", 
-            fiyat: 2300,
-            gorsel: "karısık.png",
-            gorselListesi: ["karısık.png"],
-            video: null
-          },
-          { 
-            id: 4, 
-            ad: "Yasemin Kokulu Mum Buketi", 
-            kategori: "normal", 
-            aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor.", 
-            fiyat: 2000,
-            gorsel: "yasemin.png",
-            gorselListesi: ["yasemin.png"],
-            video: null
-          },
-          {
-            id: 5,
-            ad: "Seçilebilir Mini Premium Model",
-            kategori: "normal", 
-            aciklama: "Kataloğumuzda yer alan el yapımı mini bisiklet aranjmanları, lüks kurdeleli dairesel kutu tasarımları veya gümüş detaylı özel konseptlerden dilediğinizi zevkinize göre seçebilirsiniz.",
-            fiyat: 800,
-            gorsel: "ss_2.png",
-            gorselListesi: ["ss_2.png"],
-            video: null
-          },
-          {
-            id: 6,
-            ad: "Çilek & Kırmızı Gül El Buketi",
-            kategori: "normal",
-            aciklama: "Aşkın ve tutkunun rengiyle bezenmiş, elde taşınabilir formda tasarlanan bu mini sanat eseri; el işçiliğiyle şekillendirilen kusursuz kırmızı güller barındırır.",
-            fiyat: 500,
-            gorsel: "mini.png",
-            gorselListesi: ["mini.png"],
-            video: null
-          },
-          {
-            id: 7,
-            ad: "Papatya & İncili Ayıcık Mum Buketi",
-            kategori: "normal",
-            aciklama: "Zarif beyaz ve pembe papatyaların, el işçiliğiyle üretilmiş gold detaylı güllerle büyüleyici birleşimi. Merkezinde tatlı pembe bir ayıcık figürü barındırır.",
-            fiyat: 500,
-            gorsel: "papatya.png",
-            gorselListesi: ["papatya.png"],
-            video: null
-          },
-          {
-            id: 8,
-            ad: "Lüks Orkide & Lale Mum Buketi",
-            kategori: "normal",
-            aciklama: "Zarafetin sembolü olan soft lila orkideler ve asil lalelerin, canlı pembe cipsolarla bir araya geldiği göz alıcı bir tasarım.",
-            fiyat: 500,
-            gorsel: "orkide.jpeg",
-            gorselListesi: ["orkide.jpeg"],
-            video: null
-          },
-          {
-            id: 9,
-            ad: "Şakayık & Gül Siyah Kutu Mum",
-            kategori: "normal",
-            aciklama: "Mat siyah şık ve minimal bir kutu içerisinde; pudra pembe şakayıklar, el işçiliği beyaz ve lila güllerin muazzam birleşimi.",
-            fiyat: 500,
-            gorsel: "siyahkutu.jpeg",
-            gorselListesi: ["siyahkutu.jpeg"],
-            video: null
-          },
-          {
-            id: 10,
-            ad: "Pembe Düşler Gül & Ayıcık Buketi",
-            kategori: "normal",
-            aciklama: "Romantik pembe ve beyaz tonlarındaki el işçiliği narin güllerin, şirin bir mini pembe ayıcık figürüyle buluştuğu harika bir buket tasarımı.",
-            fiyat: 500,
-            gorsel: "WhatsApp Image 2026-06-01 at 21.22.54.jpeg",
-            gorselListesi: ["WhatsApp Image 2026-06-01 at 21.22.54.jpeg"],
-            video: null
-          },
-          {
-            id: 11,
-            ad: "Kalpli Ayıcık Mum Buketi",
-            kategori: "normal",
-            aciklama: "Zirvesinde göz alıcı kırmızı kadife bir kalp figürü ve Nimet Göçmen el işçiliği imzasını taşıyan asil bir aranjman.",
-            fiyat: 500,
-            gorsel: "WhatsApp Image 2026-06-01 at 21.22.53.jpeg",
-            gorselListesi: ["WhatsApp Image 2026-06-01 at 21.22.53.jpeg"],
-            video: null
-          }
+          { id: 1, ad: "Bubble Kokulu Mum Buketi", kategori: "premium", aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve lila tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım.", fiyat: 2000, gorsel: "bubblebuket.png", gorselListesi: ["bubblebuket.png"], video: null },
+          { id: 2, ad: "Mango Kokulu Mum Buketi", kategori: "premium", aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarına taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül tomurcuk figürleriyle bezenmiş mum buketimiz, egzotik ve taze mango esansıyla zenginleştirilmiştir.", fiyat: 2000, gorsel: "mango.png", gorselListesi: ["mango.png", "WhatsApp Image 2026-06-01 at 21.05.31 (1).jpeg", "WhatsApp Image 2026-06-01 at 21.05.31 (2).jpeg"], video: null },
+          { id: 3, ad: "Karışık Koku Özel Mum Buketi", kategori: "premium", aciklama: "Göz alıcı bir pembe kutuda lüksü ve görsel bir şöleni buluşturan bu özel tasarım, el emeğinin zirvesini temsil ediyor. İçerisinde kusursuzca işlenmiş incili kalpler, sevimli mini ayıcık figürü, narin gül goncaları, papatyalar ve capcanlı turuncu laleler barındırır.", fiyat: 2300, gorsel: "karısık.png", gorselListesi: ["karısık.png"], video: null },
+          { id: 4, ad: "Yasemin Kokulu Mum Buketi", kategori: "normal", aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor.", fiyat: 2000, gorsel: "yasemin.png", gorselListesi: ["yasemin.png"], video: null },
+          { id: 5, ad: "Seçilebilir Mini Premium Model", kategori: "normal", aciklama: "Kataloğumuzda yer alan el yapımı mini bisiklet aranjmanları, lüks kurdeleli dairesel kutu tasarımları veya gümüş detaylı özel konseptlerden dilediğinizi zevkinize göre seçebilirsiniz.", fiyat: 800, gorsel: "ss_2.png", gorselListesi: ["ss_2.png"], video: null },
+          { id: 6, ad: "Çilek & Kırmızı Gül El Buketi", kategori: "normal", aciklama: "Aşkın ve tutkunun rengiyle bezenmiş, elde taşınabilir formda tasarlanan bu mini sanat eseri; el işçiliğiyle şekillendirilen kusursuz kırmızı güller barındırır.", fiyat: 500, gorsel: "mini.png", gorselListesi: ["mini.png"], video: null },
+          { id: 7, ad: "Papatya & İncili Ayıcık Mum Buketi", kategori: "normal", aciklama: "Zarif beyaz ve pembe papatyaların, el işçiliğiyle üretilmiş gold detaylı güllerle büyüleyici birleşimi. Merkezinde tatlı pembe bir ayıcık figürü barındırır.", fiyat: 500, gorsel: "papatya.png", gorselListesi: ["papatya.png"], video: null },
+          { id: 8, ad: "Lüks Orkide & Lale Mum Buketi", kategori: "normal", aciklama: "Zarafetin sembolü olan soft lila orkideler ve asil lalelerin, canlı pembe cipsolarla bir araya geldiği göz alıcı bir tasarım.", fiyat: 500, gorsel: "orkide.jpeg", gorselListesi: ["orkide.jpeg"], video: null },
+          { id: 9, ad: "Şakayık & Gül Siyah Kutu Mum", kategori: "normal", aciklama: "Mat siyah şık ve minimal bir kutu içerisinde; pudra pembe şakayıklar, el işçiliği beyaz ve lila güllerin muazzam birleşimi.", fiyat: 500, gorsel: "siyahkutu.jpeg", gorselListesi: ["siyahkutu.jpeg"], video: null },
+          { id: 10, ad: "Pembe Düşler Gül & Ayıcık Buketi", kategori: "normal", aciklama: "Romantik pembe ve beyaz tonlarındaki el işçiliği narin güllerin, şirin bir mini pembe ayıcık figürüyle buluştuğu harika bir buket tasarımı.", fiyat: 500, gorsel: "WhatsApp Image 2026-06-01 at 21.22.54.jpeg", gorselListesi: ["WhatsApp Image 2026-06-01 at 21.22.54.jpeg"], video: null },
+          { id: 11, ad: "Kalpli Ayıcık Mum Buketi", kategori: "normal", aciklama: "Zirvesinde göz alıcı kırmızı kadife bir kalp figürü ve Nimet Göçmen el işçiliği imzasını taşıyan asil bir aranjman.", fiyat: 500, gorsel: "WhatsApp Image 2026-06-01 at 21.22.53.jpeg", gorselListesi: ["WhatsApp Image 2026-06-01 at 21.22.53.jpeg"], video: null }
         ];
         
         let sepet = [];
