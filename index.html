@@ -611,35 +611,33 @@
     </div>
 
     <script>
-        // ÜRÜN LİSTESİ VE 10 YENİ FOTOĞRAFIN DOĞRU SIRAYLA GRUPLANMASI (ID: 5)
+        // ÜRÜN LİSTESİ VE GÜNCEL DOSYA YAPILARI
         const urunler = [
           { id: 1, ad: "Bubble Kokulu Mum Buketi", kategori: "premium", aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve lila tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım.", fiyat: 2000, gorsel: "bubblebuket.png", gorselListesi: ["bubblebuket.png"], video: null },
           { id: 2, ad: "Mango Kokulu Mum Buketi", kategori: "premium", aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarına taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül tomurcuk figürleriyle bezenmiş mum buketimiz, egzotik ve taze mango esansıyla zenginleştirilmiştir.", fiyat: 2000, gorsel: "mango.png", gorselListesi: ["mango.png", "WhatsApp Image 2026-06-01 at 21.05.31 (1).jpeg", "WhatsApp Image 2026-06-01 at 21.05.31 (2).jpeg"], video: null },
           { id: 3, ad: "Karışık Koku Özel Mum Buketi", kategori: "premium", aciklama: "Göz alıcı bir pembe kutuda lüksü ve görsel bir şöleni buluşturan bu özel tasarım, el emeğinin zirvesini temsil ediyor. İçerisinde kusursuzca işlenmiş incili kalpler, sevimli mini ayıcık figürü, narin gül goncaları, papatyalar ve capcanlı turuncu laleler barındırır.", fiyat: 2300, gorsel: "karısık.png", gorselListesi: ["karısık.png"], video: null },
           { id: 4, ad: "Yasemin Kokulu Mum Buketi", kategori: "normal", aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor.", fiyat: 2000, gorsel: "yasemin.png", gorselListesi: ["yasemin.png"], video: null },
           
-          // GÖNDERDİĞİN 10 FOTOĞRAF BU MODELİN İÇİNE GRUPLANARAK EKLENDİ VE SIRALANDI
+          // GRUPLANMIŞ PREMIUM VARYANT MODELLER (MODEL 5 VE 6 KALDIRILDI, ESKİ ANA FOTOĞRAF OLAN 800tl2.jpeg EN BAŞA AYARLANDI)
           { 
             id: 5, 
             ad: "Seçilebilir Mini Premium Model", 
             kategori: "normal", 
             aciklama: "Kataloğumuzda yer alan el yapımı mini bisiklet aranjmanları, lüks kurdeleli dairesel kutu tasarımları veya gümüş detaylı özel konseptlerden dilediğinizi zevkinize göre seçebilirsiniz. Aşağıdaki tasarımlar örnek modellerdir.", 
             fiyat: 800, 
-            gorsel: "800tl2.jpeg", // Varsayılan kapak görseli
+            gorsel: "800tl2.jpeg", 
             gorselListesi: [
-              "800tl2.jpeg",  // Pembe Kalp Serisi 1
-              "800tl5.jpeg",  // Pembe Kalp Serisi 2 (Benzer tür yan yana)
+              "800tl2.jpeg",  // Eski Ana Fotoğraf / Pembe Kalp Serisi 1
+              "800tl5.jpeg",  // Pembe Kalp Serisi 2
               "800tl7.jpeg",  // Gümüş & Kanat Serisi 1
-              "800tl8.jpeg",  // Gümüş & Kanat Serisi 2 (Benzer tür yan yana)
-              "800tl9.jpg",   // Kadeh & Tüy Serisi 1
-              "800tl10.jpg",  // Kadeh & Tüy Serisi 2 (Benzer tür yan yana)
+              "800tl8.jpeg",  // Gümüş & Kanat Serisi 2
               "800tl3.jpeg",  // Tül Aranjman Serisi 1
-              "800tl4.jpeg",  // Tül Aranjman Serisi 2 (Benzer tür yan yana)
+              "800tl4.jpeg",  // Tül Aranjman Serisi 2
               "800tl.jpeg",   // Özel İnci Serisi
               "800tl6.jpeg"   // Elbise & Dudak Figürlü Seri
             ], 
             video: null,
-            ornekModeller: true // Filtreleme ve not tetikleyici bayrak
+            ornekModeller: true 
           },
           
           { id: 6, ad: "Çilek & Kırmızı Gül El Buketi", kategori: "normal", aciklama: "Aşkın ve tutkunun rengiyle bezenmiş, elde taşınabilir formda tasarlanan bu mini sanat eseri; el işçiliğiyle şekillendirilen kusursuz kırmızı güller barındırır.", fiyat: 500, gorsel: "mini.png", gorselListesi: ["mini.png"], video: null },
@@ -724,7 +722,6 @@
             document.getElementById('productModal').classList.add('open');
         }
 
-        // DİNAMİK VARYANT VE ÖRNEK NOTU SİSTEMİYLE MODAL YAPISININ GÜNCELLENMESİ
         function buildProductModalContent() {
             const u = urunler[mevcutUrunIndex];
             mevcutSlaytIndex = 0;
@@ -742,13 +739,11 @@
             const variantGrid = document.getElementById('modalVariantGrid');
             const featuresBlock = document.getElementById('modalFeaturesBlock');
             
-            // Eğer Mini Premium Model seçildiyse, özel varyant seçici kutusunu ve filigranı aç
             if(u.ornekModeller) {
                 watermark.style.display = 'block';
                 variantWrapper.style.display = 'block';
-                featuresBlock.style.display = 'none'; // Alan kazanmak için özellikleri gizle
+                featuresBlock.style.display = 'none';
                 
-                // Gruplanmış küçük resim varyant butonlarını oluştur
                 variantGrid.innerHTML = u.gorselListesi.map((g, i) => `
                     <button class="variant-btn ${i === 0 ? 'active' : ''}" onclick="setSlide(${i}); updateActiveVariantBtn(this)">
                         <img src="${g}" alt="Örnek Model ${i+1}">
@@ -756,7 +751,6 @@
                     </button>
                 `).join('');
             } else {
-                // Diğer normal mumlarda bu alanları gizli tut
                 watermark.style.display = 'none';
                 variantWrapper.style.display = 'none';
                 featuresBlock.style.display = 'block';
@@ -802,7 +796,6 @@
             
             updateSlidePosition();
             
-            // Slayt oklarla değiştiğinde varyant buton aktifliğini de eşitle
             if(u.ornekModeller) {
                 const btns = document.querySelectorAll('.variant-btn');
                 if(btns[mevcutSlaytIndex]) updateActiveVariantBtn(btns[mevcutSlaytIndex]);
