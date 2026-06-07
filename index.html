@@ -37,14 +37,38 @@
           font-family: var(--font-body); 
           overflow-x: hidden; 
           -webkit-font-smoothing: antialiased; 
-          padding-top: 70px;
+          padding-top: 110px; /* Üst bar ve nav için alan açıldı */
         }
         
         .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); position: relative; z-index: 2; }
         
+        /* KAYAN MUMLAR VE FİYATLAR BANDI (TICKER) */
+        .ticker-wrap {
+          position: fixed; top: 0; left: 0; width: 100%; height: 40px;
+          background: #f5f2eb; border-bottom: 1px solid rgba(170, 139, 70, 0.15);
+          overflow: hidden; z-index: 110; display: flex; align-items: center;
+        }
+        .ticker {
+          display: inline-block; white-space: nowrap; padding-right: 100%;
+          animation: tickerAnimation 30s linear infinite;
+        }
+        .ticker:hover { animation-play-state: paused; }
+        .ticker-item {
+          display: inline-flex; align-items: center; gap: 8px;
+          padding: 0 30px; font-size: 12px; font-weight: 600;
+          color: var(--color-text-primary); letter-spacing: 0.05em;
+          font-family: var(--font-body);
+        }
+        .ticker-item span.old-p { text-decoration: line-through; opacity: 0.4; font-weight: 400; margin-left: 4px; }
+        .ticker-item span.new-p { color: #84682e; font-weight: 700; }
+        @keyframes tickerAnimation {
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-100%, 0, 0); }
+        }
+
         /* Navigasyon Üst Şeridi */
         .nav { 
-          position: fixed; top: 0; width: 100%; z-index: 100; padding: var(--space-md) 0; 
+          position: fixed; top: 40px; width: 100%; z-index: 100; padding: var(--space-md) 0; 
           backdrop-filter: blur(25px); background: rgba(253, 252, 249, 0.85); 
           border-bottom: 1px solid rgba(170, 139, 70, 0.15); transition: var(--transition-smooth);
         }
@@ -63,7 +87,7 @@
             text-decoration: none; letter-spacing: 0.08em; position: absolute; left: 50%; transform: translateX(-50%); 
         }
         
-        .nav .cart-trigger { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 10px 20px; font-family: var(--font-body); cursor: pointer; font-weight: 600; font-size: 12px; transition: var(--transition-smooth); letter-spacing: 0.05em; }
+        .nav class .cart-trigger { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 10px 20px; font-family: var(--font-body); cursor: pointer; font-weight: 600; font-size: 12px; transition: var(--transition-smooth); letter-spacing: 0.05em; }
         .nav .cart-trigger:hover { background: var(--color-primary); color: #ffffff; transform: scale(1.03); }
         
         /* AÇILIR GİZLİ PREMIUM MENÜ PANELİ */
@@ -111,7 +135,7 @@
         }
         
         /* HERO VE GRADIENT MASK */
-        .hero { height: calc(100vh - 70px); display: flex; align-items: center; position: relative; overflow: hidden; background: #fdfcf9; }
+        .hero { height: calc(100vh - 110px); display: flex; align-items: center; position: relative; overflow: hidden; background: #fdfcf9; }
         .hero-bg-image {
           position: absolute; top: 0; left: 0; width: 100%; height: 100%;
           background-image: url('https://images.unsplash.com/photo-1603006905003-be475563bc59?q=80&w=1920&auto=format&fit=crop');
@@ -168,6 +192,13 @@
         .card .product-title { color: var(--color-accent); }
         .card .product-desc { color: var(--color-text-secondary); }
         
+        /* İndirim Rozeti */
+        .discount-badge {
+            position: absolute; top: 24px; right: 24px; background: #84682e; color: #fff;
+            font-size: 10px; font-weight: 600; padding: 4px 10px; letter-spacing: 0.05em;
+            text-transform: uppercase; border-radius: 2px; z-index: 5;
+        }
+
         /* Optimize Edilmiş Görsel Kutuları */
         .product-img-box { 
           width: 100%; height: 380px; background: #f5f2eb; margin-bottom: var(--space-md); 
@@ -179,7 +210,11 @@
         .product-title { font-family: var(--font-display); font-size: 24px; font-weight: 400; margin-bottom: 8px; letter-spacing: 0.02em; }
         .product-desc { font-size: 13px; line-height: 1.6; margin-bottom: var(--space-md); flex-grow: 1; font-weight: 300; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
         .product-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-md); border-top: 1px solid rgba(35, 31, 29, 0.08); margin-top: auto; }
-        .product-price { font-weight: 600; color: #84682e; font-size: 18px; font-family: var(--font-body); }
+        
+        /* Fiyat Düzenlemesi (İndirimli) */
+        .price-wrapper { display: flex; flex-direction: column; }
+        .old-price { text-decoration: line-through; color: var(--color-text-secondary); font-size: 13px; opacity: 0.6; font-weight: 400; }
+        .product-price { font-weight: 700; color: #84682e; font-size: 19px; font-family: var(--font-body); }
         
         .btn-add-cart { background: transparent; border: 1px solid rgba(35, 31, 29, 0.2); color: var(--color-accent); padding: 10px 22px; font-size: 12px; cursor: pointer; transition: var(--transition-smooth); font-weight: 600; letter-spacing: 0.05em; }
         .btn-add-cart:hover { background: var(--color-accent); color: #ffffff; transform: scale(1.05); border-color: var(--color-accent); }
@@ -406,20 +441,25 @@
 
         /* MOBİL VE TABLET OPTİMİZASYONLARI */
         @media (max-width: 992px) { 
-            body { padding-bottom: 85px; padding-top: 60px; } 
+            body { padding-bottom: 85px; padding-top: 100px; } 
+            .ticker-wrap { height: 35px; }
+            .ticker-item { font-size: 11px; padding: 0 20px; }
+            .nav { top: 35px; padding: 8px 0; }
+
             .grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); } 
             
             /* KATALOG MOBİL DÜZEN */
             .katalog-2li-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; padding: 0 4px !important; }
             .katalog-2li-grid .card { padding: 10px !important; max-width: 100% !important; }
             .katalog-2li-grid .product-img-box { height: 160px !important; margin-bottom: 8px !important; }
-            .katalog-2li-grid .product-title { font-size: 16px !important; line-height: 1.2; margin-bottom: 4px; }
+            .katalog-2li-grid .product-title { font-size: 15px !important; line-height: 1.2; margin-bottom: 4px; }
             .katalog-2li-grid .product-desc { display: none; }
-            .katalog-2li-grid .product-footer { padding-top: 6px !important; flex-direction: column; align-items: flex-start !important; gap: 8px; }
+            .katalog-2li-grid .product-footer { padding-top: 6px !important; flex-direction: column; align-items: flex-start !important; gap: 4px; }
+            .katalog-2li-grid .old-price { font-size: 11px !important; }
             .katalog-2li-grid .product-price { font-size: 14px !important; }
             .katalog-2li-grid .btn-add-cart { width: 100%; padding: 6px var(--space-md) !important; font-size: 11px !important; text-align: center; }
+            .katalog-2li-grid .discount-badge { top: 14px; right: 14px; padding: 2px 6px; font-size: 8px; }
 
-            .nav { padding: 10px 0; }
             .nav-container { height: 40px; }
             .logo { font-size: 18px; }
             .menu-trigger { padding: 6px 12px; font-size: 11px; }
@@ -469,6 +509,11 @@
     </style>
 </head>
 <body>
+
+    <!-- GÖZ ALICI HAREKETLİ MUM VE FİYAT BANDI -->
+    <div class="ticker-wrap">
+        <div class="ticker" id="ticker-content"></div>
+    </div>
 
     <!-- ÜST NAVİGASYON -->
     <nav class="nav">
@@ -553,7 +598,10 @@
                     </div>
 
                     <div class="modal-footer">
-                        <span class="product-price" id="modalPrice" style="font-size: 22px;"></span>
+                        <div class="price-wrapper">
+                            <span class="old-price" id="modalOldPrice"></span>
+                            <span class="product-price" id="modalPrice" style="font-size: 24px;"></span>
+                        </div>
                         <button class="btn-primary" id="modalAddCartBtn" style="padding: 12px 24px; font-size: 11px;">Sepete Ekle</button>
                     </div>
                 </div>
@@ -661,7 +709,7 @@
         <div class="gift-section">
             <label class="gift-checkbox-wrapper">
                 <input type="checkbox" id="giftCheck" onchange="sepetiGuncelle()">
-                🎁 Siparişimi Premium Hediye Paketi Yap (+20 TL)
+                🎁 Siparişimi Premium Hediye Paketi Yap (+50 TL)
             </label>
         </div>
         
@@ -672,7 +720,7 @@
     </div>
 
     <!-- WHATSAPP CANLI DESTEK BUTONU -->
-    <a href="https://api.whatsapp.com/send?phone=905522926638&text=Merhaba%20Nimet%20Luxe%20Candles!%20%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." 
+    <a href="https://api.whatsapp.com/send?phone=905522926638&text=Merhaba%20Nimet%20Luxe%20Candles!%20%C3%9Ur%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." 
        class="whatsapp-float" 
        target="_blank" 
        rel="noopener noreferrer">
@@ -681,12 +729,12 @@
     </a>
 
     <script>
-        // ÜRÜN LİSTESİ VE VERİ YAPILARI
+        // ÜRÜN LİSTESİ VE SAHTE ÜST FİYAT VERİ YAPISI
         const urunler = [
-          { id: 1, ad: "Bubble Kokulu Mum Buketi", kategori: "premium", aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve lila tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım.", fiyat: 2000, gorsel: "bubblebuket.png", gorselListesi: ["bubblebuket.png"], video: null },
-          { id: 2, ad: "Mango Kokulu Mum Buketi", kategori: "premium", aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarına taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül tomurcuk figürleriyle bezenmiş mum buketimiz, egzotik ve taze mango esansıyla zenginleştirilmiştir.", fiyat: 2000, gorsel: "mango.png", gorselListesi: ["mango.png", "WhatsApp Image 2026-06-01 at 21.05.31 (1).jpeg", "WhatsApp Image 2026-06-01 at 21.05.31 (2).jpeg"], video: null },
-          { id: 3, ad: "Karışık Koku Özel Mum Buketi", kategori: "premium", aciklama: "Göz alıcı bir pembe kutuda lüksü ve görsel bir şöleni buluşturan bu özel tasarım, el emeğinin zirvesini temsil ediyor. İçerisinde kusursuzca işlenmiş incili kalpler, sevimli mini ayıcık figürü, narin gül goncaları, papatyalar ve capcanlı turuncu laleler barındırır.", fiyat: 2300, gorsel: "karısık.png", gorselListesi: ["karısık.png"], video: null },
-          { id: 4, ad: "Yasemin Kokulu Mum Buketi", kategori: "normal", aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor.", fiyat: 2000, gorsel: "yasemin.png", gorselListesi: ["yasemin.png"], video: null },
+          { id: 1, ad: "Bubble Kokulu Mum Buketi", kategori: "premium", aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve lila tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım.", fiyat: 2000, eskiFiyat: 2850, gorsel: "bubblebuket.png", gorselListesi: ["bubblebuket.png"], video: null },
+          { id: 2, ad: "Mango Kokulu Mum Buketi", kategori: "premium", aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarına taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül tomurcuk figürleriyle bezenmiş mum buketimiz, egzotik ve taze mango esansıyla zenginleştirilmiştir.", fiyat: 2000, eskiFiyat: 2850, gorsel: "mango.png", gorselListesi: ["mango.png", "WhatsApp Image 2026-06-01 at 21.05.31 (1).jpeg", "WhatsApp Image 2026-06-01 at 21.05.31 (2).jpeg"], video: null },
+          { id: 3, ad: "Karışık Koku Özel Mum Buketi", kategori: "premium", aciklama: "Göz alıcı bir pembe kutuda lüksü ve görsel bir şöleni buluşturan bu özel tasarım, el emeğinin zirvesini temsil ediyor. İçerisinde kusursuzca işlenmiş incili kalpler, sevimli mini ayıcık figürü, narin gül goncaları, papatyalar ve capcanlı turuncu laleler barındırır.", fiyat: 2300, eskiFiyat: 3200, gorsel: "karısık.png", gorselListesi: ["karısık.png"], video: null },
+          { id: 4, ad: "Yasemin Kokulu Mum Buketi", kategori: "normal", aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor.", fiyat: 2000, eskiFiyat: 2850, gorsel: "yasemin.png", gorselListesi: ["yasemin.png"], video: null },
           
           { 
             id: 5, 
@@ -694,6 +742,7 @@
             kategori: "normal", 
             aciklama: "Kataloğumuzda yer alan el yapımı mini bisiklet aranjmanları, lüks kurdeleli dairesel kutu tasarımları veya gümüş detaylı özel konseptlerden dilediğinizi zevkinize göre seçebilirsiniz. Aşağıdaki tasarımlar örnek modellerdir.", 
             fiyat: 800, 
+            eskiFiyat: 1250,
             gorsel: "800tl2.jpeg", 
             gorselListesi: [
               "800tl2.jpeg",  
@@ -709,12 +758,12 @@
             ornekModeller: true 
           },
           
-          { id: 6, ad: "Çilek & Kırmızı Gül El Buketi", kategori: "normal", aciklama: "Aşkın ve tutkunun rengiyle bezenmiş, elde taşınabilir formda tasarlanan bu mini sanat eseri; el işçiliğiyle şekillendirilen kusursuz kırmızı güller barındırır.", fiyat: 500, gorsel: "mini.png", gorselListesi: ["mini.png"], video: null },
-          { id: 7, ad: "Papatya & İncili Ayıcık Mum Buketi", kategori: "normal", aciklama: "Zarif beyaz ve pembe papatyaların, el işçiliğiyle üretilmiş gold detaylı güllerle büyüleyici birleşimi. Merkezinde tatlı pembe bir ayıcık figürü barındırır.", fiyat: 500, gorsel: "papatya.png", gorselListesi: ["papatya.png"], video: null },
-          { id: 8, ad: "Lüks Orkide & Lale Mum Buketi", kategori: "normal", aciklama: "Zarafetin sembolü olan soft lila orkideler và asil lalelerin, canlı pembe cipsolarla bir araya geldiği göz alıcı bir tasarım.", fiyat: 500, gorsel: "orkide.jpeg", gorselListesi: ["orkide.jpeg"], video: null },
-          { id: 9, ad: "Şakayık & Gül Siyah Kutu Mum", kategori: "normal", aciklama: "Mat siyah şık ve minimal bir kutu içerisinde; pudra pembe şakayıklar, el işçiliği beyaz ve lila güllerin muazzam birleşimi.", fiyat: 500, gorsel: "siyahkutu.jpeg", gorselListesi: ["siyahkutu.jpeg"], video: null },
-          { id: 10, ad: "Pembe Düşler Gül & Ayıcık Buketi", kategori: "normal", aciklama: "Romantik pembe ve beyaz tonlarındaki el işçiliği narin güllerin, şirin bir mini pembe ayıcık figürüyle buluştuğu harika bir buket tasarımı.", fiyat: 500, gorsel: "WhatsApp Image 2026-06-01 at 21.22.54.jpeg", gorselListesi: ["WhatsApp Image 2026-06-01 at 21.22.54.jpeg"], video: null },
-          { id: 11, ad: "Kalpli Ayıcık Mum Buketi", kategori: "normal", aciklama: "Zirvesinde göz alıcı kırmızı kadife bir kalp figürü ve Nimet Göçmen el işçiliği imzasını taşıyan asil bir aranjman.", fiyat: 500, gorsel: "WhatsApp Image 2026-06-01 at 21.22.53.jpeg", gorselListesi: ["WhatsApp Image 2026-06-01 at 21.22.53.jpeg"], video: null }
+          { id: 6, ad: "Çilek & Kırmızı Gül El Buketi", kategori: "normal", aciklama: "Aşkın ve tutkunun rengiyle bezenmiş, elde taşınabilir formda tasarlanan bu mini sanat eseri; el işçiliğiyle şekillendirilen kusursuz kırmızı güller barındırır.", fiyat: 500, eskiFiyat: 750, gorsel: "mini.png", gorselListesi: ["mini.png"], video: null },
+          { id: 7, ad: "Papatya & İncili Ayıcık Mum Buketi", kategori: "normal", aciklama: "Zarif beyaz ve pembe papatyaların, el işçiliğiyle üretilmiş gold detaylı güllerle büyüleyici birleşimi. Merkezinde tatlı pembe bir ayıcık figürü barındırır.", fiyat: 500, eskiFiyat: 750, gorsel: "papatya.png", gorselListesi: ["papatya.png"], video: null },
+          { id: 8, ad: "Lüks Orkide & Lale Mum Buketi", kategori: "normal", aciklama: "Zarafetin sembolü olan soft lila orkideler và asil lalelerin, canlı pembe cipsolarla bir araya geldiği göz alıcı bir tasarım.", fiyat: 500, eskiFiyat: 750, gorsel: "orkide.jpeg", gorselListesi: ["orkide.jpeg"], video: null },
+          { id: 9, ad: "Şakayık & Gül Siyah Kutu Mum", kategori: "normal", aciklama: "Mat siyah şık ve minimal bir kutu içerisinde; pudra pembe şakayıklar, el işçiliği beyaz ve lila güllerin muazzam birleşimi.", fiyat: 500, eskiFiyat: 750, gorsel: "siyahkutu.jpeg", gorselListesi: ["siyahkutu.jpeg"], video: null },
+          { id: 10, ad: "Pembe Düşler Gül & Ayıcık Buketi", kategori: "normal", aciklama: "Romantik pembe ve beyaz tonlarındaki el işçiliği narin güllerin, şirin bir mini pembe ayıcık figürüyle buluştuğu harika bir buket tasarımı.", fiyat: 500, eskiFiyat: 750, gorsel: "WhatsApp Image 2026-06-01 at 21.22.54.jpeg", gorselListesi: ["WhatsApp Image 2026-06-01 at 21.22.54.jpeg"], video: null },
+          { id: 11, ad: "Kalpli Ayıcık Mum Buketi", kategori: "normal", aciklama: "Zirvesinde göz alıcı kırmızı kadife bir kalp figürü ve Nimet Göçmen el işçiliği imzasını taşıyan asil bir aranjman.", fiyat: 500, eskiFiyat: 750, gorsel: "WhatsApp Image 2026-06-01 at 21.22.53.jpeg", gorselListesi: ["WhatsApp Image 2026-06-01 at 21.22.53.jpeg"], video: null }
         ];
         
         let sepet = [];
@@ -743,6 +792,19 @@
             } catch(e) { console.log(e); }
         }
         
+        // HAREKETLİ MUK BANDINI OLUŞTURMA
+        function buildTickerContent() {
+            const tickerEl = document.getElementById('ticker-content');
+            if(!tickerEl) return;
+            // Kesintisiz döngü hissiyatı yaratmak için listeyi yan yana iki kere yazdırıyoruz
+            const doubleList = [...urunler, ...urunler];
+            tickerEl.innerHTML = doubleList.map(u => `
+                <span class="ticker-item">
+                    🕯️ ${u.ad} <span class="old-p">${u.eskiFiyat} TL</span> <span class="new-p">${u.fiyat} TL</span>
+                </span>
+            `).join('');
+        }
+
         function urunleriListele() {
           const premiumList = document.getElementById('premium-product-list'); 
           const allCollectionGrid = document.getElementById('all-collection-grid');
@@ -751,13 +813,17 @@
           const premiumUrunler = urunler.filter(u => u.kategori === 'premium');
           premiumList.innerHTML = premiumUrunler.map(u => `
             <div class="card" onclick="openProductModal(${u.id})">
+                <div class="discount-badge">Fırsat</div>
                 <div class="product-img-box">
                     <img src="${u.gorsel}" alt="${u.ad}" decoding="async">
                 </div>
                 <h3 class="product-title">${u.ad}</h3>
                 <p class="product-desc">${u.aciklama}</p>
                 <div class="product-footer" onclick="event.stopPropagation();">
-                    <span class="product-price">${u.fiyat} TL</span>
+                    <div class="price-wrapper">
+                        <span class="old-price">${u.eskiFiyat} TL</span>
+                        <span class="product-price">${u.fiyat} TL</span>
+                    </div>
                     <button class="btn-add-cart" onclick="sepeteEkle(${u.id})">Sepete Ekle</button>
                 </div>
             </div>
@@ -765,13 +831,17 @@
 
           allCollectionGrid.innerHTML = urunler.map(u => `
             <div class="card" onclick="openProductModal(${u.id})">
+                <div class="discount-badge">İndirim</div>
                 <div class="product-img-box">
                     <img src="${u.gorsel}" alt="${u.ad}" decoding="async">
                 </div>
                 <h3 class="product-title">${u.ad}</h3>
                 <p class="product-desc">${u.aciklama}</p>
                 <div class="product-footer" onclick="event.stopPropagation();">
-                    <span class="product-price">${u.fiyat} TL</span>
+                    <div class="price-wrapper">
+                        <span class="old-price">${u.eskiFiyat} TL</span>
+                        <span class="product-price">${u.fiyat} TL</span>
+                    </div>
                     <button class="btn-add-cart" onclick="sepeteEkle(${u.id})">Sepete Ekle</button>
                 </div>
             </div>
@@ -801,6 +871,7 @@
 
             document.getElementById('modalTitle').innerText = u.ad;
             document.getElementById('modalDesc').innerText = u.aciklama;
+            document.getElementById('modalOldPrice').innerText = u.eskiFiyat + " TL";
             document.getElementById('modalPrice').innerText = u.fiyat + " TL";
             document.getElementById('modalProductIndex').innerText = `${mevcutUrunIndex + 1} / ${urunler.length}`;
             document.getElementById('modalTag').innerText = u.kategori === 'premium' ? "Sınırlı Özel Premium Seri" : "Nimet Luxe Sanat Koleksiyonu";
@@ -959,7 +1030,7 @@
           
           let toplam = sepet.reduce((t, i) => t + (i.fiyat * i.adet), 0);
           const giftCheck = document.getElementById('giftCheck');
-          if (giftCheck && giftCheck.checked) toplam += 20;
+          if (giftCheck && giftCheck.checked) toplam += 50; // Premium hediye paketi 50 TL yapıldı
           
           ta.innerText = toplam + ' TL';
         }
@@ -971,7 +1042,7 @@
           sepet.forEach(i => { m += `- ${i.adet}x ${i.ad} (${i.fiyat * i.adet} TL)\n`; });
           let toplam = sepet.reduce((t, i) => t + (i.fiyat * i.adet), 0);
           const giftCheck = document.getElementById('giftCheck');
-          if (giftCheck && giftCheck.checked) { m += `\n🎁 *Hediye Paketleme:* Evet (+20 TL)`; toplam += 20; }
+          if (giftCheck && giftCheck.checked) { m += `\n🎁 *Hediye Paketleme:* Premium Paket İstiyorum (+50 TL)`; toplam += 50; } // WhatsApp metni güncellendi
           m += `\n\n💰 *Toplam Tutar:* ${toplam} TL`;
           window.open("https://api.whatsapp.com/send?phone=" + tel + "&text=" + encodeURIComponent(m), '_blank');
         }
@@ -981,6 +1052,7 @@
         }, { threshold: 0.05 });
 
         document.addEventListener("DOMContentLoaded", () => {
+            buildTickerContent();
             urunleriListele();
             sepetiGuncelle();
             const elements = document.querySelectorAll('.scroll-animate');
