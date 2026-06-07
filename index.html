@@ -763,41 +763,56 @@
 
     <script>
         // TÜM FOTOĞRAFLARIN YOLLARI ASSETS/IMAGES/ KLASÖRÜNE GÖRE GÜNCELLENDİ
-        const urunler = [
-          { 
-            id: 1, 
-            ad: "Bubble Kokulu Mum Buketi", 
-            kategori: "premium", 
-            aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve lila tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım.", 
-            fiyat: 2000, 
-            eskiFiyat: 2850, 
-            gorsel: "assets/images/bubblebuket.png", 
-            gorselListesi: ["assets/images/bubblebuket.png", "assets/images/Gemini_Generated_Image_9fad2h9fad2h9fad.png", "assets/images/Gemini_Generated_Image_worf1mworf1mworf.png"], 
-            video: null 
-          },
-          { id: 2, ad: "Mango Kokulu Mum Buketi", kategori: "premium", aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarına taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül tomurcuk figürleriyle bezenmiş mum buketimiz, exotic ve taze mango esansıyla zenginleştirilmiştir.", fiyat: 2000, eskiFiyat: 2850, gorsel: "assets/images/mango.png", gorselListesi: ["assets/images/mango.png", "assets/images/WhatsApp Image 2026-06-01 at 21.05.31 (1).jpeg", "assets/images/WhatsApp Image 2026-06-01 at 21.05.31 (2).jpeg"], video: null },
-          { id: 3, ad: "Karışık Koku Özel Mum Buketi", kategori: "premium", aciklama: "Göz alıcı bir pembe kutuda lüksü ve görsel bir şöleni buluşturan bu özel tasarım, el emeğinin zirvesini temsil ediyor. İçerisinde kusursuzca işlenmiş incili kalpler, sevimli mini ayıcık figürü, narin gül goncaları, papatyalar ve capcanlı turuncu laleler barındırır.", fiyat: 2300, eskiFiyat: 3200, gorsel: "assets/images/karısık.png", gorselListesi: ["assets/images/karısık.png"], video: null },
-          { id: 4, ad: "Yasemin Kokulu Mum Buketi", kategori: "normal", aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor.", fiyat: 2000, eskiFiyat: 2850, gorsel: "assets/images/yasemin.png", gorselListesi: ["assets/images/yasemin.png"], video: null },
-          { 
-            id: 5, 
-            ad: "Seçilebilir Mini Premium Model", 
-            kategori: "normal", 
-            aciklama: "Kataloğumuzda yer alan el yapımı mini bisiklet aranjmanları, lüks kurdeleli dairesel kutu tasarımları veya gümüş detaylı özel konseptlerden dilediğinizi zevkinize göre seçebilirsiniz. Aşağıdaki tasarımlar örnek modellerdir.", 
-            fiyat: 800, 
-            eskiFiyat: 1250,
-            gorsel: "assets/images/800tl2.jpeg", 
-            gorselListesi: ["assets/images/800tl2.jpeg", "assets/images/800tl5.jpeg", "assets/images/800tl7.jpeg", "assets/images/800tl8.jpeg", "assets/images/800tl3.jpeg", "assets/images/800tl4.jpeg", "assets/images/800tl.jpeg", "assets/images/800tl6.jpeg"], 
-            video: null,
-            ornekModeller: true 
-          },
-          { id: 6, ad: "Çilek & Kırmızı Gül El Buketi", kategori: "normal", aciklama: "Aşkın ve tutkunun rengiyle bezenmiş, elde taşınabilir formda tasarlanan bu mini sanat eseri; el işçiliğiyle şekillendirilen kusursuz kırmızı güller barındırır.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/mini.png", gorselListesi: ["assets/images/mini.png"], video: null },
-          { id: 7, ad: "Papatya & İncili Ayıcık Mum Buketi", kategori: "normal", aciklama: "Zarif beyaz ve pembe papatyaların, el işçiliğiyle üretilmiş gold detaylı güllerle büyüleyici birleşimi. Merkezinde tatlı pembe bir ayıcık figürü barındırır.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/papatya.png", gorselListesi: ["assets/images/papatya.png"], video: null },
-          { id: 8, ad: "Lüks Orkide & Lale Mum Buketi", kategori: "normal", aciklama: "Zarafetin sembolü olan soft lila orkideler ve asil lalelerin, canlı pembe cipsolarla bir araya geldiği göz alıcı bir tasarım.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/orkide.jpeg", gorselListesi: ["assets/images/orkide.jpeg"], video: null },
-          { id: 9, ad: "Şakayık & Gül Siyah Kutu Mum", kategori: "normal", aciklama: "Mat siyah şık ve minimal bir kutu içerisinde; pudra pembe şakayıklar, el işçiliği beyaz ve lila güllerin muazzam birleşimi.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/siyahkutu.jpeg", gorselListesi: ["assets/images/siyahkutu.jpeg"], video: null },
-          { id: 10, ad: "Pembe Düşler Gül & Ayıcık Buketi", kategori: "normal", aciklama: "Romantik pembe ve beyaz tonlarındaki el işçiliği narin güllerin, şirin bir mini pembe ayıcık figürüyle buluştuğu harika bir buket tasarımı.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/WhatsApp Image 2026-06-01 at 21.22.54.jpeg", gorselListesi: ["assets/images/WhatsApp Image 2026-06-01 at 21.22.54.jpeg"], video: null },
-          { id: 11, ad: "Kalpli Ayıcık Mum Buketi", kategori: "normal", aciklama: "Zirvesinde göz alıcı kırmızı kadife bir kalp figürü ve Nimet Göçmen el işçiliği imzasını taşıyan asil bir aranjman.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/WhatsApp Image 2026-06-01 at 21.22.53.jpeg", gorselListesi: ["assets/images/WhatsApp Image 2026-06-01 at 21.22.53.jpeg"], video: null }
-        ];
-        
+        const urunler = [const urunler = [
+  { 
+    id: 1, 
+    ad: "Bubble Kokulu Mum Buketi", 
+    kategori: "premium", 
+    aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve lila tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım.", 
+    fiyat: 2000, 
+    eskiFiyat: 2850, 
+    gorsel: "assets/images/bubblebuket.png", 
+    gorselListesi: ["assets/images/bubblebuket.png", "assets/images/Gemini_Generated_Image_9fad2h9fad2h9fad.png", "assets/images/Gemini_Generated_Image_worf1mworf1mworf.png"], 
+    video: null 
+  },
+  { id: 2, ad: "Mango Kokulu Mum Buketi", kategori: "premium", aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarına taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül tomurcuk figürleriyle bezenmiş mum buketimiz, exotic ve taze mango esansıyla zenginleştirilmiştir.", fiyat: 2000, eskiFiyat: 2850, gorsel: "assets/images/mango.png", gorselListesi: ["assets/images/mango.png", "assets/images/WhatsApp Image 2026-06-01 at 21.05.31 (1).jpeg", "assets/images/WhatsApp Image 2026-06-01 at 21.05.31 (2).jpeg"], video: null },
+  { 
+    id: 3, 
+    ad: "Karışık Koku Özel Mum Buketi", 
+    kategori: "premium", 
+    aciklama: "Göz alıcı bir pembe kutuda lüksü ve görsel bir şöleni buluşturan bu özel tasarım, el emeğinin zirvesini temsil ediyor. İçerisinde kusursuzca işlenmiş incili kalpler, sevimli mini ayıcık figürü, narin gül goncaları, papatyalar ve capcanlı turuncu laleler barındırır.", 
+    fiyat: 2300, 
+    eskiFiyat: 3200, 
+    gorsel: "assets/images/WhatsApp Image 2026-06-01 at 21.15.07.jpeg", 
+    gorselListesi: [
+      "assets/images/WhatsApp Image 2026-06-01 at 21.15.07.jpeg", 
+      "assets/images/WhatsApp Image 2026-06-01 at 21.15.08 (1).jpeg", 
+      "assets/images/WhatsApp Image 2026-06-01 at 21.15.08 (2).jpeg", 
+      "assets/images/WhatsApp Image 2026-06-01 at 21.15.08 (3).jpeg", 
+      "assets/images/WhatsApp Image 2026-06-01 at 21.15.08.jpeg"
+    ], 
+    video: "assets/images/WhatsApp Video 2026-06-01 at 21.15.07.mp4" 
+  },
+  { id: 4, ad: "Yasemin Kokulu Mum Buketi", kategori: "normal", aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor.", fiyat: 2000, eskiFiyat: 2850, gorsel: "assets/images/yasemin.png", gorselListesi: ["assets/images/yasemin.png"], video: null },
+  { 
+    id: 5, 
+    ad: "Seçilebilir Mini Premium Model", 
+    kategori: "normal", 
+    aciklama: "Kataloğumuzda yer alan el yapımı mini bisiklet aranjmanları, lüks kurdeleli dairesel kutu tasarımları veya gümüş detaylı özel konseptlerden dilediğinizi zevkinize göre seçebilirsiniz. Aşağıdaki tasarımlar örnek modellerdir.", 
+    fiyat: 800, 
+    eskiFiyat: 1250,
+    gorsel: "assets/images/800tl2.jpeg", 
+    gorselListesi: ["assets/images/800tl2.jpeg", "assets/images/800tl5.jpeg", "assets/images/800tl7.jpeg", "assets/images/800tl8.jpeg", "assets/images/800tl3.jpeg", "assets/images/800tl4.jpeg", "assets/images/800tl.jpeg", "assets/images/800tl6.jpeg"], 
+    video: null,
+    ornekModeller: true 
+  },
+  { id: 6, ad: "Çilek & Kırmızı Gül El Buketi", kategori: "normal", aciklama: "Aşkın ve tutkunun rengiyle bezenmiş, elde taşınabilir formda tasarlanan bu mini sanat eseri; el işçiliğiyle şekillendirilen kusursuz kırmızı güller barındırır.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/mini.png", gorselListesi: ["assets/images/mini.png"], video: null },
+  { id: 7, ad: "Papatya & İncili Ayıcık Mum Buketi", kategori: "normal", aciklama: "Zarif beyaz ve pembe papatyaların, el işçiliğiyle üretilmiş gold detaylı güllerle büyüleyici birleşimi. Merkezinde tatlı pembe bir ayıcık figürü barındırır.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/papatya.png", gorselListesi: ["assets/images/papatya.png"], video: null },
+  { id: 8, ad: "Lüks Orkide & Lale Mum Buketi", kategori: "normal", aciklama: "Zarafetin sembolü olan soft lila orkideler ve asil lalelerin, canlı pembe cipsolarla bir araya geldiği göz alıcı bir tasarım.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/orkide.jpeg", gorselListesi: ["assets/images/orkide.jpeg"], video: null },
+  { id: 9, ad: "Şakayık & Gül Siyah Kutu Mum", kategori: "normal", aciklama: "Mat siyah şık ve minimal bir kutu içerisinde; pudra pembe şakayıklar, el işçiliği beyaz ve lila güllerin muazzam birleşimi.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/siyahkutu.jpeg", gorselListesi: ["assets/images/siyahkutu.jpeg"], video: null },
+  { id: 10, ad: "Pembe Düşler Gül & Ayıcık Buketi", kategori: "normal", aciklama: "Romantik pembe ve beyaz tonlarındaki el işçiliği narin güllerin, şirin bir mini pembe ayıcık figürüyle buluştuğu harika bir buket tasarımı.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/WhatsApp Image 2026-06-01 at 21.22.54.jpeg", gorselListesi: ["assets/images/WhatsApp Image 2026-06-01 at 21.22.54.jpeg"], video: null },
+  { id: 11, ad: "Kalpli Ayıcık Mum Buketi", kategori: "normal", aciklama: "Zirvesinde göz alıcı kırmızı kadife bir kalp figürü ve Nimet Göçmen el işçiliği imzasını taşıyan asil bir aranjman.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/WhatsApp Image 2026-06-01 at 21.22.53.jpeg", gorselListesi: ["assets/images/WhatsApp Image 2026-06-01 at 21.22.53.jpeg"], video: null }
+];      
         let sepet = [];
         let mevcutUrunIndex = 0;
         let mevcutSlaytIndex = 0;
