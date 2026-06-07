@@ -6,473 +6,395 @@
     <title>Nimet Luxe Candles | Premium El Yapımı Mumlar</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        :root {
-            --primary-gold: #D4AF37;
-            --dark-bg: #121212;
-            --card-bg: #1a1a1a;
-            --text-light: #f5f5f5;
-            --text-muted: #aaaaaa;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            line-height: 1.6;
+            background-color: #0d0d0d;
+            color: #ffffff;
         }
 
-        /* Üst Duyuru Çubuğu */
-        .announcement-bar {
-            background-color: var(--primary-gold);
-            color: #000;
-            text-align: center;
-            padding: 8px 0;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .announcement-track {
-            display: inline-block;
-            animation: marquee 25s linear infinite;
-        }
-
-        .announcement-track span {
-            margin: 0 30px;
-        }
-
-        @keyframes marquee {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
-        }
-
-        /* Navigasyon */
-        header {
-            background-color: rgba(18, 18, 18, 0.95);
-            border-bottom: 1px solid #2a2a2a;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 15px 5%;
+        /* Eski Üst Menü / Navbar */
+        nav {
+            background-color: #141414;
+            padding: 20px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 2px solid #c5a880;
         }
 
-        .brand-logo {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--primary-gold);
-            text-decoration: none;
-            letter-spacing: 2px;
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #c5a880;
             text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .nav-actions {
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #c5a880;
+        }
+
+        /* Banner / Hero */
+        .banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/images/Gemini_Generated_Image_worf1mworf1mworf.png') no-repeat center center/cover;
+            height: 400px;
             display: flex;
-            gap: 20px;
-        }
-
-        .nav-btn {
-            background: none;
-            border: 1px solid #333;
-            color: var(--text-light);
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .nav-btn:hover {
-            border-color: var(--primary-gold);
-            color: var(--primary-gold);
-        }
-
-        /* Hero Alanı */
-        .hero {
-            position: relative;
-            height: 60vh;
-            display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('assets/images/Gemini_Generated_Image_worf1mworf1mworf.png') no-repeat center center/cover;
+            border-bottom: 2px solid #c5a880;
+        }
+
+        .banner h1 {
+            font-size: 42px;
+            color: #c5a880;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .banner p {
+            font-size: 18px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        /* Ürün Gridi */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
             padding: 0 20px;
-        }
-
-        .hero-content h1 {
-            font-size: 3rem;
-            color: var(--text-light);
-            margin-bottom: 15px;
-            letter-spacing: 3px;
-        }
-
-        .hero-content p {
-            color: var(--primary-gold);
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-        }
-
-        /* Ürünler Bölümü */
-        .container {
-            padding: 60px 5%;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: var(--text-light);
-            letter-spacing: 2px;
+            color: #c5a880;
+            font-size: 28px;
+            margin-bottom: 30px;
             position: relative;
-            text-transform: uppercase;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 2px;
-            background-color: var(--primary-gold);
-            margin: 10px auto 0;
-        }
-
-        .grid {
+        .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
         }
 
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid #252525;
-            border-radius: 8px;
+        /* Eski Ürün Kartı Tasarımı */
+        .product-card {
+            background-color: #191919;
+            border: 1px solid #2c2c2c;
+            border-radius: 4px;
             overflow: hidden;
             transition: transform 0.3s, border-color 0.3s;
-            display: flex;
-            flex-direction: column;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-gold);
+        .product-card:hover {
+            transform: scale(1.02);
+            border-color: #c5a880;
         }
 
-        .card-img-container {
-            position: relative;
-            padding-top: 100%; /* 1:1 Kare Oran */
-            background-color: #151515;
-            overflow: hidden;
+        .product-image-wrapper {
+            width: 100%;
+            height: 300px;
+            background-color: #000;
         }
 
-        .card-img-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .product-image-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
         }
 
-        .card:hover .card-img-container img {
-            transform: scale(1.05);
-        }
-
-        .card-info {
+        .product-details {
             padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
 
-        .product-title {
-            font-size: 1.1rem;
-            font-weight: 600;
+        .product-name {
+            font-size: 18px;
+            color: #ffffff;
             margin-bottom: 10px;
-            color: var(--text-light);
+            font-weight: 600;
         }
 
-        .price-box {
-            margin-top: auto;
+        .price-container {
+            display: flex;
+            align-items: center;
             margin-bottom: 15px;
         }
 
         .old-price {
-            font-size: 0.9rem;
-            color: var(--text-muted);
+            color: #888888;
             text-decoration: line-through;
+            font-size: 14px;
             margin-right: 10px;
         }
 
-        .current-price {
-            font-size: 1.2rem;
-            color: var(--primary-gold);
-            font-weight: 700;
+        .new-price {
+            color: #c5a880;
+            font-size: 20px;
+            font-weight: bold;
         }
 
-        .whatsapp-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background-color: transparent;
-            color: var(--text-light);
-            border: 1px solid var(--primary-gold);
-            padding: 12px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-        }
-
-        .whatsapp-btn:hover {
-            background-color: var(--primary-gold);
-            color: #000;
-        }
-
-        footer {
-            background-color: #0b0b0b;
+        /* Eski WhatsApp Butonu */
+        .order-button {
+            display: block;
+            width: 100%;
+            background-color: #c5a880;
+            color: #0d0d0d;
             text-align: center;
-            padding: 30px;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            border-top: 1px solid #1a1a1a;
-            letter-spacing: 1px;
+            padding: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background-color 0.3s;
         }
 
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.2rem; }
-            .container { padding: 40px 4%; }
+        .order-button:hover {
+            background-color: #b3956b;
+        }
+
+        .order-button i {
+            margin-right: 8px;
+        }
+
+        /* Alt Kısım */
+        footer {
+            background-color: #141414;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+            border-top: 1px solid #2c2c2c;
+            color: #888888;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
-    <div class="announcement-bar">
-        <div class="announcement-track">
-            <span>✨ ÜCRETSİZ KARGO +</span>
-            <span>🕯️ %100 DOĞAL SOYA MUMU +</span>
-            <span>🎀 HEDİYE PAKETLEME SEÇENEĞİ +</span>
-            <span>💎 EL YAPIMI PREMIUM KOLEKSİYON +</span>
-            <span>🔥 SINIRLI STOK - KAÇIRMAYIN +</span>
-            <span>✨ ÜCRETSİZ KARGO +</span>
-            <span>🕯️ %100 DOĞAL SOYA MUMU +</span>
-            <span>🎀 HEDİYE PAKETLEME SEÇENEĞİ +</span>
-            <span>💎 EL YAPIMI PREMIUM KOLEKSİYON +</span>
-            <span>🔥 SINIRLI STOK - KAÇIRMAYIN +</span>
+    <!-- Menü Çubuğu -->
+    <nav>
+        <div class="logo">Nimet Luxe Candles</div>
+        <div class="nav-links">
+            <a href="#"><i class="fas fa-home"></i> Ana Sayfa</a>
+            <a href="https://wa.me/905526444855" target="_blank"><i class="fas fa-envelope"></i> İletişim</a>
+        </div>
+    </nav>
+
+    <!-- Banner -->
+    <div class="banner">
+        <h1>Nimet Luxe Candles</h1>
+        <p>Eşsiz Kokular, Özel Tasarımlar</p>
+    </div>
+
+    <!-- İçerik -->
+    <div class="main-container">
+        <h2 class="section-title">Ürünlerimiz</h2>
+        <div class="products-grid">
+
+            <!-- Ürün 1 -->
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/Gemini_Generated_Image_9fad2h9fad2h9fad.png" alt="Bubble Kokulu Mum Buketi">
+                </div>
+                <div class="product-details">
+                    <div class="product-name">Bubble Kokulu Mum Buketi (Büyük Boy)</div>
+                    <div class="price-container">
+                        <span class="old-price">2750 TL</span>
+                        <span class="new-price">2000 TL</span>
+                    </div>
+                    <a href="https://wa.me/905526444855?text=Merhaba,%20Bubble%20Kokulu%20Mum%20Buketi%20(B%C3%BCy%C3%BCk%20Boy)%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="order-button">
+                        <i class="fab fa-whatsapp"></i> Sipariş Ver
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ürün 2 -->
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/mango.png" alt="Mango Kokulu Mum Buketi">
+                </div>
+                <div class="product-details">
+                    <div class="product-name">Mango Kokulu Mum Buketi</div>
+                    <div class="price-container">
+                        <span class="old-price">2750 TL</span>
+                        <span class="new-price">2000 TL</span>
+                    </div>
+                    <a href="https://wa.me/905526444855?text=Merhaba,%20Mango%20Kokulu%20Mum%20Buketi%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="order-button">
+                        <i class="fab fa-whatsapp"></i> Sipariş Ver
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ürün 3 -->
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/karısık.png" alt="Karışık Koku Özel Tasarım Buket">
+                </div>
+                <div class="product-details">
+                    <div class="product-name">Karışık Koku Özel Tasarım Buket</div>
+                    <div class="price-container">
+                        <span class="old-price">3250 TL</span>
+                        <span class="new-price">2300 TL</span>
+                    </div>
+                    <a href="https://wa.me/905526444855?text=Merhaba,%20Kar%C4%B1%C5%9F%C4%B1k%20Koku%20%C3%D6zel%20Tasar%C4%B1m%20Buket%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="order-button">
+                        <i class="fab fa-whatsapp"></i> Sipariş Ver
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ürün 4 -->
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/yasemin.png" alt="Yasemin Kokulu Mum Buketi">
+                </div>
+                <div class="product-details">
+                    <div class="product-name">Yasemin Kokulu Mum Buketi</div>
+                    <div class="price-container">
+                        <span class="old-price">2650 TL</span>
+                        <span class="new-price">2000 TL</span>
+                    </div>
+                    <a href="https://wa.me/905526444855?text=Merhaba,%20Yasemin%20Kokulu%20Mum%20Buketi%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="order-button">
+                        <i class="fab fa-whatsapp"></i> Sipariş Ver
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ürün 5 -->
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/800tl.jpeg" alt="Seçilebilir Mini Premium Model">
+                </div>
+                <div class="product-details">
+                    <div class="product-name">Seçilebilir Mini Premium Model</div>
+                    <div class="price-container">
+                        <span class="old-price">1150 TL</span>
+                        <span class="new-price">800 TL</span>
+                    </div>
+                    <a href="https://wa.me/905526444855?text=Merhaba,%20Se%C3%A7ilebilir%20Mini%20Premium%20Model%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="order-button">
+                        <i class="fab fa-whatsapp"></i> Sipariş Ver
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ürün 6 -->
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/mini.png" alt="Çilek & Kırmızı Gül El Yapımı Mum">
+                </div>
+                <div class="product-details">
+                    <div class="product-name">Çilek & Kırmızı Gül El Yapımı Mum</div>
+                    <div class="price-container">
+                        <span class="old-price">850 TL</span>
+                        <span class="new-price">600 TL</span>
+                    </div>
+                    <a href="https://wa.me/905526444855?text=Merhaba,%20%C3%87ilek%20%26%20K%C4%B1rm%C4%B1z%C4%B1%20G%C3%BCl%20El%20Yap%C4%B1m%C4%B1%20Mum%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="order-button">
+                        <i class="fab fa-whatsapp"></i> Sipariş Ver
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ürün 7 -->
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/papatya.png" alt="Papatya & İncili Ayaklı Cam Mum">
+                </div>
+                <div class="product-details">
+                    <div class="product-name">Papatya & İncili Ayaklı Cam Mum</div>
+                    <div class="price-container">
+                        <span class="old-price">690 TL</span>
+                        <span class="new-price">500 TL</span>
+                    </div>
+                    <a href="https://wa.me/905526444855?text=Merhaba,%20Papatya%20%26%20%C4%B0ncili%20Ayakl%C4%B1%20Cam%20Mum%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="order-button">
+                        <i class="fab fa-whatsapp"></i> Sipariş Ver
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ürün 8 -->
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/orkide.jpeg" alt="Lüks Orkide & Lale Mum Tasarımı">
+                </div>
+                <div class="product-details">
+                    <div class="product-name">Lüks Orkide & Lale Mum Tasarımı</div>
+                    <div class="price-container">
+                        <span class="old-price">690 TL</span>
+                        <span class="new-price">500 TL</span>
+                    </div>
+                    <a href="https://wa.me/905526444855?text=Merhaba,%20L%C3%BCks%20Orkide%20%26%20Lale%20Mum%20Tasar%C4%B1m%C4%B1%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="order-button">
+                        <i class="fab fa-whatsapp"></i> Sipariş Ver
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ürün 9 -->
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/siyahkutu.jpeg" alt="Şakayık & Gül Siyah Kutu Mum">
+                </div>
+                <div class="product-details">
+                    <div class="product-name">Şakayık & Gül Siyah Kutu Mum</div>
+                    <div class="price-container">
+                        <span class="old-price">690 TL</span>
+                        <span class="new-price">500 TL</span>
+                    </div>
+                    <a href="https://wa.me/905526444855?text=Merhaba,%20%C5%9Eakay%C4%B1k%20%26%20G%C3%BCl%20Siyah%20Kutu%20Mum%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="order-button">
+                        <i class="fab fa-whatsapp"></i> Sipariş Ver
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ürün 10 -->
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/WhatsApp Image 2026-06-01 at 21.05.31 (1).jpeg" alt="Pembe Düşler Gül & Ayıcıklı Mum">
+                </div>
+                <div class="product-details">
+                    <div class="product-name">Pembe Düşler Gül & Ayıcıklı Mum</div>
+                    <div class="price-container">
+                        <span class="old-price">690 TL</span>
+                        <span class="new-price">500 TL</span>
+                    </div>
+                    <a href="https://wa.me/905526444855?text=Merhaba,%20Pembe%20D%C3%BC%C5%9Fler%20G%C3%BCl%20%26%20Ay%C4%B1c%C4%B1kl%C4%B1%20Mum%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="order-button">
+                        <i class="fab fa-whatsapp"></i> Sipariş Ver
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ürün 11 -->
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/WhatsApp Image 2026-06-01 at 21.05.31 (2).jpeg" alt="Kalpli Ayıcıklı Mum Buketi">
+                </div>
+                <div class="product-details">
+                    <div class="product-name">Kalpli Ayıcıklı Mum Buketi</div>
+                    <div class="price-container">
+                        <span class="old-price">690 TL</span>
+                        <span class="new-price">500 TL</span>
+                    </div>
+                    <a href="https://wa.me/905526444855?text=Merhaba,%20Kalpli%20Ay%C4%B1c%C4%B1kl%C4%B1%20Mum%20Buketi%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="order-button">
+                        <i class="fab fa-whatsapp"></i> Sipariş Ver
+                    </a>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <header>
-        <a href="#" class="brand-logo">Nimet Luxe Candles</a>
-        <div class="nav-actions">
-            <button class="nav-btn"><i class="far fa-heart"></i> Favorilerim (0)</button>
-            <button class="nav-btn"><i class="fas fa-shopping-bag"></i> Sepet (0)</button>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Nimet Luxe Candles</h1>
-            <p>Yaşam Alanınıza Lüks ve Zarafet Katın</p>
-        </div>
-    </section>
-
-    <main class="container">
-        <h2 class="section-title">Koleksiyonumuz</h2>
-        <div class="grid">
-
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="assets/images/Gemini_Generated_Image_9fad2h9fad2h9fad.png" alt="Bubble Kokulu Mum Buketi">
-                </div>
-                <div class="card-info">
-                    <h3 class="product-title">Bubble Kokulu Mum Buketi (Büyük Boy)</h3>
-                    <div class="price-box">
-                        <span class="old-price">2750 TL</span>
-                        <span class="current-price">2000 TL</span>
-                    </div>
-                    <a href="https://wa.me/905526444855?text=Merhaba,%20Bubble%20Kokulu%20Mum%20Buketi%20(B%C3%BCy%C3%BCk%20Boy)%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> Sipariş Ver
-                    </a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="assets/images/mango.png" alt="Mango Kokulu Mum Buketi">
-                </div>
-                <div class="card-info">
-                    <h3 class="product-title">Mango Kokulu Mum Buketi</h3>
-                    <div class="price-box">
-                        <span class="old-price">2750 TL</span>
-                        <span class="current-price">2000 TL</span>
-                    </div>
-                    <a href="https://wa.me/905526444855?text=Merhaba,%20Mango%20Kokulu%20Mum%20Buketi%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> Sipariş Ver
-                    </a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="assets/images/karısık.png" alt="Karışık Koku Özel Tasarım Buket">
-                </div>
-                <div class="card-info">
-                    <h3 class="product-title">Karışık Koku Özel Tasarım Buket</h3>
-                    <div class="price-box">
-                        <span class="old-price">3250 TL</span>
-                        <span class="current-price">2300 TL</span>
-                    </div>
-                    <a href="https://wa.me/905526444855?text=Merhaba,%20Kar%C4%B1%C5%9F%C4%B1k%20Koku%20%C3%D6zel%20Tasar%C4%B1m%20Buket%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> Sipariş Ver
-                    </a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="assets/images/yasemin.png" alt="Yasemin Kokulu Mum Buketi">
-                </div>
-                <div class="card-info">
-                    <h3 class="product-title">Yasemin Kokulu Mum Buketi</h3>
-                    <div class="price-box">
-                        <span class="old-price">2650 TL</span>
-                        <span class="current-price">2000 TL</span>
-                    </div>
-                    <a href="https://wa.me/905526444855?text=Merhaba,%20Yasemin%20Kokulu%20Mum%20Buketi%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> Sipariş Ver
-                    </a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="assets/images/800tl.jpeg" alt="Seçilebilir Mini Premium Model">
-                </div>
-                <div class="card-info">
-                    <h3 class="product-title">Seçilebilir Mini Premium Model</h3>
-                    <div class="price-box">
-                        <span class="old-price">1150 TL</span>
-                        <span class="current-price">800 TL</span>
-                    </div>
-                    <a href="https://wa.me/905526444855?text=Merhaba,%20Se%C3%A7ilebilir%20Mini%20Premium%20Model%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> Sipariş Ver
-                    </a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="assets/images/mini.png" alt="Çilek & Kırmızı Gül El Yapımı Mum">
-                </div>
-                <div class="card-info">
-                    <h3 class="product-title">Çilek & Kırmızı Gül El Yapımı Mum</h3>
-                    <div class="price-box">
-                        <span class="old-price">850 TL</span>
-                        <span class="current-price">600 TL</span>
-                    </div>
-                    <a href="https://wa.me/905526444855?text=Merhaba,%20%C3%87ilek%20%26%20K%C4%B1rm%C4%B1z%C4%B1%20G%C3%BCl%20El%20Yap%C4%B1m%C4%B1%20Mum%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> Sipariş Ver
-                    </a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="assets/images/papatya.png" alt="Papatya & İncili Ayaklı Cam Mum">
-                </div>
-                <div class="card-info">
-                    <h3 class="product-title">Papatya & İncili Ayaklı Cam Mum</h3>
-                    <div class="price-box">
-                        <span class="old-price">690 TL</span>
-                        <span class="current-price">500 TL</span>
-                    </div>
-                    <a href="https://wa.me/905526444855?text=Merhaba,%20Papatya%20%26%20%C4%B0ncili%20Ayakl%C4%B1%20Cam%20Mum%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> Sipariş Ver
-                    </a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="assets/images/orkide.jpeg" alt="Lüks Orkide & Lale Mum Tasarımı">
-                </div>
-                <div class="card-info">
-                    <h3 class="product-title">Lüks Orkide & Lale Mum Tasarımı</h3>
-                    <div class="price-box">
-                        <span class="old-price">690 TL</span>
-                        <span class="current-price">500 TL</span>
-                    </div>
-                    <a href="https://wa.me/905526444855?text=Merhaba,%20L%C3%BCks%20Orkide%20%26%20Lale%20Mum%20Tasar%C4%B1m%C4%B1%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> Sipariş Ver
-                    </a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="assets/images/siyahkutu.jpeg" alt="Şakayık & Gül Siyah Kutu Mum">
-                </div>
-                <div class="card-info">
-                    <h3 class="product-title">Şakayık & Gül Siyah Kutu Mum</h3>
-                    <div class="price-box">
-                        <span class="old-price">690 TL</span>
-                        <span class="current-price">500 TL</span>
-                    </div>
-                    <a href="https://wa.me/905526444855?text=Merhaba,%20%C5%9Eakay%C4%B1k%20%26%20G%C3%BCl%20Siyah%20Kutu%20Mum%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> Sipariş Ver
-                    </a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="assets/images/WhatsApp Image 2026-06-01 at 21.05.31 (1).jpeg" alt="Pembe Düşler Gül & Ayıcıklı Mum">
-                </div>
-                <div class="card-info">
-                    <h3 class="product-title">Pembe Düşler Gül & Ayıcıklı Mum</h3>
-                    <div class="price-box">
-                        <span class="old-price">690 TL</span>
-                        <span class="current-price">500 TL</span>
-                    </div>
-                    <a href="https://wa.me/905526444855?text=Merhaba,%20Pembe%20D%C3%BC%C5%9Fler%20G%C3%BCl%20%26%20Ay%C4%B1c%C4%B1kl%C4%B1%20Mum%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> Sipariş Ver
-                    </a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="assets/images/WhatsApp Image 2026-06-01 at 21.05.31 (2).jpeg" alt="Kalpli Ayıcıklı Mum Buketi">
-                </div>
-                <div class="card-info">
-                    <h3 class="product-title">Kalpli Ayıcıklı Mum Buketi</h3>
-                    <div class="price-box">
-                        <span class="old-price">690 TL</span>
-                        <span class="current-price">500 TL</span>
-                    </div>
-                    <a href="https://wa.me/905526444855?text=Merhaba,%20Kalpli%20Ay%C4%B1c%C4%B1kl%C4%B1%20Mum%20Buketi%20%C3%BCr%C3%BCn%C3%BCn%C3%BCz%20hakk%C3%B1nda%20bilgi%20alabilir%20miyim?" target="_blank" class="whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> Sipariş Ver
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
+    <!-- Footer -->
     <footer>
         <p>&copy; 2026 Nimet Luxe Candles. Tüm Hakları Saklıdır.</p>
     </footer>
