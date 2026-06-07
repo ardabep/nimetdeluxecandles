@@ -961,7 +961,7 @@ const urunler = [
 
             sliderContainer.innerHTML = medyaListesi.map(m => {
                 if(typeof m === 'object' && m.tip === 'video') {
-                    return `<div class="modal-slide"><video src="${m.url}" controls autoplay muted loop></video></div>`;
+                    return `<div class="modal-slide"><video src="" id="modalVideo" controls autoplay muted loop poster="assets/images/karisik.png" class="w-full h-auto rounded-lg" playsinline></video>
                 }
                 return `<div class="modal-slide"><img src="${m}" alt="${u.ad}" decoding="async"></div>`;
             }).join('');
