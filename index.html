@@ -1140,4 +1140,72 @@ const urunler = [
         });
     </script>
 </body>
+    <script>
+// DETAY PENCERESİNİ AÇAN, VİDEOYU SESSİZ YAPAN VE KAVUN RESİMLERİNİ YANYANA GETİREN GÜNCEL FONKSiyon
+function urunDetayAc(urunId) {
+  const urun = urunler.find(u => u.id === urunId);
+  if (!urun) return;
+
+  document.getElementById('modalBaslik').innerText = urun.ad;
+  document.getElementById('modalAciklama').innerText = urun.aciklama;
+  document.getElementById('modalFiyat').innerText = urun.fiyat + " TL";
+  document.getElementById('modalEskiFiyat').innerText = urun.eskiFiyat + " TL";
+
+  // Video Kontrol Alanı (Videoyu her zaman tamamen sessiz açar)
+  const modalVideo = document.getElementById('modalVideo');
+  if (urun.video) {
+    modalVideo.src = urun.video;
+    modalVideo.muted = true;  // VİDEONUN SESİNİ TARAYICIDA ZORUNLU KAPATIR
+    modalVideo.volume = 0;    // SES SEVİYESİNİ TAMAMEN SIFIRA ÇEKER
+    modalVideo.classList.remove('hidden');
+  } else {
+    modalVideo.src = "";
+    modalVideo.classList.add('hidden');
+  }
+
+  // WhatsApp Buton Güncelleme
+  const whatsappButon = document.getElementById('modalWhatsappButon');
+  const mesaj = `Merhaba, ${urun.ad} ürününüz hakkında bilgi almak istiyorum.`;
+  whatsappButon.href = `https://wa.me/905XXXXXXXXXX?text=${encodeURIComponent(mesaj)}`;
+
+  // Görsel Galeri Alanı
+  const modalGaleri = document.getElementById('modalGaleri');
+  modalGaleri.innerHTML = ''; 
+  mevcutSlaytIndex = 0;
+
+  // Kavun ürünü (id: 4) için resimleri yan yana getiren özel yerleşim
+  if (urun.id === 4) {
+    modalGaleri.className = "grid grid-cols-2 gap-4 w-full mb-4";
+    
+    urun.gorselListesi.forEach((gorselYolu) => {
+      const img = document.createElement('img');
+      img.src = gorselYolu;
+      img.className = "w-full h-auto rounded-lg object-cover shadow-md";
+      img.style.aspectRatio = '1/1';
+      modalGaleri.appendChild(img);
+    });
+  } else {
+    modalGaleri.className = "relative w-full"; 
+    urun.gorselListesi.forEach((gorselYolu, index) => {
+      const img = document.createElement('img');
+      img.src = gorselYolu;
+      img.className = `w-full h-auto rounded-lg object-cover ${index === 0 ? '' : 'hidden'}`;
+      img.style.aspectRatio = '1/1';
+      modalGaleri.appendChild(img);
+    });
+  }
+
+  document.getElementById('urunModal').classList.remove('hidden');
+}
+
+// MODAL KAPATMA FONKSİYONU (VİDEOYU DURDURUR)
+function modalKapat() {
+  document.getElementById('urunModal').classList.add('hidden');
+  const modalVideo = document.getElementById('modalVideo');
+  if (modalVideo) {
+    modalVideo.pause();
+    modalVideo.src = "";
+  }
+}
+</script>
 </html>
