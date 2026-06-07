@@ -168,12 +168,12 @@
         .card .product-title { color: var(--color-accent); }
         .card .product-desc { color: var(--color-text-secondary); }
         
+        /* Optimize Edilmiş Görsel Kutuları */
         .product-img-box { 
-          width: 100%; height: 380px; background: #dbd4c7; margin-bottom: var(--space-md); 
-          border: 1px solid rgba(191, 161, 95, 0.15); transition: var(--transition-smooth); overflow: hidden; display: flex; align-items: center; justify-content: center;
-          content-visibility: auto; /* Tarayıcı için render optimizasyonu */
+          width: 100%; height: 380px; background: #e6dfd3; margin-bottom: var(--space-md); 
+          border: 1px solid rgba(191, 161, 95, 0.15); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
         }
-        .product-img-box img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-smooth); transform: translateZ(0); }
+        .product-img-box img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-smooth); display: block; background: #e6dfd3; content-visibility: auto; contain-intrinsic-size: 380px; }
         .card:hover .product-img-box img { transform: scale(1.04); }
         
         .product-title { font-family: var(--font-display); font-size: 24px; font-weight: 400; margin-bottom: 8px; letter-spacing: 0.02em; }
@@ -264,7 +264,7 @@
             font-size: 16px; cursor: pointer; z-index: 5; transition: var(--transition-smooth);
             backdrop-filter: blur(5px); border-radius: 50%;
         }
-        .slider-arrow:hover { background: var(--color-primary); color: #181615; }
+        .slider-arrow:hover { background: var(--color-primary); color: #181615; transform: scale(1.05); }
         .slider-arrow.left { left: 12px; }
         .slider-arrow.right { right: 12px; }
         
@@ -361,6 +361,49 @@
         .stagger-2 { animation-delay: 0.4s; }
         @keyframes luxuryFadeInUp { to { opacity: 1; transform: translateY(0); } }
         
+        /* Premium WhatsApp Canlı Destek Butonu Tasarımı */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background: #181615;
+            color: var(--color-primary);
+            border: 1px solid var(--color-primary);
+            padding: 12px 20px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            z-index: 200;
+            transition: var(--transition-smooth);
+        }
+        .whatsapp-float::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            border: 1px solid var(--color-primary);
+            border-radius: 32px;
+            opacity: 0.4;
+            animation: whatsappPulse 2s infinite;
+        }
+        .whatsapp-float:hover {
+            background: var(--color-primary);
+            color: #181615;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(191, 161, 95, 0.3);
+        }
+        .whatsapp-icon { font-size: 16px; }
+        @keyframes whatsappPulse {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.12); opacity: 0; }
+        }
+
         /* MOBİL VE TABLET OPTİMİZASYONLARI */
         @media (max-width: 992px) { 
             body { padding-bottom: 85px; padding-top: 60px; } 
@@ -406,6 +449,7 @@
             .modal-slider-wrapper { height: 260px; min-height: 260px; }
             .modal-slider-wrapper img, .modal-slider-wrapper video { object-fit: contain; background: #e6dfd3; }
             .modal-info-box { padding: var(--space-md); overflow-y: visible; }
+            .whatsapp-float { bottom: 90px; } /* Mobil alt barın hemen üzerinde kalması için sabitledik */
             .modal-title { font-size: 22px; margin-bottom: 8px; }
             .modal-desc { font-size: 12px; margin-bottom: var(--space-md); max-height: none; }
             .modal-features { display: none; }
@@ -416,6 +460,11 @@
             
             .reviews-grid { grid-template-columns: 1fr; gap: var(--space-md); }
             .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+        }
+
+        /* Bilgisayar ekranları için WhatsApp Buton Konumu */
+        @media (min-width: 993px) {
+            .whatsapp-float { bottom: 30px; }
         }
     </style>
 </head>
@@ -611,13 +660,21 @@
         </div>
     </div>
 
+    <a href="https://api.whatsapp.com/send?phone=905522926638&text=Merhaba%20Nimet%20Luxe%20Candles!%20%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." 
+       class="whatsapp-float" 
+       target="_blank" 
+       rel="noopener noreferrer">
+        <span class="whatsapp-icon">💬</span>
+        <span>Canlı Destek</span>
+    </a>
+
     <script>
-        // ÜRÜN LİSTESİ VE GÜNCEL DOSYA YAPILARI
+        // ÜRÜN LİSTESİ VE VERİ YAPILARI
         const urunler = [
           { id: 1, ad: "Bubble Kokulu Mum Buketi", kategori: "premium", aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve lila tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım.", fiyat: 2000, gorsel: "bubblebuket.png", gorselListesi: ["bubblebuket.png"], video: null },
           { id: 2, ad: "Mango Kokulu Mum Buketi", kategori: "premium", aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarına taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül tomurcuk figürleriyle bezenmiş mum buketimiz, egzotik ve taze mango esansıyla zenginleştirilmiştir.", fiyat: 2000, gorsel: "mango.png", gorselListesi: ["mango.png", "WhatsApp Image 2026-06-01 at 21.05.31 (1).jpeg", "WhatsApp Image 2026-06-01 at 21.05.31 (2).jpeg"], video: null },
           { id: 3, ad: "Karışık Koku Özel Mum Buketi", kategori: "premium", aciklama: "Göz alıcı bir pembe kutuda lüksü ve görsel bir şöleni buluşturan bu özel tasarım, el emeğinin zirvesini temsil ediyor. İçerisinde kusursuzca işlenmiş incili kalpler, sevimli mini ayıcık figürü, narin gül goncaları, papatyalar ve capcanlı turuncu laleler barındırır.", fiyat: 2300, gorsel: "karısık.png", gorselListesi: ["karısık.png"], video: null },
-          { id: 4, ad: "Yasemin Kokulu Mum Buketi", kategori: "normal", aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe og we beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor.", fiyat: 2000, gorsel: "yasemin.png", gorselListesi: ["yasemin.png"], video: null },
+          { id: 4, ad: "Yasemin Kokulu Mum Buketi", kategori: "normal", aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor.", fiyat: 2000, gorsel: "yasemin.png", gorselListesi: ["yasemin.png"], video: null },
           
           { 
             id: 5, 
@@ -674,7 +731,7 @@
             } catch(e) { console.log(e); }
         }
         
-        // LAZY LOADING ENTEGRE EDİLMİŞ LİSTELEME FONKSİYONLARI
+        // GÖRSEL PERFORMANSI ARTTIRILMIŞ LİSTELEME FONKSİYONLARI
         function urunleriListele() {
           const premiumList = document.getElementById('premium-product-list'); 
           const allCollectionGrid = document.getElementById('all-collection-grid');
@@ -684,7 +741,7 @@
           premiumList.innerHTML = premiumUrunler.map(u => `
             <div class="card" onclick="openProductModal(${u.id})">
                 <div class="product-img-box">
-                    <img src="${u.gorsel}" alt="${u.ad}" loading="lazy" decoding="async">
+                    <img src="${u.gorsel}" alt="${u.ad}" decoding="async">
                 </div>
                 <h3 class="product-title">${u.ad}</h3>
                 <p class="product-desc">${u.aciklama}</p>
@@ -698,7 +755,7 @@
           allCollectionGrid.innerHTML = urunler.map(u => `
             <div class="card" onclick="openProductModal(${u.id})">
                 <div class="product-img-box">
-                    <img src="${u.gorsel}" alt="${u.ad}" loading="lazy" decoding="async">
+                    <img src="${u.gorsel}" alt="${u.ad}" decoding="async">
                 </div>
                 <h3 class="product-title">${u.ad}</h3>
                 <p class="product-desc">${u.aciklama}</p>
@@ -751,7 +808,7 @@
                 
                 variantGrid.innerHTML = u.gorselListesi.map((g, i) => `
                     <button class="variant-btn ${i === 0 ? 'active' : ''}" onclick="setSlide(${i}); updateActiveVariantBtn(this)">
-                        <img src="${g}" alt="Örnek Model ${i+1}" loading="lazy">
+                        <img src="${g}" alt="Örnek Model ${i+1}" decoding="async">
                         <span class="variant-btn-label">M${i+1}</span>
                     </button>
                 `).join('');
@@ -768,7 +825,7 @@
                 if(typeof m === 'object' && m.tip === 'video') {
                     return `<div class="modal-slide"><video src="${m.url}" controls autoplay muted loop></video></div>`;
                 }
-                return `<div class="modal-slide"><img src="${m}" alt="${u.ad}"></div>`;
+                return `<div class="modal-slide"><img src="${m}" alt="${u.ad}" decoding="async"></div>`;
             }).join('');
 
             const arrows = document.querySelectorAll('.slider-arrow');
