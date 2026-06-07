@@ -813,6 +813,23 @@ const urunler = [
   { id: 10, ad: "Pembe Düşler Gül & Ayıcık Buketi", kategori: "normal", aciklama: "Romantik pembe ve beyaz tonlarındaki el işçiliği narin güllerin, şirin bir mini pembe ayıcık figürüyle buluştuğu harika bir buket tasarımı.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/WhatsApp Image 2026-06-01 at 21.22.54.jpeg", gorselListesi: ["assets/images/WhatsApp Image 2026-06-01 at 21.22.54.jpeg"], video: null },
   { id: 11, ad: "Kalpli Ayıcık Mum Buketi", kategori: "normal", aciklama: "Zirvesinde göz alıcı kırmızı kadife bir kalp figürü ve Nimet Göçmen el işçiliği imzasını taşıyan asil bir aranjman.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/WhatsApp Image 2026-06-01 at 21.22.53.jpeg", gorselListesi: ["assets/images/WhatsApp Image 2026-06-01 at 21.22.53.jpeg"], video: null }
 ];
+
+// Detay modal fonksiyonu tetiklendiğinde videoyu otomatik ve zorunlu olarak sessize alan ek kontrol scripti
+setTimeout(() => {
+  const modalVideo = document.getElementById('modalVideo');
+  if (modalVideo) {
+    modalVideo.muted = true;
+    modalVideo.setAttribute('muted', 'true');
+    modalVideo.setAttribute('playsinline', 'true');
+    
+    // Her video yüklendiğinde sesi kapatmayı garantiye alalım
+    modalVideo.addEventListener('volumechange', () => {
+      if (!modalVideo.muted) {
+        modalVideo.muted = true;
+      }
+    });
+  }
+}, 1000);
         let sepet = [];
         let mevcutUrunIndex = 0;
         let mevcutSlaytIndex = 0;
