@@ -887,8 +887,8 @@ const urunler = [
     ad: "Safir Düşler Ayıcıklı Mum Buketi", 
     kategori: "premium", 
     aciklama: "Gök mavisinin huzur veren tonları ile el işçiliği beyaz güllerin büyüleyici uyumu. İncilerle bezenmiş kurdele detayları, cipsolar ve merkezindeki sevimli mavi ayıcık figürüyle yaşam alanlarınıza premium bir şıklık katmak için tasarlandı.", 
-    fiyat: 2000, 
-    eskiFiyat: 2850, 
+    fiyat: 500, 
+    eskiFiyat: 750, 
     gorsel: "assets/images/mavi1.png", 
     gorselListesi: ["assets/images/mavi1.png", "assets/images/mavi2.png"], 
     video: null 
@@ -1208,12 +1208,55 @@ const urunler = [
             entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.05 });
 
-        document.addEventListener("DOMContentLoaded", () => {
-            buildTickerContent();
+        // --- YENİ FİLTRELEME SİSTEMİ ---
+        function urunleriListele() {
+            const premiumList = document.getElementById('premium-product-list');
+            const allCollectionGrid = document.getElementById('all-collection-grid');
+            if(!premiumList || !allCollectionGrid) return;
+            
+            // 1. Ana Sayfa Premium Alanı: Sadece fiyatı 2000 TL ve üzeri olanları otomatik çeker
+            const premiumUrunler = urunler.filter(u => u.fiyat >= 2000);
+            premiumList.innerHTML = premiumUrunler.map(u => `
+                <div class="card" onclick="openProductModal(${u.id})">
+                    <div class="discount-badge">${hesaplaYuzde(u.eskiFiyat, u.fiyat)}</div>
+                    <div class="product-img-box">
+                        <img src="${u.gorsel}" alt="${u.ad}" decoding="async">
+                    </div>
+                    <h3 class="product-title">${u.ad}</h3>
+                    <p class="product-desc">${u.aciklama}</p>
+                    <div class="product-footer" onclick="event.stopPropagation();">
+                        <div class="price-wrapper">
+                            <span class="old-price">${u.eskiFiyat} TL</span>
+                            <span class="product-price">${u.fiyat} TL</span>
+                        </div>
+                        <button class="btn-add-cart" onclick="sepeteEkle(${u.id})">Sepete Ekle</button>
+                    </div>
+                </div>
+            `).join('');
+
+            // 2. Tüm Katalog Alanı: Fiyatı ne olursa olsun İSTİSNAZIZ BÜTÜN ürünleri listeler
+            allCollectionGrid.innerHTML = urunler.map(u => `
+                <div class="card" onclick="openProductModal(${u.id})">
+                    <div class="discount-badge">${hesaplaYuzde(u.eskiFiyat, u.fiyat)}</div>
+                    <div class="product-img-box">
+                        <img src="${u.gorsel}" alt="${u.ad}" decoding="async">
+                    </div>
+                    <h3 class="product-title">${u.ad}</h3>
+                    <p class="product-desc">${u.aciklama}</p>
+                    <div class="product-footer" onclick="event.stopPropagation();">
+                        <div class="price-wrapper">
+                            <span class="old-price">${u.eskiFiyat} TL</span>
+                            <span class="product-price">${u.fiyat} TL</span>
+                        </div>
+                        <button class="btn-add-cart" onclick="sepeteEkle(${u.id})">Sepete Ekle</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Sayfa yüklenince yeni kurallarla listeyi çalıştır
+        window.addEventListener('DOMContentLoaded', () => {
             urunleriListele();
-            sepetiGuncelle();
-            const elements = document.querySelectorAll('.scroll-animate');
-            elements.forEach((el) => observer.observe(el));
         });
     </script>
 </body>
