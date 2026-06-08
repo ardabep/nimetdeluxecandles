@@ -11,6 +11,36 @@
         html, body {
     -webkit-overflow-scrolling: auto; /* Ağır akıcı mod yerine telefonun kendi hızına bırakır */
 }
+        /* --- Lüks Çerçeve ve Canlı Buton Tasarımları --- */
+        .urun-kart, .product-card {
+            border: 1px solid rgba(170, 139, 70, 0.25) !important; /* Altın rengi şık çerçeve */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important; /* Premium derinlik gölgesi */
+            transition: all 0.3s ease !important;
+            border-radius: 12px !important;
+            overflow: hidden !important;
+        }
+
+        .urun-kart:hover, .product-card:hover {
+            border-color: #aa8b46 !important; /* Dokununca/Üzerine gelince parlayan altın rengi */
+            box-shadow: 0 8px 25px rgba(170, 139, 70, 0.3) !important;
+            transform: translateY(-4px) !important; /* Hafif yukarı esneme hareketi */
+        }
+
+        .sepete-ekle-btn, .katalog-ac-btn, .btn-primary, .product-card button {
+            background: linear-gradient(135deg, #aa8b46 0%, #2c2523 100%) !important; /* Premium renk geçişi */
+            color: #ffffff !important;
+            border: 1px solid #aa8b46 !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.5px !important;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 4px 10px rgba(170, 139, 70, 0.2) !important;
+        }
+
+        .sepete-ekle-btn:hover, .katalog-ac-btn:hover, .btn-primary:hover, .product-card button:hover {
+            background: linear-gradient(135deg, #2c2523 0%, #aa8b46 100%) !important; /* Renk yönü değişimi */
+            transform: scale(1.02) !important; /* Buton canlanma efekti */
+            box-shadow: 0 6px 18px rgba(170, 139, 70, 0.4) !important;
+        }
         :root {
           --color-bg: #fdfcf9;           
           --color-surface: #ffffff;      
