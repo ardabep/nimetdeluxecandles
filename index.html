@@ -962,48 +962,33 @@ const urunler = [
             `).join('');
         }
 
-        function urunleriListele() {
-          const premiumList = document.getElementById('premium-product-list'); 
-          const allCollectionGrid = document.getElementById('all-collection-grid');
-          if(!premiumList || !allCollectionGrid) return;
-          
-          const premiumUrunler = urunler.filter(u => u.kategori === 'premium');
-          premiumList.innerHTML = premiumUrunler.map(u => `
-            <div class="card" onclick="openProductModal(${u.id})">
-                <div class="discount-badge">${hesaplaYuzde(u.eskiFiyat, u.fiyat)}</div>
-                <div class="product-img-box">
-                    <img src="${u.gorsel}" alt="${u.ad}" decoding="async">
-                </div>
-                <h3 class="product-title">${u.ad}</h3>
-                <p class="product-desc">${u.aciklama}</p>
-                <div class="product-footer" onclick="event.stopPropagation();">
-                    <div class="price-wrapper">
-                        <span class="old-price">${u.eskiFiyat} TL</span>
-                        <span class="product-price">${u.fiyat} TL</span>
-                    </div>
-                    <button class="btn-add-cart" onclick="sepeteEkle(${u.id})">Sepete Ekle</button>
-                </div>
-            </div>
-          `).join('');
+   function urunleriListele() {
+  const grid = document.getElementById('urunGrid');
+  if(!grid) return;
+  grid.innerHTML = '';
+  
+  // Sadece fiyatı 2000 TL ve üstü (premium) olan ürünleri filtreleyip ana sayfaya basar
+  const premiumUrunler = urunler.filter(u => u.kategori === 'premium');
+  
+  premiumUrunler.forEach(u => {
+    grid.innerHTML += urunKartOlustur(u);
+  });
+  
+  if(typeof observer !== 'undefined') {
+    document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
+  }
+}
 
-          allCollectionGrid.innerHTML = urunler.map(u => `
-            <div class="card" onclick="openProductModal(${u.id})">
-                <div class="discount-badge">${hesaplaYuzde(u.eskiFiyat, u.fiyat)}</div>
-                <div class="product-img-box">
-                    <img src="${u.gorsel}" alt="${u.ad}" decoding="async">
-                </div>
-                <h3 class="product-title">${u.ad}</h3>
-                <p class="product-desc">${u.aciklama}</p>
-                <div class="product-footer" onclick="event.stopPropagation();">
-                    <div class="price-wrapper">
-                        <span class="old-price">${u.eskiFiyat} TL</span>
-                        <span class="product-price">${u.fiyat} TL</span>
-                    </div>
-                    <button class="btn-add-cart" onclick="sepeteEkle(${u.id})">Sepete Ekle</button>
-                </div>
-            </div>
-          `).join('');
-        }
+function kataloguListele() {
+  const grid = document.getElementById('katalogGrid');
+  if(!grid) return;
+  grid.innerHTML = '';
+  
+  // Tüm Kataloğu Aç butonuna basıldığında fiyat ayrımı yapmadan BÜTÜN ürünleri listeler
+  urunler.forEach(u => {
+    grid.innerHTML += urunKartOlustur(u);
+  });
+}
 
         function openCollectionModal() {
             document.getElementById('collectionModal').classList.add('open');
