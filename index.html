@@ -797,16 +797,45 @@
         // YENİ MOR BUKET FOTOĞRAFLARI GİRİLEN DİNAMİK ÜRÜN LİSTESİ
 const urunler = [
   { 
+    id: 21, 
+    ad: "Mavi Asalet Mum Buketi", 
+    kategori: "normal", 
+    aciklama: "Asil mavi ve mor tonlarındaki gül ile lale figürlerinin, lüks pembe kutuda siyah tül kurdeleyle buluştuğu büyüleyici bir tasarım. Özel esansiyel yağlar ve el işçiliğiyle hazırlanan bu aranjman, yaşam alanlarınıza modern bir zarafet katacak.", 
+    fiyat: 1500, 
+    eskiFiyat: 2250, 
+    gorsel: "assets/images/maviasalet.png", 
+    gorselListesi: [
+      "assets/images/maviasalet.png", 
+      "assets/images/maviasalet2.png"
+    ], 
+    video: null 
+  },
+  { 
+    id: 20, 
+    ad: "Pembe Asalet Mum Buketi", 
+    kategori: "normal", 
+    aciklama: "Zarafetin en asil tonu pembe ile gümüşün kusursuz uyumu. El işçiliği narin çiçek figürleri ve lüks esanslarla hazırlanan bu özel aranjman, yaşam alanlarınıza asalet katar.", 
+    fiyat: 1500, 
+    eskiFiyat: 2250, 
+    gorsel: "assets/images/pembeasalet1.png", 
+    gorselListesi: [
+      "assets/images/pembeasalet1.png", 
+      "assets/images/pembeasalet2.png", 
+      "assets/images/pembeasalet3.png"
+    ], 
+    video: null 
+  },
+  { 
     id: 19, 
     ad: "Zümrüt Işıltısı Premium Mum Aranjmanı", 
     kategori: "premium", 
-    aciklama: "Derin zümrüt yeşili og asil gold detayların büyüleyici uyumuyla tasarlanmış, el işçiliğinin en nadide örneklerinden biri. Yaşam alanlarınıza saray zarafetini ve premium bir ambiyansı taşımak için yüksek yoğunluklu özel esanslarla üretilmiştir.", 
+    aciklama: "Derin zümrüt yeşili ve asil gold detayların büyüleyici uyumuyla tasarlanmış, el işçiliğinin en nadide örneklerinden biri. Yaşam alanlarınıza saray zarafetini ve premium bir ambiyansı taşımak için yüksek yoğunluklu özel esanslarla üretilmiştir.", 
     fiyat: 2200, 
     eskiFiyat: 3000, 
     gorsel: "assets/images/ikili1.png", 
     gorselListesi: [
       "assets/images/ikili1.png", 
-      "assets/images/gorkemli.png", // Burayı da gorkemli.png olarak güncelledim
+      "assets/images/gorkemli.png", 
       "assets/images/ikili3.png"
     ], 
     video: null 
@@ -815,11 +844,11 @@ const urunler = [
     id: 18, 
     ad: "Görkemli Işıltı Mum Aranjmanı", 
     kategori: "normal", 
-    aciklama: "Altın varaklı ve derin detaylı lüks kabı içerisinde, el işçiliğiyle hazırlanan asil bir tasarım. Yaşam alanlarınıza sıcak, zengin ve huzur veren bir ambiyans katmak için özel esanslarla üretilmiştir.", 
+    aciklama: "Altın varaklı ve derin detaylı lüks kabı içerisinde, el işçiliğiyle hazırlanan asil bir tasarım. Yaşam alanlarınıza sıcak, zengin og huzur veren bir ambiyans katmak için özel esanslarla üretilmiştir.", 
     fiyat: 800, 
     eskiFiyat: 1200, 
-    gorsel: "assets/images/gorkemli.png", // İstediğin gibi gorkemli.png yapıldı
-    gorselListesi: ["assets/images/gorkemli.png", "assets/images/gorkemli2.png"], // gorkemli ve gorkemli2 olarak güncellendi
+    gorsel: "assets/images/gorkemli.png", 
+    gorselListesi: ["assets/images/gorkemli.png", "assets/images/gorkemli2.png"], 
     video: null 
   },
   { 
@@ -916,7 +945,7 @@ const urunler = [
     gorselListesi: ["assets/images/mavi1.png", "assets/images/mavi2.png"], 
     video: null 
   },
-  { id: 5, ad: "Yasemin Kokulu Mum Buketi", kategori: "normal", aciklama: "Romantizmin ve masumiyetin en sah halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor.", fiyat: 2000, eskiFiyat: 2850, gorsel: "assets/images/yasemin.png", gorselListesi: ["assets/images/yasemin.png"], video: null },
+  { id: 5, ad: "Yasemin Kokulu Mum Buketi", kategori: "normal", aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor.", fiyat: 2000, eskiFiyat: 2850, gorsel: "assets/images/yasemin.png", gorselListesi: ["assets/images/yasemin.png"], video: null },
   { 
     id: 6, 
     ad: "Seçilebilir Mini Premium Model", 
@@ -932,7 +961,7 @@ const urunler = [
   { id: 7, ad: "Çilek & Kırmızı Gül El Buketi", kategori: "normal", aciklama: "Aşkın ve tutkunun rengiyle bezenmiş, elde taşınabilir formda tasarlanan bu mini sanat eseri; el işçiliğiyle şekillendirilen kusursuz kırmızı güller barındırır.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/mini.png", gorselListesi: ["assets/images/mini.png"], video: null },
   { id: 8, ad: "Papatya & İncili Ayıcık Mum Buketi", kategori: "normal", aciklama: "Zarif beyaz ve pembe papatyaların, el işçiliğiyle üretilmiş gold detaylı güllerle büyüleyici birleşimi. Merkezinde tatlı pembe bir ayıcık figürü barındırır.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/papatya.png", gorselListesi: ["assets/images/papatya.png"], video: null },
   { id: 9, ad: "Lüks Orkide & Lale Mum Buketi", kategori: "normal", aciklama: "Zarafetin sembolü olan soft lila orkideler ve asil lalelerin, canlı pembe cipsolarla bir araya geldiği göz alıcı bir tasarım.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/orkide.jpeg", gorselListesi: ["assets/images/orkide.jpeg"], video: null },
-  { id: 10, ad: "Şakayık & Gül Siyah Kutu Mum", kategori: "normal", aciklama: "Mat siyah şık og minimal bir kutu içerisinde; pudra pembe şakayıklar, el işçiliği beyaz ve lila güllerin muazzam birleşimi.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/siyahkutu.jpeg", gorselListesi: ["assets/images/siyahkutu.jpeg"], video: null },
+  { id: 10, ad: "Şakayık & Gül Siyah Kutu Mum", kategori: "normal", aciklama: "Mat siyah şık ve minimal bir kutu içerisinde; pudra pembe şakayıklar, el işçiliği beyaz ve lila güllerin muazzam birleşimi.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/siyahkutu.jpeg", gorselListesi: ["assets/images/siyahkutu.jpeg"], video: null },
   { id: 11, ad: "Pembe Düşler Gül & Ayıcık Buketi", kategori: "normal", aciklama: "Romantik pembe ve beyaz tonlarındaki el işçiliği narin güllerin, şirin bir mini pembe ayıcık figürüyle buluştuğu harika bir buket tasarımı.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/WhatsApp Image 2026-06-01 at 21.22.54.jpeg", gorselListesi: ["assets/images/WhatsApp Image 2026-06-01 at 21.22.54.jpeg"], video: null },
   { id: 12, ad: "Kalpli Ayıcık Mum Buketi", kategori: "normal", aciklama: "Zirvesinde göz alıcı kırmızı kadife bir kalp figürü ve Nimet Göçmen el işçiliği imzasını taşıyan asil bir aranjman.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/WhatsApp Image 2026-06-01 at 21.22.53.jpeg", gorselListesi: ["assets/images/WhatsApp Image 2026-06-01 at 21.22.53.jpeg"], video: null }
 ];
