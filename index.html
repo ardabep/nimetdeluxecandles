@@ -1153,6 +1153,37 @@ const urunler = [
                 const btns = document.querySelectorAll('.variant-btn');
                 if(btns[mevcutSlaytIndex]) updateActiveVariantBtn(btns[mevcutSlaytIndex]);
             }
+            // === MOBİL CİHAZLAR İÇİN PARMAKLA SAGA-SOLA KAYDIRMA (SWIPE) ÖZELLİĞİ ===
+        let dokunmaBaslangicX = 0;
+        let dokunmaBitisX = 0;
+        const kaydirmaEsigi = 50; // Piksel cinsinden hassasiyet ayarı
+
+        // Detay penceresindeki resim alanını seçiyoruz
+        const galeriAlani = document.querySelector('.modal-slider-wrapper');
+
+        if (galeriAlani) {
+            // Parmak ekrana ilk dokunduğunda X eksenindeki konumunu kaydet
+            galeriAlani.addEventListener('touchstart', function(e) {
+                dokunmaBaslangicX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            // Parmak ekrandan çekildiğinde bitiş konumunu al ve hesapla
+            galeriAlani.addEventListener('touchend', function(e) {
+                dokunmaBitisX = e.changedTouches[0].screenX;
+                
+                const fark = dokunmaBaslangicX - dokunmaBitisX;
+
+                // Eğer parmak yeterince kaydırıldıysa yönü belirle ve changeSlide fonksiyonunu tetikle
+                if (Math.abs(fark) > kaydirmaEsigi) {
+                    if (fark > 0) {
+                        // Sola kaydırma yapıldı -> Sonraki resme geç
+                        changeSlide(1);
+                    } else {
+                        // Sağa kaydırma yapıldı -> Önceki resme geç
+                        changeSlide(-1);
+                    }
+                }
+            }, { passive: true });
         }
 
         function setSlide(index) {
