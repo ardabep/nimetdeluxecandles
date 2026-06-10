@@ -876,6 +876,12 @@
         let lbImages = [];
         let lbIndex = 0;
 
+        function openLightboxFromModal(src) {
+            const u = urunler[mevcutUrunIndex];
+            const gorselListesi = u.gorselListesi.filter(x => typeof x === 'string');
+            openLightbox(src, gorselListesi);
+        }
+
         function openLightbox(src, allImages) {
             lbImages = allImages && allImages.length > 1 ? allImages : [src];
             lbIndex = lbImages.indexOf(src);
@@ -1271,7 +1277,7 @@ const urunler = [
                 if(typeof m === 'object' && m.tip === 'video') {
                     return `<div class="modal-slide"><video src="${m.url}" controls autoplay muted loop></video></div>`;
                 }
-                return `<div class="modal-slide"><img src="${m}" alt="${u.ad}" loading="lazy" decoding="async" onclick="openLightbox('${m}', medyaListesi.filter(x=>typeof x==='string'))"></div>`;
+                return `<div class="modal-slide"><img src="${m}" alt="${u.ad}" loading="lazy" decoding="async" onclick="openLightboxFromModal('${m}')"></div>`;
             }).join('');
 
             const arrows = document.querySelectorAll('.slider-arrow');
