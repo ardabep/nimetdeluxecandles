@@ -634,6 +634,39 @@
         /* Zoom cursor for modal images */
         .modal-slide img { cursor: zoom-in; }
         .product-img-box img { cursor: zoom-in; }
+        /* --- SOSYAL MEDYA LOGOLARI TASARIMI --- */
+        .sosyal-medya-kutusu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            margin: 20px auto;
+            padding: 10px;
+        }
+        .sosyal-link {
+            color: #aa8b46; /* Sitedeki lüks altın sarısı tonu */
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(170, 139, 70, 0.25);
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.02);
+        }
+        .sosyal-link:hover {
+            color: #ffffff;
+            border-color: #aa8b46;
+            background: #aa8b46;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(170, 139, 70, 0.3);
+        }
+        .sosyal-link svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
     </style>
 </head>
 <body>
@@ -829,6 +862,19 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="sosyal-medya-kutusu">
+            <a href="https://www.instagram.com/HESAP_ADIN" target="_blank" class="sosyal-link" aria-label="Instagram">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                </svg>
+            </a>
+
+            <a href="https://www.tiktok.com/@HESAP_ADIN" target="_blank" class="sosyal-link" aria-label="TikTok">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.59 4.14.94 1.1 2.27 1.81 3.69 2.03v3.87c-1.3-.12-2.58-.63-3.61-1.43-.88-.69-1.56-1.61-1.99-2.64v7.41c.03 2.11-.64 4.23-1.97 5.85-1.5 1.83-3.87 2.89-6.24 2.76-2.58-.14-5.06-1.74-6.17-4.11-1.28-2.73-.77-6.2 1.25-8.38 1.59-1.72 3.97-2.54 6.28-2.22v3.87c-1.28-.17-2.61.24-3.49 1.19-.88.96-1.14 2.37-.67 3.58.46 1.19 1.67 1.99 2.94 1.99 1.76-.01 3.16-1.51 3.14-3.27V0h.01z"/>
+                </svg>
+            </a>
         </div>
         <div class="footer-bottom container">
             &copy; 2026 Nimet Luxe Candles. Tüm Hakları Saklıdır.
