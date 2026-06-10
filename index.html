@@ -867,6 +867,22 @@
         let lbImages = [];
         let lbIndex = 0;
 
+        // Ürün ID'sine göre lightbox aç (inline onclick'lerde tırnak sorunu olmadan kullanmak için)
+        function lbOpenById(urunId, gorselIndex) {
+            const u = urunler.find(x => x.id === urunId);
+            if(!u || !u.gorselListesi || !u.gorselListesi.length) return;
+            const idx = gorselIndex || 0;
+            openLightbox(u.gorselListesi[idx], u.gorselListesi);
+        }
+
+        // Modal slider'daki görsele tıklandığında lightbox açar
+        function lbModalGorsel(gorselIndex) {
+            const imgs = window._modalGorselListesi;
+            if(!imgs || !imgs.length) return;
+            const idx = (gorselIndex >= 0 && gorselIndex < imgs.length) ? gorselIndex : 0;
+            openLightbox(imgs[idx], imgs);
+        }
+
         function openLightbox(src, allImages) {
             lbImages = allImages && allImages.length > 1 ? allImages : [src];
             lbIndex = lbImages.indexOf(src);
@@ -1161,7 +1177,7 @@ const urunler = [
             <div class="card" onclick="openProductModal(${u.id})">
                 <div class="discount-badge">${hesaplaYuzde(u.eskiFiyat, u.fiyat)}</div>
                 <div class="product-img-box">
-                    <img src="${u.gorsel}" alt="${u.ad}" decoding="async" onclick="event.stopPropagation(); openLightbox('${u.gorsel}', ${JSON.stringify(u.gorselListesi)})">
+                    <img src="${u.gorsel}" alt="${u.ad}" decoding="async" onclick="event.stopPropagation(); lbOpenById(${u.id}, 0)">
                 </div>
                 <h3 class="product-title">${u.ad}</h3>
                 <p class="product-desc">${u.aciklama}</p>
@@ -1179,7 +1195,7 @@ const urunler = [
             <div class="card" onclick="openProductModal(${u.id})">
                 <div class="discount-badge">${hesaplaYuzde(u.eskiFiyat, u.fiyat)}</div>
                 <div class="product-img-box">
-                    <img src="${u.gorsel}" alt="${u.ad}" decoding="async" onclick="event.stopPropagation(); openLightbox('${u.gorsel}', ${JSON.stringify(u.gorselListesi)})">
+                    <img src="${u.gorsel}" alt="${u.ad}" decoding="async" onclick="event.stopPropagation(); lbOpenById(${u.id}, 0)">
                 </div>
                 <h3 class="product-title">${u.ad}</h3>
                 <p class="product-desc">${u.aciklama}</p>
@@ -1249,11 +1265,15 @@ const urunler = [
             let medyaListesi = [...u.gorselListesi];
             if(u.video) { medyaListesi.push({tip: 'video', url: u.video}); }
 
-            sliderContainer.innerHTML = medyaListesi.map(m => {
+            // Sadece görsel URL'lerini global değişkene ata, lightbox için
+            window._modalGorselListesi = medyaListesi.filter(x => typeof x === 'string');
+
+            sliderContainer.innerHTML = medyaListesi.map((m, idx) => {
                 if(typeof m === 'object' && m.tip === 'video') {
                     return `<div class="modal-slide"><video src="${m.url}" controls autoplay muted loop></video></div>`;
                 }
-                return `<div class="modal-slide"><img src="${m}" alt="${u.ad}" decoding="async" onclick="openLightbox('${m}', medyaListesi.filter(x=>typeof x==='string'))"></div>`;
+                const giIdx = window._modalGorselListesi.indexOf(m);
+                return `<div class="modal-slide"><img src="${m}" alt="${u.ad}" decoding="async" style="cursor:zoom-in;" onclick="lbModalGorsel(${giIdx >= 0 ? giIdx : 0})"></div>`;
             }).join('');
 
             const arrows = document.querySelectorAll('.slider-arrow');
