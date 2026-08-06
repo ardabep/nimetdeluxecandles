@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nimet Luxe Candles | El Yapımı Premium Mum Koleksiyonu</title>
     
-    <!-- Öncelikli Görsel Yükleme (Hız İyileştirmesi) -->
+    <!-- Öncelikli Görsel Yükleme -->
     <link rel="preload" as="image" href="assets/images/etkinlik.jpeg">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,37 +23,6 @@
             transform: translateZ(0);
         }
 
-        .urun-kart, .product-card {
-            border: 1px solid rgba(170, 139, 70, 0.25) !important;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
-            transition: all 0.3s ease !important;
-            border-radius: 12px !important;
-            overflow: hidden !important;
-            will-change: transform;
-        }
-
-        .urun-kart:hover, .product-card:hover {
-            border-color: #aa8b46 !important;
-            box-shadow: 0 8px 25px rgba(170, 139, 70, 0.3) !important;
-            transform: translateY(-4px) !important;
-        }
-
-        .sepete-ekle-btn, .katalog-ac-btn, .btn-primary, .product-card button {
-            background: linear-gradient(135deg, #aa8b46 0%, #2c2523 100%) !important;
-            color: #ffffff !important;
-            border: 1px solid #aa8b46 !important;
-            font-weight: 600 !important;
-            letter-spacing: 0.5px !important;
-            transition: all 0.3s ease !important;
-            box-shadow: 0 4px 10px rgba(170, 139, 70, 0.2) !important;
-        }
-
-        .sepete-ekle-btn:hover, .katalog-ac-btn:hover, .btn-primary:hover, .product-card button:hover {
-            background: linear-gradient(135deg, #2c2523 0%, #aa8b46 100%) !important;
-            transform: scale(1.02) !important;
-            box-shadow: 0 6px 18px rgba(170, 139, 70, 0.4) !important;
-        }
-        
         :root {
           --color-bg: #fdfcf9;           
           --color-surface: #ffffff;      
@@ -67,7 +36,6 @@
           --font-display: 'Cormorant Garamond', serif; 
           --font-body: 'Plus Jakarta Sans', sans-serif;
           --space-md: 16px; --space-lg: 24px; --space-xl: 40px;
-          
           --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
           --transition-smooth: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
@@ -84,12 +52,12 @@
           font-family: var(--font-body); 
           overflow-x: hidden; 
           -webkit-font-smoothing: antialiased; 
-          padding-top: 170px;
+          padding-top: 100px; /* FERAH VE YAKIN ÜST MESAFE */
         }
         
         .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); position: relative; z-index: 2; }
         
-        /* SABİT ÜST ALAN */
+        /* ŞIK VE SADE ÜST DUYURU BARI */
         .top-bars-wrapper {
           position: fixed;
           top: 0;
@@ -99,7 +67,6 @@
           box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
 
-        /* DUYURU ŞERİDİ */
         .text-ticker-wrap {
           background: #111111;
           border-bottom: 1px solid rgba(170, 139, 70, 0.3);
@@ -120,7 +87,7 @@
           font-size: 11px;
           font-weight: 600;
           letter-spacing: 0.1em;
-          padding: 0 40px;
+          padding: 0 30px;
           display: inline-block;
           text-transform: uppercase;
         }
@@ -130,44 +97,9 @@
           100% { transform: translate3d(-50%, 0, 0); }
         }
 
-        /* RESİMLİ ÜRÜN ŞERİDİ */
-        .ticker-wrap {
-          width: 100%; height: 60px;
-          background: #fdfcf9; border-bottom: 1px solid rgba(170, 139, 70, 0.15);
-          overflow: hidden; display: flex; align-items: center;
-        }
-        .ticker {
-          display: inline-block; white-space: nowrap; padding-right: 100%;
-          animation: tickerAnimation 120s linear infinite;
-          will-change: transform;
-        }
-        .ticker:hover { animation-play-state: paused; }
-        .ticker-item {
-          display: inline-flex; align-items: center; gap: 12px;
-          padding: 0 40px; font-size: 13px; font-weight: 600;
-          color: var(--color-text-primary); letter-spacing: 0.03em;
-          font-family: var(--font-body); cursor: pointer;
-          transition: transform 0.3s var(--ease-out-expo);
-        }
-        .ticker-item:hover { transform: scale(1.02); }
-        .ticker-img {
-          width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
-          border: 1px solid var(--color-primary); background: #f5f2eb;
-          box-shadow: 0 3px 8px rgba(0,0,0,0.05);
-        }
-        .ticker-prices { display: inline-flex; align-items: center; gap: 6px; }
-        .ticker-item span.old-p { text-decoration: line-through; opacity: 0.4; font-weight: 400; }
-        .ticker-item span.new-p { color: #84682e; font-weight: 700; }
-        .ticker-item span.ticker-discount-text { color: var(--color-discount); font-weight: 700; font-size: 11px; }
-        
-        @keyframes tickerAnimation {
-          0% { transform: translate3d(0, 0, 0); }
-          100% { transform: translate3d(-100%, 0, 0); }
-        }
-
-        /* Navigasyon */
+        /* NAVİGASYON */
         .nav { 
-          position: fixed; top: 98px; width: 100%; z-index: 100; padding: var(--space-md) 0; 
+          position: fixed; top: 38px; width: 100%; z-index: 100; padding: 10px 0; 
           backdrop-filter: blur(10px); background: rgba(253, 252, 249, 0.95); 
           border-bottom: 1px solid rgba(170, 139, 70, 0.15); transition: var(--transition-smooth);
         }
@@ -191,7 +123,7 @@
         .nav .cart-trigger { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 10px 20px; font-family: var(--font-body); cursor: pointer; font-weight: 600; font-size: 12px; transition: var(--transition-smooth); letter-spacing: 0.05em; }
         .nav .cart-trigger:hover { background: var(--color-primary); color: #ffffff; transform: translateY(-2px); }
         
-        /* AÇILIR GİZLİ PREMIUM MENÜ PANELİ */
+        /* AÇILIR MENÜ PANELİ */
         .sidebar-menu {
             position: fixed; top: 0; left: -320px; width: 300px; height: 100%;
             background: rgba(253, 252, 249, 0.99); backdrop-filter: blur(10px);
@@ -213,12 +145,6 @@
             border-bottom: 1px solid rgba(0,0,0,0.02); cursor: pointer;
         }
         .sidebar-links a:hover { color: var(--color-accent); padding-left: 8px; border-bottom-color: var(--color-primary); }
-        .sidebar-catalog-btn {
-            background: rgba(170, 139, 70, 0.1); border: 1px solid var(--color-primary) !important;
-            color: var(--color-primary) !important; text-align: center; padding: 12px !important;
-            border-radius: 4px; font-weight: 600 !important; margin-top: var(--space-md);
-        }
-        .sidebar-catalog-btn:hover { background: var(--color-primary) !important; color: #ffffff !important; }
 
         /* Mobil Alt Bar */
         .mobile-bottom-bar {
@@ -229,50 +155,40 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.06); animation: slideUpBar 1s var(--ease-out-expo) forwards 0.5s;
         }
         @keyframes slideUpBar { to { transform: translateX(-50%) translateY(0); } }
-        .mobile-bar-brand { font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--color-primary); text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; }
         .mobile-cart-btn {
             background: var(--color-primary); color: #ffffff; border: none; padding: 8px 16px; border-radius: 20px;
             font-family: var(--font-body); font-weight: 600; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: var(--transition-smooth);
         }
         
         /* HERO */
-        .hero { height: calc(100vh - 170px); display: flex; align-items: center; position: relative; overflow: hidden; background: #fdfcf9; }
+        .hero { height: 50vh; min-height: 380px; display: flex; align-items: center; position: relative; overflow: hidden; background: #fdfcf9; }
         .hero-bg-image {
           position: absolute; top: 0; left: 0; width: 100%; height: 100%;
           background-image: url('https://images.unsplash.com/photo-1603006905003-be475563bc59?q=80&w=1920&auto=format&fit=crop');
           background-size: cover; background-position: center; z-index: 1;
-          animation: luxuryBreathe 20s infinite ease-in-out;
-          opacity: 0.25; 
+          opacity: 0.22; 
         }
         .hero-overlay {
           position: absolute; top: 0; left: 0; width: 100%; height: 100%;
           background: linear-gradient(to bottom, 
             rgba(253, 252, 249, 0.2) 0%, 
-            rgba(253, 252, 249, 0.4) 40%, 
-            rgba(253, 252, 249, 0.7) 70%, 
-            rgba(253, 252, 249, 0.95) 88%,
+            rgba(253, 252, 249, 0.5) 50%, 
+            rgba(253, 252, 249, 0.95) 90%,
             var(--color-bg) 100%
           );
           z-index: 2;
         }
-        
-        @keyframes luxuryBreathe { 
-            0% { transform: scale(1.01); opacity: 0.2; } 
-            50% { transform: scale(1.05); opacity: 0.3; } 
-            100% { transform: scale(1.01); opacity: 0.2; } 
-        }
-        
         .hero-wrapper { width: 100%; position: relative; z-index: 3; }
         .hero-text { max-width: 650px; }
-        .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem); font-weight: 400; color: var(--color-accent); margin-bottom: var(--space-md); line-height: 1.15; letter-spacing: -0.01em; }
-        .hero p { font-size: 16px; color: var(--color-text-secondary); margin-bottom: var(--space-xl); line-height: 1.7; font-weight: 300; }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw + 1rem, 4rem); font-weight: 400; color: var(--color-accent); margin-bottom: 12px; line-height: 1.15; }
+        .hero p { font-size: 15px; color: var(--color-text-secondary); margin-bottom: 24px; line-height: 1.6; font-weight: 300; }
         
-        .btn-primary { display: inline-flex; padding: 16px 36px; background: var(--color-primary); color: #ffffff; text-decoration: none; font-weight: 600; letter-spacing: 0.1em; font-size: 12px; text-transform: uppercase; transition: var(--transition-smooth); border: none; cursor: pointer; align-items: center; justify-content: center; }
-        .btn-primary:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(170, 139, 70, 0.2); background: var(--color-accent); color: #ffffff; }
+        .btn-primary { display: inline-flex; padding: 14px 32px; background: linear-gradient(135deg, #aa8b46 0%, #2c2523 100%); color: #ffffff; text-decoration: none; font-weight: 600; letter-spacing: 0.08em; font-size: 12px; text-transform: uppercase; transition: var(--transition-smooth); border: none; cursor: pointer; align-items: center; justify-content: center; border-radius: 4px; box-shadow: 0 4px 15px rgba(170, 139, 70, 0.2); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(170, 139, 70, 0.35); }
         
-        /* KAYSERİ FORM AVM ETKİNLİK ALANI STİLLERİ */
+        /* ETKİNLİK ALANI */
         .event-section {
-            padding: 70px 0;
+            padding: 50px 0;
             background: linear-gradient(135deg, rgba(170, 139, 70, 0.08) 0%, rgba(44, 37, 35, 0.03) 100%);
             border-top: 1px solid rgba(170, 139, 70, 0.2);
             border-bottom: 1px solid rgba(170, 139, 70, 0.2);
@@ -282,13 +198,13 @@
         .event-card {
             display: grid;
             grid-template-columns: 1fr 1.1fr;
-            gap: 40px;
+            gap: 35px;
             align-items: center;
             background: #ffffff;
             border: 1px solid rgba(170, 139, 70, 0.3);
             border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(170, 139, 70, 0.12);
+            padding: 28px;
+            box-shadow: 0 10px 30px rgba(170, 139, 70, 0.1);
         }
         .event-img-box {
             width: 100%;
@@ -300,173 +216,118 @@
             cursor: pointer;
         }
         .event-img-box img {
-            width: 100%;
-            height: auto;
-            max-height: 520px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
+            width: 100%; height: auto; max-height: 480px; object-fit: cover; display: block; transition: transform 0.5s ease;
         }
-        .event-img-box:hover img {
-            transform: scale(1.02);
-        }
-        .event-content {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
+        .event-img-box:hover img { transform: scale(1.02); }
+        .event-content { display: flex; flex-direction: column; gap: 14px; }
         .event-badge {
-            align-self: flex-start;
-            background: #aa8b46;
-            color: #ffffff;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            padding: 6px 16px;
-            border-radius: 20px;
-            box-shadow: 0 4px 12px rgba(170, 139, 70, 0.3);
+            align-self: flex-start; background: #aa8b46; color: #ffffff; font-size: 11px; font-weight: 700;
+            letter-spacing: 0.15em; text-transform: uppercase; padding: 6px 16px; border-radius: 20px;
         }
-        .event-title {
-            font-family: var(--font-display);
-            font-size: 34px;
-            color: var(--color-accent);
-            line-height: 1.25;
-            font-weight: 600;
-        }
+        .event-title { font-family: var(--font-display); font-size: 32px; color: var(--color-accent); line-height: 1.25; font-weight: 600; }
         .event-date-card {
+            display: flex; align-items: center; gap: 16px; background: rgba(170, 139, 70, 0.08);
+            border: 1px dashed rgba(170, 139, 70, 0.4); padding: 12px 18px; border-radius: 10px; width: fit-content;
+        }
+        .event-date-number { font-family: var(--font-display); font-size: 26px; font-weight: 700; color: #84682e; white-space: nowrap; }
+        .event-date-text { font-size: 13px; color: var(--color-text-secondary); font-weight: 500; }
+        .event-location { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--color-text-primary); font-weight: 600; }
+        .event-note { font-style: italic; font-family: var(--font-display); font-size: 17px; color: var(--color-primary); }
+        .event-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+        .event-tag { background: #fdfcf9; border: 1px solid rgba(170, 139, 70, 0.3); padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; color: var(--color-accent); }
+
+        /* KATEGORİ SEKMELERİ (TABS) */
+        .category-tabs {
             display: flex;
-            align-items: center;
-            gap: 16px;
-            background: rgba(170, 139, 70, 0.08);
-            border: 1px dashed rgba(170, 139, 70, 0.4);
-            padding: 14px 20px;
-            border-radius: 10px;
-            width: fit-content;
-        }
-        .event-date-number {
-            font-family: var(--font-display);
-            font-size: 28px;
-            font-weight: 700;
-            color: #84682e;
-            white-space: nowrap;
-        }
-        .event-date-text {
-            font-size: 13px;
-            color: var(--color-text-secondary);
-            font-weight: 500;
-        }
-        .event-location {
-            display: flex;
-            align-items: center;
+            justify-content: center;
             gap: 10px;
-            font-size: 15px;
-            color: var(--color-text-primary);
-            font-weight: 600;
-            padding: 8px 0;
-        }
-        .event-location-icon {
-            color: #aa8b46;
-            font-size: 20px;
-        }
-        .event-note {
-            font-style: italic;
-            font-family: var(--font-display);
-            font-size: 18px;
-            color: var(--color-primary);
-            margin-top: 4px;
-        }
-        .event-tags {
-            display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 8px;
+            margin-bottom: 35px;
         }
-        .event-tag {
-            background: #fdfcf9;
+        .cat-tab-btn {
+            background: #ffffff;
             border: 1px solid rgba(170, 139, 70, 0.3);
-            padding: 8px 14px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 700;
             color: var(--color-accent);
-            letter-spacing: 0.05em;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .cat-tab-btn:hover, .cat-tab-btn.active {
+            background: linear-gradient(135deg, #aa8b46 0%, #2c2523 100%);
+            color: #ffffff;
+            border-color: #aa8b46;
+            box-shadow: 0 4px 15px rgba(170, 139, 70, 0.25);
         }
 
-        .section-header { text-align: center; margin-bottom: 50px; }
-        .section-subtitle { color: var(--color-primary); text-transform: uppercase; font-size: 11px; letter-spacing: 0.25em; margin-bottom: 10px; display: block; font-weight: 600; }
+        .section-header { text-align: center; margin-bottom: 35px; }
+        .section-subtitle { color: var(--color-primary); text-transform: uppercase; font-size: 11px; letter-spacing: 0.25em; margin-bottom: 8px; display: block; font-weight: 600; }
         .section-title { font-family: var(--font-display); font-size: 36px; font-weight: 400; letter-spacing: 0.03em; color: var(--color-accent); }
         
         .scroll-animate { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
         .scroll-animate.active { opacity: 1; transform: translateY(0); }
         
-        .section-block { padding: 90px 0; border-bottom: 1px solid rgba(170, 139, 70, 0.08); position: relative; z-index: 2; }
+        .section-block { padding: 70px 0; border-bottom: 1px solid rgba(170, 139, 70, 0.08); position: relative; z-index: 2; }
         
         /* Grid Düzeni */
-        .grid { display: grid; gap: var(--space-xl); grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); justify-content: center; justify-items: center; max-width: 1200px; margin: 0 auto; }
+        .grid { display: grid; gap: var(--space-lg); grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); justify-content: center; max-width: 1200px; margin: 0 auto; }
         
         /* Kart Tasarımları */
         .card { 
-          background: var(--color-surface); border: 1px solid rgba(170, 139, 70, 0.15); padding: var(--space-md); 
+          background: var(--color-surface); 
+          border: 1px solid rgba(170, 139, 70, 0.2) !important; 
+          border-radius: 12px !important;
+          padding: 14px; 
           transition: var(--transition-smooth); display: flex; flex-direction: column; position: relative;
-          cursor: pointer; height: 100%; width: 100%; max-width: 360px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+          cursor: pointer; height: 100%; width: 100%; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+          overflow: hidden;
         }
-        .card:hover { transform: translateY(-8px); border-color: rgba(170, 139, 70, 0.4); box-shadow: 0 20px 35px rgba(170, 139, 70, 0.08); background: #ffffff; }
+        .card:hover { transform: translateY(-5px); border-color: #aa8b46 !important; box-shadow: 0 12px 30px rgba(170, 139, 70, 0.15); }
         
         /* İNDİRİM ROZETİ */
         .discount-badge {
-            position: absolute; top: 24px; right: 24px; 
+            position: absolute; top: 20px; right: 20px; 
             background: var(--color-discount); 
-            color: #fff; font-size: 11px; font-weight: 700; padding: 6px 12px; 
+            color: #fff; font-size: 10px; font-weight: 700; padding: 5px 10px; 
             letter-spacing: 0.05em; text-transform: uppercase; border-radius: 4px; 
-            z-index: 5; box-shadow: 0 4px 15px rgba(224, 36, 36, 0.35);
+            z-index: 5; box-shadow: 0 4px 12px rgba(224, 36, 36, 0.3);
             font-family: var(--font-body);
-            animation: badgePulse 2s infinite ease-in-out;
-        }
-        @keyframes badgePulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); box-shadow: 0 4px 20px rgba(224, 36, 36, 0.5); }
-            100% { transform: scale(1); }
         }
 
-        /* Görsel Kutuları */
+        /* Görsel Kutuları - BÜYÜTÜLMÜŞ LÜKS FERAH GÖRSEL */
         .product-img-box { 
-          width: 100%; height: 380px; background: #f5f2eb; margin-bottom: var(--space-md); 
-          border: 1px solid rgba(170, 139, 70, 0.1); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
+          width: 100%; height: 320px; background: #f5f2eb; margin-bottom: 12px; 
+          border-radius: 8px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
         }
         .product-img-box img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-smooth); display: block; background: #f5f2eb; }
         .card:hover .product-img-box img { transform: scale(1.03); }
         
-        .product-title { font-family: var(--font-display); font-size: 24px; font-weight: 400; margin-bottom: 8px; letter-spacing: 0.02em; color: var(--color-accent); transition: color 0.3s; }
+        .product-title { font-family: var(--font-display); font-size: 22px; font-weight: 600; margin-bottom: 6px; letter-spacing: 0.01em; color: var(--color-accent); line-height: 1.25; }
         .card:hover .product-title { color: var(--color-primary); }
-        .product-desc { font-size: 13px; line-height: 1.6; margin-bottom: var(--space-md); flex-grow: 1; font-weight: 300; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; color: var(--color-text-secondary); }
-        .product-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-md); border-top: 1px solid rgba(35, 31, 29, 0.08); margin-top: auto; }
+        
+        /* AÇIKLAMA: ANA SAYFADA DÜZENLİ 2 SATIR, MODALDA TAM AÇIKLAMA */
+        .product-desc { 
+          font-size: 12px; line-height: 1.5; margin-bottom: 12px; font-weight: 300; 
+          display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; 
+          overflow: hidden; color: var(--color-text-secondary); height: 36px;
+        }
+        .product-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid rgba(170, 139, 70, 0.12); margin-top: auto; }
         
         /* Fiyat */
         .price-wrapper { display: flex; flex-direction: column; }
-        .old-price { text-decoration: line-through; color: var(--color-text-secondary); font-size: 13px; opacity: 0.6; font-weight: 400; }
-        .product-price { font-weight: 700; color: #84682e; font-size: 19px; font-family: var(--font-body); }
+        .old-price { text-decoration: line-through; color: var(--color-text-secondary); font-size: 12px; opacity: 0.6; font-weight: 400; }
+        .product-price { font-weight: 700; color: #84682e; font-size: 18px; font-family: var(--font-body); }
         
-        .btn-add-cart { background: transparent; border: 1px solid rgba(35, 31, 29, 0.2); color: var(--color-accent); padding: 10px 22px; font-size: 12px; cursor: pointer; transition: var(--transition-smooth); font-weight: 600; letter-spacing: 0.05em; }
-        .btn-add-cart:hover { background: var(--color-accent); color: #ffffff; border-color: var(--color-accent); }
-        
-        /* KATALOG MODAL */
-        .collection-modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(253, 252, 249, 0.99);
-            z-index: 250; display: flex; justify-content: center;
-            opacity: 0; pointer-events: none; transition: opacity 0.5s var(--ease-out-expo);
-            padding: 90px 0 40px 0;
+        .btn-add-cart { 
+          background: linear-gradient(135deg, #aa8b46 0%, #2c2523 100%) !important; 
+          color: #ffffff !important; border: none; padding: 10px 18px; font-size: 11px; 
+          cursor: pointer; transition: var(--transition-smooth); font-weight: 600; letter-spacing: 0.05em; border-radius: 4px; 
         }
-        .collection-modal.open { opacity: 1; pointer-events: auto; }
-        .collection-content-wrapper { width: 100%; max-width: 1200px; padding: 0 var(--space-lg); overflow-y: auto; display: flex; flex-direction: column; }
-        .collection-close {
-            position: fixed; top: 20px; right: 40px; background: transparent;
-            border: 1px solid var(--color-primary); color: var(--color-primary); 
-            font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-            cursor: pointer; z-index: 260; padding: 10px 24px; transition: var(--transition-smooth);
-        }
-        .collection-close:hover { background: var(--color-primary); color: #ffffff; }
+        .btn-add-cart:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(170, 139, 70, 0.3); }
 
         /* ÜRÜN DETAY PENCERESİ */
         .product-modal {
@@ -539,8 +400,8 @@
 
         .modal-info-box { padding: var(--space-lg); display: flex; flex-direction: column; justify-content: space-between; overflow-y: auto; background: #faf9f5; }
         .modal-tag { color: var(--color-discount); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
-        .modal-title { font-family: var(--font-display); font-size: 28px; color: var(--color-accent); margin-bottom: 12px; font-weight: 400; line-height: 1.2; }
-        .modal-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; font-weight: 300; margin-bottom: var(--space-md); overflow-y: auto; }
+        .modal-title { font-family: var(--font-display); font-size: 28px; color: var(--color-accent); margin-bottom: 12px; font-weight: 600; line-height: 1.2; }
+        .modal-desc { font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; font-weight: 300; margin-bottom: var(--space-md); overflow-y: auto; }
         
         .variant-select-wrapper { margin-top: var(--space-md); padding-top: var(--space-md); border-top: 1px dashed rgba(170, 139, 70, 0.3); display: none; }
         .variant-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-secondary); margin-bottom: 8px; font-weight: 600; }
@@ -562,8 +423,7 @@
         
         /* Yorumlar */
         .reviews-grid { display: grid; gap: var(--space-lg); grid-template-columns: repeat(3, 1fr); }
-        .review-card { background: var(--color-surface); border: 1px solid rgba(170, 139, 70, 0.15); padding: var(--space-lg); transition: var(--transition-smooth); box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
-        .review-card:hover { transform: translateY(-5px); border-color: var(--color-primary); background: #ffffff; box-shadow: 0 10px 30px rgba(170, 139, 70, 0.08); }
+        .review-card { background: var(--color-surface); border: 1px solid rgba(170, 139, 70, 0.15); padding: var(--space-lg); border-radius: 8px; }
         .stars { color: var(--color-primary); font-size: 13px; margin-bottom: 14px; letter-spacing: 3px; }
         .review-text { font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; font-style: italic; margin-bottom: var(--space-md); font-weight: 300; }
         .review-user { display: flex; align-items: center; gap: 12px; }
@@ -571,15 +431,15 @@
         .user-name { font-size: 14px; font-weight: 500; color: var(--color-accent); }
         
         /* Footer */
-        .footer { background: #f5f2eb; border-top: 1px solid rgba(170, 139, 70, 0.15); padding: 70px 0 35px 0; color: var(--color-text-secondary); position: relative; z-index: 2; }
+        .footer { background: #f5f2eb; border-top: 1px solid rgba(170, 139, 70, 0.15); padding: 60px 0 30px 0; color: var(--color-text-secondary); position: relative; z-index: 2; }
         .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1.3fr; gap: var(--space-xl); margin-bottom: 40px; }
         .footer-col h4 { font-family: var(--font-display); font-size: 22px; color: var(--color-accent); margin-bottom: var(--space-lg); font-weight: 400; letter-spacing: 0.03em; }
         .footer-col p { font-size: 14px; line-height: 1.7; margin-bottom: 12px; font-weight: 300; }
-        .map-box { width: 100%; height: 160px; background: var(--color-bg); border: 1px solid rgba(170, 139, 70, 0.15); display: flex; align-items: center; justify-content: center; }
+        .map-box { width: 100%; height: 160px; background: var(--color-bg); border: 1px solid rgba(170, 139, 70, 0.15); display: flex; align-items: center; justify-content: center; border-radius: 6px; }
         .map-placeholder { text-align: center; font-size: 13px; color: var(--color-primary); padding: var(--space-md); line-height: 1.6; font-family: var(--font-display); }
-        .footer-bottom { text-align: center; padding-top: 35px; border-top: 1px solid rgba(0, 0, 0, 0.04); font-size: 12px; letter-spacing: 0.02em; opacity: 0.6; color: var(--color-text-secondary); }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(0, 0, 0, 0.04); font-size: 12px; opacity: 0.6; }
         
-        /* Sepet */
+        /* Sepet & İlerleme Çubuğu */
         .cart-sidebar { 
             position: fixed; top: 0; right: -440px; width: 420px; height: 100%; 
             background: #faf9f5; border-left: 1px solid rgba(170, 139, 70, 0.2); z-index: 600; 
@@ -588,12 +448,23 @@
             box-shadow: -10px 0 40px rgba(0,0,0,0.05); 
         }
         .cart-sidebar.open { right: 0; }
-        .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xl); border-bottom: 1px solid rgba(170, 139, 70, 0.15); padding-bottom: var(--space-md); }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md); border-bottom: 1px solid rgba(170, 139, 70, 0.15); padding-bottom: var(--space-md); }
         .cart-header h3 { font-family: var(--font-display); font-size: 26px; color: var(--color-accent); font-weight: 400; }
-        .close-cart { background: transparent; border: none; color: var(--color-accent); font-size: 24px; cursor: pointer; padding: 5px; transition: color 0.3s; }
-        .close-cart:hover { color: var(--color-primary); }
-        .cart-items { flex-grow: 1; overflow-y: auto; }
+        .close-cart { background: transparent; border: none; color: var(--color-accent); font-size: 24px; cursor: pointer; padding: 5px; }
         
+        .free-shipping-box {
+            background: rgba(170, 139, 70, 0.08);
+            border: 1px dashed rgba(170, 139, 70, 0.3);
+            padding: 10px 14px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .free-shipping-text { font-size: 12px; color: var(--color-accent); font-weight: 600; margin-bottom: 6px; }
+        .free-shipping-bar-bg { width: 100%; height: 6px; background: rgba(0,0,0,0.08); border-radius: 10px; overflow: hidden; }
+        .free-shipping-bar-fill { height: 100%; background: linear-gradient(90deg, #aa8b46 0%, #2c2523 100%); width: 0%; transition: width 0.4s ease; }
+
+        .cart-items { flex-grow: 1; overflow-y: auto; }
         .cart-item { display: flex; justify-content: space-between; align-items: center; padding: var(--space-md) 0; border-bottom: 1px solid rgba(170, 139, 70, 0.1); }
         .cart-item-info h4 { font-family: var(--font-display); font-size: 18px; color: var(--color-accent); margin-bottom: 4px; font-weight: 400; }
         .cart-item-info span { font-size: 14px; color: #84682e; font-weight: 500; }
@@ -602,13 +473,12 @@
         .qty-btn { background: transparent; border: none; color: var(--color-accent); width: 30px; height: 30px; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
         .qty-val { width: 32px; text-align: center; font-size: 13px; font-weight: 600; color: var(--color-accent); }
         
-        .gift-section { margin: var(--space-lg) 0; padding: var(--space-md); background: rgba(170, 139, 70, 0.05); border: 1px dashed rgba(170, 139, 70, 0.3); border-radius: 4px; }
+        .gift-section { margin: var(--space-md) 0; padding: var(--space-md); background: rgba(170, 139, 70, 0.05); border: 1px dashed rgba(170, 139, 70, 0.3); border-radius: 4px; }
         .gift-checkbox-wrapper { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 13px; color: var(--color-accent); }
-        .gift-checkbox-wrapper input { accent-color: var(--color-primary); width: 16px; height: 16px; }
         
         .cart-footer { border-top: 1px solid rgba(170, 139, 70, 0.15); padding-top: var(--space-md); }
         .cart-total { display: flex; justify-content: space-between; font-size: 19px; font-weight: 600; margin-bottom: var(--space-md); color: var(--color-accent); font-family: var(--font-display); }
-        .btn-whatsapp { width: 100%; padding: 15px; background: #25D366; color: white; border: none; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 4px; letter-spacing: 0.02em; transition: opacity 0.3s; }
+        .btn-whatsapp { width: 100%; padding: 15px; background: #25D366; color: white; border: none; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 4px; }
         
         .toast-notification {
             position: fixed; bottom: 95px; left: 50%; transform: translate(-50%, 40px);
@@ -628,210 +498,68 @@
             position: fixed; bottom: 90px; right: 20px; background: #ffffff; color: var(--color-primary);
             border: 1px solid var(--color-primary); padding: 12px 20px; border-radius: 30px;
             box-shadow: 0 10px 25px rgba(170, 139, 70, 0.15); display: flex; align-items: center; gap: 10px;
-            font-family: var(--font-body); font-size: 13px; font-weight: 600; letter-spacing: 0.05em; text-decoration: none; z-index: 200; transition: var(--transition-smooth);
+            font-family: var(--font-body); font-size: 13px; font-weight: 600; text-decoration: none; z-index: 200;
         }
-        .whatsapp-float::before {
-            content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; border: 1px solid var(--color-primary);
-            border-radius: 32px; opacity: 0.4; animation: whatsappPulse 2s infinite;
-        }
-        .whatsapp-float:hover { background: var(--color-primary); color: #ffffff; transform: translateY(-3px); }
-        .whatsapp-icon { font-size: 16px; }
-        @keyframes whatsappPulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.12); opacity: 0; } }
 
-        /* MOBİL VE TABLET ODALKI OPTİMİZASYONLAR */
+        /* MOBİL BİLGİSAYAR UYUMU */
         @media (max-width: 992px) { 
-            body { padding-bottom: 85px; padding-top: 140px; } 
-            .text-ticker-wrap { height: 32px; }
-            .text-ticker span { font-size: 9px; padding: 0 20px; }
-            .ticker-wrap { height: 50px; }
-            .ticker-item { padding: 0 25px; gap: 8px; font-size: 11px; }
-            .ticker-img { width: 32px; height: 32px; }
-            .nav { top: 82px; padding: 8px 0; }
-
-            .grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); } 
+            body { padding-bottom: 85px; padding-top: 85px; } 
+            .text-ticker span { font-size: 9px; padding: 0 15px; }
+            .nav { top: 38px; padding: 6px 0; }
+            .grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; } 
+            .card { padding: 10px !important; }
+            .product-img-box { height: 210px !important; border-radius: 6px; }
+            .product-title { font-size: 16px !important; }
+            .product-desc { font-size: 11px !important; height: 32px !important; margin-bottom: 8px !important; }
+            .product-price { font-size: 15px !important; }
+            .btn-add-cart { padding: 8px 12px !important; font-size: 10px !important; }
             
-            /* KAYSERİ FORM AVM MOBİL UYUM */
-            .event-card { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
-            .event-title { font-size: 26px; }
+            .event-card { grid-template-columns: 1fr; gap: 16px; padding: 16px; }
+            .event-title { font-size: 24px; }
             .event-date-number { font-size: 22px; }
-
-            /* KATALOG 2'Lİ GRID */
-            .katalog-2li-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; padding: 0 8px !important; }
-            .katalog-2li-grid .card { padding: 12px !important; max-width: 100% !important; border-radius: 8px; }
-            .katalog-2li-grid .product-img-box { height: 240px !important; margin-bottom: 12px !important; border-radius: 6px; }
-            .katalog-2li-grid .product-title { font-size: 16px !important; font-weight: 500; line-height: 1.3; margin-bottom: 6px; }
-            .katalog-2li-grid .product-desc { display: none; }
-            .katalog-2li-grid .product-footer { padding-top: 10px !important; flex-direction: column; align-items: flex-start !important; gap: 8px; border-top: 1px solid rgba(170, 139, 70, 0.1); }
-            .katalog-2li-grid .old-price { font-size: 12px !important; }
-            .katalog-2li-grid .product-price { font-size: 16px !important; font-weight: 700; }
-            .katalog-2li-grid .btn-add-cart { width: 100%; padding: 10px var(--space-md) !important; font-size: 12px !important; text-align: center; border-radius: 4px; }
-            .katalog-2li-grid .discount-badge { top: 18px; right: 18px; padding: 5px 10px; font-size: 10px; }
 
             .nav-container { height: 40px; }
             .logo { font-size: 18px; }
-            .menu-trigger { padding: 6px 12px; font-size: 11px; }
             .nav .cart-trigger { display: none; }
-            
             .mobile-bottom-bar { display: flex; } 
             .cart-sidebar { width: calc(100% - 30px); height: calc(100% - 40px); top: 20px; right: -110%; border-radius: 12px; padding: var(--space-lg); z-index: 700; } 
             .cart-sidebar.open { right: 15px; }
-            
-            .hero { height: 60vh; } 
-            .hero-bg-image { animation: none !important; }
-            @keyframes luxuryBreatheMobile { 0% { transform: scale(1.01); opacity: 0.15; } 50% { transform: scale(1.07); opacity: 0.25; } 100% { transform: scale(1.01); opacity: 0.15; } }
-            
-            .hero-text { text-align: center; padding: 0 var(--space-md); }
+            .hero { height: 45vh; min-height: 300px; } 
+            .hero-text { text-align: center; }
             .hero h1 { font-size: 26px; }
-            .section-title { font-size: 24px; }
-            .btn-primary { width: 100%; justify-content: center; }
-            
-            /* ANA SAYFA MOBİL KART GÖRSELİ */
-            .product-img-box { height: 320px; border-radius: 6px; }
-
-            /* MOBİL & TABLET DETAY PENCERESİ */
-            .modal-container-box { max-height: 95vh; height: 90vh; width: calc(100% - 20px); justify-content: flex-start; }
-            .modal-content { grid-template-columns: 1fr; max-height: calc(90vh - 50px); overflow-y: auto; display: flex; flex-direction: column; }
-            
-            .modal-slider-wrapper { height: 45vh; min-height: 45vh; width: 100%; }
-            .modal-slide img, .modal-slide video { object-fit: cover !important; width: 100%; height: 100%; }
-            
-            .modal-info-box { padding: var(--space-lg); flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; background: #faf9f5; }
-            .whatsapp-float { bottom: 90px; } 
-            .modal-title { font-size: 24px; margin-bottom: 10px; font-weight: 500; }
-            .modal-desc { font-size: 13px; margin-bottom: var(--space-lg); line-height: 1.6; max-height: none; }
-            .modal-features { display: none; }
-            .variant-grid { grid-template-columns: repeat(5, 1fr); gap: 8px; }
-            
-            .collection-modal { padding-top: 65px; }
-            .collection-close { top: 12px; right: 12px; padding: 8px 16px; font-size: 12px; border-radius: 4px; }
-            
-            .reviews-grid { grid-template-columns: 1fr; gap: var(--space-md); }
-            .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
-        }
-
-        @media (max-width: 992px) {
-            .card:hover { transform: none; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
-            .card:hover .product-img-box img { transform: none; }
-            .urun-kart:hover, .product-card:hover { transform: none !important; }
-            .review-card:hover { transform: none; }
-            .ticker-item:hover { transform: none; }
-            .slider-arrow:hover { transform: translateY(-50%); background: rgba(253, 252, 249, 0.7); color: var(--color-accent); }
+            .modal-container-box { max-height: 95vh; height: 90vh; width: calc(100% - 20px); }
+            .modal-content { grid-template-columns: 1fr; max-height: calc(90vh - 50px); overflow-y: auto; }
+            .modal-slider-wrapper { height: 40vh; min-height: 40vh; }
+            .reviews-grid, .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
         }
 
         @media (min-width: 993px) { .whatsapp-float { bottom: 30px; } }
 
-        /* === LIGHTBOX === */
-        .lightbox-overlay {
-            display: none; position: fixed; inset: 0; z-index: 9999;
-            background: rgba(0,0,0,0.93); backdrop-filter: blur(8px);
-            align-items: center; justify-content: center; cursor: zoom-out;
-        }
+        /* LIGHTBOX */
+        .lightbox-overlay { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.93); backdrop-filter: blur(8px); align-items: center; justify-content: center; }
         .lightbox-overlay.open { display: flex; }
-        .lightbox-img-wrap {
-            position: relative; max-width: 92vw; max-height: 92vh;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .lightbox-overlay img {
-            max-width: 92vw; max-height: 88vh;
-            object-fit: contain; border-radius: 6px;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.6);
-            animation: lbFadeIn 0.3s cubic-bezier(0.16,1,0.3,1);
-            display: block; user-select: none;
-        }
-        @keyframes lbFadeIn { from { opacity:0; transform:scale(0.93); } to { opacity:1; transform:scale(1); } }
-        .lightbox-close {
-            position: fixed; top: 18px; right: 22px;
-            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-            color: #fff; font-size: 20px; cursor: pointer;
-            width: 42px; height: 42px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            transition: background 0.2s; z-index: 10000;
-        }
-        .lightbox-close:hover { background: rgba(255,255,255,0.22); }
-        .lightbox-arrow {
-            position: fixed; top: 50%; transform: translateY(-50%);
-            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-            color: #fff; font-size: 22px; cursor: pointer;
-            width: 48px; height: 48px; border-radius: 50%;
-            display: none; align-items: center; justify-content: center;
-            transition: background 0.2s; z-index: 10000; user-select: none;
-        }
-        .lightbox-arrow:hover { background: rgba(255,255,255,0.22); }
-        .lightbox-arrow.lb-prev { left: 16px; }
-        .lightbox-arrow.lb-next { right: 16px; }
-        .lightbox-overlay.multi .lightbox-arrow { display: flex; }
-        .lightbox-counter {
-            position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
-            color: rgba(255,255,255,0.6); font-size: 12px; font-family: var(--font-body);
-            letter-spacing: 0.08em; display: none;
-        }
-        .lightbox-overlay.multi .lightbox-counter { display: block; }
-        .lightbox-dots {
-            position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
-            display: none; gap: 7px; z-index: 10000;
-        }
-        .lightbox-overlay.multi .lightbox-dots { display: flex; }
-        .lb-dot { width: 6px; height: 6px; background: rgba(255,255,255,0.3); border-radius: 50%; cursor: pointer; transition: all 0.2s; }
-        .lb-dot.active { background: #fff; width: 16px; border-radius: 3px; }
-
-        /* Zoom cursor for modal images */
-        .modal-slide img { cursor: zoom-in; }
-        .product-img-box img { cursor: zoom-in; }
-        /* --- SOSYAL MEDYA LOGOLARI TASARIMI --- */
-        .sosyal-medya-kutusu {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 25px;
-            margin: 20px auto;
-            padding: 10px;
-        }
-        .sosyal-link {
-            color: #aa8b46;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 42px;
-            height: 42px;
-            border: 1px solid rgba(170, 139, 70, 0.25);
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.02);
-        }
-        .sosyal-link:hover {
-            color: #ffffff;
-            border-color: #aa8b46;
-            background: #aa8b46;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(170, 139, 70, 0.3);
-        }
-        .sosyal-link svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
+        .lightbox-overlay img { max-width: 92vw; max-height: 88vh; object-fit: contain; border-radius: 6px; }
+        .lightbox-close { position: fixed; top: 18px; right: 22px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 20px; cursor: pointer; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10000; }
+        .sosyal-medya-kutusu { display: flex; justify-content: center; gap: 20px; margin: 20px auto; }
+        .sosyal-link { color: #aa8b46; display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px solid rgba(170, 139, 70, 0.25); border-radius: 50%; }
+        .sosyal-link svg { width: 20px; height: 20px; fill: currentColor; }
     </style>
 </head>
 <body>
 
+    <!-- YENİ TEK DUYURU BANDI -->
     <div class="top-bars-wrapper">
         <div class="text-ticker-wrap">
             <div class="text-ticker">
                 <span>📍 KAYSERİ FORM AVM STANDIMIZA BEKLERİZ (10 - 16 AĞUSTOS) ✦</span>
-                <span>✦ EL YAPIMI PREMİUM KOLEKSİYON ✦</span>
-                <span>🎁 HEDİYE PAKETLEME SEÇENEĞİ ✦</span>
                 <span>🌿 %100 DOĞAL SOYA MUMU ✦</span>
-                <span>📍 KAYSERİ FORM AVM ZEMİN KAT ETKİNLİK ALANI ✦</span>
+                <span>🎁 HEDİYE PAKETLEME SEÇENEĞİ ✦</span>
+                <span>📍 ZEMİN KAT ETKİNLİK ALANI ✦</span>
+                <span>🛍️ ÜCRETSİZ KARGO FIRSATI ✦</span>
                 <span>📍 KAYSERİ FORM AVM STANDIMIZA BEKLERİZ (10 - 16 AĞUSTOS) ✦</span>
-                <span>✦ EL YAPIMI PREMİUM KOLEKSİYON ✦</span>
-                <span>🎁 HEDİYE PAKETLEME SEÇENEĞİ ✦</span>
                 <span>🌿 %100 DOĞAL SOYA MUMU ✦</span>
-                <span>📍 KAYSERİ FORM AVM ZEMİN KAT ETKİNLİK ALANI ✦</span>
+                <span>🎁 HEDİYE PAKETLEME SEÇENEĞİ ✦</span>
             </div>
-        </div>
-        
-        <div class="ticker-wrap">
-            <div class="ticker" id="ticker-content"></div>
         </div>
     </div>
 
@@ -847,11 +575,10 @@
         <button class="sidebar-menu-close" onclick="toggleSidebarMenu()">✕</button>
         <div class="sidebar-links">
             <a href="#etkinlik-duyuru" onclick="toggleSidebarMenu()">AVM Etkinliği</a>
-            <a href="#premium-secki" onclick="toggleSidebarMenu()">Premium Seçki</a>
+            <a href="#katalog-section" onclick="toggleSidebarMenu()">Ürün Koleksiyonu</a>
             <a href="#hakkimizda" onclick="toggleSidebarMenu()">Hikayemiz</a>
             <a href="#yorumlar" onclick="toggleSidebarMenu()">Yorumlar</a>
             <a href="#iletisim" onclick="toggleSidebarMenu()">İletişim</a>
-            <a onclick="handleSidebarCatalog()" class="sidebar-catalog-btn">✦ TÜM KATALOG</a>
         </div>
     </div>
 
@@ -866,17 +593,7 @@
         <span>✨</span> <span id="toastMessage">Ürün sepete eklendi!</span>
     </div>
 
-    <div class="collection-modal" id="collectionModal">
-        <button class="collection-close" onclick="closeCollectionModal()">✕ Kapat</button>
-        <div class="collection-content-wrapper">
-            <div class="section-header">
-                <span class="section-subtitle">Nimet Luxe Tasarımları</span>
-                <h2 class="section-title">Ürün Kataloğu</h2>
-            </div>
-            <div class="grid katalog-2li-grid" id="all-collection-grid"></div>
-        </div>
-    </div>
-
+    <!-- PRODUCT DETAIL MODAL -->
     <div class="product-modal" id="productModal" onclick="closeModalOnOuterClick(event)">
         <div class="modal-container-box">
             <div class="modal-nav-bar">
@@ -933,8 +650,8 @@
         <div class="container hero-wrapper">
             <div class="hero-text">
                 <h1 class="animate-up">Işığın En Zarif<br>Haliyle Tanışın.</h1>
-                <p class="animate-up stagger-1">Yüksek yoğunluklu niş esanslar ve %100 doğal soya mumu ile tamamen el işçiliğiyle hazırlanan koleksiyonumuz, yaşam alanlarınızın aurasını baştan aşağı değiştirecek.</p>
-                <a onclick="openCollectionModal()" class="btn-primary animate-up stagger-2" style="cursor: pointer;">Kataloğu Aç</a>
+                <p class="animate-up stagger-1">Yüksek yoğunluklu niş esanslar ve %100 doğal soya mumu ile el işçiliğiyle hazırlanan koleksiyonumuz yaşam alanlarınıza lüks bir dokunuş katıyor.</p>
+                <a href="#katalog-section" class="btn-primary animate-up stagger-2">Koleksiyonu Keşfet</a>
             </div>
         </div>
     </section>
@@ -956,8 +673,7 @@
                     </div>
 
                     <div class="event-location">
-                        <span class="event-location-icon">📍</span>
-                        <span>Kayseri Form AVM — Zemin Kat Etkinlik Alanı</span>
+                        <span>📍 Kayseri Form AVM — Zemin Kat Etkinlik Alanı</span>
                     </div>
 
                     <p class="event-note">"Sizi de aramızda görmek bizleri mutlu eder ♥"</p>
@@ -972,16 +688,23 @@
         </div>
     </section>
 
-    <section id="premium-secki" class="section-block container scroll-animate">
+    <!-- ANA KATALOG VE KATEGORİ SEKMELERİ -->
+    <section id="katalog-section" class="section-block container scroll-animate">
         <div class="section-header">
             <span class="section-subtitle">Ayrıcalıklı Sanat Eserleri</span>
-            <h2 class="section-title">Premium Seçki</h2>
+            <h2 class="section-title">Mum Koleksiyonumuz</h2>
         </div>
-        <div class="grid" id="premium-product-list"></div>
-        
-        <div style="text-align: center; margin-top: 50px;">
-            <button class="btn-primary" onclick="openCollectionModal()">Tüm Kataloğu Keşfet</button>
+
+        <!-- KATEGORİ BUTONLARI (TABS) -->
+        <div class="category-tabs">
+            <button class="cat-tab-btn active" onclick="filtreleKategori('hepsi', this)">✨ Tümü</button>
+            <button class="cat-tab-btn" onclick="filtreleKategori('buket', this)">🌸 Buket & Sanat Mumları</button>
+            <button class="cat-tab-btn" onclick="filtreleKategori('premium', this)">💎 Premium Seri</button>
+            <button class="cat-tab-btn" onclick="filtreleKategori('mini', this)">🎁 Mini & Hediyelik</button>
         </div>
+
+        <!-- YENİ DÜZENLİ ÜRÜN GRID -->
+        <div class="grid" id="main-product-grid"></div>
     </section>
 
     <section id="hakkimizda" class="section-block scroll-animate" style="background: rgba(170, 139, 70, 0.02);">
@@ -991,7 +714,7 @@
                 <h2 class="section-title">Nimet Luxe Hikayesi</h2>
             </div>
             <div class="about-content">
-                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlatmakla kalmayıp ruhu ve ortamın enerjisini de beslediğine inanıyoruz. Tamamen organik ve sürdürülebilir soya ham maddesi kullanarak, sağlığa zararlı maddeler içermeyen, uzun ömürlu ve yoğun esanslı mumlar üretiyoruz. Atölyemizde dökülen her bir mum, detaylara gösterilen özenin ve el emeğinin eşsiz birer yansımasıdır.</p>
+                <p>Nimet Luxe Candles olarak, ışığın sadece bir odayı aydınlatmakla kalmayıp ruhu ve ortamın enerjisini de beslediğine inanıyoruz. Tamamen organik ve sürdürülebilir soya ham maddesi kullanarak, sağlığa zararlı maddeler içermeyen, uzun ömürlu ve yoğun esanslı mumlar üretiyoruz.</p>
                 <em>"Her mum, keşfedilmeyi bekleyen bir hikaye yakar."</em>
             </div>
         </div>
@@ -1043,15 +766,10 @@
         </div>
         <div class="sosyal-medya-kutusu">
             <a href="https://www.instagram.com/nimetluxecandles_" target="_blank" class="sosyal-link" aria-label="Instagram">
-                <svg viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-                </svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
             </a>
-
             <a href="https://www.tiktok.com/@nimetluxecandles" target="_blank" class="sosyal-link" aria-label="TikTok">
-                <svg viewBox="0 0 24 24">
-                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.59 4.14.94 1.1 2.27 1.81 3.69 2.03v3.87c-1.3-.12-2.58-.63-3.61-1.43-.88-.69-1.56-1.61-1.99-2.64v7.41c.03 2.11-.64 4.23-1.97 5.85-1.5 1.83-3.87 2.89-6.24 2.76-2.58-.14-5.06-1.74-6.17-4.11-1.28-2.73-.77-6.2 1.25-8.38 1.59-1.72 3.97-2.54 6.28-2.22v3.87c-1.28-.17-2.61.24-3.49 1.19-.88.96-1.14 2.37-.67 3.58.46 1.19 1.67 1.99 2.94 1.99 1.76-.01 3.16-1.51 3.14-3.27V0h.01z"/>
-                </svg>
+                <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.59 4.14.94 1.1 2.27 1.81 3.69 2.03v3.87c-1.3-.12-2.58-.63-3.61-1.43-.88-.69-1.56-1.61-1.99-2.64v7.41c.03 2.11-.64 4.23-1.97 5.85-1.5 1.83-3.87 2.89-6.24 2.76-2.58-.14-5.06-1.74-6.17-4.11-1.28-2.73-.77-6.2 1.25-8.38 1.59-1.72 3.97-2.54 6.28-2.22v3.87c-1.28-.17-2.61.24-3.49 1.19-.88.96-1.14 2.37-.67 3.58.46 1.19 1.67 1.99 2.94 1.99 1.76-.01 3.16-1.51 3.14-3.27V0h.01z"/></svg>
             </a>
         </div>
         <div class="footer-bottom container">
@@ -1059,8 +777,17 @@
         </div>
     </footer>
 
+    <!-- SEPET İLE ÜCRETSİZ KARGO İLERLEME ÇUBUĞU -->
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header"><h3>Sepetiniz</h3><button class="close-cart" onclick="toggleCart()">✕</button></div>
+        
+        <div class="free-shipping-box" id="freeShippingBox">
+            <div class="free-shipping-text" id="freeShippingText">1500 TL Üzeri Ücretsiz Kargo!</div>
+            <div class="free-shipping-bar-bg">
+                <div class="free-shipping-bar-fill" id="freeShippingBar"></div>
+            </div>
+        </div>
+
         <div class="cart-items" id="cart-items-container"></div>
         
         <div class="gift-section">
@@ -1079,337 +806,74 @@
     <!-- LIGHTBOX -->
     <div class="lightbox-overlay" id="lightboxOverlay" onclick="lbOuterClick(event)">
         <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-        <button class="lightbox-arrow lb-prev" onclick="lbNav(-1); event.stopPropagation();">⟨</button>
         <div class="lightbox-img-wrap" onclick="event.stopPropagation()">
             <img id="lightboxImg" src="" alt="">
         </div>
-        <button class="lightbox-arrow lb-next" onclick="lbNav(1); event.stopPropagation();">⟩</button>
-        <div class="lightbox-dots" id="lbDots"></div>
     </div>
 
-    <a href="https://api.whatsapp.com/send?phone=905522926638&text=Merhaba%20Nimet%20Luxe%20Candles!%20%C3%9Ur%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." 
-       class="whatsapp-float" 
-       target="_blank" 
-       rel="noopener noreferrer">
-        <span class="whatsapp-icon">💬</span>
-        <span>Canlı Destek</span>
+    <a href="https://api.whatsapp.com/send?phone=905522926638&text=Merhaba%20Nimet%20Luxe%20Candles!%20%C3%9Ur%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <span>💬 Canlı Destek</span>
     </a>
 
     <script>
         // === LIGHTBOX ===
-        let lbImages = [];
-        let lbIndex = 0;
-
+        let lbImages = []; let lbIndex = 0;
         function openLightboxFromModal(src) {
             const u = urunler[mevcutUrunIndex];
-            const gorselListesi = u.gorselListesi.filter(x => typeof x === 'string');
-            openLightbox(src, gorselListesi);
+            openLightbox(src, u.gorselListesi.filter(x => typeof x === 'string'));
         }
-
         function openLightbox(src, allImages) {
             lbImages = allImages && allImages.length > 1 ? allImages : [src];
-            lbIndex = lbImages.indexOf(src);
-            if(lbIndex < 0) lbIndex = 0;
+            lbIndex = lbImages.indexOf(src); if(lbIndex < 0) lbIndex = 0;
             const overlay = document.getElementById('lightboxOverlay');
             overlay.classList.add('open');
-            if(lbImages.length > 1) overlay.classList.add('multi');
-            else overlay.classList.remove('multi');
             document.body.style.overflow = 'hidden';
-            history.pushState({ modal: 'lightbox' }, '', '#foto');
             lbRender();
         }
-        function lbRender() {
-            const img = document.getElementById('lightboxImg');
-            img.style.animation = 'none';
-            img.offsetHeight; // reflow
-            img.style.animation = '';
-            img.src = lbImages[lbIndex];
-            // dots
-            const dots = document.getElementById('lbDots');
-            dots.innerHTML = lbImages.map((_, i) => `<div class="lb-dot ${i===lbIndex?'active':''}" onclick="lbJump(${i}); event.stopPropagation();"></div>`).join('');
-        }
-        function lbNav(dir) {
-            lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
-            lbRender();
-        }
-        function lbJump(i) { lbIndex = i; lbRender(); }
-        function closeLightbox() {
-            document.getElementById('lightboxOverlay').classList.remove('open','multi');
-            document.body.style.overflow = '';
-            if (location.hash === '#foto') {
-                history.back();
-            }
-        }
-        function lbOuterClick(e) {
-            if(e.target.id === 'lightboxOverlay') closeLightbox();
-        }
-        document.addEventListener('keydown', e => {
-            const ov = document.getElementById('lightboxOverlay');
-            if(!ov.classList.contains('open')) return;
-            if(e.key === 'Escape') closeLightbox();
-            if(e.key === 'ArrowRight') lbNav(1);
-            if(e.key === 'ArrowLeft') lbNav(-1);
-        });
+        function lbRender() { document.getElementById('lightboxImg').src = lbImages[lbIndex]; }
+        function closeLightbox() { document.getElementById('lightboxOverlay').classList.remove('open'); document.body.style.overflow = ''; }
+        function lbOuterClick(e) { if(e.target.id === 'lightboxOverlay') closeLightbox(); }
 
-        // Touch swipe for lightbox
-        (function(){
-            let lbStartX = 0;
-            const ov = document.getElementById('lightboxOverlay');
-            ov.addEventListener('touchstart', e => { lbStartX = e.touches[0].clientX; }, {passive:true});
-            ov.addEventListener('touchend', e => {
-                const diff = lbStartX - e.changedTouches[0].clientX;
-                if(Math.abs(diff) > 50) lbNav(diff > 0 ? 1 : -1);
-            }, {passive:true});
-        })();
-
-        // Touch swipe for product modal slider
-        (function(){
-            let startX = 0;
-            const wrapper = document.querySelector('.modal-slider-wrapper');
-            if(!wrapper) return;
-            wrapper.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive:true});
-            wrapper.addEventListener('touchend', e => {
-                const diff = startX - e.changedTouches[0].clientX;
-                if(Math.abs(diff) > 40) changeSlide(diff > 0 ? 1 : -1);
-            }, {passive:true});
-        })();
-
-        // DİNAMİK ÜRÜN LİSTESİ
+        // DİNAMİK ÜRÜN LİSTESİ VE KATEGORİLER
         const urunler = [
-          {  
-            id: 25,  
-            ad: "Gül Kokulu Renkli Sanat Mum Buketi",  
-            kategori: "normal",  
-            aciklama: "Yaşam alanlarınıza bahar tazeliği getiren, taze ve büyüleyici gül kokusuyla harmanlanmış şık bir başyapıt. El işçiliğiyle titizlikle şekillendirilmiş turkuaz, pembe ve krem tonlarındaki narin gül figürlerinin, şık pembe kutuda estetik beyaz tül aranjmanıyla buluştuğu bu özel tasarım evinizin havasını değiştirecek.",  
-            fiyat: 1600,  
-            eskiFiyat: 2400,  
-            gorsel: "assets/images/gul1.jpeg",  
-            gorselListesi: [
-              "assets/images/gul1.jpeg", 
-              "assets/images/gul2.jpeg"
-            ],  
-            video: null  
-          },
-          {  
-            id: 24,  
-            ad: "Gümüş & Mor Asalet Hasır Sepet Mum Buketi",  
-            kategori: "normal",  
-            aciklama: "Egzotik ve taze mango esansının büyüleyici kokusuyla zenginleştirilmiş, el yapımı hasır sepet tabanı üzerinde yükselen asil bir başyapıt. Özenle şekillendirilmiş mor, lila ve parlak gümüş tonlarındaki gül ve lale figürlerinin, şık gold tül kurdeleyle buluştuğu bu lüks aranjman yaşam alanlarınıza göz alıcı bir şıklık katacak.",  
-            fiyat: 1500,  
-            eskiFiyat: 2250,  
-            gorsel: "assets/images/mor.jpeg",  
-            gorselListesi: [
-              "assets/images/mor.jpeg", 
-              "assets/images/mor2.jpeg"
-            ],  
-            video: null  
-          },
-          {  
-            id: 23,  
-            ad: "Lüks Pembe Tasarım Mum Buketi",  
-            kategori: "normal",  
-            aciklama: "Zarafetin ve romantizmin en seçkin tonlarını yaşam alanlarınıza taşıyan, el işçiliği narin detayları ve büyüleyici premium esansıyla büyüleyen en yeni pembe tasarım mum buketimiz.",  
-            fiyat: 1500,  
-            eskiFiyat: 2250,  
-            gorsel: "pemb1.png",  
-            gorselListesi: [
-              "pemb1.png", 
-              "pemb2.png"
-            ],  
-            video: null  
-          },
-          {  
-            id: 22,  
-            ad: "Yeni Özel Tasarım Mum Buketi",  
-            kategori: "normal",  
-            aciklama: "Koleksiyonumuzun en yeni üyesi; el işçiliğinin en zarif detaylarını bir araya getiren, farklı açılardan kusursuz görselliğe sahip ve büyüleyici esansıyla ortamın havasını değiştiren tek parça özel tasarım mumumuz.",  
-            fiyat: 1500,  
-            eskiFiyat: 2250,  
-            gorsel: "file1.png",  
-            gorselListesi: [
-              "file1.png", 
-              "file2.jpeg", 
-              "file3.jpeg"
-            ],  
-            video: null  
-          },
-          { 
-            id: 21, 
-            ad: "Lila Asalet Mum Buketi", 
-            kategori: "normal", 
-            aciklama: "Asil lila ve mor tonlarındaki gül ile lale figürlerinin, lüks pembe kutuda siyah tül kurdeleyle buluştuğu büyüleyici bir tasarım. Özel esansiyel yağlar ve el işçiliğiyle hazırlanan bu aranjman, yaşam alanlarınıza modern bir zarafet katacak.", 
-            fiyat: 1500, 
-            eskiFiyat: 2250, 
-            gorsel: "assets/images/maviasalet.png", 
-            gorselListesi: [
-              "assets/images/maviasalet.png", 
-              "assets/images/maviasalet2.png"
-            ], 
-            video: null 
-          },
-          { 
-            id: 20, 
-            ad: "Pembe Asalet Mum Buketi", 
-            kategori: "normal", 
-            aciklama: "Zarafetin en asil tonu pembe ile gümüşün kusursuz uyumu. El işçiliği narin çiçek figürleri og lüks esanslarla hazırlanan bu özel aranjman, yaşam alanlarınıza asalet katar.", 
-            fiyat: 1500, 
-            eskiFiyat: 2250, 
-            gorsel: "assets/images/pembeasalet1.png", 
-            gorselListesi: [
-              "assets/images/pembeasalet1.png", 
-              "assets/images/pembeasalet2.jpeg", 
-              "assets/images/pembeasalet3.png"
-            ], 
-            video: null 
-          },
-          { 
-            id: 19, 
-            ad: "Zümrüt Işıltısı Premium Mum Aranjmanı", 
-            kategori: "premium", 
-            aciklama: "Derin zümrüt yeşili ve asil gold detayların büyüleyici uyumuyla tasarlanmış, el işçiliğinin en nadide örneklerinden biri. Yaşam alanlarınıza saray zarafetini ve premium bir ambiyansı taşımak için yüksek yoğunluklu özel esansisyel yağlarla üretilmiştir.", 
-            fiyat: 2200, 
-            eskiFiyat: 3000, 
-            gorsel: "assets/images/ikili1.png", 
-            gorselListesi: [
-              "assets/images/ikili1.png", 
-              "assets/images/gorkemli.png", 
-              "assets/images/ikili3.png"
-            ], 
-            video: null 
-          },
-          { 
-            id: 18, 
-            ad: "Görkemli Işıltı Mum Aranjmanı", 
-            kategori: "normal", 
-            aciklama: "Altın varaklı ve derin detaylı lüks kabı içerisinde, el işçiliğiyle hazırlanan asil bir tasarım. Yaşam alanlarınıza sıcak, zengin ve huzur veren bir ambiyans katmak için özel esanslarla üretilmiştir.", 
-            fiyat: 800, 
-            eskiFiyat: 1200, 
-            gorsel: "assets/images/gorkemli.png", 
-            gorselListesi: ["assets/images/gorkemli.png", "assets/images/gorkemli2.png"], 
-            video: null 
-          },
-          { 
-            id: 1, 
-            ad: "Bubble Kokulu Mum Buketi", 
-            kategori: "premium", 
-            aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve lila tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım.", 
-            fiyat: 2000, 
-            eskiFiyat: 2850, 
-            gorsel: "assets/images/bubblebuket.png", 
-            gorselListesi: ["assets/images/bubblebuket.png", "assets/images/Gemini_Generated_Image_9fad2h9fad2h9fad.png", "assets/images/Gemini_Generated_Image_worf1mworf1mworf.png"], 
-            video: null 
-          },
-          { 
-            id: 2, 
-            ad: "Mango Kokulu Mum Buketi", 
-            kategori: "premium", 
-            aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarına taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül tomurcuk figürleriyle bezenmiş mum buketimiz, egzotik ve taze mango esansıyla zenginleştirilmiştir.", 
-            fiyat: 2000, 
-            eskiFiyat: 2850, 
-            gorsel: "assets/images/mango.png", 
-            gorselListesi: ["assets/images/mango.png", "assets/images/mango2.png"], 
-            video: null 
-          },
-          { 
-            id: 3, 
-            ad: "Karışık Koku Özel Mum Buketi", 
-            kategori: "premium", 
-            aciklama: "Göz alıcı bir pembe kutuda lüksu ve görsel bir şöleni buluşturan bu özel tasarım, el emeğinin zirvesini temsil ediyor. İçerisinde kusursuzca işlenmiş incili kalpler, sevimli mini ayıcık figürü, narin gül goncaları, papatyalar ve capcanlı turuncu laleler barındırır.", 
-            fiyat: 2300, 
-            eskiFiyat: 3200, 
-            gorsel: "assets/images/karısık.png", 
-            gorselListesi: [
-              "assets/images/karısık.png", 
-              "assets/images/WhatsApp Image 2026-06-01 at 21.15.08 (1).jpeg", 
-              "assets/images/WhatsApp Image 2026-06-01 at 21.15.08 (2).jpeg", 
-              "assets/images/WhatsApp Image 2026-06-01 at 21.15.08 (3).jpeg", 
-              "assets/images/WhatsApp Image 2026-06-01 at 21.15.08.jpeg"
-            ], 
-            video: null 
-          },
-          { 
-            id: 4, 
-            ad: "Kavun Aromalı Mum Buketi", 
-            kategori: "premium", 
-            aciklama: "Kavunun ferahlatıcı, tatlı ve enerjik tropikal kokusunu lüks bir tasarımla yaşam alanlarına taşıyan bu özel aranjman, el işçiliğiyle titizlikle detaylandırılmıştır. %100 doğal soya mumu ve premium esansiyel yağlarla premium kalitede üretilmiştir.", 
-            fiyat: 2000, 
-            eskiFiyat: 2850, 
-            gorsel: "assets/images/kavun1.png", 
-            gorselListesi: ["assets/images/kavun1.png", "assets/images/kavun2.png"], 
-            video: null 
-          },
-          {
-            id: 15, 
-            ad: "Aşk Esintisi LOVE Mum Buketi",
-            kategori: "normal", 
-            aciklama: "Lüks pembe silindir kutusunda, el işçiliğiyle üretilmiş estetik ayçiçekleri, kalpler ve güllerin büyüleyici birleşimi. Üzerindeki özel tasarım harf küpleriyle yazılmış 'LOVE' detayı ve tül kaplamasıyla sevdiklerinize sunabileceğiniz en romantik premium hediye seçeneği.",
-            fiyat: 1500,
-            eskiFiyat: 2250,
-            gorsel: "assets/images/love2.png", 
-            gorselListesi: ["assets/images/love2.png", "assets/images/love3.png"],
-            video: "assets/images/lovevideo.mp4"
-          },
-          {
-            id: 14, 
-            ad: "Okyanus Esintisi Lüks Mum Buketi",
-            kategori: "premium",
-            aciklama: "Okyanusun derinliklerinden gelen ferahlatıcı ve lüks esintiyi asil gümüş tonlarıyla birleştiren bu şaheser, incili özel tül tasarımı ve el işçiliği detaylarıyla göz kamaştırıyor. Gece şıklığını ve modern zarafeti yaşam alanlarınıza taşımak için %100 doğal soya mumuyla üretilmiştir.",
-            fiyat: 2000, 
-            eskiFiyat: 2850,
-            gorsel: "assets/images/okyanus.png",
-            gorselListesi: ["assets/images/okyanus.png", "assets/images/okyanus2.png"],
-            video: null
-          },
-          { 
-            id: 13, 
-            ad: "Safir Düşler Ayıcıklı Mum Buketi", 
-            kategori: "normal", 
-            aciklama: "Gök mavisinin huzur veren tonları ile el işçiliği beyaz güllerin büyüleyici uyumu. İncilerle bezenmiş kurdele detayları, cipsolar ve merkezindeki sevimli mavi ayıcık figürüyle yaşam alanlarınıza premium bir şıklık katmak için tasarlandı.", 
-            fiyat: 500, 
-            eskiFiyat: 750, 
-            gorsel: "assets/images/mavi1.png", 
-            gorselListesi: ["assets/images/mavi1.png", "assets/images/mavi2.png"], 
-            video: null 
-          },
-          { id: 5, ad: "Yasemin Kokulu Mum Buketi", kategori: "normal", aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe og beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor.", fiyat: 2000, eskiFiyat: 2850, gorsel: "assets/images/yasemin.png", gorselListesi: ["assets/images/yasemin.png"], video: null },
-          { 
-            id: 6, 
-            ad: "Seçilebilir Mini Premium Model", 
-            kategori: "normal", 
-            aciklama: "Kataloğumuzda yer alan el yapımı mini bisiklet aranjmanları, lüks kurdeleli dairesel kutu tasarımları veya gümüş detaylı özel konseptlerden dilediğinizi zevkinize göre seçebilirsiniz. Aşağıdaki tasarımlar örnek modellerdir.", 
-            fiyat: 800, 
-            eskiFiyat: 1250,
-            gorsel: "assets/images/800tl2.jpeg", 
-            gorselListesi: ["assets/images/800tl2.jpeg", "assets/images/800tl5.jpeg", "assets/images/800tl7.jpeg", "assets/images/800tl8.jpeg", "assets/images/800tl3.jpeg", "assets/images/800tl4.jpeg", "assets/images/800tl.jpeg", "assets/images/800tl6.jpeg"], 
-            video: null,
-            ornekModeller: true 
-          },
-          { id: 7, ad: "Çilek & Kırmızı Gül El Buketi", kategori: "normal", aciklama: "Aşkın ve tutkunun rengiyle bezenmiş, elde taşınabilir formda tasarlanan bu mini sanat eseri; el işçiliğiyle şekillendirilen kusursuz kırmızı güller barındırır.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/mini.png", gorselListesi: ["assets/images/mini.png"], video: null },
-          { id: 8, ad: "Papatya & İncili Ayıcık Mum Buketi", kategori: "normal", aciklama: "Zarif beyaz ve pembe papatyaların, el işçiliğiyle üretilmiş gold detaylı güllerle büyüleyici birleşimi. Merkezinde tatlı pembe bir ayıcık figürü barındırır.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/papatya.png", gorselListesi: ["assets/images/papatya.png"], video: null },
-          { id: 9, ad: "Lüks Orkide & Lale Mum Buketi", kategori: "normal", aciklama: "Zarafetin sembolü olan soft lila orkideler ve asil lalelerin, canlı pembe cipsolarla bir araya geldiği göz alıcı bir tasarım.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/orkide.jpeg", gorselListesi: ["assets/images/orkide.jpeg"], video: null },
-          { id: 10, ad: "Şakayık & Gül Siyah Kutu Mum", kategori: "normal", aciklama: "Mat siyah şık ve minimal bir kutu içerisinde; pudra pembe şakayıklar, el işçiliği beyaz ve lila güllerin muazzam birleşimi.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/siyahkutu.jpeg", gorselListesi: ["assets/images/siyahkutu.jpeg"], video: null },
-          { id: 11, ad: "Pembe Düşler Gül & Ayıcık Buketi", kategori: "normal", aciklama: "Romantik pembe ve beyaz tonlarındaki el işçiliği narin güllerin, şirin bir mini pembe ayıcık figürüyle buluştuğu harika bir buket tasarımı.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/WhatsApp Image 2026-06-01 at 21.22.54.jpeg", gorselListesi: ["assets/images/WhatsApp Image 2026-06-01 at 21.22.54.jpeg"], video: null },
-          { id: 12, ad: "Kalpli Ayıcık Mum Buketi", kategori: "normal", aciklama: "Zirvesinde göz alıcı kırmızı kadife bir kalp figürü ve Nimet Göçmen el işçiliği imzasını taşıyan asil bir aranjman.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/WhatsApp Image 2026-06-01 at 21.22.53.jpeg", gorselListesi: ["assets/images/WhatsApp Image 2026-06-01 at 21.22.53.jpeg"], video: null }
+          { id: 25, ad: "Gül Kokulu Renkli Sanat Mum Buketi", kategori: "buket", aciklama: "Yaşam alanlarınıza bahar tazeliği getiren, taze ve büyüleyici gül kokusuyla harmanlanmış şık bir başyapıt. El işçiliğiyle titizlikle şekillendirilmiş turkuaz, pembe ve krem tonlarındaki narin gül figürlerinin, şık pembe kutuda estetik beyaz tül aranjmanıyla buluştuğu bu özel tasarım evinizin havasını değiştirecek.", fiyat: 1600, eskiFiyat: 2400, gorsel: "assets/images/gul1.jpeg", gorselListesi: ["assets/images/gul1.jpeg", "assets/images/gul2.jpeg"], video: null },
+          { id: 24, ad: "Gümüş & Mor Asalet Hasır Sepet Mum Buketi", kategori: "buket", aciklama: "Egzotik ve taze mango esansının büyüleyici kokusuyla zenginleştirilmiş, el yapımı hasır sepet tabanı üzerinde yükselen asil bir başyapıt. Özenle şekillendirilmiş mor, lila ve parlak gümüş tonlarındaki gül ve lale figürlerinin, şık gold tül kurdeleyle buluştuğu bu lüks aranjman yaşam alanlarınıza göz alıcı bir şıklık katacak.", fiyat: 1500, eskiFiyat: 2250, gorsel: "assets/images/mor.jpeg", gorselListesi: ["assets/images/mor.jpeg", "assets/images/mor2.jpeg"], video: null },
+          { id: 23, ad: "Lüks Pembe Tasarım Mum Buketi", kategori: "buket", aciklama: "Zarafetin ve romantizmin en seçkin tonlarını yaşam alanlarınıza taşıyan, el işçiliği narin detayları ve büyüleyici premium esansıyla büyüleyen en yeni pembe tasarım mum buketimiz.", fiyat: 1500, eskiFiyat: 2250, gorsel: "pemb1.png", gorselListesi: ["pemb1.png", "pemb2.png"], video: null },
+          { id: 22, ad: "Yeni Özel Tasarım Mum Buketi", kategori: "buket", aciklama: "Koleksiyonumuzun en yeni üyesi; el işçiliğinin en zarif detaylarını bir araya getiren, farklı açılardan kusursuz görselliğe sahip ve büyüleyici esansıyla ortamın havasını değiştiren tek parça özel tasarım mumumuz.", fiyat: 1500, eskiFiyat: 2250, gorsel: "file1.png", gorselListesi: ["file1.png", "file2.jpeg", "file3.jpeg"], video: null },
+          { id: 21, ad: "Lila Asalet Mum Buketi", kategori: "buket", aciklama: "Asil lila ve mor tonlarındaki gül ile lale figürlerinin, lüks pembe kutuda siyah tül kurdeleyle buluştuğu büyüleyici bir tasarım. Özel esansiyel yağlar ve el işçiliğiyle hazırlanan bu aranjman, yaşam alanlarınıza modern bir zarafet katacak.", fiyat: 1500, eskiFiyat: 2250, gorsel: "assets/images/maviasalet.png", gorselListesi: ["assets/images/maviasalet.png", "assets/images/maviasalet2.png"], video: null },
+          { id: 20, ad: "Pembe Asalet Mum Buketi", kategori: "buket", aciklama: "Zarafetin en asil tonu pembe ile gümüşün kusursuz uyumu. El işçiliği narin çiçek figürleri og lüks esanslarla hazırlanan bu özel aranjman, yaşam alanlarınıza asalet katar.", fiyat: 1500, eskiFiyat: 2250, gorsel: "assets/images/pembeasalet1.png", gorselListesi: ["assets/images/pembeasalet1.png", "assets/images/pembeasalet2.jpeg", "assets/images/pembeasalet3.png"], video: null },
+          { id: 19, ad: "Zümrüt Işıltısı Premium Mum Aranjmanı", kategori: "premium", aciklama: "Derin zümrüt yeşili ve asil gold detayların büyüleyici uyumuyla tasarlanmış, el işçiliğinin en nadide örneklerinden biri. Yaşam alanlarınıza saray zarafetini ve premium bir ambiyansı taşımak için yüksek yoğunluklu özel esansisyel yağlarla üretilmiştir.", fiyat: 2200, eskiFiyat: 3000, gorsel: "assets/images/ikili1.png", gorselListesi: ["assets/images/ikili1.png", "assets/images/gorkemli.png", "assets/images/ikili3.png"], video: null },
+          { id: 18, ad: "Görkemli Işıltı Mum Aranjmanı", kategori: "premium", aciklama: "Altın varaklı ve derin detaylı lüks kabı içerisinde, el işçiliğiyle hazırlanan asil bir tasarım. Yaşam alanlarınıza sıcak, zengin ve huzur veren bir ambiyans katmak için özel esanslarla üretilmiştir.", fiyat: 800, eskiFiyat: 1200, gorsel: "assets/images/gorkemli.png", gorselListesi: ["assets/images/gorkemli.png", "assets/images/gorkemli2.png"], video: null },
+          { id: 1, ad: "Bubble Kokulu Mum Buketi", kategori: "premium", aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve lila tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım.", fiyat: 2000, eskiFiyat: 2850, gorsel: "assets/images/bubblebuket.png", gorselListesi: ["assets/images/bubblebuket.png", "assets/images/Gemini_Generated_Image_9fad2h9fad2h9fad.png", "assets/images/Gemini_Generated_Image_worf1mworf1mworf.png"], video: null },
+          { id: 2, ad: "Mango Kokulu Mum Buketi", kategori: "premium", aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarına taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül tomurcuk figürleriyle bezenmiş mum buketimiz, egzotik ve taze mango esansıyla zenginleştirilmiştir.", fiyat: 2000, eskiFiyat: 2850, gorsel: "assets/images/mango.png", gorselListesi: ["assets/images/mango.png", "assets/images/mango2.png"], video: null },
+          { id: 3, ad: "Karışık Koku Özel Mum Buketi", kategori: "premium", aciklama: "Göz alıcı bir pembe kutuda lüksu ve görsel bir şöleni buluşturan bu özel tasarım, el emeğinin zirvesini temsil ediyor. İçerisinde kusursuzca işlenmiş incili kalpler, sevimli mini ayıcık figürü, narin gül goncaları, papatyalar ve capcanlı turuncu laleler barındırır.", fiyat: 2300, eskiFiyat: 3200, gorsel: "assets/images/karısık.png", gorselListesi: ["assets/images/karısık.png", "assets/images/WhatsApp Image 2026-06-01 at 21.15.08 (1).jpeg", "assets/images/WhatsApp Image 2026-06-01 at 21.15.08 (2).jpeg"], video: null },
+          { id: 4, ad: "Kavun Aromalı Mum Buketi", kategori: "premium", aciklama: "Kavunun ferahlatıcı, tatlı ve enerjik tropikal kokusunu lüks bir tasarımla yaşam alanlarına taşıyan bu özel aranjman, el işçiliğiyle titizlikle detaylandırılmıştır.", fiyat: 2000, eskiFiyat: 2850, gorsel: "assets/images/kavun1.png", gorselListesi: ["assets/images/kavun1.png", "assets/images/kavun2.png"], video: null },
+          { id: 15, ad: "Aşk Esintisi LOVE Mum Buketi", kategori: "buket", aciklama: "Lüks pembe silindir kutusunda, el işçiliğiyle üretilmiş estetik ayçiçekleri, kalpler ve güllerin büyüleyici birleşimi. Üzerindeki özel tasarım harf küpleriyle yazılmış 'LOVE' detayı.", fiyat: 1500, eskiFiyat: 2250, gorsel: "assets/images/love2.png", gorselListesi: ["assets/images/love2.png", "assets/images/love3.png"], video: "assets/images/lovevideo.mp4" },
+          { id: 14, ad: "Okyanus Esintisi Lüks Mum Buketi", kategori: "premium", aciklama: "Okyanusun derinliklerinden gelen ferahlatıcı ve lüks esintiyi asil gümüş tonlarıyla birleştiren bu şaheser, incili özel tül tasarımıyla göz kamaştırıyor.", fiyat: 2000, eskiFiyat: 2850, gorsel: "assets/images/okyanus.png", gorselListesi: ["assets/images/okyanus.png", "assets/images/okyanus2.png"], video: null },
+          { id: 13, ad: "Safir Düşler Ayıcıklı Mum Buketi", kategori: "mini", aciklama: "Gök mavisinin huzur veren tonları ile el işçiliği beyaz güllerin büyüleyici uyumu. İncilerle bezenmiş kurdele detayları ve sevimli mavi ayıcık figürü.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/mavi1.png", gorselListesi: ["assets/images/mavi1.png", "assets/images/mavi2.png"], video: null },
+          { id: 5, ad: "Yasemin Kokulu Mum Buketi", kategori: "buket", aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe ve beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor.", fiyat: 2000, eskiFiyat: 2850, gorsel: "assets/images/yasemin.png", gorselListesi: ["assets/images/yasemin.png"], video: null },
+          { id: 6, ad: "Seçilebilir Mini Premium Model", kategori: "mini", aciklama: "Kataloğumuzda yer alan el yapımı mini bisiklet aranjmanları veya lüks kurdeleli dairesel kutu tasarımlarından dilediğinizi seçebilirsiniz.", fiyat: 800, eskiFiyat: 1250, gorsel: "assets/images/800tl2.jpeg", gorselListesi: ["assets/images/800tl2.jpeg", "assets/images/800tl5.jpeg", "assets/images/800tl7.jpeg"], video: null, ornekModeller: true },
+          { id: 7, ad: "Çilek & Kırmızı Gül El Buketi", kategori: "mini", aciklama: "Aşkın ve tutkunun rengiyle bezenmiş, elde taşınabilir formda tasarlanan bu mini sanat eseri kusursuz kırmızı güller barındırır.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/mini.png", gorselListesi: ["assets/images/mini.png"], video: null },
+          { id: 8, ad: "Papatya & İncili Ayıcık Mum Buketi", kategori: "mini", aciklama: "Zarif beyaz ve pembe papatyaların, el işçiliğiyle üretilmiş gold detaylı güllerle büyüleyici birleşimi.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/papatya.png", gorselListesi: ["assets/images/papatya.png"], video: null },
+          { id: 9, ad: "Lüks Orkide & Lale Mum Buketi", kategori: "mini", aciklama: "Zarafetin sembolü olan soft lila orkideler ve asil lalelerin, canlı pembe cipsolarla bir araya geldiği göz alıcı bir tasarım.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/orkide.jpeg", gorselListesi: ["assets/images/orkide.jpeg"], video: null },
+          { id: 10, ad: "Şakayık & Gül Siyah Kutu Mum", kategori: "mini", aciklama: "Mat siyah şık ve minimal bir kutu içerisinde; pudra pembe şakayıklar ve el işçiliği beyaz güllerin muazzam birleşimi.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/siyahkutu.jpeg", gorselListesi: ["assets/images/siyahkutu.jpeg"], video: null },
+          { id: 11, ad: "Pembe Düşler Gül & Ayıcık Buketi", kategori: "mini", aciklama: "Romantik pembe ve beyaz tonlarındaki el işçiliği narin güllerin, şirin bir mini pembe ayıcık figürüyle buluştuğu buket.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/WhatsApp Image 2026-06-01 at 21.22.54.jpeg", gorselListesi: ["assets/images/WhatsApp Image 2026-06-01 at 21.22.54.jpeg"], video: null },
+          { id: 12, ad: "Kalpli Ayıcık Mum Buketi", kategori: "mini", aciklama: "Zirvesinde göz alıcı kırmızı kadife bir kalp figürü ve Nimet Göçmen el işçiliği imzasını taşıyan asil bir aranjman.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/WhatsApp Image 2026-06-01 at 21.22.53.jpeg", gorselListesi: ["assets/images/WhatsApp Image 2026-06-01 at 21.22.53.jpeg"], video: null }
         ];
-        
+
         let sepet = [];
         let mevcutUrunIndex = 0;
         let mevcutSlaytIndex = 0;
+        let aktifKategori = "hepsi";
 
         function hesaplaYuzde(eski, yeni) {
             if(!eski || !yeni || eski <= yeni) return "";
-            let y = Math.round(((eski - yeni) / eski) * 100);
-            return `%${y} İNDİRİM`;
+            return `%${Math.round(((eski - yeni) / eski) * 100)} İNDİRİM`;
         }
 
         function toggleSidebarMenu() {
             const menu = document.getElementById('sidebarMenu');
             if(menu) menu.classList.toggle('open');
-        }
-
-        function handleSidebarCatalog() {
-            toggleSidebarMenu();
-            openCollectionModal();
         }
 
         function playApplePayChime() {
@@ -1421,32 +885,28 @@
                 gain1.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.25);
                 osc1.connect(gain1); gain1.connect(audioCtx.destination);
                 osc1.start(); osc1.stop(audioCtx.currentTime + 0.25);
-            } catch(e) { console.log(e); }
+            } catch(e) {}
         }
-        
-        function buildTickerContent() {
-            const tickerEl = document.getElementById('ticker-content');
-            if(!tickerEl) return;
-            const doubleList = [...urunler, ...urunler];
-            tickerEl.innerHTML = doubleList.map(u => `
-                <span class="ticker-item" onclick="openProductModal(${u.id})">
-                    <img src="${u.gorsel}" class="ticker-img" alt="Mum" loading="lazy" decoding="async">
-                    <div class="ticker-prices">
-                        <span class="old-p">${u.eskiFiyat} TL</span>
-                        <span class="new-p">${u.fiyat} TL</span>
-                        <span class="ticker-discount-text">(${hesaplaYuzde(u.eskiFiyat, u.fiyat)})</span>
-                    </div>
-                </span>
-            `).join('');
+
+        /* DÜZENLİ KATEGORİ FİLTRELEME */
+        function filtreleKategori(kat, btnElement) {
+            aktifKategori = kat;
+            const btns = document.querySelectorAll('.cat-tab-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            if(btnElement) btnElement.classList.add('active');
+            urunleriListele();
         }
 
         function urunleriListele() {
-          const premiumList = document.getElementById('premium-product-list'); 
-          const allCollectionGrid = document.getElementById('all-collection-grid');
-          if(!premiumList || !allCollectionGrid) return;
+          const grid = document.getElementById('main-product-grid');
+          if(!grid) return;
           
-          const premiumUrunler = urunler.filter(u => u.kategori === 'premium');
-          premiumList.innerHTML = premiumUrunler.map(u => `
+          let liste = urunler;
+          if(aktifKategori !== 'hepsi') {
+              liste = urunler.filter(u => u.kategori === aktifKategori);
+          }
+
+          grid.innerHTML = liste.map(u => `
             <div class="card" onclick="openProductModal(${u.id})">
                 <div class="discount-badge">${hesaplaYuzde(u.eskiFiyat, u.fiyat)}</div>
                 <div class="product-img-box">
@@ -1463,37 +923,6 @@
                 </div>
             </div>
           `).join('');
-
-          allCollectionGrid.innerHTML = urunler.map(u => `
-            <div class="card" onclick="openProductModal(${u.id})">
-                <div class="discount-badge">${hesaplaYuzde(u.eskiFiyat, u.fiyat)}</div>
-                <div class="product-img-box">
-                    <img src="${u.gorsel}" alt="${u.ad}" loading="lazy" decoding="async" onclick="event.stopPropagation(); openLightbox('${u.gorsel}', ${JSON.stringify(u.gorselListesi)})">
-                </div>
-                <h3 class="product-title">${u.ad}</h3>
-                <p class="product-desc">${u.aciklama}</p>
-                <div class="product-footer" onclick="event.stopPropagation();">
-                    <div class="price-wrapper">
-                        <span class="old-price">${u.eskiFiyat} TL</span>
-                        <span class="product-price">${u.fiyat} TL</span>
-                    </div>
-                    <button class="btn-add-cart" onclick="sepeteEkle(${u.id})">Sepete Ekle</button>
-                </div>
-            </div>
-          `).join('');
-        }
-
-        function openCollectionModal() {
-            document.getElementById('collectionModal').classList.add('open');
-            document.body.style.overflow = 'hidden';
-            history.pushState({ modal: 'collection' }, '', '#katalog');
-        }
-        function closeCollectionModal() {
-            document.getElementById('collectionModal').classList.remove('open');
-            document.body.style.overflow = '';
-            if (location.hash === '#katalog' || location.hash === '#urun') {
-                history.back();
-            }
         }
 
         function openProductModal(id) {
@@ -1510,6 +939,7 @@
             mevcutSlaytIndex = 0;
 
             document.getElementById('modalTitle').innerText = u.ad;
+            /* DETAY PENCERESİNDE AÇIKLAMA UZUN VE EKSİKSİZ DÜZENDE GÖSTERİLİR */
             document.getElementById('modalDesc').innerText = u.aciklama;
             document.getElementById('modalOldPrice').innerText = u.eskiFiyat + " TL";
             document.getElementById('modalPrice').innerText = u.fiyat + " TL";
@@ -1574,16 +1004,9 @@
             const u = urunler[mevcutUrunIndex];
             let toplamMedya = u.gorselListesi.length + (u.video ? 1 : 0);
             mevcutSlaytIndex += direction;
-            
             if(mevcutSlaytIndex >= toplamMedya) mevcutSlaytIndex = 0;
             if(mevcutSlaytIndex < 0) mevcutSlaytIndex = toplamMedya - 1;
-            
             updateSlidePosition();
-            
-            if(u.ornekModeller) {
-                const btns = document.querySelectorAll('.variant-btn');
-                if(btns[mevcutSlaytIndex]) updateActiveVariantBtn(btns[mevcutSlaytIndex]);
-            }
         }
 
         function setSlide(index) {
@@ -1594,7 +1017,6 @@
         function updateSlidePosition() {
             const container = document.getElementById('modalSliderContainer');
             if(container) container.style.transform = `translateX(-${mevcutSlaytIndex * 100}%)`;
-            
             const dots = document.querySelectorAll('.slider-dot');
             dots.forEach((dot, idx) => {
                 if(idx === mevcutSlaytIndex) dot.classList.add('active');
@@ -1654,6 +1076,27 @@
           
           counts.forEach(el => el.innerText = sepet.reduce((t, i) => t + i.adet, 0));
           
+          // ÜCRETSİZ KARGO BARI HESAPLAMA
+          const kargoBar = document.getElementById('freeShippingBar');
+          const kargoText = document.getElementById('freeShippingText');
+          const limit = 1500;
+          let safToplam = sepet.reduce((t, i) => t + (i.fiyat * i.adet), 0);
+
+          if (kargoBar && kargoText) {
+              if (safToplam === 0) {
+                  kargoBar.style.width = '0%';
+                  kargoText.innerHTML = `<strong>1500 TL</strong> Üzeri Ücretsiz Kargo!`;
+              } else if (safToplam >= limit) {
+                  kargoBar.style.width = '100%';
+                  kargoText.innerHTML = `🎉 <strong>Tebrikler!</strong> Ücretsiz Kargo Kazandınız!`;
+              } else {
+                  let kalan = limit - safToplam;
+                  let yuzde = Math.min(100, Math.round((safToplam / limit) * 100));
+                  kargoBar.style.width = yuzde + '%';
+                  kargoText.innerHTML = `Ücretsiz kargo için <strong>${kalan} TL</strong> daha ürün ekleyin!`;
+              }
+          }
+
           if (!kc || !ta) return;
           if (sepet.length === 0) { kc.innerHTML = '<p style="text-align:center; opacity:0.5; padding:30px; font-size:14px;">Sepetiniz şu an boş.</p>'; ta.innerText = '0 TL'; return; }
           
@@ -1671,7 +1114,7 @@
             </div>
           `).join('');
           
-          let toplam = sepet.reduce((t, i) => t + (i.fiyat * i.adet), 0);
+          let toplam = safToplam;
           const giftCheck = document.getElementById('giftCheck');
           if (giftCheck && giftCheck.checked) toplam += 50;
           
@@ -1695,16 +1138,13 @@
         }, { threshold: 0.05 });
 
         document.addEventListener("DOMContentLoaded", () => {
-            buildTickerContent();
             urunleriListele();
             sepetiGuncelle();
             const elements = document.querySelectorAll('.scroll-animate');
             elements.forEach((el) => observer.observe(el));
 
-            // GERİ TUŞU YÖNETİMİ
             window.addEventListener('popstate', function(e) {
                 const productModal = document.getElementById('productModal');
-                const collectionModal = document.getElementById('collectionModal');
                 const lightboxOverlay = document.getElementById('lightboxOverlay');
 
                 if (lightboxOverlay && lightboxOverlay.classList.contains('open')) {
@@ -1713,11 +1153,6 @@
                 }
                 if (productModal && productModal.classList.contains('open')) {
                     productModal.classList.remove('open');
-                    return;
-                }
-                if (collectionModal && collectionModal.classList.contains('open')) {
-                    collectionModal.classList.remove('open');
-                    document.body.style.overflow = '';
                     return;
                 }
             });
