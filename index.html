@@ -6,28 +6,28 @@
     <title>Nimet Luxe Candles | El Yapımı Premium Mum Koleksiyonu</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         html, body {
-    -webkit-overflow-scrolling: auto; /* Ağır akıcı mod yerine telefonun kendi hızına bırakır */
-}
+            -webkit-overflow-scrolling: auto;
+        }
         /* --- Lüks Çerçeve ve Canlı Buton Tasarımları --- */
         .urun-kart, .product-card {
-            border: 1px solid rgba(170, 139, 70, 0.25) !important; /* Altın rengi şık çerçeve */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important; /* Premium derinlik gölgesi */
+            border: 1px solid rgba(170, 139, 70, 0.25) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
             transition: all 0.3s ease !important;
             border-radius: 12px !important;
             overflow: hidden !important;
         }
 
         .urun-kart:hover, .product-card:hover {
-            border-color: #aa8b46 !important; /* Dokununca/Üzerine gelince parlayan altın rengi */
+            border-color: #aa8b46 !important;
             box-shadow: 0 8px 25px rgba(170, 139, 70, 0.3) !important;
-            transform: translateY(-4px) !important; /* Hafif yukarı esneme hareketi */
+            transform: translateY(-4px) !important;
         }
 
         .sepete-ekle-btn, .katalog-ac-btn, .btn-primary, .product-card button {
-            background: linear-gradient(135deg, #aa8b46 0%, #2c2523 100%) !important; /* Premium renk geçişi */
+            background: linear-gradient(135deg, #aa8b46 0%, #2c2523 100%) !important;
             color: #ffffff !important;
             border: 1px solid #aa8b46 !important;
             font-weight: 600 !important;
@@ -37,8 +37,8 @@
         }
 
         .sepete-ekle-btn:hover, .katalog-ac-btn:hover, .btn-primary:hover, .product-card button:hover {
-            background: linear-gradient(135deg, #2c2523 0%, #aa8b46 100%) !important; /* Renk yönü değişimi */
-            transform: scale(1.02) !important; /* Buton canlanma efekti */
+            background: linear-gradient(135deg, #2c2523 0%, #aa8b46 100%) !important;
+            transform: scale(1.02) !important;
             box-shadow: 0 6px 18px rgba(170, 139, 70, 0.4) !important;
         }
         :root {
@@ -255,6 +255,129 @@
         .btn-primary { display: inline-flex; padding: 16px 36px; background: var(--color-primary); color: #ffffff; text-decoration: none; font-weight: 600; letter-spacing: 0.1em; font-size: 12px; text-transform: uppercase; transition: var(--transition-smooth); border: none; cursor: pointer; align-items: center; justify-content: center; }
         .btn-primary:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(170, 139, 70, 0.2); background: var(--color-accent); color: #ffffff; }
         
+        /* KAYSERİ FORM AVM ETKİNLİK ALANI STİLLERİ */
+        .event-section {
+            padding: 70px 0;
+            background: linear-gradient(135deg, rgba(170, 139, 70, 0.08) 0%, rgba(44, 37, 35, 0.03) 100%);
+            border-top: 1px solid rgba(170, 139, 70, 0.2);
+            border-bottom: 1px solid rgba(170, 139, 70, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+        .event-card {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 40px;
+            align-items: center;
+            background: #ffffff;
+            border: 1px solid rgba(170, 139, 70, 0.3);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(170, 139, 70, 0.12);
+        }
+        .event-img-box {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(170, 139, 70, 0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            background: #f5f2eb;
+            cursor: pointer;
+        }
+        .event-img-box img {
+            width: 100%;
+            height: auto;
+            max-height: 520px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .event-img-box:hover img {
+            transform: scale(1.02);
+        }
+        .event-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .event-badge {
+            align-self: flex-start;
+            background: #aa8b46;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(170, 139, 70, 0.3);
+        }
+        .event-title {
+            font-family: var(--font-display);
+            font-size: 34px;
+            color: var(--color-accent);
+            line-height: 1.25;
+            font-weight: 600;
+        }
+        .event-date-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(170, 139, 70, 0.08);
+            border: 1px dashed rgba(170, 139, 70, 0.4);
+            padding: 14px 20px;
+            border-radius: 10px;
+            width: fit-content;
+        }
+        .event-date-number {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 700;
+            color: #84682e;
+            white-space: nowrap;
+        }
+        .event-date-text {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            font-weight: 500;
+        }
+        .event-location {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            color: var(--color-text-primary);
+            font-weight: 600;
+            padding: 8px 0;
+        }
+        .event-location-icon {
+            color: #aa8b46;
+            font-size: 20px;
+        }
+        .event-note {
+            font-style: italic;
+            font-family: var(--font-display);
+            font-size: 18px;
+            color: var(--color-primary);
+            margin-top: 4px;
+        }
+        .event-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .event-tag {
+            background: #fdfcf9;
+            border: 1px solid rgba(170, 139, 70, 0.3);
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--color-accent);
+            letter-spacing: 0.05em;
+        }
+
         .section-header { text-align: center; margin-bottom: 50px; }
         .section-subtitle { color: var(--color-primary); text-transform: uppercase; font-size: 11px; letter-spacing: 0.25em; margin-bottom: 10px; display: block; font-weight: 600; }
         .section-title { font-family: var(--font-display); font-size: 36px; font-weight: 400; letter-spacing: 0.03em; color: var(--color-accent); }
@@ -512,6 +635,11 @@
 
             .grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); } 
             
+            /* KAYSERİ FORM AVM MOBİL UYUM */
+            .event-card { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
+            .event-title { font-size: 26px; }
+            .event-date-number { font-size: 22px; }
+
             /* KATALOG 2'Lİ GRID */
             .katalog-2li-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; padding: 0 8px !important; }
             .katalog-2li-grid .card { padding: 12px !important; max-width: 100% !important; border-radius: 8px; }
@@ -644,7 +772,7 @@
             padding: 10px;
         }
         .sosyal-link {
-            color: #aa8b46; /* Sitedeki lüks altın sarısı tonu */
+            color: #aa8b46;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             align-items: center;
@@ -674,16 +802,16 @@
     <div class="top-bars-wrapper">
         <div class="text-ticker-wrap">
             <div class="text-ticker">
+                <span>📍 KAYSERİ FORM AVM STANDIMIZA BEKLERİZ (10 - 16 AĞUSTOS) ✦</span>
                 <span>✦ EL YAPIMI PREMİUM KOLEKSİYON ✦</span>
                 <span>🎁 HEDİYE PAKETLEME SEÇENEĞİ ✦</span>
                 <span>🌿 %100 DOĞAL SOYA MUMU ✦</span>
-                <span>🔥 SINIRLI STOK – KAÇIRMAYIN ✦</span>
-                <span>🛍️ ÜCRETSİZ KARGO ✦</span>
+                <span>📍 KAYSERİ FORM AVM ZEMİN KAT ETKİNLİK ALANI ✦</span>
+                <span>📍 KAYSERİ FORM AVM STANDIMIZA BEKLERİZ (10 - 16 AĞUSTOS) ✦</span>
                 <span>✦ EL YAPIMI PREMİUM KOLEKSİYON ✦</span>
                 <span>🎁 HEDİYE PAKETLEME SEÇENEĞİ ✦</span>
                 <span>🌿 %100 DOĞAL SOYA MUMU ✦</span>
-                <span>🔥 SINIRLI STOK – KAÇIRMAYIN ✦</span>
-                <span>🛍️ ÜCRETSİZ KARGO ✦</span>
+                <span>📍 KAYSERİ FORM AVM ZEMİN KAT ETKİNLİK ALANI ✦</span>
             </div>
         </div>
         
@@ -703,6 +831,7 @@
     <div class="sidebar-menu" id="sidebarMenu">
         <button class="sidebar-menu-close" onclick="toggleSidebarMenu()">✕</button>
         <div class="sidebar-links">
+            <a href="#etkinlik-duyuru" onclick="toggleSidebarMenu()">AVM Etkinliği</a>
             <a href="#premium-secki" onclick="toggleSidebarMenu()">Premium Seçki</a>
             <a href="#hakkimizda" onclick="toggleSidebarMenu()">Hikayemiz</a>
             <a href="#yorumlar" onclick="toggleSidebarMenu()">Yorumlar</a>
@@ -781,6 +910,7 @@
         </div>
     </div>
 
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-bg-image"></div>
         <div class="hero-overlay"></div>
@@ -790,6 +920,39 @@
                 <h1 class="animate-up">Işığın En Zarif<br>Haliyle Tanışın.</h1>
                 <p class="animate-up stagger-1">Yüksek yoğunluklu niş esanslar ve %100 doğal soya mumu ile tamamen el işçiliğiyle hazırlanan koleksiyonumuz, yaşam alanlarınızın aurasını baştan aşağı değiştirecek.</p>
                 <a onclick="openCollectionModal()" class="btn-primary animate-up stagger-2" style="cursor: pointer;">Kataloğu Aç</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ÖZEL ETKİNLİK DUYURUSU: KAYSERİ FORM AVM -->
+    <section id="etkinlik-duyuru" class="event-section scroll-animate">
+        <div class="container">
+            <div class="event-card">
+                <div class="event-img-box" onclick="openLightbox('assets/images/etkinlik.jpeg', ['assets/images/etkinlik.jpeg'])">
+                    <img src="assets/images/etkinlik.jpeg" alt="Kayseri Form AVM Nimet Göçmen Standı" loading="lazy">
+                </div>
+                <div class="event-content">
+                    <span class="event-badge">✨ Özel Etkinlik Daveti</span>
+                    <h2 class="event-title">Kayseri Form AVM'de Standımıza Bekleriz!</h2>
+                    
+                    <div class="event-date-card">
+                        <span class="event-date-number">10.08 / 16.08</span>
+                        <span class="event-date-text">Tarihleri Arasında Sizlerle Buluşuyoruz</span>
+                    </div>
+
+                    <div class="event-location">
+                        <span class="event-location-icon">📍</span>
+                        <span>Kayseri Form AVM — Zemin Kat Etkinlik Alanı</span>
+                    </div>
+
+                    <p class="event-note">"Sizi de aramızda görmek bizleri mutlu eder ♥"</p>
+
+                    <div class="event-tags">
+                        <span class="event-tag">♥ %100 EL YAPIMI</span>
+                        <span class="event-tag">♥ DOĞAL ESANS</span>
+                        <span class="event-tag">♥ ÖZEL TASARIM</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -996,223 +1159,223 @@
             }, {passive:true});
         })();
 
-        // YENİ MOR BUKET FOTOĞRAFLARI GİRİLEN DİNAMİK ÜRÜN LİSTESİ
-const urunler = [
-  {  
-    id: 25,  
-    ad: "Gül Kokulu Renkli Sanat Mum Buketi",  
-    kategori: "normal",  
-    aciklama: "Yaşam alanlarınıza bahar tazeliği getiren, taze ve büyüleyici gül kokusuyla harmanlanmış şık bir başyapıt. El işçiliğiyle titizlikle şekillendirilmiş turkuaz, pembe ve krem tonlarındaki narin gül figürlerinin, şık pembe kutuda estetik beyaz tül aranjmanıyla buluştuğu bu özel tasarım evinizin havasını değiştirecek.",  
-    fiyat: 1600,  
-    eskiFiyat: 2400,  
-    gorsel: "assets/images/gul1.jpeg",  
-    gorselListesi: [
-      "assets/images/gul1.jpeg", 
-      "assets/images/gul2.jpeg"
-    ],  
-    video: null  
-  },
-  {  
-    id: 24,  
-    ad: "Gümüş & Mor Asalet Hasır Sepet Mum Buketi",  
-    kategori: "normal",  
-    aciklama: "Egzotik ve taze mango esansının büyüleyici kokusuyla zenginleştirilmiş, el yapımı hasır sepet tabanı üzerinde yükselen asil bir başyapıt. Özenle şekillendirilmiş mor, lila ve parlak gümüş tonlarındaki gül ve lale figürlerinin, şık gold tül kurdeleyle buluştuğu bu lüks aranjman yaşam alanlarınıza göz alıcı bir şıklık katacak.",  
-    fiyat: 1500,  
-    eskiFiyat: 2250,  
-    gorsel: "assets/images/mor.jpeg",  
-    gorselListesi: [
-      "assets/images/mor.jpeg", 
-      "assets/images/mor2.jpeg"
-    ],  
-    video: null  
-  },
-  {  
-    id: 23,  
-    ad: "Lüks Pembe Tasarım Mum Buketi",  
-    kategori: "normal",  
-    aciklama: "Zarafetin ve romantizmin en seçkin tonlarını yaşam alanlarınıza taşıyan, el işçiliği narin detayları ve büyüleyici premium esansıyla büyüleyen en yeni pembe tasarım mum buketimiz.",  
-    fiyat: 1500,  
-    eskiFiyat: 2250,  
-    gorsel: "pemb1.png",  
-    gorselListesi: [
-      "pemb1.png", 
-      "pemb2.png"
-    ],  
-    video: null  
-  },
-  {  
-    id: 22,  
-    ad: "Yeni Özel Tasarım Mum Buketi",  
-    kategori: "normal",  
-    aciklama: "Koleksiyonumuzun en yeni üyesi; el işçiliğinin en zarif detaylarını bir araya getiren, farklı açılardan kusursuz görselliğe sahip ve büyüleyici esansıyla ortamın havasını değiştiren tek parça özel tasarım mumumuz.",  
-    fiyat: 1500,  
-    eskiFiyat: 2250,  
-    gorsel: "file1.png",  
-    gorselListesi: [
-      "file1.png", 
-      "file2.jpeg", 
-      "file3.jpeg"
-    ],  
-    video: null  
-  },
-  { 
-    id: 21, 
-    ad: "Lila Asalet Mum Buketi", 
-    kategori: "normal", 
-    aciklama: "Asil lila ve mor tonlarındaki gül ile lale figürlerinin, lüks pembe kutuda siyah tül kurdeleyle buluştuğu büyüleyici bir tasarım. Özel esansiyel yağlar ve el işçiliğiyle hazırlanan bu aranjman, yaşam alanlarınıza modern bir zarafet katacak.", 
-    fiyat: 1500, 
-    eskiFiyat: 2250, 
-    gorsel: "assets/images/maviasalet.png", 
-    gorselListesi: [
-      "assets/images/maviasalet.png", 
-      "assets/images/maviasalet2.png"
-    ], 
-    video: null 
-  },
-  { 
-    id: 20, 
-    ad: "Pembe Asalet Mum Buketi", 
-    kategori: "normal", 
-    aciklama: "Zarafetin en asil tonu pembe ile gümüşün kusursuz uyumu. El işçiliği narin çiçek figürleri og lüks esanslarla hazırlanan bu özel aranjman, yaşam alanlarınıza asalet katar.", 
-    fiyat: 1500, 
-    eskiFiyat: 2250, 
-    gorsel: "assets/images/pembeasalet1.png", 
-    gorselListesi: [
-      "assets/images/pembeasalet1.png", 
-      "assets/images/pembeasalet2.jpeg", 
-      "assets/images/pembeasalet3.png"
-    ], 
-    video: null 
-  },
-  { 
-    id: 19, 
-    ad: "Zümrüt Işıltısı Premium Mum Aranjmanı", 
-    kategori: "premium", 
-    aciklama: "Derin zümrüt yeşili ve asil gold detayların büyüleyici uyumuyla tasarlanmış, el işçiliğinin en nadide örneklerinden biri. Yaşam alanlarınıza saray zarafetini ve premium bir ambiyansı taşımak için yüksek yoğunluklu özel esansisyel yağlarla üretilmiştir.", 
-    fiyat: 2200, 
-    eskiFiyat: 3000, 
-    gorsel: "assets/images/ikili1.png", 
-    gorselListesi: [
-      "assets/images/ikili1.png", 
-      "assets/images/gorkemli.png", 
-      "assets/images/ikili3.png"
-    ], 
-    video: null 
-  },
-  { 
-    id: 18, 
-    ad: "Görkemli Işıltı Mum Aranjmanı", 
-    kategori: "normal", 
-    aciklama: "Altın varaklı ve derin detaylı lüks kabı içerisinde, el işçiliğiyle hazırlanan asil bir tasarım. Yaşam alanlarınıza sıcak, zengin ve huzur veren bir ambiyans katmak için özel esanslarla üretilmiştir.", 
-    fiyat: 800, 
-    eskiFiyat: 1200, 
-    gorsel: "assets/images/gorkemli.png", 
-    gorselListesi: ["assets/images/gorkemli.png", "assets/images/gorkemli2.png"], 
-    video: null 
-  },
-  { 
-    id: 1, 
-    ad: "Bubble Kokulu Mum Buketi", 
-    kategori: "premium", 
-    aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve lila tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım.", 
-    fiyat: 2000, 
-    eskiFiyat: 2850, 
-    gorsel: "assets/images/bubblebuket.png", 
-    gorselListesi: ["assets/images/bubblebuket.png", "assets/images/Gemini_Generated_Image_9fad2h9fad2h9fad.png", "assets/images/Gemini_Generated_Image_worf1mworf1mworf.png"], 
-    video: null 
-  },
-  { 
-    id: 2, 
-    ad: "Mango Kokulu Mum Buketi", 
-    kategori: "premium", 
-    aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarına taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül tomurcuk figürleriyle bezenmiş mum buketimiz, egzotik ve taze mango esansıyla zenginleştirilmiştir.", 
-    fiyat: 2000, 
-    eskiFiyat: 2850, 
-    gorsel: "assets/images/mango.png", 
-    gorselListesi: ["assets/images/mango.png", "assets/images/mango2.png"], 
-    video: null 
-  },
-  { 
-    id: 3, 
-    ad: "Karışık Koku Özel Mum Buketi", 
-    kategori: "premium", 
-    aciklama: "Göz alıcı bir pembe kutuda lüksu ve görsel bir şöleni buluşturan bu özel tasarım, el emeğinin zirvesini temsil ediyor. İçerisinde kusursuzca işlenmiş incili kalpler, sevimli mini ayıcık figürü, narin gül goncaları, papatyalar ve capcanlı turuncu laleler barındırır.", 
-    fiyat: 2300, 
-    eskiFiyat: 3200, 
-    gorsel: "assets/images/karısık.png", 
-    gorselListesi: [
-      "assets/images/karısık.png", 
-      "assets/images/WhatsApp Image 2026-06-01 at 21.15.08 (1).jpeg", 
-      "assets/images/WhatsApp Image 2026-06-01 at 21.15.08 (2).jpeg", 
-      "assets/images/WhatsApp Image 2026-06-01 at 21.15.08 (3).jpeg", 
-      "assets/images/WhatsApp Image 2026-06-01 at 21.15.08.jpeg"
-    ], 
-    video: null 
-  },
-  { 
-    id: 4, 
-    ad: "Kavun Aromalı Mum Buketi", 
-    kategori: "premium", 
-    aciklama: "Kavunun ferahlatıcı, tatlı ve enerjik tropikal kokusunu lüks bir tasarımla yaşam alanlarına taşıyan bu özel aranjman, el işçiliğiyle titizlikle detaylandırılmıştır. %100 doğal soya mumu ve premium esansiyel yağlarla premium kalitede üretilmiştir.", 
-    fiyat: 2000, 
-    eskiFiyat: 2850, 
-    gorsel: "assets/images/kavun1.png", 
-    gorselListesi: ["assets/images/kavun1.png", "assets/images/kavun2.png"], 
-    video: null 
-  },
-  {
-    id: 15, 
-    ad: "Aşk Esintisi LOVE Mum Buketi",
-    kategori: "normal", 
-    aciklama: "Lüks pembe silindir kutusunda, el işçiliğiyle üretilmiş estetik ayçiçekleri, kalpler ve güllerin büyüleyici birleşimi. Üzerindeki özel tasarım harf küpleriyle yazılmış 'LOVE' detayı ve tül kaplamasıyla sevdiklerinize sunabileceğiniz en romantik premium hediye seçeneği.",
-    fiyat: 1500,
-    eskiFiyat: 2250,
-    gorsel: "assets/images/love2.png", 
-    gorselListesi: ["assets/images/love2.png", "assets/images/love3.png"],
-    video: "assets/images/lovevideo.mp4"
-  },
-  {
-    id: 14, 
-    ad: "Okyanus Esintisi Lüks Mum Buketi",
-    kategori: "premium",
-    aciklama: "Okyanusun derinliklerinden gelen ferahlatıcı ve lüks esintiyi asil gümüş tonlarıyla birleştiren bu şaheser, incili özel tül tasarımı ve el işçiliği detaylarıyla göz kamaştırıyor. Gece şıklığını ve modern zarafeti yaşam alanlarınıza taşımak için %100 doğal soya mumuyla üretilmiştir.",
-    fiyat: 2000, 
-    eskiFiyat: 2850,
-    gorsel: "assets/images/okyanus.png",
-    gorselListesi: ["assets/images/okyanus.png", "assets/images/okyanus2.png"],
-    video: null
-  },
-  { 
-    id: 13, 
-    ad: "Safir Düşler Ayıcıklı Mum Buketi", 
-    kategori: "normal", 
-    aciklama: "Gök mavisinin huzur veren tonları ile el işçiliği beyaz güllerin büyüleyici uyumu. İncilerle bezenmiş kurdele detayları, cipsolar ve merkezindeki sevimli mavi ayıcık figürüyle yaşam alanlarınıza premium bir şıklık katmak için tasarlandı.", 
-    fiyat: 500, 
-    eskiFiyat: 750, 
-    gorsel: "assets/images/mavi1.png", 
-    gorselListesi: ["assets/images/mavi1.png", "assets/images/mavi2.png"], 
-    video: null 
-  },
-  { id: 5, ad: "Yasemin Kokulu Mum Buketi", kategori: "normal", aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe og beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor.", fiyat: 2000, eskiFiyat: 2850, gorsel: "assets/images/yasemin.png", gorselListesi: ["assets/images/yasemin.png"], video: null },
-  { 
-    id: 6, 
-    ad: "Seçilebilir Mini Premium Model", 
-    kategori: "normal", 
-    aciklama: "Kataloğumuzda yer alan el yapımı mini bisiklet aranjmanları, lüks kurdeleli dairesel kutu tasarımları veya gümüş detaylı özel konseptlerden dilediğinizi zevkinize göre seçebilirsiniz. Aşağıdaki tasarımlar örnek modellerdir.", 
-    fiyat: 800, 
-    eskiFiyat: 1250,
-    gorsel: "assets/images/800tl2.jpeg", 
-    gorselListesi: ["assets/images/800tl2.jpeg", "assets/images/800tl5.jpeg", "assets/images/800tl7.jpeg", "assets/images/800tl8.jpeg", "assets/images/800tl3.jpeg", "assets/images/800tl4.jpeg", "assets/images/800tl.jpeg", "assets/images/800tl6.jpeg"], 
-    video: null,
-    ornekModeller: true 
-  },
-  { id: 7, ad: "Çilek & Kırmızı Gül El Buketi", kategori: "normal", aciklama: "Aşkın ve tutkunun rengiyle bezenmiş, elde taşınabilir formda tasarlanan bu mini sanat eseri; el işçiliğiyle şekillendirilen kusursuz kırmızı güller barındırır.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/mini.png", gorselListesi: ["assets/images/mini.png"], video: null },
-  { id: 8, ad: "Papatya & İncili Ayıcık Mum Buketi", kategori: "normal", aciklama: "Zarif beyaz ve pembe papatyaların, el işçiliğiyle üretilmiş gold detaylı güllerle büyüleyici birleşimi. Merkezinde tatlı pembe bir ayıcık figürü barındırır.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/papatya.png", gorselListesi: ["assets/images/papatya.png"], video: null },
-  { id: 9, ad: "Lüks Orkide & Lale Mum Buketi", kategori: "normal", aciklama: "Zarafetin sembolü olan soft lila orkideler ve asil lalelerin, canlı pembe cipsolarla bir araya geldiği göz alıcı bir tasarım.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/orkide.jpeg", gorselListesi: ["assets/images/orkide.jpeg"], video: null },
-  { id: 10, ad: "Şakayık & Gül Siyah Kutu Mum", kategori: "normal", aciklama: "Mat siyah şık ve minimal bir kutu içerisinde; pudra pembe şakayıklar, el işçiliği beyaz ve lila güllerin muazzam birleşimi.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/siyahkutu.jpeg", gorselListesi: ["assets/images/siyahkutu.jpeg"], video: null },
-  { id: 11, ad: "Pembe Düşler Gül & Ayıcık Buketi", kategori: "normal", aciklama: "Romantik pembe ve beyaz tonlarındaki el işçiliği narin güllerin, şirin bir mini pembe ayıcık figürüyle buluştuğu harika bir buket tasarımı.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/WhatsApp Image 2026-06-01 at 21.22.54.jpeg", gorselListesi: ["assets/images/WhatsApp Image 2026-06-01 at 21.22.54.jpeg"], video: null },
-  { id: 12, ad: "Kalpli Ayıcık Mum Buketi", kategori: "normal", aciklama: "Zirvesinde göz alıcı kırmızı kadife bir kalp figürü ve Nimet Göçmen el işçiliği imzasını taşıyan asil bir aranjman.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/WhatsApp Image 2026-06-01 at 21.22.53.jpeg", gorselListesi: ["assets/images/WhatsApp Image 2026-06-01 at 21.22.53.jpeg"], video: null }
-];
+        // DİNAMİK ÜRÜN LİSTESİ
+        const urunler = [
+          {  
+            id: 25,  
+            ad: "Gül Kokulu Renkli Sanat Mum Buketi",  
+            kategori: "normal",  
+            aciklama: "Yaşam alanlarınıza bahar tazeliği getiren, taze ve büyüleyici gül kokusuyla harmanlanmış şık bir başyapıt. El işçiliğiyle titizlikle şekillendirilmiş turkuaz, pembe ve krem tonlarındaki narin gül figürlerinin, şık pembe kutuda estetik beyaz tül aranjmanıyla buluştuğu bu özel tasarım evinizin havasını değiştirecek.",  
+            fiyat: 1600,  
+            eskiFiyat: 2400,  
+            gorsel: "assets/images/gul1.jpeg",  
+            gorselListesi: [
+              "assets/images/gul1.jpeg", 
+              "assets/images/gul2.jpeg"
+            ],  
+            video: null  
+          },
+          {  
+            id: 24,  
+            ad: "Gümüş & Mor Asalet Hasır Sepet Mum Buketi",  
+            kategori: "normal",  
+            aciklama: "Egzotik ve taze mango esansının büyüleyici kokusuyla zenginleştirilmiş, el yapımı hasır sepet tabanı üzerinde yükselen asil bir başyapıt. Özenle şekillendirilmiş mor, lila ve parlak gümüş tonlarındaki gül ve lale figürlerinin, şık gold tül kurdeleyle buluştuğu bu lüks aranjman yaşam alanlarınıza göz alıcı bir şıklık katacak.",  
+            fiyat: 1500,  
+            eskiFiyat: 2250,  
+            gorsel: "assets/images/mor.jpeg",  
+            gorselListesi: [
+              "assets/images/mor.jpeg", 
+              "assets/images/mor2.jpeg"
+            ],  
+            video: null  
+          },
+          {  
+            id: 23,  
+            ad: "Lüks Pembe Tasarım Mum Buketi",  
+            kategori: "normal",  
+            aciklama: "Zarafetin ve romantizmin en seçkin tonlarını yaşam alanlarınıza taşıyan, el işçiliği narin detayları ve büyüleyici premium esansıyla büyüleyen en yeni pembe tasarım mum buketimiz.",  
+            fiyat: 1500,  
+            eskiFiyat: 2250,  
+            gorsel: "pemb1.png",  
+            gorselListesi: [
+              "pemb1.png", 
+              "pemb2.png"
+            ],  
+            video: null  
+          },
+          {  
+            id: 22,  
+            ad: "Yeni Özel Tasarım Mum Buketi",  
+            kategori: "normal",  
+            aciklama: "Koleksiyonumuzun en yeni üyesi; el işçiliğinin en zarif detaylarını bir araya getiren, farklı açılardan kusursuz görselliğe sahip ve büyüleyici esansıyla ortamın havasını değiştiren tek parça özel tasarım mumumuz.",  
+            fiyat: 1500,  
+            eskiFiyat: 2250,  
+            gorsel: "file1.png",  
+            gorselListesi: [
+              "file1.png", 
+              "file2.jpeg", 
+              "file3.jpeg"
+            ],  
+            video: null  
+          },
+          { 
+            id: 21, 
+            ad: "Lila Asalet Mum Buketi", 
+            kategori: "normal", 
+            aciklama: "Asil lila ve mor tonlarındaki gül ile lale figürlerinin, lüks pembe kutuda siyah tül kurdeleyle buluştuğu büyüleyici bir tasarım. Özel esansiyel yağlar ve el işçiliğiyle hazırlanan bu aranjman, yaşam alanlarınıza modern bir zarafet katacak.", 
+            fiyat: 1500, 
+            eskiFiyat: 2250, 
+            gorsel: "assets/images/maviasalet.png", 
+            gorselListesi: [
+              "assets/images/maviasalet.png", 
+              "assets/images/maviasalet2.png"
+            ], 
+            video: null 
+          },
+          { 
+            id: 20, 
+            ad: "Pembe Asalet Mum Buketi", 
+            kategori: "normal", 
+            aciklama: "Zarafetin en asil tonu pembe ile gümüşün kusursuz uyumu. El işçiliği narin çiçek figürleri og lüks esanslarla hazırlanan bu özel aranjman, yaşam alanlarınıza asalet katar.", 
+            fiyat: 1500, 
+            eskiFiyat: 2250, 
+            gorsel: "assets/images/pembeasalet1.png", 
+            gorselListesi: [
+              "assets/images/pembeasalet1.png", 
+              "assets/images/pembeasalet2.jpeg", 
+              "assets/images/pembeasalet3.png"
+            ], 
+            video: null 
+          },
+          { 
+            id: 19, 
+            ad: "Zümrüt Işıltısı Premium Mum Aranjmanı", 
+            kategori: "premium", 
+            aciklama: "Derin zümrüt yeşili ve asil gold detayların büyüleyici uyumuyla tasarlanmış, el işçiliğinin en nadide örneklerinden biri. Yaşam alanlarınıza saray zarafetini ve premium bir ambiyansı taşımak için yüksek yoğunluklu özel esansisyel yağlarla üretilmiştir.", 
+            fiyat: 2200, 
+            eskiFiyat: 3000, 
+            gorsel: "assets/images/ikili1.png", 
+            gorselListesi: [
+              "assets/images/ikili1.png", 
+              "assets/images/gorkemli.png", 
+              "assets/images/ikili3.png"
+            ], 
+            video: null 
+          },
+          { 
+            id: 18, 
+            ad: "Görkemli Işıltı Mum Aranjmanı", 
+            kategori: "normal", 
+            aciklama: "Altın varaklı ve derin detaylı lüks kabı içerisinde, el işçiliğiyle hazırlanan asil bir tasarım. Yaşam alanlarınıza sıcak, zengin ve huzur veren bir ambiyans katmak için özel esanslarla üretilmiştir.", 
+            fiyat: 800, 
+            eskiFiyat: 1200, 
+            gorsel: "assets/images/gorkemli.png", 
+            gorselListesi: ["assets/images/gorkemli.png", "assets/images/gorkemli2.png"], 
+            video: null 
+          },
+          { 
+            id: 1, 
+            ad: "Bubble Kokulu Mum Buketi", 
+            kategori: "premium", 
+            aciklama: "Zarafetin ve lüksün büyüleyici bir harmoniyle buluştuğu bu başyapıt, el işçiliğiyle tek tek şekillendirilmiş mor ve lila tonlarındaki bubble çiçek figürlerinden oluşuyor. %100 doğal, sürdürülebilir soya ham maddesi ve yüksek yoğunluklu premium esansiyel yağlarla hazırlanan bu özel tasarım.", 
+            fiyat: 2000, 
+            eskiFiyat: 2850, 
+            gorsel: "assets/images/bubblebuket.png", 
+            gorselListesi: ["assets/images/bubblebuket.png", "assets/images/Gemini_Generated_Image_9fad2h9fad2h9fad.png", "assets/images/Gemini_Generated_Image_worf1mworf1mworf.png"], 
+            video: null 
+          },
+          { 
+            id: 2, 
+            ad: "Mango Kokulu Mum Buketi", 
+            kategori: "premium", 
+            aciklama: "Sıcak yaz günlerinin enerjisini ve tropikal bir lüksü yaşam alanlarına taşıyan bu özel tasarım, gün batımının büyüleyici turuncu, pudra ve krem tonlarını bir araya getiriyor. El emeğiyle işlenmiş narin gül tomurcuk figürleriyle bezenmiş mum buketimiz, egzotik ve taze mango esansıyla zenginleştirilmiştir.", 
+            fiyat: 2000, 
+            eskiFiyat: 2850, 
+            gorsel: "assets/images/mango.png", 
+            gorselListesi: ["assets/images/mango.png", "assets/images/mango2.png"], 
+            video: null 
+          },
+          { 
+            id: 3, 
+            ad: "Karışık Koku Özel Mum Buketi", 
+            kategori: "premium", 
+            aciklama: "Göz alıcı bir pembe kutuda lüksu ve görsel bir şöleni buluşturan bu özel tasarım, el emeğinin zirvesini temsil ediyor. İçerisinde kusursuzca işlenmiş incili kalpler, sevimli mini ayıcık figürü, narin gül goncaları, papatyalar ve capcanlı turuncu laleler barındırır.", 
+            fiyat: 2300, 
+            eskiFiyat: 3200, 
+            gorsel: "assets/images/karısık.png", 
+            gorselListesi: [
+              "assets/images/karısık.png", 
+              "assets/images/WhatsApp Image 2026-06-01 at 21.15.08 (1).jpeg", 
+              "assets/images/WhatsApp Image 2026-06-01 at 21.15.08 (2).jpeg", 
+              "assets/images/WhatsApp Image 2026-06-01 at 21.15.08 (3).jpeg", 
+              "assets/images/WhatsApp Image 2026-06-01 at 21.15.08.jpeg"
+            ], 
+            video: null 
+          },
+          { 
+            id: 4, 
+            ad: "Kavun Aromalı Mum Buketi", 
+            kategori: "premium", 
+            aciklama: "Kavunun ferahlatıcı, tatlı ve enerjik tropikal kokusunu lüks bir tasarımla yaşam alanlarına taşıyan bu özel aranjman, el işçiliğiyle titizlikle detaylandırılmıştır. %100 doğal soya mumu ve premium esansiyel yağlarla premium kalitede üretilmiştir.", 
+            fiyat: 2000, 
+            eskiFiyat: 2850, 
+            gorsel: "assets/images/kavun1.png", 
+            gorselListesi: ["assets/images/kavun1.png", "assets/images/kavun2.png"], 
+            video: null 
+          },
+          {
+            id: 15, 
+            ad: "Aşk Esintisi LOVE Mum Buketi",
+            kategori: "normal", 
+            aciklama: "Lüks pembe silindir kutusunda, el işçiliğiyle üretilmiş estetik ayçiçekleri, kalpler ve güllerin büyüleyici birleşimi. Üzerindeki özel tasarım harf küpleriyle yazılmış 'LOVE' detayı ve tül kaplamasıyla sevdiklerinize sunabileceğiniz en romantik premium hediye seçeneği.",
+            fiyat: 1500,
+            eskiFiyat: 2250,
+            gorsel: "assets/images/love2.png", 
+            gorselListesi: ["assets/images/love2.png", "assets/images/love3.png"],
+            video: "assets/images/lovevideo.mp4"
+          },
+          {
+            id: 14, 
+            ad: "Okyanus Esintisi Lüks Mum Buketi",
+            kategori: "premium",
+            aciklama: "Okyanusun derinliklerinden gelen ferahlatıcı ve lüks esintiyi asil gümüş tonlarıyla birleştiren bu şaheser, incili özel tül tasarımı ve el işçiliği detaylarıyla göz kamaştırıyor. Gece şıklığını ve modern zarafeti yaşam alanlarınıza taşımak için %100 doğal soya mumuyla üretilmiştir.",
+            fiyat: 2000, 
+            eskiFiyat: 2850,
+            gorsel: "assets/images/okyanus.png",
+            gorselListesi: ["assets/images/okyanus.png", "assets/images/okyanus2.png"],
+            video: null
+          },
+          { 
+            id: 13, 
+            ad: "Safir Düşler Ayıcıklı Mum Buketi", 
+            kategori: "normal", 
+            aciklama: "Gök mavisinin huzur veren tonları ile el işçiliği beyaz güllerin büyüleyici uyumu. İncilerle bezenmiş kurdele detayları, cipsolar ve merkezindeki sevimli mavi ayıcık figürüyle yaşam alanlarınıza premium bir şıklık katmak için tasarlandı.", 
+            fiyat: 500, 
+            eskiFiyat: 750, 
+            gorsel: "assets/images/mavi1.png", 
+            gorselListesi: ["assets/images/mavi1.png", "assets/images/mavi2.png"], 
+            video: null 
+          },
+          { id: 5, ad: "Yasemin Kokulu Mum Buketi", kategori: "normal", aciklama: "Romantizmin ve masumiyetin en saf halini yansıtan bu özel seçki, soft pembe og beyaz tonlarının kusursuz uyumuyla göz kamaştırıyor.", fiyat: 2000, eskiFiyat: 2850, gorsel: "assets/images/yasemin.png", gorselListesi: ["assets/images/yasemin.png"], video: null },
+          { 
+            id: 6, 
+            ad: "Seçilebilir Mini Premium Model", 
+            kategori: "normal", 
+            aciklama: "Kataloğumuzda yer alan el yapımı mini bisiklet aranjmanları, lüks kurdeleli dairesel kutu tasarımları veya gümüş detaylı özel konseptlerden dilediğinizi zevkinize göre seçebilirsiniz. Aşağıdaki tasarımlar örnek modellerdir.", 
+            fiyat: 800, 
+            eskiFiyat: 1250,
+            gorsel: "assets/images/800tl2.jpeg", 
+            gorselListesi: ["assets/images/800tl2.jpeg", "assets/images/800tl5.jpeg", "assets/images/800tl7.jpeg", "assets/images/800tl8.jpeg", "assets/images/800tl3.jpeg", "assets/images/800tl4.jpeg", "assets/images/800tl.jpeg", "assets/images/800tl6.jpeg"], 
+            video: null,
+            ornekModeller: true 
+          },
+          { id: 7, ad: "Çilek & Kırmızı Gül El Buketi", kategori: "normal", aciklama: "Aşkın ve tutkunun rengiyle bezenmiş, elde taşınabilir formda tasarlanan bu mini sanat eseri; el işçiliğiyle şekillendirilen kusursuz kırmızı güller barındırır.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/mini.png", gorselListesi: ["assets/images/mini.png"], video: null },
+          { id: 8, ad: "Papatya & İncili Ayıcık Mum Buketi", kategori: "normal", aciklama: "Zarif beyaz ve pembe papatyaların, el işçiliğiyle üretilmiş gold detaylı güllerle büyüleyici birleşimi. Merkezinde tatlı pembe bir ayıcık figürü barındırır.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/papatya.png", gorselListesi: ["assets/images/papatya.png"], video: null },
+          { id: 9, ad: "Lüks Orkide & Lale Mum Buketi", kategori: "normal", aciklama: "Zarafetin sembolü olan soft lila orkideler ve asil lalelerin, canlı pembe cipsolarla bir araya geldiği göz alıcı bir tasarım.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/orkide.jpeg", gorselListesi: ["assets/images/orkide.jpeg"], video: null },
+          { id: 10, ad: "Şakayık & Gül Siyah Kutu Mum", kategori: "normal", aciklama: "Mat siyah şık ve minimal bir kutu içerisinde; pudra pembe şakayıklar, el işçiliği beyaz ve lila güllerin muazzam birleşimi.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/siyahkutu.jpeg", gorselListesi: ["assets/images/siyahkutu.jpeg"], video: null },
+          { id: 11, ad: "Pembe Düşler Gül & Ayıcık Buketi", kategori: "normal", aciklama: "Romantik pembe ve beyaz tonlarındaki el işçiliği narin güllerin, şirin bir mini pembe ayıcık figürüyle buluştuğu harika bir buket tasarımı.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/WhatsApp Image 2026-06-01 at 21.22.54.jpeg", gorselListesi: ["assets/images/WhatsApp Image 2026-06-01 at 21.22.54.jpeg"], video: null },
+          { id: 12, ad: "Kalpli Ayıcık Mum Buketi", kategori: "normal", aciklama: "Zirvesinde göz alıcı kırmızı kadife bir kalp figürü ve Nimet Göçmen el işçiliği imzasını taşıyan asil bir aranjman.", fiyat: 500, eskiFiyat: 750, gorsel: "assets/images/WhatsApp Image 2026-06-01 at 21.22.53.jpeg", gorselListesi: ["assets/images/WhatsApp Image 2026-06-01 at 21.22.53.jpeg"], video: null }
+        ];
         
         let sepet = [];
         let mevcutUrunIndex = 0;
@@ -1523,7 +1686,7 @@ const urunler = [
             const elements = document.querySelectorAll('.scroll-animate');
             elements.forEach((el) => observer.observe(el));
 
-            // GERİ TUŞU: modal açıkken geri tuşu modalı kapatır, siteden çıkmaz
+            // GERİ TUŞU YÖNETİMİ
             window.addEventListener('popstate', function(e) {
                 const productModal = document.getElementById('productModal');
                 const collectionModal = document.getElementById('collectionModal');
