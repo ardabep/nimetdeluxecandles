@@ -4,20 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nimet Luxe Candles | El Yapımı Premium Mum Koleksiyonu</title>
+    
+    <!-- Öncelikli Görsel Yükleme (Hız İyileştirmesi) -->
+    <link rel="preload" as="image" href="assets/images/etkinlik.jpeg">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         html, body {
-            -webkit-overflow-scrolling: auto;
+            -webkit-overflow-scrolling: touch;
         }
-        /* --- Lüks Çerçeve ve Canlı Buton Tasarımları --- */
+
+        /* PERFORMANS VE YÜKLEME OPTİMİZASYONLARI */
+        img {
+            content-visibility: auto;
+            transform: translateZ(0);
+        }
+
         .urun-kart, .product-card {
             border: 1px solid rgba(170, 139, 70, 0.25) !important;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
             transition: all 0.3s ease !important;
             border-radius: 12px !important;
             overflow: hidden !important;
+            will-change: transform;
         }
 
         .urun-kart:hover, .product-card:hover {
@@ -41,6 +53,7 @@
             transform: scale(1.02) !important;
             box-shadow: 0 6px 18px rgba(170, 139, 70, 0.4) !important;
         }
+        
         :root {
           --color-bg: #fdfcf9;           
           --color-surface: #ffffff;      
@@ -99,6 +112,7 @@
           display: inline-block;
           white-space: nowrap;
           animation: textTickerAnimation 35s linear infinite;
+          will-change: transform;
         }
         .text-ticker span {
           color: #dbb96f;
@@ -125,6 +139,7 @@
         .ticker {
           display: inline-block; white-space: nowrap; padding-right: 100%;
           animation: tickerAnimation 120s linear infinite;
+          will-change: transform;
         }
         .ticker:hover { animation-play-state: paused; }
         .ticker-item {
@@ -929,7 +944,7 @@
         <div class="container">
             <div class="event-card">
                 <div class="event-img-box" onclick="openLightbox('assets/images/etkinlik.jpeg', ['assets/images/etkinlik.jpeg'])">
-                    <img src="assets/images/etkinlik.jpeg" alt="Kayseri Form AVM Nimet Göçmen Standı" loading="lazy">
+                    <img src="assets/images/etkinlik.jpeg" alt="Kayseri Form AVM Nimet Göçmen Standı" loading="eager" decoding="async" fetchpriority="high">
                 </div>
                 <div class="event-content">
                     <span class="event-badge">✨ Özel Etkinlik Daveti</span>
@@ -1415,7 +1430,7 @@
             const doubleList = [...urunler, ...urunler];
             tickerEl.innerHTML = doubleList.map(u => `
                 <span class="ticker-item" onclick="openProductModal(${u.id})">
-                    <img src="${u.gorsel}" class="ticker-img" alt="Mum" loading="lazy">
+                    <img src="${u.gorsel}" class="ticker-img" alt="Mum" loading="lazy" decoding="async">
                     <div class="ticker-prices">
                         <span class="old-p">${u.eskiFiyat} TL</span>
                         <span class="new-p">${u.fiyat} TL</span>
