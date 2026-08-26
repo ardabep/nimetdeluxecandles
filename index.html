@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nimet Luxe Candles | El Yapımı Premium Mum Koleksiyonu</title>
     
+    <!-- YÜKLEME HIZI VE SUNUCU BAĞLANTI OPTİMİZASYONLARI -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
+
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -14,10 +18,11 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        /* PERFORMANS VE DOKUNMA OPTİMİZASYONLARI */
+        /* DOKUNMA VE EKRAN PERFORMANS OPTİMİZASYONLARI */
         img {
             content-visibility: auto;
             transform: translateZ(0);
+            backface-visibility: hidden;
         }
 
         :root {
@@ -157,11 +162,12 @@
             font-family: var(--font-body); font-weight: 600; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: var(--transition-smooth);
         }
         
-        /* HERO ANİMASYONLARI */
+        /* HERO VE AMBİYANS ANİMASYONLARI */
         .hero { height: 50vh; min-height: 380px; display: flex; align-items: center; position: relative; overflow: hidden; background: #fdfcf9; }
         .hero-bg-image {
           position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-          background-image: url('https://images.unsplash.com/photo-1603006905003-be475563bc59?q=80&w=1920&auto=format&fit=crop');
+          /* Hızlandırılmış ve WebP optimize edilmiş Unsplash URL */
+          background-image: url('https://images.unsplash.com/photo-1603006905003-be475563bc59?q=75&w=1200&auto=format&fit=crop&fm=webp');
           background-size: cover; background-position: center; z-index: 1;
           opacity: 0.22; animation: luxuryBreathe 18s infinite ease-in-out;
         }
@@ -249,7 +255,7 @@
         /* Grid Düzeni */
         .grid { display: grid; gap: var(--space-lg); grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); justify-content: center; max-width: 1200px; margin: 0 auto; }
         
-        /* LÜKS ÜRÜN KARTLARI VE SHIMMER (IŞIK PARILTISI) ANİMASYONU */
+        /* LÜKS ÜRÜN KARTLARI VE HIZLANDIRILMIŞ ÇİZİM YÜKÜ (content-visibility: auto) */
         .card { 
           background: var(--color-surface); 
           border: 1px solid rgba(170, 139, 70, 0.2) !important; 
@@ -259,6 +265,11 @@
           cursor: pointer; height: 100%; width: 100%; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
           overflow: hidden; opacity: 0; transform: translateY(20px);
           animation: cardAppear 0.5s var(--ease-out-expo) forwards;
+          
+          /* Tarayıcı Performans Optimizasyonu */
+          content-visibility: auto;
+          contain-intrinsic-size: 1px 380px;
+          will-change: transform, opacity;
         }
         @keyframes cardAppear { to { opacity: 1; transform: translateY(0); } }
 
@@ -532,7 +543,7 @@
 </head>
 <body>
 
-    <!-- YENİ TEK DUYURU BANDI -->
+    <!-- ÜST DUYURU BANDI -->
     <div class="top-bars-wrapper">
         <div class="text-ticker-wrap">
             <div class="text-ticker">
@@ -658,7 +669,7 @@
             <button class="cat-tab-btn" onclick="filtreleKategori('mini', this)">🎁 Mini & Hediyelik</button>
         </div>
 
-        <!-- YENİ DÜZENLİ ÜRÜN GRID -->
+        <!-- DÜZENLİ VE HIZLANDIRILMIŞ ÜRÜN GRID -->
         <div class="grid" id="main-product-grid"></div>
     </section>
 
@@ -851,6 +862,7 @@
             urunleriListele();
         }
 
+        /* HIZLANDIRILMIŞ VE AKILLI YÜKLEME STRATEJİSİ */
         function urunleriListele() {
           const grid = document.getElementById('main-product-grid');
           if(!grid) return;
@@ -860,11 +872,16 @@
               liste = urunler.filter(u => u.kategori === aktifKategori);
           }
 
-          grid.innerHTML = liste.map((u, i) => `
-            <div class="card" style="animation-delay: ${i * 0.05}s;" onclick="openProductModal(${u.id})">
+          grid.innerHTML = liste.map((u, i) => {
+            // Ekranda ilk gözüken 4 görsel öncelikli ve anında yüklenir
+            const isEager = i < 4;
+            const loadAttr = isEager ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
+
+            return `
+            <div class="card" style="animation-delay: ${Math.min(i * 0.04, 0.3)}s;" onclick="openProductModal(${u.id})">
                 <div class="discount-badge">${hesaplaYuzde(u.eskiFiyat, u.fiyat)}</div>
                 <div class="product-img-box">
-                    <img src="${u.gorsel}" alt="${u.ad}" loading="lazy" decoding="async" onclick="event.stopPropagation(); openLightbox('${u.gorsel}', ${JSON.stringify(u.gorselListesi)})">
+                    <img src="${u.gorsel}" alt="${u.ad}" ${loadAttr} decoding="async" onclick="event.stopPropagation(); openLightbox('${u.gorsel}', ${JSON.stringify(u.gorselListesi)})">
                 </div>
                 <h3 class="product-title">${u.ad}</h3>
                 <p class="product-desc">${u.aciklama}</p>
@@ -876,7 +893,7 @@
                     <button class="btn-add-cart" onclick="sepeteEkle(${u.id})">Sepete Ekle</button>
                 </div>
             </div>
-          `).join('');
+          `}).join('');
         }
 
         function openProductModal(id) {
@@ -1029,7 +1046,6 @@
           
           counts.forEach(el => el.innerText = sepet.reduce((t, i) => t + i.adet, 0));
           
-          // ÜCRETSİZ KARGO BARI HESAPLAMA
           const kargoBar = document.getElementById('freeShippingBar');
           const kargoText = document.getElementById('freeShippingText');
           const limit = 1500;
